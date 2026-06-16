@@ -4,48 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keşke Bilseydim</title>
-
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
-    text-align:center;
-    padding:50px;
-}
-
-.container{
-    max-width:800px;
-    margin:auto;
-    background:white;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,0,0,.1);
-}
-
-h1{
-    color:#2563eb;
-}
-
-p{
-    font-size:18px;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f7fb;color:#111}
+header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;background:white}
+.logo{font-size:26px;font-weight:bold;color:#2563eb}
+nav a{margin-left:20px;text-decoration:none;color:#333}
+.hero{padding:80px 8%;text-align:center}
+.hero h1{font-size:48px;margin-bottom:15px}
+.hero p{font-size:20px;color:#555}
+.search{margin:30px auto;max-width:650px;display:flex;background:white;border-radius:18px;box-shadow:0 10px 30px #ddd;overflow:hidden}
+.search input{flex:1;padding:20px;border:0;font-size:17px}
+.search button{padding:20px 28px;border:0;background:#2563eb;color:white;font-weight:bold}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;padding:20px 8% 70px}
+.card{background:white;padding:24px;border-radius:18px;box-shadow:0 8px 24px #e5e5e5}
+.card h3{margin-top:0;color:#2563eb}
+.actions{margin-top:30px}
+.actions button{padding:15px 24px;margin:8px;border-radius:12px;border:0;font-weight:bold}
+.primary{background:#2563eb;color:white}
+.secondary{background:white;color:#2563eb;border:1px solid #2563eb!important}
+footer{text-align:center;padding:30px;color:#777}
 </style>
-
 </head>
-
 <body>
 
-<div class="container">
-    <h1>Keşke Bilseydim</h1>
+<header>
+  <div class="logo">Keşke Bilseydim</div>
+  <nav>
+    <a href="#">Deneyimler</a>
+    <a href="#">Kategoriler</a>
+    <a href="#">Giriş Yap</a>
+  </nav>
+</header>
 
-    <p>
-        Karar vermeden önce gerçek deneyimleri keşfet.
-    </p>
+<section class="hero">
+  <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+  <p>Ev almak, iş değiştirmek, evlenmek, taşınmak... İnsanların sonradan “keşke bilseydim” dediği gerçek deneyimler burada.</p>
 
-    <p>
-        İlk sürüm yayında 🚀
-    </p>
-</div>
+  <div class="search">
+    <input placeholder="Hangi kararı vermeyi düşünüyorsun? Örn: Ev almak">
+    <button>Ara</button>
+  </div>
+
+  <div class="actions">
+    <button class="primary">Deneyimleri Oku</button>
+    <button class="secondary">Deneyimini Paylaş</button>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <h3>Ev Almadan Önce</h3>
+    <p>Aidat, komşular, kredi masrafları ve sonradan fark edilen detaylar.</p>
+  </div>
+  <div class="card">
+    <h3>İş Değiştirmeden Önce</h3>
+    <p>Maaş, yönetici, çalışma ortamı ve pişmanlıklar.</p>
+  </div>
+  <div class="card">
+    <h3>Evlenmeden Önce</h3>
+    <p>Gerçek hayat tecrübeleri, tavsiyeler ve dikkat edilmesi gerekenler.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Keşke Bilseydim — İlk sürüm yayında 🚀
+</footer>
 
 </body>
 </html>
