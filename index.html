@@ -533,10 +533,11 @@ footer{
     .side-grid{grid-template-columns:1fr}
 }
 .bilge-kedi-img{
-    width:320px;
     position:absolute;
-    left:80px;
+    width:300px;
+    left:60px;
     bottom:0;
+    transition:all .5s ease;
 }
 </style>
 </head>
@@ -677,33 +678,42 @@ footer{
 
 </div>
 <script>
-const kediResimler = [
-"images/kedi-1.png",
-"images/kedi-2.png",
-"images/kedi-3.png",
-"images/kedi-4.png",
-"images/kedi-5.png",
-"images/kedi-6.png",
-"images/kedi-7.png",
-"images/kedi-8.png",
-"images/kedi-9.png",
-"images/kedi-10.png"
+const kedi = document.getElementById("bilgeKedi");
+const balon = document.querySelector(".speech");
+
+const sozler = [
+    "Keşke demek bedavadır ama sonucu bazen pahalıya patlar.",
+    "Yorumu okumadan karar verme. Sonra bana bakma.",
+    "Maaşa baktın. Müdüre baktın mı?",
+    "Ucuz diye aldığın şey bazen en pahalı şey olur.",
+    "Komşu araştırmak ev araştırmaktan önemlidir.",
+    "Ben söylemiştim demeyi sevmiyorum ama... söylemiştim.",
+    "Kırmızı bayrakları dekor sanma.",
+    "Karar vermeden önce iki deneyim oku, bir nefes al."
 ];
 
-let aktifKedi = 0;
+function yeniKediGetir(){
+    const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
+    const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
 
-setInterval(() => {
-    aktifKedi++;
-    if(aktifKedi >= kediResimler.length){
-        aktifKedi = 0;
-    }
+    const boyut = 260 + Math.floor(Math.random() * 90);
+    const sol = 20 + Math.floor(Math.random() * 120);
+    const alt = -10 + Math.floor(Math.random() * 40);
 
-    const kedi = document.getElementById("bilgeKedi");
+    kedi.style.opacity = "0";
 
-    if(kedi){
-        kedi.src = kediResimler[aktifKedi];
-    }
-}, 5000);
+    setTimeout(() => {
+        kedi.src = `images/kedi_${rastgeleNumara}.png`;
+        kedi.style.width = boyut + "px";
+        kedi.style.left = sol + "px";
+        kedi.style.bottom = alt + "px";
+        balon.textContent = rastgeleSoz;
+        kedi.style.opacity = "1";
+    }, 300);
+}
+
+yeniKediGetir();
+setInterval(yeniKediGetir, 60000);
 </script>
 </body>
 </html>
