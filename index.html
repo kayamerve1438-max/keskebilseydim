@@ -11,330 +11,541 @@
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:#f7f7fb;
-    color:#111;
+    background:#eef1f8;
+    color:#101828;
 }
 
-.top-bar{
-    background:#111827;
-    color:white;
-    height:42px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:28px;
-    font-size:14px;
-    font-weight:bold;
+.page{
+    width:92%;
+    max-width:1500px;
+    margin:30px auto;
+    background:#f8f9fd;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    overflow:hidden;
 }
 
-.top-bar span b{color:#22c55e}
-
-.main-header{
+/* HEADER */
+header{
+    height:78px;
     background:white;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 7%;
-    border-bottom:1px solid #eee;
-    position:sticky;
-    top:0;
-    z-index:10;
+    padding:0 5%;
+    border-bottom:1px solid #eef0f5;
 }
 
 .logo-area{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
 }
 
 .logo-area img{
-    height:58px;
-    width:auto;
+    height:54px;
 }
 
-.site-logo{
-    font-size:28px;
+.site-name{
+    font-size:26px;
     font-weight:900;
     color:#2563eb;
 }
 
-.category-menu{
+nav{
     display:flex;
-    gap:24px;
+    gap:34px;
     align-items:center;
 }
 
-.category-menu a{
+nav a{
+    color:#111;
     text-decoration:none;
-    color:#222;
-    font-size:15px;
-    font-weight:700;
-}
-
-.category-menu a:hover{color:#2563eb}
-
-.confession-link{
-    color:#db2777!important;
-    font-family:Georgia, serif;
-    font-style:italic;
-    font-size:17px!important;
-}
-
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.login-btn{
-    padding:11px 22px;
-    border-radius:24px;
-    border:1px solid #ddd;
-    background:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.hero{
-    padding:75px 8% 55px;
-    text-align:center;
-    background:linear-gradient(180deg,#ffffff,#f7f7fb);
-}
-
-.hero h1{
-    font-size:52px;
-    line-height:1.15;
-    margin:0 0 18px;
-}
-
-.hero p{
-    font-size:20px;
-    color:#555;
-    max-width:780px;
-    margin:0 auto;
-}
-
-.search{
-    margin:34px auto 20px;
-    max-width:720px;
-    display:flex;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 12px 35px rgba(0,0,0,.12);
-    overflow:hidden;
-}
-
-.search input{
-    flex:1;
-    padding:22px;
-    border:0;
-    font-size:17px;
-    outline:none;
-}
-
-.search button{
-    padding:22px 34px;
-    border:0;
-    background:#2563eb;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.actions button{
-    padding:15px 24px;
-    margin:8px;
-    border-radius:14px;
-    border:0;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.primary{background:#2563eb;color:white}
-.secondary{background:white;color:#2563eb;border:1px solid #2563eb!important}
-
-.section-title{
-    padding:10px 8%;
-    font-size:28px;
+    font-size:14px;
     font-weight:900;
 }
 
-.category-grid{
+.confession-nav{
+    color:#db2777!important;
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:22px!important;
+    border-bottom:2px solid #db2777;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.search-icon{
+    font-size:28px;
+}
+
+.login{
+    border:1px solid #2563eb;
+    color:#2563eb;
+    background:white;
+    border-radius:24px;
+    padding:12px 24px;
+    font-weight:800;
+}
+
+/* HERO */
+.hero{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    grid-template-columns:1.05fr .95fr;
+    gap:40px;
+    padding:55px 7% 25px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:54px;
+    line-height:1.12;
+    margin:0 0 18px;
+    letter-spacing:-1px;
+}
+
+.hero p{
+    color:#667085;
+    font-size:19px;
+    line-height:1.5;
+    margin:0 0 26px;
+}
+
+.search-box{
+    width:100%;
+    max-width:560px;
+    background:white;
+    display:flex;
+    align-items:center;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+    margin-bottom:22px;
+}
+
+.search-box span{
+    padding-left:20px;
+    color:#94a3b8;
+    font-size:22px;
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:20px 14px;
+    font-size:16px;
+}
+
+.search-box button{
+    background:#2563eb;
+    color:white;
+    border:0;
+    padding:21px 34px;
+    font-weight:900;
+    font-size:15px;
+}
+
+.hero-buttons button{
+    padding:15px 28px;
+    border-radius:14px;
+    font-weight:900;
+    margin-right:14px;
+    cursor:pointer;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+    border:0;
+}
+
+.secondary{
+    background:white;
+    color:#2563eb;
+    border:1px solid #2563eb;
+}
+
+/* CAT ILLUSTRATION */
+.cat-hero{
+    position:relative;
+    height:360px;
+}
+
+.speech{
+    position:absolute;
+    right:20px;
+    top:30px;
+    width:250px;
+    background:white;
+    border:2px solid #eadfd4;
+    border-radius:45% 45% 45% 45%;
+    padding:34px 28px;
+    font-family:Georgia, serif;
+    font-size:18px;
+    line-height:1.5;
+    text-align:center;
+}
+
+.speech:before{
+    content:"";
+    position:absolute;
+    left:-30px;
+    top:90px;
+    border-width:18px 30px 18px 0;
+    border-style:solid;
+    border-color:transparent #eadfd4 transparent transparent;
+}
+
+.speech:after{
+    content:"♡";
+    color:#ef3f7a;
+    display:block;
+    font-size:24px;
+    margin-top:8px;
+}
+
+.book-stack{
+    position:absolute;
+    left:95px;
+    bottom:0;
+    width:310px;
+    height:300px;
+}
+
+.book{
+    position:absolute;
+    width:270px;
+    height:42px;
+    left:20px;
+    border-radius:8px;
+    box-shadow:0 7px 12px rgba(0,0,0,.12);
+}
+
+.book1{bottom:0;background:#f59e0b}
+.book2{bottom:44px;background:#8dd3c7}
+.book3{bottom:88px;background:#f8c9c9}
+.book4{bottom:132px;background:#f97316}
+
+.book:after{
+    content:"";
+    position:absolute;
+    left:35px;
+    right:35px;
+    top:18px;
+    height:3px;
+    background:rgba(255,255,255,.8);
+    border-radius:5px;
+}
+
+.big-cat{
+    position:absolute;
+    left:100px;
+    bottom:155px;
+    width:180px;
+    height:190px;
+}
+
+.cat-body{
+    position:absolute;
+    left:54px;
+    top:70px;
+    width:84px;
+    height:110px;
+    background:#c8b4a2;
+    border-radius:45% 45% 35% 35%;
+}
+
+.cat-head{
+    position:absolute;
+    left:38px;
+    top:0;
+    width:110px;
+    height:92px;
+    background:#d6c3b1;
+    border-radius:50%;
+}
+
+.cat-ear{
+    position:absolute;
+    top:-10px;
+    width:34px;
+    height:34px;
+    background:#d6c3b1;
+    transform:rotate(45deg);
+}
+
+.cat-ear.left{left:16px}
+.cat-ear.right{right:16px}
+
+.cat-glasses span{
+    position:absolute;
+    top:32px;
+    width:43px;
+    height:43px;
+    border:4px solid #ef4444;
+    border-radius:50%;
+    z-index:4;
+}
+
+.cat-glasses span:first-child{left:12px}
+.cat-glasses span:last-child{right:12px}
+
+.cat-glasses:after{
+    content:"";
+    position:absolute;
+    top:53px;
+    left:52px;
+    width:10px;
+    height:4px;
+    background:#ef4444;
+}
+
+.cat-eye{
+    position:absolute;
+    top:47px;
+    width:11px;
+    height:11px;
+    background:#111;
+    border-radius:50%;
+    z-index:5;
+}
+
+.cat-eye.left{left:30px}
+.cat-eye.right{right:30px}
+
+.cat-mouth{
+    position:absolute;
+    top:64px;
+    left:48px;
+    font-size:18px;
+}
+
+.cat-paw{
+    position:absolute;
+    right:22px;
+    bottom:-4px;
+    width:70px;
+    height:24px;
+    background:#c8b4a2;
+    border-radius:50px;
+    transform:rotate(-10deg);
+}
+
+.cat-lines{
+    position:absolute;
+    left:55px;
+    top:95px;
+    font-size:32px;
+}
+
+/* CATEGORIES */
+.section-title{
+    padding:0 7%;
+    font-size:24px;
+    font-weight:900;
+    margin-top:18px;
+}
+
+.category-grid{
+    padding:20px 7% 22px;
+    display:grid;
+    grid-template-columns:repeat(9,1fr);
     gap:18px;
-    padding:10px 8% 45px;
 }
 
 .category-card{
     background:white;
-    border-radius:18px;
-    padding:22px;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
-    font-weight:800;
-    text-align:center;
-    cursor:pointer;
+    border-radius:16px;
+    height:110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-weight:900;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
 .category-card span{
-    display:block;
     font-size:34px;
-    margin-bottom:10px;
 }
 
-.content-grid{
+.confession-card{
+    color:#db2777;
+}
+
+/* CONTENT */
+.main-content{
+    padding:0 7% 35px;
     display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:24px;
-    padding:10px 8% 70px;
+    grid-template-columns:2fr 1.55fr;
+    gap:22px;
 }
 
-.experience-card{
+.recent{
     background:white;
     border-radius:18px;
-    padding:24px;
-    margin-bottom:18px;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    padding:22px;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-.experience-card h3{
-    margin:0 0 10px;
-    color:#1e3a8a;
+.recent-head{
+    display:flex;
+    justify-content:space-between;
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:16px;
 }
 
-.meta{
-    color:#777;
-    font-size:14px;
-    margin-bottom:12px;
+.recent-head a{
+    color:#2563eb;
+    text-decoration:none;
+    font-size:15px;
 }
 
-.badge{
-    display:inline-block;
-    padding:6px 12px;
+.experience{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:14px;
+    align-items:start;
+    padding:14px 0;
+    border-bottom:1px solid #edf0f5;
+}
+
+.tag{
+    padding:7px 14px;
     border-radius:20px;
+    color:white;
     font-size:13px;
-    font-weight:bold;
-    background:#e0f2fe;
-    color:#0369a1;
+    font-weight:900;
+}
+
+.ev{background:#2563eb}
+.is{background:#16a34a}
+.egitim{background:#f97316}
+
+.exp-title{
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.exp-text{
+    color:#555;
+    font-size:14px;
+}
+
+.exp-stats{
+    color:#667085;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.side-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
 .confession-box{
-    background:linear-gradient(135deg,#db2777,#7c3aed);
+    background:linear-gradient(135deg,#db2777,#9333ea);
     color:white;
-    border-radius:22px;
-    padding:28px;
-    box-shadow:0 10px 30px rgba(124,58,237,.3);
+    border-radius:18px;
+    padding:30px;
 }
 
 .confession-box h2{
     font-family:Georgia, serif;
     font-style:italic;
-    font-size:34px;
-    margin:0 0 12px;
+    font-size:38px;
+    margin:0 0 16px;
 }
 
-.sidebar-card{
+.confession-box button{
+    background:white;
+    color:#db2777;
+    border:0;
+    padding:14px 28px;
+    border-radius:14px;
+    font-weight:900;
+    margin-top:20px;
+}
+
+.cat-note{
     background:white;
     border-radius:18px;
-    padding:22px;
-    margin-bottom:18px;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    padding:24px;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+    text-align:center;
 }
 
-.cat-mascot{
-    position:fixed;
-    right:24px;
-    bottom:24px;
-    z-index:20;
-    display:flex;
-    align-items:flex-end;
-    gap:10px;
-}
-
-.cat-bubble{
-    background:white;
-    padding:14px 18px;
-    border-radius:18px;
-    box-shadow:0 8px 24px rgba(0,0,0,.15);
-    font-size:14px;
-    max-width:230px;
-}
-
-.cat{
-    width:92px;
-    height:92px;
-    background:#f59e0b;
-    border-radius:50%;
+.cat-face-small{
+    width:120px;
+    height:75px;
+    background:#d6c3b1;
+    border-radius:60px 60px 25px 25px;
+    margin:20px auto 0;
     position:relative;
-    box-shadow:0 8px 24px rgba(0,0,0,.18);
 }
 
-.cat:before,
-.cat:after{
+.cat-face-small:before,
+.cat-face-small:after{
     content:"";
     position:absolute;
-    top:-12px;
+    top:-10px;
     width:34px;
     height:34px;
-    background:#f59e0b;
+    background:#d6c3b1;
     transform:rotate(45deg);
 }
 
-.cat:before{left:10px}
-.cat:after{right:10px}
+.cat-face-small:before{left:18px}
+.cat-face-small:after{right:18px}
 
-.eye{
-    position:absolute;
-    top:34px;
-    width:12px;
-    height:12px;
-    background:#111;
-    border-radius:50%;
-}
-
-.eye.left{left:28px}
-.eye.right{right:28px}
-
-.mouth{
-    position:absolute;
-    left:35px;
-    top:55px;
-    font-size:20px;
+.stats{
+    grid-column:1/3;
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    justify-content:space-around;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+    color:#475467;
+    font-weight:700;
 }
 
 footer{
-    text-align:center;
-    padding:35px;
-    color:#777;
     background:white;
+    text-align:center;
+    padding:28px;
+    color:#777;
 }
 
-@media(max-width:900px){
-    .category-menu{display:none}
-    .content-grid{grid-template-columns:1fr}
-    .hero h1{font-size:38px}
-    .cat-mascot{display:none}
+@media(max-width:1000px){
+    nav{display:none}
+    .hero{grid-template-columns:1fr}
+    .cat-hero{display:none}
+    .category-grid{grid-template-columns:repeat(3,1fr)}
+    .main-content{grid-template-columns:1fr}
+    .side-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-    <span>🔥 Evden çıkmak isteyenler</span>
-    <span>💼 İş değiştirenler</span>
-    <span>💬 İtiraflarımız</span>
-    <span>💰 Para kararları</span>
-    <span>🎬 Sinema & Kitap</span>
-</div>
+<div class="page">
 
-<header class="main-header">
+<header>
     <div class="logo-area">
         <img src="images/logo.png" alt="Keşke Bilseydim Logo">
-        <div class="site-logo">Keşke Bilseydim</div>
+        <div class="site-name">Keşke Bilseydim</div>
     </div>
 
-    <nav class="category-menu">
+    <nav>
         <a href="#">EV</a>
         <a href="#">İŞ</a>
         <a href="#">YAŞAM</a>
@@ -343,27 +554,55 @@ footer{
         <a href="#">KİTAP</a>
         <a href="#">EĞLENCE</a>
         <a href="#">PARA</a>
-        <a href="#" class="confession-link">İtiraflarımız</a>
+        <a href="#" class="confession-nav">itiraflarımız</a>
     </nav>
 
-    <div class="header-actions">
-        <span>🔍</span>
-        <button class="login-btn">Giriş Yap</button>
+    <div class="header-right">
+        <span class="search-icon">⌕</span>
+        <button class="login">Giriş Yap</button>
     </div>
 </header>
 
 <section class="hero">
-    <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
-    <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde. Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
+    <div>
+        <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+        <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde.<br>Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
 
-    <div class="search">
-        <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
-        <button>Ara</button>
+        <div class="search-box">
+            <span>⌕</span>
+            <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
+            <button>Ara</button>
+        </div>
+
+        <div class="hero-buttons">
+            <button class="primary">Deneyimleri Oku</button>
+            <button class="secondary">Deneyimini Paylaş</button>
+        </div>
     </div>
 
-    <div class="actions">
-        <button class="primary">Deneyimleri Oku</button>
-        <button class="secondary">Deneyimini Paylaş</button>
+    <div class="cat-hero">
+        <div class="speech">Keşke demek bedavadır ama sonucu bazen pahalıya patlar.</div>
+
+        <div class="book-stack">
+            <div class="book book1"></div>
+            <div class="book book2"></div>
+            <div class="book book3"></div>
+            <div class="book book4"></div>
+
+            <div class="big-cat">
+                <div class="cat-lines">⌁</div>
+                <div class="cat-body"></div>
+                <div class="cat-head">
+                    <div class="cat-ear left"></div>
+                    <div class="cat-ear right"></div>
+                    <div class="cat-glasses"><span></span><span></span></div>
+                    <div class="cat-eye left"></div>
+                    <div class="cat-eye right"></div>
+                    <div class="cat-mouth">ω</div>
+                </div>
+                <div class="cat-paw"></div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -378,65 +617,70 @@ footer{
     <div class="category-card"><span>📚</span>Kitap</div>
     <div class="category-card"><span>🎉</span>Eğlence</div>
     <div class="category-card"><span>💰</span>Para</div>
-    <div class="category-card"><span>💗</span>İtiraflarımız</div>
+    <div class="category-card confession-card"><span>💗</span>İtiraflarımız</div>
 </section>
 
-<div class="section-title">Son Eklenen Deneyimler</div>
-
-<section class="content-grid">
-    <div>
-        <div class="experience-card">
-            <span class="badge">EV</span>
-            <h3>Ev almadan önce keşke komşuları araştırsaydım</h3>
-            <div class="meta">128 kişi faydalı buldu · 34 yorum</div>
-            <p>Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</p>
+<section class="main-content">
+    <div class="recent">
+        <div class="recent-head">
+            <span>Son Eklenen Deneyimler</span>
+            <a href="#">Tümünü Gör ›</a>
         </div>
 
-        <div class="experience-card">
-            <span class="badge">İŞ</span>
-            <h3>Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</h3>
-            <div class="meta">92 kişi faydalı buldu · 18 yorum</div>
-            <p>Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</p>
+        <div class="experience">
+            <span class="tag ev">EV</span>
+            <div>
+                <div class="exp-title">Ev almadan önce keşke komşuları araştırsaydım</div>
+                <div class="exp-text">Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</div>
+            </div>
+            <div class="exp-stats">♡ 128<br>☰ 34</div>
         </div>
 
-        <div class="experience-card">
-            <span class="badge">EĞİTİM</span>
-            <h3>Bölüm seçerken sadece puana baktım, hayalime değil</h3>
-            <div class="meta">76 kişi faydalı buldu · 21 yorum</div>
-            <p>Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</p>
+        <div class="experience">
+            <span class="tag is">İŞ</span>
+            <div>
+                <div class="exp-title">Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</div>
+                <div class="exp-text">Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</div>
+            </div>
+            <div class="exp-stats">♡ 92<br>☰ 18</div>
+        </div>
+
+        <div class="experience">
+            <span class="tag egitim">EĞİTİM</span>
+            <div>
+                <div class="exp-title">Bölüm seçerken sadece puana baktım, hayalime değil</div>
+                <div class="exp-text">Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</div>
+            </div>
+            <div class="exp-stats">♡ 76<br>☰ 21</div>
         </div>
     </div>
 
-    <aside>
+    <div class="side-grid">
         <div class="confession-box">
-            <h2>İtiraflarımız</h2>
+            <h2>itiraflarımız ♡</h2>
             <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
+            <button>İtirafını Paylaş</button>
         </div>
 
-        <div class="sidebar-card">
-            <h3>Bugünün Bilge Kedi Notu 🐱</h3>
-            <p>“Keşke demek ücretsizdir ama sonucu bazen pahalıya patlar.”</p>
+        <div class="cat-note">
+            <b>Bugünün Bilge Kedi Notu 🐾</b>
+            <p>“Ucuz etin yahnisi değil, yorumu da çok olur.”</p>
+            <div class="cat-face-small"></div>
         </div>
 
-        <div class="sidebar-card">
-            <h3>En Çok Okunanlar</h3>
-            <p>Ev almak · İş değiştirmek · Evlilik · Yurt dışı · Para kararları</p>
+        <div class="stats">
+            <span>👥 125.489 üye</span>
+            <span>📄 18.736 deneyim</span>
+            <span>💬 243.192 yorum</span>
         </div>
-    </aside>
-</section>
-
-<div class="cat-mascot">
-    <div class="cat-bubble">Keşke bilseydim demeden önce bir oku bakalım. Sonra yine bildiğini yaparsın zaten.</div>
-    <div class="cat">
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="mouth">ω</div>
     </div>
-</div>
+</section>
 
 <footer>
     © 2026 Keşke Bilseydim — Gerçek deneyimler, daha iyi kararlar.
 </footer>
+
+</div>
 
 </body>
 </html>
