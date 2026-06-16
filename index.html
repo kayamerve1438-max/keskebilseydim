@@ -534,10 +534,11 @@ footer{
 }
 .bilge-kedi-img{
     position:absolute;
-    width:300px;
-    left:60px;
-    bottom:0;
+    width:220px;
+    left:260px;
+    top:-20px;
     transition:all .5s ease;
+    z-index:2;
 }
 </style>
 </head>
@@ -696,9 +697,9 @@ function yeniKediGetir(){
     const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
     const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
 
-    const boyut = 260 + Math.floor(Math.random() * 90);
-    const sol = 20 + Math.floor(Math.random() * 120);
-    const alt = -10 + Math.floor(Math.random() * 40);
+const boyut = 190 + Math.floor(Math.random() * 50);
+const sol = 220 + Math.floor(Math.random() * 80);
+const ust = -10 + Math.floor(Math.random() * 50););
 
     kedi.style.opacity = "0";
 
@@ -706,7 +707,8 @@ function yeniKediGetir(){
         kedi.src = `images/kedi_${rastgeleNumara}.png`;
         kedi.style.width = boyut + "px";
         kedi.style.left = sol + "px";
-        kedi.style.bottom = alt + "px";
+        kedi.style.top = ust + "px";
+        kedi.style.bottom = "auto";
         balon.textContent = rastgeleSoz;
         kedi.style.opacity = "1";
     }, 300);
