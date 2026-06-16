@@ -6,6 +6,8 @@
 <title>Keşke Bilseydim</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -14,76 +16,79 @@ body{
 }
 
 .top-bar{
-    background:#111;
+    background:#111827;
     color:white;
     height:42px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:35px;
+    gap:28px;
     font-size:14px;
     font-weight:bold;
 }
 
-.top-bar span{
-    color:#fff;
-}
-
-.top-bar b{
-    color:#22c55e;
-}
+.top-bar span b{color:#22c55e}
 
 .main-header{
-    height:82px;
     background:white;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 7%;
+    padding:18px 7%;
     border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
-.menu-left{
+.logo-area{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:12px;
 }
 
-.menu-icon{
+.logo-area img{
+    height:58px;
+    width:auto;
+}
+
+.site-logo{
     font-size:28px;
+    font-weight:900;
+    color:#2563eb;
 }
 
 .category-menu{
     display:flex;
-    gap:26px;
+    gap:24px;
+    align-items:center;
 }
 
 .category-menu a{
     text-decoration:none;
     color:#222;
-    font-size:16px;
+    font-size:15px;
     font-weight:700;
 }
 
-.site-logo{
-    font-size:34px;
-    font-weight:900;
-    color:#111;
+.category-menu a:hover{color:#2563eb}
+
+.confession-link{
+    color:#db2777!important;
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:17px!important;
 }
 
 .header-actions{
     display:flex;
     align-items:center;
-    gap:18px;
-}
-
-.search-icon{
-    font-size:24px;
+    gap:14px;
 }
 
 .login-btn{
-    padding:12px 26px;
-    border-radius:28px;
+    padding:11px 22px;
+    border-radius:24px;
     border:1px solid #ddd;
     background:white;
     font-weight:bold;
@@ -91,91 +96,224 @@ body{
 }
 
 .hero{
-    padding:85px 8% 70px;
+    padding:75px 8% 55px;
     text-align:center;
+    background:linear-gradient(180deg,#ffffff,#f7f7fb);
 }
 
 .hero h1{
-    font-size:48px;
-    margin-bottom:15px;
+    font-size:52px;
+    line-height:1.15;
+    margin:0 0 18px;
 }
 
 .hero p{
     font-size:20px;
     color:#555;
+    max-width:780px;
+    margin:0 auto;
 }
 
 .search{
-    margin:30px auto;
-    max-width:650px;
+    margin:34px auto 20px;
+    max-width:720px;
     display:flex;
     background:white;
-    border-radius:18px;
-    box-shadow:0 10px 30px #ddd;
+    border-radius:20px;
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
     overflow:hidden;
 }
 
 .search input{
     flex:1;
-    padding:20px;
+    padding:22px;
     border:0;
     font-size:17px;
+    outline:none;
 }
 
 .search button{
-    padding:20px 32px;
+    padding:22px 34px;
     border:0;
     background:#2563eb;
     color:white;
     font-weight:bold;
-}
-
-.actions{
-    margin-top:30px;
+    cursor:pointer;
 }
 
 .actions button{
     padding:15px 24px;
     margin:8px;
-    border-radius:12px;
+    border-radius:14px;
     border:0;
     font-weight:bold;
+    cursor:pointer;
 }
 
-.primary{
-    background:#2563eb;
-    color:white;
+.primary{background:#2563eb;color:white}
+.secondary{background:white;color:#2563eb;border:1px solid #2563eb!important}
+
+.section-title{
+    padding:10px 8%;
+    font-size:28px;
+    font-weight:900;
 }
 
-.secondary{
-    background:white;
-    color:#2563eb;
-    border:1px solid #2563eb!important;
-}
-
-.cards{
+.category-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:20px;
-    padding:20px 8% 70px;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:18px;
+    padding:10px 8% 45px;
 }
 
-.card{
+.category-card{
     background:white;
-    padding:24px;
     border-radius:18px;
-    box-shadow:0 8px 24px #e5e5e5;
+    padding:22px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    font-weight:800;
+    text-align:center;
+    cursor:pointer;
 }
 
-.card h3{
-    margin-top:0;
-    color:#2563eb;
+.category-card span{
+    display:block;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.content-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:24px;
+    padding:10px 8% 70px;
+}
+
+.experience-card{
+    background:white;
+    border-radius:18px;
+    padding:24px;
+    margin-bottom:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.experience-card h3{
+    margin:0 0 10px;
+    color:#1e3a8a;
+}
+
+.meta{
+    color:#777;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+    background:#e0f2fe;
+    color:#0369a1;
+}
+
+.confession-box{
+    background:linear-gradient(135deg,#db2777,#7c3aed);
+    color:white;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 10px 30px rgba(124,58,237,.3);
+}
+
+.confession-box h2{
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:34px;
+    margin:0 0 12px;
+}
+
+.sidebar-card{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.cat-mascot{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:20;
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+}
+
+.cat-bubble{
+    background:white;
+    padding:14px 18px;
+    border-radius:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+    font-size:14px;
+    max-width:230px;
+}
+
+.cat{
+    width:92px;
+    height:92px;
+    background:#f59e0b;
+    border-radius:50%;
+    position:relative;
+    box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+
+.cat:before,
+.cat:after{
+    content:"";
+    position:absolute;
+    top:-12px;
+    width:34px;
+    height:34px;
+    background:#f59e0b;
+    transform:rotate(45deg);
+}
+
+.cat:before{left:10px}
+.cat:after{right:10px}
+
+.eye{
+    position:absolute;
+    top:34px;
+    width:12px;
+    height:12px;
+    background:#111;
+    border-radius:50%;
+}
+
+.eye.left{left:28px}
+.eye.right{right:28px}
+
+.mouth{
+    position:absolute;
+    left:35px;
+    top:55px;
+    font-size:20px;
 }
 
 footer{
     text-align:center;
-    padding:30px;
+    padding:35px;
     color:#777;
+    background:white;
+}
+
+@media(max-width:900px){
+    .category-menu{display:none}
+    .content-grid{grid-template-columns:1fr}
+    .hero h1{font-size:38px}
+    .cat-mascot{display:none}
 }
 </style>
 </head>
@@ -183,46 +321,43 @@ footer{
 <body>
 
 <div class="top-bar">
-    <span>EV ALMA <b>▲</b></span>
-    <span>İŞ DEĞİŞTİRME <b>▲</b></span>
-    <span>EVLİLİK <b>▲</b></span>
-    <span>ARABA ALMA <b>▲</b></span>
-    <span>YURT DIŞI <b>▲</b></span>
-    <span>PARA KARARLARI <b>▲</b></span>
+    <span>🔥 Evden çıkmak isteyenler</span>
+    <span>💼 İş değiştirenler</span>
+    <span>💬 İtiraflarımız</span>
+    <span>💰 Para kararları</span>
+    <span>🎬 Sinema & Kitap</span>
 </div>
 
 <header class="main-header">
-    <div class="menu-left">
-        <div class="menu-icon">☰</div>
-
-        <nav class="category-menu">
-            <a href="#">TEST</a>
-            <a href="#">EV & YAŞAM</a>
-            <a href="#">İŞ</a>
-            <a href="#">EVLİLİK</a>
-            <a href="#">PARA</a>
-            <a href="#">EĞİTİM</a>
-        </nav>
+    <div class="logo-area">
+        <img src="images/logo.png" alt="Keşke Bilseydim Logo">
+        <div class="site-logo">Keşke Bilseydim</div>
     </div>
 
-    <div class="site-logo">Keşke Bilseydim</div>
+    <nav class="category-menu">
+        <a href="#">EV</a>
+        <a href="#">İŞ</a>
+        <a href="#">YAŞAM</a>
+        <a href="#">EĞİTİM</a>
+        <a href="#">SİNEMA</a>
+        <a href="#">KİTAP</a>
+        <a href="#">EĞLENCE</a>
+        <a href="#">PARA</a>
+        <a href="#" class="confession-link">İtiraflarımız</a>
+    </nav>
 
     <div class="header-actions">
-        <span class="search-icon">🔍</span>
+        <span>🔍</span>
         <button class="login-btn">Giriş Yap</button>
     </div>
 </header>
 
 <section class="hero">
     <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
-
-    <p>
-        Ev almak, iş değiştirmek, evlenmek, taşınmak... İnsanların sonradan
-        “keşke bilseydim” dediği gerçek deneyimler burada.
-    </p>
+    <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde. Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
 
     <div class="search">
-        <input placeholder="Hangi kararı vermeyi düşünüyorsun? Örn: Ev almak">
+        <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
         <button>Ara</button>
     </div>
 
@@ -232,25 +367,75 @@ footer{
     </div>
 </section>
 
-<section class="cards">
-    <div class="card">
-        <h3>Ev Almadan Önce</h3>
-        <p>Aidat, komşular, kredi masrafları ve sonradan fark edilen detaylar.</p>
-    </div>
+<div class="section-title">Popüler Kategoriler</div>
 
-    <div class="card">
-        <h3>İş Değiştirmeden Önce</h3>
-        <p>Maaş, yönetici, çalışma ortamı ve pişmanlıklar.</p>
-    </div>
-
-    <div class="card">
-        <h3>Evlenmeden Önce</h3>
-        <p>Gerçek hayat tecrübeleri, tavsiyeler ve dikkat edilmesi gerekenler.</p>
-    </div>
+<section class="category-grid">
+    <div class="category-card"><span>🏠</span>Ev</div>
+    <div class="category-card"><span>💼</span>İş</div>
+    <div class="category-card"><span>🌍</span>Yaşam</div>
+    <div class="category-card"><span>🎓</span>Eğitim</div>
+    <div class="category-card"><span>🎬</span>Sinema</div>
+    <div class="category-card"><span>📚</span>Kitap</div>
+    <div class="category-card"><span>🎉</span>Eğlence</div>
+    <div class="category-card"><span>💰</span>Para</div>
+    <div class="category-card"><span>💗</span>İtiraflarımız</div>
 </section>
 
+<div class="section-title">Son Eklenen Deneyimler</div>
+
+<section class="content-grid">
+    <div>
+        <div class="experience-card">
+            <span class="badge">EV</span>
+            <h3>Ev almadan önce keşke komşuları araştırsaydım</h3>
+            <div class="meta">128 kişi faydalı buldu · 34 yorum</div>
+            <p>Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</p>
+        </div>
+
+        <div class="experience-card">
+            <span class="badge">İŞ</span>
+            <h3>Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</h3>
+            <div class="meta">92 kişi faydalı buldu · 18 yorum</div>
+            <p>Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</p>
+        </div>
+
+        <div class="experience-card">
+            <span class="badge">EĞİTİM</span>
+            <h3>Bölüm seçerken sadece puana baktım, hayalime değil</h3>
+            <div class="meta">76 kişi faydalı buldu · 21 yorum</div>
+            <p>Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</p>
+        </div>
+    </div>
+
+    <aside>
+        <div class="confession-box">
+            <h2>İtiraflarımız</h2>
+            <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Bugünün Bilge Kedi Notu 🐱</h3>
+            <p>“Keşke demek ücretsizdir ama sonucu bazen pahalıya patlar.”</p>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>En Çok Okunanlar</h3>
+            <p>Ev almak · İş değiştirmek · Evlilik · Yurt dışı · Para kararları</p>
+        </div>
+    </aside>
+</section>
+
+<div class="cat-mascot">
+    <div class="cat-bubble">Keşke bilseydim demeden önce bir oku bakalım. Sonra yine bildiğini yaparsın zaten.</div>
+    <div class="cat">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth">ω</div>
+    </div>
+</div>
+
 <footer>
-    © 2026 Keşke Bilseydim — İlk sürüm yayında 🚀
+    © 2026 Keşke Bilseydim — Gerçek deneyimler, daha iyi kararlar.
 </footer>
 
 </body>
