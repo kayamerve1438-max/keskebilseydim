@@ -532,10 +532,17 @@ footer{
     .main-content{grid-template-columns:1fr}
     .side-grid{grid-template-columns:1fr}
 }
+.bilge-kedi-img{
+    width:320px;
+    position:absolute;
+    left:80px;
+    bottom:0;
+}
 </style>
 </head>
 
 <body>
+    <div class="page"></div>
 
 
 <header>
@@ -580,29 +587,18 @@ footer{
     </div>
 
     <div class="cat-hero">
-        <div class="speech">Keşke demek bedavadır ama sonucu bazen pahalıya patlar.</div>
 
-        <div class="book-stack">
-            <div class="book book1"></div>
-            <div class="book book2"></div>
-            <div class="book book3"></div>
-            <div class="book book4"></div>
-
-            <div class="big-cat">
-                <div class="cat-lines">⌁</div>
-                <div class="cat-body"></div>
-                <div class="cat-head">
-                    <div class="cat-ear left"></div>
-                    <div class="cat-ear right"></div>
-                    <div class="cat-glasses"><span></span><span></span></div>
-                    <div class="cat-eye left"></div>
-                    <div class="cat-eye right"></div>
-                    <div class="cat-mouth">ω</div>
-                </div>
-                <div class="cat-paw"></div>
-            </div>
-        </div>
+    <div class="speech">
+        Keşke demek bedavadır ama sonucu bazen pahalıya patlar.
     </div>
+
+   <img
+    id="bilgeKedi"
+    class="bilge-kedi-img"
+    src="images/kedi-1.png"
+    alt="Bilge Kedi">
+
+</div>
 </section>
 
 <div class="section-title">Popüler Kategoriler</div>
@@ -680,6 +676,34 @@ footer{
 </footer>
 
 </div>
+<script>
+const kediResimler = [
+"images/kedi-1.png",
+"images/kedi-2.png",
+"images/kedi-3.png",
+"images/kedi-4.png",
+"images/kedi-5.png",
+"images/kedi-6.png",
+"images/kedi-7.png",
+"images/kedi-8.png",
+"images/kedi-9.png",
+"images/kedi-10.png"
+];
 
+let aktifKedi = 0;
+
+setInterval(() => {
+    aktifKedi++;
+    if(aktifKedi >= kediResimler.length){
+        aktifKedi = 0;
+    }
+
+    const kedi = document.getElementById("bilgeKedi");
+
+    if(kedi){
+        kedi.src = kediResimler[aktifKedi];
+    }
+}, 5000);
+</script>
 </body>
 </html>
