@@ -4,110 +4,253 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keşke Bilseydim</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f7f7fb;color:#111}
-header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;background:white}
-.logo{
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f7f7fb;
+    color:#111;
+}
+
+.top-bar{
+    background:#111;
+    color:white;
+    height:42px;
     display:flex;
     align-items:center;
-    gap:12px;
-    font-size:26px;
+    justify-content:center;
+    gap:35px;
+    font-size:14px;
     font-weight:bold;
-    color:#2563eb;
 }
 
-.logo img{
-    height:120px;
-    width:auto;
+.top-bar span{
+    color:#fff;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:20px;
+.top-bar b{
+    color:#22c55e;
 }
 
-header{
-    padding:10px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.main-header{
+    height:82px;
     background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    border-bottom:1px solid #eee;
 }
 
-.logo-text{
-    font-size:52px;
-    font-weight:800;
+.menu-left{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.menu-icon{
+    font-size:28px;
+}
+
+.category-menu{
+    display:flex;
+    gap:26px;
+}
+
+.category-menu a{
+    text-decoration:none;
+    color:#222;
+    font-size:16px;
+    font-weight:700;
+}
+
+.site-logo{
+    font-size:34px;
+    font-weight:900;
+    color:#111;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.search-icon{
+    font-size:24px;
+}
+
+.login-btn{
+    padding:12px 26px;
+    border-radius:28px;
+    border:1px solid #ddd;
+    background:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.hero{
+    padding:85px 8% 70px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#555;
+}
+
+.search{
+    margin:30px auto;
+    max-width:650px;
+    display:flex;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 10px 30px #ddd;
+    overflow:hidden;
+}
+
+.search input{
+    flex:1;
+    padding:20px;
+    border:0;
+    font-size:17px;
+}
+
+.search button{
+    padding:20px 32px;
+    border:0;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+}
+
+.actions{
+    margin-top:30px;
+}
+
+.actions button{
+    padding:15px 24px;
+    margin:8px;
+    border-radius:12px;
+    border:0;
+    font-weight:bold;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.secondary{
+    background:white;
+    color:#2563eb;
+    border:1px solid #2563eb!important;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+    padding:20px 8% 70px;
+}
+
+.card{
+    background:white;
+    padding:24px;
+    border-radius:18px;
+    box-shadow:0 8px 24px #e5e5e5;
+}
+
+.card h3{
+    margin-top:0;
     color:#2563eb;
 }
-nav a{margin-left:20px;text-decoration:none;color:#333}
-.hero{padding:80px 8%;text-align:center}
-.hero h1{font-size:48px;margin-bottom:15px}
-.hero p{font-size:20px;color:#555}
-.search{margin:30px auto;max-width:650px;display:flex;background:white;border-radius:18px;box-shadow:0 10px 30px #ddd;overflow:hidden}
-.search input{flex:1;padding:20px;border:0;font-size:17px}
-.search button{padding:20px 28px;border:0;background:#2563eb;color:white;font-weight:bold}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;padding:20px 8% 70px}
-.card{background:white;padding:24px;border-radius:18px;box-shadow:0 8px 24px #e5e5e5}
-.card h3{margin-top:0;color:#2563eb}
-.actions{margin-top:30px}
-.actions button{padding:15px 24px;margin:8px;border-radius:12px;border:0;font-weight:bold}
-.primary{background:#2563eb;color:white}
-.secondary{background:white;color:#2563eb;border:1px solid #2563eb!important}
-footer{text-align:center;padding:30px;color:#777}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
 </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">
-    <img src="images/logo.png" alt="Keşke Bilseydim Logo">
-    <div class="logo-text">KB</div>
+<div class="top-bar">
+    <span>EV ALMA <b>▲</b></span>
+    <span>İŞ DEĞİŞTİRME <b>▲</b></span>
+    <span>EVLİLİK <b>▲</b></span>
+    <span>ARABA ALMA <b>▲</b></span>
+    <span>YURT DIŞI <b>▲</b></span>
+    <span>PARA KARARLARI <b>▲</b></span>
 </div>
 
-  <nav>
-    <a href="#">Deneyimler</a>
-    <a href="#">Kategoriler</a>
-    <a href="#">Giriş Yap</a>
-  </nav>
+<header class="main-header">
+    <div class="menu-left">
+        <div class="menu-icon">☰</div>
+
+        <nav class="category-menu">
+            <a href="#">TEST</a>
+            <a href="#">EV & YAŞAM</a>
+            <a href="#">İŞ</a>
+            <a href="#">EVLİLİK</a>
+            <a href="#">PARA</a>
+            <a href="#">EĞİTİM</a>
+        </nav>
+    </div>
+
+    <div class="site-logo">Keşke Bilseydim</div>
+
+    <div class="header-actions">
+        <span class="search-icon">🔍</span>
+        <button class="login-btn">Giriş Yap</button>
+    </div>
 </header>
 
 <section class="hero">
-  <h1>
-    <span class="brand-hero">Keşke Bilseydim</span><br><br>
-    Bir karar vermeden önce,<br>
-    o yolu yürüyenleri dinle.
-</h1>
-  <p>Ev almak, iş değiştirmek, evlenmek, taşınmak... İnsanların sonradan “keşke bilseydim” dediği gerçek deneyimler burada.</p>
+    <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
 
-  <div class="search">
-    <input placeholder="Hangi kararı vermeyi düşünüyorsun? Örn: Ev almak">
-    <button>Ara</button>
-  </div>
+    <p>
+        Ev almak, iş değiştirmek, evlenmek, taşınmak... İnsanların sonradan
+        “keşke bilseydim” dediği gerçek deneyimler burada.
+    </p>
 
-  <div class="actions">
-    <button class="primary">Deneyimleri Oku</button>
-    <button class="secondary">Deneyimini Paylaş</button>
-  </div>
+    <div class="search">
+        <input placeholder="Hangi kararı vermeyi düşünüyorsun? Örn: Ev almak">
+        <button>Ara</button>
+    </div>
+
+    <div class="actions">
+        <button class="primary">Deneyimleri Oku</button>
+        <button class="secondary">Deneyimini Paylaş</button>
+    </div>
 </section>
 
 <section class="cards">
-  <div class="card">
-    <h3>Ev Almadan Önce</h3>
-    <p>Aidat, komşular, kredi masrafları ve sonradan fark edilen detaylar.</p>
-  </div>
-  <div class="card">
-    <h3>İş Değiştirmeden Önce</h3>
-    <p>Maaş, yönetici, çalışma ortamı ve pişmanlıklar.</p>
-  </div>
-  <div class="card">
-    <h3>Evlenmeden Önce</h3>
-    <p>Gerçek hayat tecrübeleri, tavsiyeler ve dikkat edilmesi gerekenler.</p>
-  </div>
+    <div class="card">
+        <h3>Ev Almadan Önce</h3>
+        <p>Aidat, komşular, kredi masrafları ve sonradan fark edilen detaylar.</p>
+    </div>
+
+    <div class="card">
+        <h3>İş Değiştirmeden Önce</h3>
+        <p>Maaş, yönetici, çalışma ortamı ve pişmanlıklar.</p>
+    </div>
+
+    <div class="card">
+        <h3>Evlenmeden Önce</h3>
+        <p>Gerçek hayat tecrübeleri, tavsiyeler ve dikkat edilmesi gerekenler.</p>
+    </div>
 </section>
 
 <footer>
-  © 2026 Keşke Bilseydim — İlk sürüm yayında 🚀
+    © 2026 Keşke Bilseydim — İlk sürüm yayında 🚀
 </footer>
 
 </body>
