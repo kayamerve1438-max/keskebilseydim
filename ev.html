@@ -620,6 +620,56 @@ footer{
 .mega-menu a:hover{
     color:#2563eb;
 }
+.article-list-section{
+    padding:30px 7%;
+}
+
+.article-list-section h2{
+    font-size:30px;
+    margin-bottom:22px;
+}
+
+.article-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.article-card{
+    background:white;
+    border-radius:16px;
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:22px;
+    padding:16px;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+    text-decoration:none;
+    color:#101828;
+}
+
+.article-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:12px;
+    background:#e5e7eb;
+}
+
+.article-card h3{
+    margin:8px 0 10px;
+    font-size:22px;
+}
+
+.article-card p{
+    color:#667085;
+    line-height:1.5;
+    margin:0 0 14px;
+}
+
+.article-card span{
+    color:#2563eb;
+    font-weight:900;
+}
 </style>
 </head>
 
@@ -693,16 +743,16 @@ footer{
             <button>Ara</button>
         </div>
 <div class="ev-subcategories">
-    <a href="#">🏘️ Komşular</a>
-    <a href="#">🔑 Ev Kiralamak</a>
-    <a href="#">🏠 Ev Almak</a>
-    <a href="#">💸 Aidat & Site</a>
-    <a href="#">📦 Taşınma</a>
-    <a href="#">🏗️ Deprem Güvenliği</a>
-    <a href="#">🤝 Emlakçılar</a>
-    <a href="#">🔨 Tadilat</a>
-    <a href="#">🛋️ Dekorasyon</a>
-    <a href="#">👥 Ev Arkadaşı</a>
+<a href="ev.html?alt=komsular">🏘️ Komşular</a>
+<a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
+<a href="ev.html?alt=ev-almak">🏠 Ev Almak</a>
+<a href="ev.html?alt=aidat">💸 Aidat & Site</a>
+<a href="ev.html?alt=tasinma">📦 Taşınma</a>
+<a href="ev.html?alt=deprem">🏗️ Deprem Güvenliği</a>
+<a href="ev.html?alt=emlakci">🤝 Emlakçılar</a>
+<a href="ev.html?alt=tadilat">🔨 Tadilat</a>
+<a href="ev.html?alt=dekorasyon">🛋️ Dekorasyon</a>
+<a href="ev.html?alt=ev-arkadasi">👥 Ev Arkadaşı</a>
 </div>
         <div class="hero-buttons">
             <button class="primary">Deneyimleri Oku</button>
@@ -750,6 +800,10 @@ footer{
     <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
     <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
 </div>
+<section class="article-list-section">
+    <h2 id="altKategoriBaslik">Ev Deneyimleri</h2>
+    <div id="articleList" class="article-list"></div>
+</section>
 <section class="main-content">
     <div class="recent">
         <div class="recent-head">
@@ -941,6 +995,72 @@ const ust = 130 + Math.floor(Math.random() * 55);
 
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
+const altKategoriIcerikleri = {
+    komsular: {
+        baslik: "Komşular Deneyimleri",
+        yazilar: [
+            {
+                img: "images/kedi_1.png",
+                title: "Ev almadan önce keşke üst komşuyu tanısaydım",
+                desc: "Daire çok güzeldi ama üst kattaki sandalye çekme olimpiyatlarını hesaba katmamışım.",
+                link: "detay.html?id=komsu-1"
+            },
+            {
+                img: "images/kedi_2.png",
+                title: "Apartman WhatsApp grubu ruh sağlığımı bozdu",
+                desc: "Aidattan çok mesaj bildirimleri yordu. Herkes yönetici, kimse sakin değilmiş.",
+                link: "detay.html?id=komsu-2"
+            },
+            {
+                img: "images/kedi_3.png",
+                title: "Sessiz mahalle dediler, herkes matkap ustası çıktı",
+                desc: "Taşındığım ilk hafta üç farklı daire tadilata başladı.",
+                link: "detay.html?id=komsu-3"
+            }
+        ]
+    },
+
+    kira: {
+        baslik: "Ev Kiralamak Deneyimleri",
+        yazilar: [
+            {
+                img: "images/kedi_4.png",
+                title: "Depozitoyu alırım sandım, alamadım",
+                desc: "Evi tertemiz teslim ettim ama ev sahibi yine de bahane buldu.",
+                link: "detay.html?id=kira-1"
+            },
+            {
+                img: "images/kedi_5.png",
+                title: "Emlakçı komisyonunu hafife aldım",
+                desc: "İlk ay kira, depozito, komisyon derken taşınmadan fakirleştim.",
+                link: "detay.html?id=kira-2"
+            }
+        ]
+    }
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
+if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+    const veri = altKategoriIcerikleri[secilenAlt];
+
+    altKategoriBaslik.textContent = veri.baslik;
+
+    articleList.innerHTML = veri.yazilar.map(yazi => `
+        <a href="${yazi.link}" class="article-card">
+            <img src="${yazi.img}" alt="${yazi.title}">
+            <div>
+                <h3>${yazi.title}</h3>
+                <p>${yazi.desc}</p>
+                <span>Deneyimi Oku →</span>
+            </div>
+        </a>
+    `).join("");
+}
 </script>
 </body>
 </html>
