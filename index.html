@@ -1046,23 +1046,25 @@ function yeniKediGetir(){
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
 const loginButtons = document.querySelectorAll(".login");
-console.log("Login buton sayısı:", loginButtons.length);
-console.log("Auth modal:", authModal);
 const authModal = document.getElementById("authModal");
 const authClose = document.getElementById("authClose");
 const registerBtn = document.getElementById("registerBtn");
 const loginBtn = document.getElementById("loginBtn");
 const authMessage = document.getElementById("authMessage");
 
-loginButtons.forEach(btn => {
-    btn.onclick = function(){
-        authModal.classList.add("active");
-    };
-});
+if(loginButtons.length > 0 && authModal){
 
-authClose.onclick = function(){
-    authModal.classList.remove("active");
-};
+    loginButtons.forEach(btn => {
+        btn.onclick = function(){
+            authModal.classList.add("active");
+        };
+    });
+
+    authClose.onclick = function(){
+        authModal.classList.remove("active");
+    };
+
+}
 
 registerBtn.onclick = function(){
     const name = document.getElementById("authName").value;
