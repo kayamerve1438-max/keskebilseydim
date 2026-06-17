@@ -899,7 +899,7 @@ footer{
         <h2>Hoş Geldin 👋</h2>
         <p class="auth-desc">Deneyim paylaşmak ve yorum yapmak için giriş yap.</p>
 
-        <input id="authName" type="text" placeholder="Ad Soyad">
+      
         <input id="authEmail" type="email" placeholder="E-posta">
         <input id="authPassword" type="password" placeholder="Şifre">
 
@@ -1067,21 +1067,20 @@ if(loginButtons.length > 0 && authModal){
 }
 
 registerBtn.onclick = function(){
-    const name = document.getElementById("authName").value;
+    
     const email = document.getElementById("authEmail").value;
     const password = document.getElementById("authPassword").value;
 
-    if(!name || !email || !password){
+    if(!email || !password){
         authMessage.textContent = "Lütfen tüm alanları doldur.";
         authMessage.style.color = "#dc2626";
         return;
     }
 
     const user = {
-        name:name,
-        email:email,
-        password:password
-    };
+    email:email,
+    password:password
+};
 
     localStorage.setItem("kb_user", JSON.stringify(user));
 
@@ -1108,7 +1107,7 @@ loginBtn.onclick = function(){
         setTimeout(() => {
             authModal.classList.remove("active");
             loginButtons.forEach(btn => {
-                btn.textContent = savedUser.name;
+                btn.textContent = "Profilim";
             });
         }, 700);
     }else{
