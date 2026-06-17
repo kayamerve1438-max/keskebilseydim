@@ -304,7 +304,39 @@ const comments = [
     ["Mert D.", "Depozito konusu sözleşmede net yazmıyorsa sonradan çok uğraştırıyor."],
     ["Bilge Kedi 🐾", "Söz uçar, tutanak kalır. Miyav ama resmi."],
     ["Selin A.", "Ben artık eve girerken her odanın fotoğrafını çekiyorum."],
-    ["Can B.", "Ev sahibiyle yazılı konuşmak çok önemli. WhatsApp mesajları bile işe yarıyor."]
+    ["Can B.", "Ev sahibiyle yazılı konuşmak çok önemli. WhatsApp mesajları bile işe yarıyor."],
+    ["Derya M.", "Boya bahanesi en klasik depozito kesme yöntemi olabilir."],
+    ["Onur T.", "Ben depozito için teslim tutanağı imzalatmıştım, çok işime yaradı."],
+    ["Elif S.", "Kiracı olarak haklarımızı bilmeden hareket ediyoruz, sonra zorlanıyoruz."],
+    ["Burak Y.", "Emlakçı da bu konuda daha net bilgi vermeliydi bence."],
+    ["Nazlı P.", "Evden çıkarken temizlik faturası bile saklanmalıymış."],
+    ["Gökhan R.", "Benzer durumda Tüketici Hakem Heyeti’ne başvuran arkadaşım parasını aldı."],
+    ["İrem C.", "Sözleşmedeki küçük detaylar gerçekten büyük fark yaratıyor."],
+    ["Tolga E.", "Anahtar tesliminde fotoğraf çekmek aklıma hiç gelmezdi."],
+    ["Buse N.", "Ev sahibi iyi biri gibi görünse bile belge şart."],
+    ["Emre L.", "Depozito yüzünden ev değiştirmekten soğudum resmen."],
+    ["Aylin V.", "Tutanak konusu çok doğru. Sözlü anlaşma yetmiyor."],
+    ["Kerem H.", "Ben de perde bahanesiyle kesinti yaşadım."],
+    ["Melis G.", "Keşke bu yazıyı ilk evimi tutmadan önce okusaydım."],
+    ["Serkan D.", "Bence her kiracı eve giriş videosu çekmeli."],
+    ["Zeynep F.", "Ev sahibinin söylediği her şeyi yazılı almak lazım."],
+    ["Hakan İ.", "Depozito iadesi baştan konuşulmalı, sona kalınca sorun oluyor."],
+    ["Ceren O.", "Ben duvar izleri için eski fotoğrafları göstermiştim, işe yaradı."],
+    ["Kaan U.", "Ev kiralamak sadece evi beğenmek değilmiş, bunu anladım."],
+    ["Seda T.", "Kira sözleşmesini okumadan imzalamamak gerekiyormuş."],
+    ["Alp M.", "Bazı masrafların depozitodan kesilemeyeceğini yeni öğrendim."],
+    ["Ece Y.", "Bilge Kedi yine haklı çıktı."],
+    ["Deniz K.", "Evden çıkarken komşudan şahit istemek bile mantıklı olabilir."],
+    ["Funda Ş.", "Bu tür deneyimler gerçekten çok işe yarıyor."],
+    ["Ali R.", "Ben olsam artık her şeyi maille onaylatırım."],
+    ["Nisan B.", "Depozito için ayrı madde yazdırmak gerekiyormuş."],
+    ["Ozan C.", "Küçük hasar büyük tartışmaya dönüşebiliyor."],
+    ["Pelin A.", "Ev teslim tutanağı hayat kurtarır."],
+    ["Murat S.", "Kiracıların bu konularda daha bilinçli olması lazım."],
+    ["Yağmur E.", "Eve girerken de çıkarken de fotoğraf şart."],
+    ["Cem V.", "Depozito kesintisi için kanıt istemek gerekiyor."],
+    ["Aslı D.", "Bu yazıyı arkadaşıma gönderdim, o da taşınacak."],
+    ["Bilge Kedi 🐾", "Fotoğraf çek, tutanak yap, sonra rahat uyu."]
 ];
 
 const commentsList = document.getElementById("commentsList");
@@ -321,10 +353,12 @@ function renderComments(limit){
 
 renderComments(5);
 
-showAllBtn.addEventListener("click", function(){
-    renderComments(comments.length);
-    showAllBtn.style.display = "none";
-});
+if(showAllBtn){
+    showAllBtn.onclick = function(){
+        renderComments(comments.length);
+        showAllBtn.style.display = "none";
+    };
+}
 </script>
 </body>
 </html>
