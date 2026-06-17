@@ -622,6 +622,7 @@ footer{
 }
 .article-list-section{
     padding:30px 7%;
+    display:none;
 }
 
 .article-list-section h2{
@@ -1046,7 +1047,8 @@ const articleList = document.getElementById("articleList");
 const altKategoriBaslik = document.getElementById("altKategoriBaslik");
 
 if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
-    document.querySelector(".section-title")?.style.setProperty("display", "none");
+document.querySelector(".article-list-section").style.display = "block";
+document.querySelector(".section-title")?.style.setProperty("display", "none");
 document.querySelector(".category-grid")?.style.setProperty("display", "none");
 document.querySelector(".main-content")?.style.setProperty("display", "none");
 
