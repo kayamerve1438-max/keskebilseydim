@@ -630,6 +630,90 @@ footer{
 .mega-menu a:hover{
     color:#2563eb;
 }
+.auth-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.45);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.auth-modal.active{
+    display:flex;
+}
+
+.auth-box{
+    width:90%;
+    max-width:420px;
+    background:white;
+    border-radius:24px;
+    padding:30px;
+    position:relative;
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+.auth-close{
+    position:absolute;
+    top:14px;
+    right:16px;
+    border:0;
+    background:#eef1f8;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.auth-box h2{
+    margin:0 0 8px;
+    font-size:28px;
+}
+
+.auth-desc{
+    margin:0 0 20px;
+    color:#667085;
+    font-size:15px;
+}
+
+.auth-box input{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px 16px;
+    border:1px solid #d0d5dd;
+    border-radius:14px;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.auth-main-btn,
+.auth-second-btn{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:14px;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+.auth-main-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.auth-second-btn{
+    background:#eef4ff;
+    color:#2563eb;
+}
+
+.auth-message{
+    margin-top:14px;
+    font-size:14px;
+    font-weight:700;
+}
 </style>
 </head>
 
@@ -808,7 +892,23 @@ footer{
 <footer>
     © 2026 Keşke Bilseydim — Gerçek deneyimler, daha iyi kararlar.
 </footer>
+<div class="auth-modal" id="authModal">
+    <div class="auth-box">
+        <button class="auth-close" id="authClose">×</button>
 
+        <h2>Hoş Geldin 👋</h2>
+        <p class="auth-desc">Deneyim paylaşmak ve yorum yapmak için giriş yap.</p>
+
+        <input id="authName" type="text" placeholder="Ad Soyad">
+        <input id="authEmail" type="email" placeholder="E-posta">
+        <input id="authPassword" type="password" placeholder="Şifre">
+
+        <button id="registerBtn" class="auth-main-btn">Kayıt Ol</button>
+        <button id="loginBtn" class="auth-second-btn">Giriş Yap</button>
+
+        <p id="authMessage" class="auth-message"></p>
+    </div>
+</div>
 </div>
 <script>
 const kedi = document.getElementById("bilgeKedi");
@@ -945,7 +1045,75 @@ function yeniKediGetir(){
 
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
+const loginButtons = document.querySelectorAll(".login");
+console.log("Login buton sayısı:", loginButtons.length);
+console.log("Auth modal:", authModal);
+const authModal = document.getElementById("authModal");
+const authClose = document.getElementById("authClose");
+const registerBtn = document.getElementById("registerBtn");
+const loginBtn = document.getElementById("loginBtn");
+const authMessage = document.getElementById("authMessage");
 
+loginButtons.forEach(btn => {
+    btn.onclick = function(){
+        authModal.classList.add("active");
+    };
+});
+
+authClose.onclick = function(){
+    authModal.classList.remove("active");
+};
+
+registerBtn.onclick = function(){
+    const name = document.getElementById("authName").value;
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
+
+    if(!name || !email || !password){
+        authMessage.textContent = "Lütfen tüm alanları doldur.";
+        authMessage.style.color = "#dc2626";
+        return;
+    }
+
+    const user = {
+        name:name,
+        email:email,
+        password:password
+    };
+
+    localStorage.setItem("kb_user", JSON.stringify(user));
+
+    authMessage.textContent = "Kayıt başarılı. Artık giriş yapabilirsin.";
+    authMessage.style.color = "#16a34a";
+};
+
+loginBtn.onclick = function(){
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
+    const savedUser = JSON.parse(localStorage.getItem("kb_user"));
+
+    if(!savedUser){
+        authMessage.textContent = "Önce kayıt olmalısın.";
+        authMessage.style.color = "#dc2626";
+        return;
+    }
+
+    if(email === savedUser.email && password === savedUser.password){
+        localStorage.setItem("kb_logged_in", "true");
+        authMessage.textContent = "Giriş başarılı.";
+        authMessage.style.color = "#16a34a";
+
+        setTimeout(() => {
+            authModal.classList.remove("active");
+            loginButtons.forEach(btn => {
+                btn.textContent = savedUser.name;
+            });
+        }, 700);
+    }else{
+        authMessage.textContent = "E-posta veya şifre hatalı.";
+        authMessage.style.color = "#dc2626";
+    }
+};
 </script>
 </body>
 </html>
