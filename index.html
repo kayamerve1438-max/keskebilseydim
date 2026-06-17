@@ -633,7 +633,7 @@ footer{
 .auth-modal{
     position:fixed;
     inset:0;
-    background:rgba(15,23,42,.45);
+    background:rgba(0,0,0,.55);
     display:none;
     align-items:center;
     justify-content:center;
@@ -646,71 +646,126 @@ footer{
 
 .auth-box{
     width:90%;
-    max-width:420px;
+    max-width:430px;
     background:white;
-    border-radius:24px;
-    padding:30px;
+    border-radius:8px;
+    padding:26px 34px 30px;
     position:relative;
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .auth-close{
     position:absolute;
-    top:14px;
-    right:16px;
+    top:10px;
+    right:14px;
     border:0;
-    background:#eef1f8;
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    font-size:22px;
+    background:transparent;
+    font-size:34px;
+    color:#aaa;
     cursor:pointer;
 }
 
 .auth-box h2{
-    margin:0 0 8px;
+    text-align:center;
+    margin:0 0 34px;
     font-size:28px;
+    color:#444;
 }
 
-.auth-desc{
-    margin:0 0 20px;
-    color:#667085;
+.auth-register-text{
     font-size:15px;
+    color:#555;
+    margin-bottom:28px;
+}
+
+.auth-register-text span{
+    color:#22c55e;
+    font-weight:800;
 }
 
 .auth-box input{
     width:100%;
     box-sizing:border-box;
-    padding:14px 16px;
-    border:1px solid #d0d5dd;
-    border-radius:14px;
-    margin-bottom:12px;
+    height:48px;
+    padding:0 12px;
+    border:1px solid #d8dde6;
+    border-radius:5px;
+    margin-bottom:14px;
     font-size:15px;
 }
 
-.auth-main-btn,
-.auth-second-btn{
-    width:100%;
-    border:0;
-    border-radius:14px;
-    padding:14px;
-    font-weight:900;
+.password-wrap{
+    position:relative;
+}
+
+.password-wrap input{
+    padding-right:45px;
+}
+
+.eye{
+    position:absolute;
+    right:14px;
+    top:13px;
     cursor:pointer;
-    margin-top:8px;
 }
 
 .auth-main-btn{
-    background:#2563eb;
+    width:100%;
+    height:50px;
+    border:0;
+    border-radius:6px;
+    background:#86d39b;
     color:white;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
 }
 
-.auth-second-btn{
-    background:#eef4ff;
-    color:#2563eb;
+.forgot-pass{
+    display:block;
+    margin:10px 0 20px;
+    color:#777;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.or-line{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:10px 0 24px;
+    color:#aaa;
+    font-size:13px;
+}
+
+.or-line span{
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
+
+.social-btn{
+    width:100%;
+    height:46px;
+    background:white;
+    border:1px solid #d8dde6;
+    border-radius:6px;
+    margin-bottom:10px;
+    color:#555;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.auth-legal{
+    margin-top:20px;
+    color:#777;
+    font-size:11px;
+    line-height:1.5;
+    text-align:center;
 }
 
 .auth-message{
-    margin-top:14px;
+    text-align:center;
     font-size:14px;
     font-weight:700;
 }
@@ -896,15 +951,35 @@ footer{
     <div class="auth-box">
         <button class="auth-close" id="authClose">×</button>
 
-        <h2>Hoş Geldin 👋</h2>
-        <p class="auth-desc">Deneyim paylaşmak ve yorum yapmak için giriş yap.</p>
+        <h2>Giriş Yap</h2>
 
-      
-        <input id="authEmail" type="email" placeholder="E-posta">
-        <input id="authPassword" type="password" placeholder="Şifre">
+        <p class="auth-register-text">
+            Hesabın yok mu? <span>Hemen oluştur</span>
+        </p>
 
-        <button id="registerBtn" class="auth-main-btn">Kayıt Ol</button>
-        <button id="loginBtn" class="auth-second-btn">Giriş Yap</button>
+        <input id="authEmail" type="email" placeholder="E-posta Adresi veya Kullanıcı Adı">
+
+        <div class="password-wrap">
+            <input id="authPassword" type="password" placeholder="Şifre">
+            <span class="eye">👁</span>
+        </div>
+
+        <button id="loginBtn" class="auth-main-btn">Giriş Yap</button>
+
+        <a class="forgot-pass">Şifremi Unuttum</a>
+
+        <div class="or-line">
+            <span></span>
+            <b>VEYA</b>
+            <span></span>
+        </div>
+
+        <button class="social-btn">Facebook ile Giriş Yap</button>
+        <button class="social-btn">Google ile Giriş Yap</button>
+
+        <p class="auth-legal">
+            Kişisel verileriniz, Gizlilik Politikası ve Kullanıcı Sözleşmesi kapsamında işlenmektedir.
+        </p>
 
         <p id="authMessage" class="auth-message"></p>
     </div>
