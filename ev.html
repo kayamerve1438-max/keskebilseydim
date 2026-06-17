@@ -1046,6 +1046,14 @@ const articleList = document.getElementById("articleList");
 const altKategoriBaslik = document.getElementById("altKategoriBaslik");
 
 if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+    document.querySelector(".section-title")?.style.setProperty("display", "none");
+document.querySelector(".category-grid")?.style.setProperty("display", "none");
+document.querySelector(".main-content")?.style.setProperty("display", "none");
+
+const allSubcats = document.querySelectorAll(".ev-subcategories");
+if(allSubcats.length > 1){
+    allSubcats[1].style.display = "none";
+}
     const veri = altKategoriIcerikleri[secilenAlt];
 
     altKategoriBaslik.textContent = veri.baslik;
