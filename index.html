@@ -592,19 +592,6 @@ footer{
     position:relative;
 }
 
-.mega-column a{
-    display:block;
-    text-decoration:none;
-    color:#344054;
-    font-size:16px;
-    margin-bottom:14px;
-    font-weight:600;
-}
-
-.mega-column a:hover{
-    color:#2563eb;
-}
-
 .nav-button{
     background:none;
     border:0;
@@ -613,11 +600,6 @@ footer{
     font-weight:900;
     cursor:pointer;
     padding:0;
-}
-
-.menu-area{
-    position:relative;
-    z-index:99999;
 }
 
 .mega-menu{
@@ -638,6 +620,25 @@ footer{
 
 .mega-menu.show{
     display:grid;
+}
+
+.mega-column h3{
+    margin:0 0 16px;
+    font-size:22px;
+    color:#101828;
+}
+
+.mega-column a{
+    display:block;
+    text-decoration:none;
+    color:#344054;
+    font-size:16px;
+    margin-bottom:13px;
+    font-weight:600;
+}
+
+.mega-column a:hover{
+    color:#2563eb;
 }
 
 </style>
@@ -952,33 +953,22 @@ setInterval(yeniKediGetir, 15000);
 const evMenuBtn = document.getElementById("evMenuBtn");
 const megaMenu = document.getElementById("megaMenu");
 
-evMenuBtn.addEventListener("click", function(e){
-    e.preventDefault();
-    megaMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", function(e){
-    if(!e.target.closest(".menu-area")){
-        megaMenu.classList.remove("show");
-    }
-});
-const evMenuBtn = document.getElementById("evMenuBtn");
-const megaMenu = document.getElementById("megaMenu");
-
-evMenuBtn.onclick = function(){
-    megaMenu.classList.toggle("show");
-};
-const evMenuBtn = document.getElementById("evMenuBtn");
-const megaMenu = document.getElementById("megaMenu");
-
 if(evMenuBtn && megaMenu){
-
     evMenuBtn.addEventListener("click", function(e){
         e.preventDefault();
+        e.stopPropagation();
         megaMenu.classList.toggle("show");
     });
 
+    megaMenu.addEventListener("click", function(e){
+        e.stopPropagation();
+    });
+
+    document.addEventListener("click", function(){
+        megaMenu.classList.remove("show");
+    });
 }
+
 </script>
 </body>
 </html>
