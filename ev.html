@@ -565,6 +565,61 @@ footer{
     color:white;
     transform:translateY(-2px);
 }
+.nav-dropdown{
+    position:relative;
+}
+
+.mega-toggle{
+    display:none;
+}
+
+.nav-button{
+    color:#111;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+    display:inline-block;
+}
+
+.mega-menu{
+    display:none;
+    position:absolute;
+    top:38px;
+    left:0;
+    width:820px;
+    background:white;
+    padding:30px;
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+    z-index:999999;
+    grid-template-columns:1fr 1fr 1.3fr;
+    gap:40px;
+    border-radius:0 0 18px 18px;
+    border:1px solid #eef0f5;
+}
+
+.mega-toggle:checked + .nav-button + .mega-menu{
+    display:grid;
+}
+
+.mega-menu h3{
+    margin:0 0 15px;
+    font-size:20px;
+    color:#101828;
+}
+
+.mega-menu a{
+    display:block;
+    margin-bottom:12px;
+    color:#344054;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+}
+
+.mega-menu a:hover{
+    color:#2563eb;
+}
 </style>
 </head>
 
@@ -573,21 +628,52 @@ footer{
 
 
 <header>
-   <div class="logo-area">
+    <div class="logo-area">
         <img src="images/logo.png" alt="Keşke Bilseydim Logo">
         <div class="site-name">Keşke Bilseydim</div>
     </div>
 
     <nav>
-        <a href="#">EV</a>
-        <a href="#">İŞ</a>
-        <a href="#">YAŞAM</a>
-        <a href="#">EĞİTİM</a>
-        <a href="#">SİNEMA</a>
-        <a href="#">KİTAP</a>
-        <a href="#">EĞLENCE</a>
-        <a href="#">PARA</a>
-        <a href="#" class="confession-nav">itiraflarımız</a>
+        <div class="nav-dropdown">
+            <input type="checkbox" id="evToggle" class="mega-toggle">
+            <label for="evToggle" class="nav-button">EV</label>
+
+            <div class="mega-menu">
+                <div class="mega-column">
+                    <h3>Ev</h3>
+                    <a href="ev.html?alt=komsular">Komşular</a>
+                    <a href="ev.html?alt=kira">Ev Kiralamak</a>
+                    <a href="ev.html?alt=ev-almak">Ev Almak</a>
+                    <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
+                    <a href="ev.html?alt=tasinma">Taşınma</a>
+                </div>
+
+                <div class="mega-column">
+                    <h3>Ev Yaşamı</h3>
+                    <a href="ev.html?alt=emlakci">Emlakçılar</a>
+                    <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
+                    <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
+                    <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
+                    <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
+                </div>
+
+                <div class="mega-column">
+                    <h3>Bilge Kedi'nin Seçtikleri 🐾</h3>
+                    <a href="#">Ev almadan önce keşke komşuları tanısaydım</a>
+                    <a href="#">Sessiz mahalle dediler...</a>
+                    <a href="#">Aidat değil, sürpriz masrafmış</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="is.html">İŞ</a>
+        <a href="yasam.html">YAŞAM</a>
+        <a href="egitim.html">EĞİTİM</a>
+        <a href="sinema.html">SİNEMA</a>
+        <a href="kitap.html">KİTAP</a>
+        <a href="eglence.html">EĞLENCE</a>
+        <a href="para.html">PARA</a>
+        <a href="itiraflar.html" class="confession-nav">itiraflarımız</a>
     </nav>
 
     <div class="header-right">
