@@ -21,7 +21,7 @@ body{
     margin:30px auto;
     background:#f8f9fd;
     box-shadow:0 18px 45px rgba(0,0,0,.12);
-    overflow:hidden;
+    overflow:visible;
 }
 
 /* HEADER */
@@ -33,6 +33,10 @@ header{
     justify-content:space-between;
     padding:0 5%;
     border-bottom:1px solid #eef0f5;
+
+    position:relative;
+    z-index:1000;
+    overflow:visible;
 }
 
 .logo-area{
@@ -565,6 +569,53 @@ footer{
     color:white;
     transform:translateY(-2px);
 }
+.menu-area{
+    position:relative;
+}
+
+.mega-menu{
+    display:none;
+    position:absolute;
+    top:52px;
+    left:50%;
+    transform:translateX(-50%);
+    width:900px;
+    background:white;
+    padding:35px;
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+    z-index:99999;
+    grid-template-columns:1fr 1fr 1.3fr;
+    gap:45px;
+    border-radius:0 0 20px 20px;
+}
+
+.menu-area:hover .mega-menu{
+    display:grid;
+}
+
+.mega-column h3{
+    margin:0 0 16px;
+    font-size:22px;
+    color:#101828;
+}
+
+.mega-column a{
+    display:block;
+    text-decoration:none;
+    color:#344054;
+    font-size:16px;
+    margin-bottom:13px;
+    font-weight:600;
+}
+
+.mega-column a:hover{
+    color:#2563eb;
+}
+
+nav:hover + .mega-menu,
+.mega-menu:hover{
+    display:grid;
+}
 </style>
 </head>
 
@@ -578,17 +629,46 @@ footer{
         <div class="site-name">Keşke Bilseydim</div>
     </div>
 
-    <nav>
-        <a href="#">EV</a>
-        <a href="#">İŞ</a>
-        <a href="#">YAŞAM</a>
-        <a href="#">EĞİTİM</a>
-        <a href="#">SİNEMA</a>
-        <a href="#">KİTAP</a>
-        <a href="#">EĞLENCE</a>
-        <a href="#">PARA</a>
-        <a href="#" class="confession-nav">itiraflarımız</a>
-    </nav>
+    <div class="menu-area">
+        <nav>
+            <a href="ev.html">EV</a>
+            <a href="#">İŞ</a>
+            <a href="#">YAŞAM</a>
+            <a href="#">EĞİTİM</a>
+            <a href="#">SİNEMA</a>
+            <a href="#">KİTAP</a>
+            <a href="#">EĞLENCE</a>
+            <a href="#">PARA</a>
+            <a href="#" class="confession-nav">itiraflarımız</a>
+        </nav>
+
+        <div class="mega-menu">
+            <div class="mega-column">
+                <h3>Ev</h3>
+                <a href="ev.html?alt=komsular">Komşular</a>
+                <a href="ev.html?alt=kira">Ev Kiralamak</a>
+                <a href="ev.html?alt=ev-almak">Ev Almak</a>
+                <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
+                <a href="ev.html?alt=tasinma">Taşınma</a>
+            </div>
+
+            <div class="mega-column">
+                <h3>Ev Yaşamı</h3>
+                <a href="ev.html?alt=emlakci">Emlakçılar</a>
+                <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
+                <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
+                <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
+                <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
+            </div>
+
+            <div class="mega-column">
+                <h3>Bilge Kedi'nin Seçtikleri 🐾</h3>
+                <a href="#">Ev almadan önce keşke komşuları tanısaydım</a>
+                <a href="#">Sessiz mahalle dediler...</a>
+                <a href="#">Aidat değil, sürpriz masrafmış</a>
+            </div>
+        </div>
+    </div>
 
     <div class="header-right">
         <span class="search-icon">⌕</span>
