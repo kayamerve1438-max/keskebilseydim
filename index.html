@@ -569,10 +569,6 @@ footer{
     color:white;
     transform:translateY(-2px);
 }
-.menu-area{
-    position:relative;
-}
-
 .mega-menu{
     display:none;
     position:absolute;
@@ -589,14 +585,11 @@ footer{
     border-radius:0 0 20px 20px;
 }
 
-.menu-area:hover .mega-menu{
+.mega-menu.show{
     display:grid;
 }
-
-.mega-column h3{
-    margin:0 0 16px;
-    font-size:22px;
-    color:#101828;
+.menu-area{
+    position:relative;
 }
 
 .mega-column a{
@@ -604,7 +597,7 @@ footer{
     text-decoration:none;
     color:#344054;
     font-size:16px;
-    margin-bottom:13px;
+    margin-bottom:14px;
     font-weight:600;
 }
 
@@ -612,10 +605,41 @@ footer{
     color:#2563eb;
 }
 
-nav:hover + .mega-menu,
-.mega-menu:hover{
+.nav-button{
+    background:none;
+    border:0;
+    color:#111;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+    padding:0;
+}
+
+.menu-area{
+    position:relative;
+    z-index:99999;
+}
+
+.mega-menu{
+    display:none;
+    position:absolute;
+    top:52px;
+    left:50%;
+    transform:translateX(-50%);
+    width:900px;
+    background:white;
+    padding:35px;
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+    z-index:999999;
+    grid-template-columns:1fr 1fr 1.3fr;
+    gap:45px;
+    border-radius:0 0 20px 20px;
+}
+
+.mega-menu.show{
     display:grid;
 }
+
 </style>
 </head>
 
@@ -631,7 +655,7 @@ nav:hover + .mega-menu,
 
     <div class="menu-area">
         <nav>
-            <a href="ev.html">EV</a>
+            <button type="button" id="evMenuBtn" class="nav-button">EV</button>
             <a href="#">İŞ</a>
             <a href="#">YAŞAM</a>
             <a href="#">EĞİTİM</a>
@@ -642,7 +666,7 @@ nav:hover + .mega-menu,
             <a href="#" class="confession-nav">itiraflarımız</a>
         </nav>
 
-        <div class="mega-menu">
+        <div class="mega-menu" id="megaMenu">
             <div class="mega-column">
                 <h3>Ev</h3>
                 <a href="ev.html?alt=komsular">Komşular</a>
@@ -924,6 +948,26 @@ const ust = 130 + Math.floor(Math.random() * 55);
 
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
+
+const evMenuBtn = document.getElementById("evMenuBtn");
+const megaMenu = document.getElementById("megaMenu");
+
+evMenuBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    megaMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function(e){
+    if(!e.target.closest(".menu-area")){
+        megaMenu.classList.remove("show");
+    }
+});
+const evMenuBtn = document.getElementById("evMenuBtn");
+const megaMenu = document.getElementById("megaMenu");
+
+evMenuBtn.onclick = function(){
+    megaMenu.classList.toggle("show");
+};
 </script>
 </body>
 </html>
