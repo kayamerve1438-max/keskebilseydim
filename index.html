@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keşke Bilseydim</title>
+<link rel="icon" type="image/png" href="images/logo.png">
 
 <style>
 *{box-sizing:border-box}
@@ -569,24 +570,24 @@ footer{
     color:white;
     transform:translateY(-2px);
 }
-.mega-menu{
-    display:none;
-    position:absolute;
-    top:52px;
-    left:50%;
-    transform:translateX(-50%);
-    width:900px;
-    background:white;
-    padding:35px;
-    box-shadow:0 18px 35px rgba(0,0,0,.15);
-    z-index:99999;
-    grid-template-columns:1fr 1fr 1.3fr;
-    gap:45px;
-    border-radius:0 0 20px 20px;
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 48px; /* Header içindeki butona göre hizalama */
+    left: -150px; /* Menünün sola doğru çok kaymasını engellemek için dengeleyici */
+    width: 850px;
+    background: white;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.18);
+    z-index: 9999999!important; /* Kesinlikle en üstte görünmesi için */
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 45px;
+    border-radius: 12px;
+    border: 1px solid #eef0f5;
 }
 
-.mega-menu.show{
-    display:grid;
+.mega-menu.show {
+    display: grid !important; /* JS tetiklediğinde kesinlikle görünür yap */
 }
 .menu-area{
     position:relative;
@@ -927,22 +928,27 @@ const sozler = [
 ];
 
 function yeniKediGetir(){
-    const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
+    if(!kedi) return;
+    
+    const toplamResimSayisi = 90; // Görselde gördüğümüz gibi 90 resim var
+    const rastgeleNumara = Math.floor(Math.random() * toplamResimSayisi) + 1;
     const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
 
-const boyut = 130 + Math.floor(Math.random() * 35);
-const sol = 280 + Math.floor(Math.random() * 70);
-const ust = 130 + Math.floor(Math.random() * 55);
+    const boyut = 130 + Math.floor(Math.random() * 35);
+    const sol = 280 + Math.floor(Math.random() * 70);
+    const ust = 130 + Math.floor(Math.random() * 55);
 
     kedi.style.opacity = "0";
 
     setTimeout(() => {
-        kedi.src = `images/kedi_${rastgeleNumara}.png`;
+        // Dosya yolunun başına "./" ekleyerek mevcut klasörden başlamasını garantiledik
+        kedi.src = `./images/kedi_${rastgeleNumara}.png`; 
+        
         kedi.style.width = boyut + "px";
         kedi.style.left = sol + "px";
         kedi.style.top = ust + "px";
         kedi.style.bottom = "auto";
-        balon.textContent = rastgeleSoz;
+        if(balon) balon.textContent = rastgeleSoz;
         kedi.style.opacity = "1";
     }, 300);
 }
@@ -950,24 +956,34 @@ const ust = 130 + Math.floor(Math.random() * 55);
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
 
-const evMenuBtn = document.getElementById("evMenuBtn");
-const megaMenu = document.getElementById("megaMenu");
+document.addEventListener("DOMContentLoaded", function() {
+    const evMenuBtn = document.getElementById("evMenuBtn");
+    const megaMenu = document.getElementById("megaMenu");
 
-if(evMenuBtn && megaMenu){
-    evMenuBtn.addEventListener("click", function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        megaMenu.classList.toggle("show");
-    });
+    if (evMenuBtn && megaMenu) {
+        console.log("Menü elemanları başarıyla bulundu!");
 
-    megaMenu.addEventListener("click", function(e){
-        e.stopPropagation();
-    });
+        evMenuBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Tıklama olayının yukarı dağılmasını engelle
+            
+            console.log("EV butonuna tıklandı!");
+            megaMenu.classList.toggle("show");
+        });
 
-    document.addEventListener("click", function(){
-        megaMenu.classList.remove("show");
-    });
-}
+        // Menünün içine tıklandığında kapanmasın
+        megaMenu.addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+
+        // Sayfada başka bir yere tıklandığında kapansın
+        document.addEventListener("click", function() {
+            megaMenu.classList.remove("show");
+        });
+    } else {
+        console.error("Hata: evMenuBtn veya megaMenu ID'li elemanlar sayfada bulunamadı!");
+    }
+});
 
 </script>
 </body>
