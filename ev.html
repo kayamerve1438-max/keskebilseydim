@@ -683,6 +683,27 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
     width:120px !important;
     top:110px !important;
 }
+.article-meta{
+    margin-top:10px;
+    font-size:14px;
+    color:#667085;
+    font-weight:600;
+}
+
+.risk-score{
+    display:inline-block;
+    background:#fff4e5;
+    color:#c77700;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.risk-score span{
+    margin-left:8px;
+}
 </style>
 </head>
 
@@ -1001,6 +1022,28 @@ const ust = 130 + Math.floor(Math.random() * 55);
 yeniKediGetir();
 setInterval(yeniKediGetir, 15000);
 const altKategoriIcerikleri = {
+    kira: {
+        baslik: "Ev Kiralamak Deneyimleri",
+        yazilar: [
+            {
+                img: "images/depozito.jpg",
+                title: "Depozitoyu alırım sandım, alamadım",
+                desc: "Evi tertemiz teslim ettim ama ev sahibi yine de bahane buldu.",
+                link: "detay.html?id=kira-1",
+                meta: "👁️ 1.284 görüntülenme · 💬 37 yorum · ⏱️ 4 dk okuma",
+                risk: "★★★★☆"
+            },
+            {
+                img: "images/kedi_5.png",
+                title: "Emlakçı komisyonunu hafife aldım",
+                desc: "İlk ay kira, depozito, komisyon derken taşınmadan fakirleştim.",
+                link: "detay.html?id=kira-2",
+                meta: "👁️ 892 görüntülenme · 💬 21 yorum · ⏱️ 3 dk okuma",
+                risk: "★★★☆☆"
+            }
+        ]
+    },
+
     komsular: {
         baslik: "Komşular Deneyimleri",
         yazilar: [
@@ -1008,37 +1051,9 @@ const altKategoriIcerikleri = {
                 img: "images/kedi_1.png",
                 title: "Ev almadan önce keşke üst komşuyu tanısaydım",
                 desc: "Daire çok güzeldi ama üst kattaki sandalye çekme olimpiyatlarını hesaba katmamışım.",
-                link: "detay.html?id=komsu-1"
-            },
-            {
-                img: "images/kedi_2.png",
-                title: "Apartman WhatsApp grubu ruh sağlığımı bozdu",
-                desc: "Aidattan çok mesaj bildirimleri yordu. Herkes yönetici, kimse sakin değilmiş.",
-                link: "detay.html?id=komsu-2"
-            },
-            {
-                img: "images/kedi_3.png",
-                title: "Sessiz mahalle dediler, herkes matkap ustası çıktı",
-                desc: "Taşındığım ilk hafta üç farklı daire tadilata başladı.",
-                link: "detay.html?id=komsu-3"
-            }
-        ]
-    },
-
-    kira: {
-        baslik: "Ev Kiralamak Deneyimleri",
-        yazilar: [
-            {
-                img: images/kedi_4.png"
-                title: "Depozitoyu alırım sandım, alamadım",
-                desc: "Evi tertemiz teslim ettim ama ev sahibi yine de bahane buldu.",
-                link: "detay.html?id=kira-1"
-            },
-            {
-                img: "images/kedi_5.png",
-                title: "Emlakçı komisyonunu hafife aldım",
-                desc: "İlk ay kira, depozito, komisyon derken taşınmadan fakirleştim.",
-                link: "detay.html?id=kira-2"
+                link: "detay.html?id=komsu-1",
+                meta: "👁️ 1.538 görüntülenme · 💬 42 yorum · ⏱️ 5 dk okuma",
+                risk: "★★★★★"
             }
         ]
     }
@@ -1067,15 +1082,17 @@ if(allSubcats.length > 1){
     altKategoriBaslik.textContent = veri.baslik;
 
     articleList.innerHTML = veri.yazilar.map(yazi => `
-        <a href="${yazi.link}" class="article-card">
-            <img src="${yazi.img}" alt="${yazi.title}">
-            <div>
-                <h3>${yazi.title}</h3>
-                <p>${yazi.desc}</p>
-                <span>Deneyimi Oku →</span>
-            </div>
-        </a>
-    `).join("");
+    <a href="${yazi.link}" class="article-card">
+        <img src="${yazi.img}" alt="${yazi.title}">
+        <div>
+            <div class="risk-score">🐾 Bilge Kedi Risk Puanı <span>${yazi.risk}</span></div>
+            <h3>${yazi.title}</h3>
+            <p>${yazi.desc}</p>
+            <div class="article-meta">${yazi.meta}</div>
+            <span>Deneyimi Oku →</span>
+        </div>
+    </a>
+`).join("");
 }
 document.querySelectorAll('a[href*="ev.html?alt="]').forEach(link => {
     link.addEventListener("click", function(e){
