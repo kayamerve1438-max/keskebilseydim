@@ -190,6 +190,19 @@ h1{
     font-size:16px;
     margin:8px 0 0;
 }
+.show-comments-btn{
+    background:#2563eb;
+    color:white;
+    border:0;
+    border-radius:14px;
+    padding:14px 24px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.show-comments-btn:hover{
+    opacity:.9;
+}
 </style>
 </head>
 
@@ -272,27 +285,46 @@ h1{
         anlıyorum. Çünkü bazen evi değil, aslında ileride yaşayacağın tartışmayı kiralıyorsun.
     </p>
 <section class="comments-section">
-    <h2>Yorumlar 💬</h2>
+    <h2>Yorumlar 💬 <span>37 yorum</span></h2>
 
-    <div class="comment">
-        <b>Ayşe K.</b>
-        <p>Ben de aynı şeyi yaşadım. Eve girerken video çekmek gerçekten şartmış.</p>
-    </div>
+    <div id="commentsList"></div>
 
-    <div class="comment">
-        <b>Mert D.</b>
-        <p>Depozito konusu sözleşmede net yazmıyorsa sonradan çok uğraştırıyor.</p>
-    </div>
-
-    <div class="comment">
-        <b>Bilge Kedi 🐾</b>
-        <p>Söz uçar, tutanak kalır. Miyav ama resmi.</p>
-    </div>
+    <button id="showAllComments" class="show-comments-btn">
+        Tüm 37 yorumu göster
+    </button>
 </section>
 
     <a href="ev.html?alt=kira" class="back">← Ev Kiralamak deneyimlerine dön</a>
 </main>
 
 </div>
+<script>
+const comments = [
+    ["Ayşe K.", "Ben de aynı şeyi yaşadım. Eve girerken video çekmek gerçekten şartmış."],
+    ["Mert D.", "Depozito konusu sözleşmede net yazmıyorsa sonradan çok uğraştırıyor."],
+    ["Bilge Kedi 🐾", "Söz uçar, tutanak kalır. Miyav ama resmi."],
+    ["Selin A.", "Ben artık eve girerken her odanın fotoğrafını çekiyorum."],
+    ["Can B.", "Ev sahibiyle yazılı konuşmak çok önemli. WhatsApp mesajları bile işe yarıyor."]
+];
+
+const commentsList = document.getElementById("commentsList");
+const showAllBtn = document.getElementById("showAllComments");
+
+function renderComments(limit){
+    commentsList.innerHTML = comments.slice(0, limit).map(comment => `
+        <div class="comment">
+            <b>${comment[0]}</b>
+            <p>${comment[1]}</p>
+        </div>
+    `).join("");
+}
+
+renderComments(5);
+
+showAllBtn.addEventListener("click", function(){
+    renderComments(comments.length);
+    showAllBtn.style.display = "none";
+});
+</script>
 </body>
 </html>
