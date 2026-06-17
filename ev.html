@@ -746,14 +746,6 @@ footer{
 <div class="ev-subcategories">
 <a href="ev.html?alt=komsular">🏘️ Komşular</a>
 <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
-<a href="ev.html?alt=ev-almak">🏠 Ev Almak</a>
-<a href="ev.html?alt=aidat">💸 Aidat & Site</a>
-<a href="ev.html?alt=tasinma">📦 Taşınma</a>
-<a href="ev.html?alt=deprem">🏗️ Deprem Güvenliği</a>
-<a href="ev.html?alt=emlakci">🤝 Emlakçılar</a>
-<a href="ev.html?alt=tadilat">🔨 Tadilat</a>
-<a href="ev.html?alt=dekorasyon">🛋️ Dekorasyon</a>
-<a href="ev.html?alt=ev-arkadasi">👥 Ev Arkadaşı</a>
 </div>
         <div class="hero-buttons">
             <button class="primary">Deneyimleri Oku</button>
@@ -1047,6 +1039,8 @@ const articleList = document.getElementById("articleList");
 const altKategoriBaslik = document.getElementById("altKategoriBaslik");
 
 if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+document.querySelector(".hero h1").style.display = "none";
+document.querySelector(".hero p").style.display = "none";
 document.querySelector(".article-list-section").style.display = "block";
 document.querySelector(".section-title")?.style.setProperty("display", "none");
 document.querySelector(".category-grid")?.style.setProperty("display", "none");
