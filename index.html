@@ -968,6 +968,17 @@ const megaMenu = document.getElementById("megaMenu");
 evMenuBtn.onclick = function(){
     megaMenu.classList.toggle("show");
 };
+const evMenuBtn = document.getElementById("evMenuBtn");
+const megaMenu = document.getElementById("megaMenu");
+
+if(evMenuBtn && megaMenu){
+
+    evMenuBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        megaMenu.classList.toggle("show");
+    });
+
+}
 </script>
 </body>
 </html>
