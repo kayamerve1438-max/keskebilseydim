@@ -1245,6 +1245,16 @@ loginBtn.onclick = function(){
         authMessage.style.color = "red";
     }
 };
+const eyeIcon = document.querySelector(".eye");
+const passwordInput = document.getElementById("authPassword");
+
+eyeIcon.onclick = function(){
+    if(passwordInput.type === "password"){
+        passwordInput.type = "text";
+    }else{
+        passwordInput.type = "password";
+    }
+};
 </script>
 </body>
 </html>
