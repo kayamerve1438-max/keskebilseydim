@@ -1140,118 +1140,98 @@ const authModal = document.getElementById("authModal");
 const authClose = document.getElementById("authClose");
 const loginBtn = document.getElementById("loginBtn");
 const authMessage = document.getElementById("authMessage");
-
-if(loginButtons.length > 0 && authModal){
-
-    loginButtons.forEach(btn => {
-        btn.onclick = function(){
-            authModal.classList.add("active");
-        };
-    });
-
-  if(authClose){
-    authClose.onclick = function(){
-        authModal.classList.remove("active");
-    };
-}
-
-if(loginBtn){
-    loginBtn.onclick = function(){
-        // mevcut kodların tamamı burada kalsın
-    };
-}
-
-    const name = document.getElementById("authName").value;
-    const email = document.getElementById("authEmail").value;
-    const password = document.getElementById("authPassword").value;
-
-    if(!email || !password){
-
-        authMessage.textContent = "Lütfen e-posta ve şifre gir.";
-        authMessage.style.color = "red";
-        return;
-    }
-
-    if(isRegisterMode){
-
-        if(!name){
-
-            authMessage.textContent = "Ad Soyad girmen gerekiyor.";
-            authMessage.style.color = "red";
-            return;
-        }
-
-        const user = {
-            name,
-            email,
-            password
-        };
-
-        localStorage.setItem(
-            "kb_user",
-            JSON.stringify(user)
-        );
-
-        authMessage.textContent = "Hesap oluşturuldu.";
-        authMessage.style.color = "green";
-
-        return;
-    }
-
-    const savedUser =
-        JSON.parse(localStorage.getItem("kb_user"));
-
-    if(!savedUser){
-
-        authMessage.textContent =
-            "Önce hesap oluşturmalısın.";
-
-        authMessage.style.color = "red";
-        return;
-    }
-
-    if(
-        email === savedUser.email &&
-        password === savedUser.password
-    ){
-
-        authMessage.textContent =
-            "Giriş başarılı.";
-
-        authMessage.style.color = "green";
-
-        localStorage.setItem(
-            "kb_logged_in",
-            "true"
-        );
-
-        setTimeout(() => {
-
-            authModal.classList.remove("active");
-
-            loginButtons.forEach(btn => {
-                btn.textContent =
-                    savedUser.name;
-            });
-
-        }, 800);
-
-    }else{
-
-        authMessage.textContent =
-            "E-posta veya şifre hatalı.";
-
-        authMessage.style.color = "red";
-    }
-};
-
 const authBox = document.querySelector(".auth-box");
 const switchAuthMode = document.getElementById("switchAuthMode");
 const authSwitchText = document.getElementById("authSwitchText");
 
 let isRegisterMode = false;
 
+loginButtons.forEach(btn => {
+    btn.onclick = function(){
+        authModal.classList.add("active");
+    };
+});
+
+authClose.onclick = function(){
+    authModal.classList.remove("active");
+};
+
 switchAuthMode.onclick = function(){
+    isRegisterMode = !isRegisterMode;
+
+    if(isRegisterMode){
+        authBox.classList.add("register-mode");
+        document.querySelector(".auth-box h2").textContent = "Hesap Oluştur";
+        authSwitchText.textContent = "Zaten hesabın var mı?";
+        switchAuthMode.textContent = "Giriş Yap";
+        loginBtn.textContent = "Hesap Oluştur";
+    }else{
+        authBox.classList.remove("register-mode");
+        document.querySelector(".auth-box h2").textContent = "Giriş Yap";
+        authSwitchText.textContent = "Hesabın yok mu?";
+        switchAuthMode.textContent = "Hemen oluştur";
+        loginBtn.textContent = "Giriş Yap";
+    }
+
+    authMessage.textContent = "";
+};
+
+loginBtn.onclick = function(){
+    const name = document.getElementById("authName").value;
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
+
+    if(!email || !password){
+        authMessage.textContent = "Lütfen e-posta ve şifre gir.";
+        authMessage.style.color = "red";
+        return;
+    }
+
+    if(isRegisterMode){
+        if(!name){
+            authMessage.textContent = "Ad Soyad girmen gerekiyor.";
+            authMessage.style.color = "red";
+            return;
+        }
+
+        const user = {
+            name:name,
+            email:email,
+            password:password
+        };
+
+        localStorage.setItem("kb_user", JSON.stringify(user));
+
+        authMessage.textContent = "Hesap oluşturuldu.";
+        authMessage.style.color = "green";
+        return;
+    }
+
+    const savedUser = JSON.parse(localStorage.getItem("kb_user"));
+
+    if(!savedUser){
+        authMessage.textContent = "Önce hesap oluşturmalısın.";
+        authMessage.style.color = "red";
+        return;
+    }
+
+    if(email === savedUser.email && password === savedUser.password){
+        authMessage.textContent = "Giriş başarılı.";
+        authMessage.style.color = "green";
+
+        localStorage.setItem("kb_logged_in", "true");
+
+        setTimeout(() => {
+            authModal.classList.remove("active");
+            loginButtons.forEach(btn => {
+                btn.textContent = savedUser.name || "Profilim";
+            });
+        }, 800);
+    }else{
+        authMessage.textContent = "E-posta veya şifre hatalı.";
+        authMessage.style.color = "red";
+    }
+};
 
     isRegisterMode = !isRegisterMode;
 
