@@ -1168,6 +1168,10 @@ let isRegisterMode = false;
 
 loginButtons.forEach(btn => {
     btn.onclick = function(){
+        if(btn.classList.contains("logged-in")){
+            return;
+        }
+
         authModal.classList.add("active");
     };
 });
@@ -1228,6 +1232,7 @@ loginBtn.onclick = async function(){
 
         try{
             await createUserWithEmailAndPassword(auth, email, password);
+            localStorage.setItem("kb_user_name", name);
 
             authMessage.textContent = "Hesap başarıyla oluşturuldu. Şimdi giriş yapabilirsin.";
             authMessage.style.color = "green";
@@ -1266,9 +1271,12 @@ loginBtn.onclick = async function(){
         setTimeout(() => {
             authModal.classList.remove("active");
 
-            loginButtons.forEach(btn => {
-                btn.textContent = user.email;
-            });
+            const savedName = localStorage.getItem("kb_user_name");
+
+       loginButtons.forEach(btn => {
+      btn.textContent = savedName || "Profilim";
+       btn.classList.add("logged-in");
+    });
         }, 800);
 
     }catch(error){
