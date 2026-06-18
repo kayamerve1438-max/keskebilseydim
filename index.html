@@ -1161,8 +1161,29 @@ const authClose = document.getElementById("authClose");
 const loginBtn = document.getElementById("loginBtn");
 const authMessage = document.getElementById("authMessage");
 const authBox = document.querySelector(".auth-box");
+const authEmail = document.getElementById("authEmail");
+const authPassword = document.getElementById("authPassword");
 const switchAuthMode = document.getElementById("switchAuthMode");
 const authSwitchText = document.getElementById("authSwitchText");
+
+function updateLoginButtonState(){
+
+    const hasEmail = authEmail.value.trim() !== "";
+    const hasPassword = authPassword.value.trim() !== "";
+
+    if(hasEmail && hasPassword){
+        loginBtn.style.background = "#22c55e";
+        loginBtn.style.opacity = "1";
+    }else{
+        loginBtn.style.background = "#86d39b";
+        loginBtn.style.opacity = "0.6";
+    }
+}
+
+authEmail.addEventListener("input", updateLoginButtonState);
+authPassword.addEventListener("input", updateLoginButtonState);
+
+updateLoginButtonState();
 
 let isRegisterMode = false;
 
