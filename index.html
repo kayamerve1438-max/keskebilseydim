@@ -981,7 +981,7 @@ footer{
 
         <button id="loginBtn" class="auth-main-btn">Giriş Yap</button>
 
-        <a class="forgot-pass">Şifremi Unuttum</a>
+        <a id="forgotPassword" class="forgot-pass">Şifremi Unuttum</a>
 
         <div class="or-line">
             <span></span>
@@ -989,8 +989,8 @@ footer{
             <span></span>
         </div>
 
-        <button class="social-btn">Facebook ile Giriş Yap</button>
-        <button class="social-btn">Google ile Giriş Yap</button>
+        <button id="facebookLogin" class="social-btn">Facebook ile Giriş Yap</button>
+        <button id="googleLogin" class="social-btn">Google ile Giriş Yap</button>
 
         <p class="auth-legal">
             Kişisel verileriniz, Gizlilik Politikası ve Kullanıcı Sözleşmesi kapsamında işlenmektedir.
@@ -1254,6 +1254,33 @@ eyeIcon.onclick = function(){
     }else{
         passwordInput.type = "password";
     }
+};
+const forgotPassword = document.getElementById("forgotPassword");
+const facebookLogin = document.getElementById("facebookLogin");
+const googleLogin = document.getElementById("googleLogin");
+
+forgotPassword.onclick = function(){
+
+    const email = document.getElementById("authEmail").value;
+
+    if(!email){
+        authMessage.textContent = "Önce e-posta adresini gir.";
+        authMessage.style.color = "red";
+        return;
+    }
+
+    authMessage.textContent = "Şifre sıfırlama bağlantısı e-posta adresine gönderildi.";
+    authMessage.style.color = "green";
+};
+
+facebookLogin.onclick = function(){
+    authMessage.textContent = "Facebook ile giriş yakında aktif olacak.";
+    authMessage.style.color = "#2563eb";
+};
+
+googleLogin.onclick = function(){
+    authMessage.textContent = "Google ile giriş yakında aktif olacak.";
+    authMessage.style.color = "#2563eb";
 };
 </script>
 </body>
