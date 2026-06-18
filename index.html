@@ -1000,7 +1000,27 @@ footer{
     </div>
 </div>
 </div>
-<script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCfWhRF8BpXTxXlE5Hzs45FDuoocWy9H9E",
+  authDomain: "keskebilseydim-f56dc.firebaseapp.com",
+  projectId: "keskebilseydim-f56dc",
+  storageBucket: "keskebilseydim-f56dc.firebasestorage.app",
+  messagingSenderId: "524443729178",
+  appId: "1:524443729178:web:abc85bbcbcf65a3075c0a3"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const kedi = document.getElementById("bilgeKedi");
 const balon = document.querySelector(".speech");
 
@@ -1188,10 +1208,10 @@ switchAuthMode.onclick = function(){
 
     authMessage.textContent = "";
 };
-loginBtn.onclick = function(){
-    const name = document.getElementById("authName").value;
-    const email = document.getElementById("authEmail").value;
-    const password = document.getElementById("authPassword").value;
+loginBtn.onclick = async function(){
+    const name = document.getElementById("authName").value.trim();
+    const email = document.getElementById("authEmail").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
 
     if(!email || !password){
         authMessage.textContent = "Lütfen e-posta ve şifre gir.";
@@ -1206,42 +1226,64 @@ loginBtn.onclick = function(){
             return;
         }
 
-        const user = {
-            name:name,
-            email:email,
-            password:password
-        };
+        try{
+            await createUserWithEmailAndPassword(auth, email, password);
 
-        localStorage.setItem("kb_user", JSON.stringify(user));
+            authMessage.textContent = "Hesap başarıyla oluşturuldu. Şimdi giriş yapabilirsin.";
+            authMessage.style.color = "green";
 
-        authMessage.textContent = "Hesap oluşturuldu.";
-        authMessage.style.color = "green";
+            isRegisterMode = false;
+            authBox.classList.remove("register-mode");
+            document.querySelector(".auth-box h2").textContent = "Giriş Yap";
+            authSwitchText.textContent = "Hesabın yok mu?";
+            switchAuthMode.textContent = "Hemen oluştur";
+            loginBtn.textContent = "Giriş Yap";
+
+        }catch(error){
+            if(error.code === "auth/invalid-email"){
+                authMessage.textContent = "Lütfen geçerli bir e-posta adresi gir.";
+            }else if(error.code === "auth/email-already-in-use"){
+                authMessage.textContent = "Bu e-posta adresi zaten kayıtlı.";
+            }else if(error.code === "auth/weak-password"){
+                authMessage.textContent = "Şifre en az 6 karakter olmalı.";
+            }else{
+                authMessage.textContent = "Kayıt oluşturulamadı: " + error.message;
+            }
+
+            authMessage.style.color = "red";
+        }
+
         return;
     }
 
-    const savedUser = JSON.parse(localStorage.getItem("kb_user"));
+    try{
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-    if(!savedUser){
-        authMessage.textContent = "Önce hesap oluşturmalısın.";
-        authMessage.style.color = "red";
-        return;
-    }
-
-    if(email === savedUser.email && password === savedUser.password){
         authMessage.textContent = "Giriş başarılı.";
         authMessage.style.color = "green";
-
-        localStorage.setItem("kb_logged_in", "true");
 
         setTimeout(() => {
             authModal.classList.remove("active");
 
             loginButtons.forEach(btn => {
-                btn.textContent = savedUser.name || "Profilim";
+                btn.textContent = user.email;
             });
         }, 800);
-    }else{
-        authMessage.textContent = "E-posta veya şifre hatalı.";
+
+    }catch(error){
+        if(error.code === "auth/invalid-email"){
+            authMessage.textContent = "Lütfen geçerli bir e-posta adresi gir.";
+        }else if(error.code === "auth/user-not-found"){
+            authMessage.textContent = "Bu e-posta adresine ait kullanıcı bulunamadı.";
+        }else if(error.code === "auth/wrong-password"){
+            authMessage.textContent = "Şifre hatalı.";
+        }else if(error.code === "auth/invalid-credential"){
+            authMessage.textContent = "E-posta veya şifre hatalı.";
+        }else{
+            authMessage.textContent = "Giriş yapılamadı: " + error.message;
+        }
+
         authMessage.style.color = "red";
     }
 };
