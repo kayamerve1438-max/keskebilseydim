@@ -1157,25 +1157,37 @@ authClose.onclick = function(){
 };
 
 switchAuthMode.onclick = function(){
+
     isRegisterMode = !isRegisterMode;
 
     if(isRegisterMode){
+
         authBox.classList.add("register-mode");
+
         document.querySelector(".auth-box h2").textContent = "Hesap Oluştur";
+
         authSwitchText.textContent = "Zaten hesabın var mı?";
+
         switchAuthMode.textContent = "Giriş Yap";
+
         loginBtn.textContent = "Hesap Oluştur";
+
     }else{
+
         authBox.classList.remove("register-mode");
+
         document.querySelector(".auth-box h2").textContent = "Giriş Yap";
+
         authSwitchText.textContent = "Hesabın yok mu?";
+
         switchAuthMode.textContent = "Hemen oluştur";
+
         loginBtn.textContent = "Giriş Yap";
+
     }
 
     authMessage.textContent = "";
 };
-
 loginBtn.onclick = function(){
     const name = document.getElementById("authName").value;
     const email = document.getElementById("authEmail").value;
@@ -1223,6 +1235,7 @@ loginBtn.onclick = function(){
 
         setTimeout(() => {
             authModal.classList.remove("active");
+
             loginButtons.forEach(btn => {
                 btn.textContent = savedUser.name || "Profilim";
             });
@@ -1231,37 +1244,6 @@ loginBtn.onclick = function(){
         authMessage.textContent = "E-posta veya şifre hatalı.";
         authMessage.style.color = "red";
     }
-};
-
-    isRegisterMode = !isRegisterMode;
-
-    if(isRegisterMode){
-
-        authBox.classList.add("register-mode");
-
-        document.querySelector(".auth-box h2").textContent = "Hesap Oluştur";
-
-        authSwitchText.textContent = "Zaten hesabın var mı?";
-
-        switchAuthMode.textContent = "Giriş Yap";
-
-        loginBtn.textContent = "Hesap Oluştur";
-
-    }else{
-
-        authBox.classList.remove("register-mode");
-
-        document.querySelector(".auth-box h2").textContent = "Giriş Yap";
-
-        authSwitchText.textContent = "Hesabın yok mu?";
-
-        switchAuthMode.textContent = "Hemen oluştur";
-
-        loginBtn.textContent = "Giriş Yap";
-
-    }
-
-    authMessage.textContent = "";
 };
 </script>
 </body>
