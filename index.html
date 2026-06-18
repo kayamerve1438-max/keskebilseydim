@@ -989,7 +989,6 @@ footer{
             <span></span>
         </div>
 
-        <button id="facebookLogin" class="social-btn">Facebook ile Giriş Yap</button>
         <button id="googleLogin" class="social-btn">Google ile Giriş Yap</button>
 
         <p class="auth-legal">
@@ -1007,7 +1006,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -1327,31 +1328,61 @@ eyeIcon.onclick = function(){
     }
 };
 const forgotPassword = document.getElementById("forgotPassword");
-const facebookLogin = document.getElementById("facebookLogin");
 const googleLogin = document.getElementById("googleLogin");
 
-forgotPassword.onclick = function(){
+forgotPassword.onclick = async function(){
 
-    const email = document.getElementById("authEmail").value;
+    const email = document.getElementById("authEmail").value.trim();
 
     if(!email){
-        authMessage.textContent = "Önce e-posta adresini gir.";
+        authMessage.textContent = "Şifre sıfırlama için e-posta adresini gir.";
         authMessage.style.color = "red";
         return;
     }
 
-    authMessage.textContent = "Şifre sıfırlama bağlantısı e-posta adresine gönderildi.";
-    authMessage.style.color = "green";
+    try{
+        await sendPasswordResetEmail(auth, email);
+        authMessage.textContent = "Şifre sıfırlama bağlantısı e-posta adresine gönderildi.";
+        authMessage.style.color = "green";
+    }catch(error){
+        if(error.code === "auth/invalid-email"){
+            authMessage.textContent = "Geçerli bir e-posta adresi gir.";
+        }else if(error.code === "auth/user-not-found"){
+            authMessage.textContent = "Bu e-posta adresine ait kullanıcı bulunamadı.";
+        }else{
+            authMessage.textContent = "Şifre sıfırlama gönderilemedi: " + error.message;
+        }
+
+        authMessage.style.color = "red";
+    }
 };
 
-facebookLogin.onclick = function(){
-    authMessage.textContent = "Facebook ile giriş yakında aktif olacak.";
-    authMessage.style.color = "#2563eb";
-};
 
-googleLogin.onclick = function(){
-    authMessage.textContent = "Google ile giriş yakında aktif olacak.";
-    authMessage.style.color = "#2563eb";
+googleLogin.onclick = async function(){
+    const provider = new GoogleAuthProvider();
+
+    try{
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        localStorage.setItem("kb_user_name", user.displayName || "Profilim");
+
+        authMessage.textContent = "Google ile giriş başarılı.";
+        authMessage.style.color = "green";
+
+        setTimeout(() => {
+            authModal.classList.remove("active");
+
+            loginButtons.forEach(btn => {
+                btn.textContent = user.displayName || "Profilim";
+                btn.classList.add("logged-in");
+            });
+        }, 800);
+
+    }catch(error){
+        authMessage.textContent = "Google ile giriş yapılamadı: " + error.message;
+        authMessage.style.color = "red";
+    }
 };
 </script>
 </body>
