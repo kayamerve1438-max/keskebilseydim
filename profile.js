@@ -19,10 +19,14 @@ function initProfile(){
       document.body.insertAdjacentHTML("beforeend", data);
 
       const profileDropdown = document.getElementById("profileDropdown");
+      
+      console.log("DROPDOWN:", profileDropdown);
 
       console.log(profileDropdown);
 
       loginBtn.addEventListener("click", function(e){
+        
+        console.log("PROFİLE TIKLANDI");
 
           if(!loginBtn.classList.contains("logged-in")) return;
 
