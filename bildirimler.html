@@ -179,6 +179,11 @@ document.getElementById("markAllRead").onclick = function(){
     document.querySelectorAll(".notification-item").forEach(item => {
         item.classList.remove("unread");
     });
+
+    document.querySelectorAll(".badge").forEach(badge => {
+        badge.textContent = "0";
+        badge.style.display = "none";
+    });
 };
 </script>
 
