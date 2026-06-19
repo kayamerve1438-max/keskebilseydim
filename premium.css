@@ -1,0 +1,55 @@
+body{
+    background:#eef3fb !important;
+}
+
+.page{
+    max-width:1180px !important;
+    margin:28px auto 50px !important;
+    background:linear-gradient(135deg,#ffffff,#f8fbff) !important;
+    border-radius:30px !important;
+    padding:55px 70px !important;
+    box-shadow:0 30px 90px rgba(15,23,42,.14) !important;
+}
+
+.hero,
+.hero-section{
+    min-height:420px !important;
+}
+
+h1{
+    font-size:56px !important;
+    line-height:1.05 !important;
+    letter-spacing:-2px !important;
+}
+
+.search-box,
+.search-area,
+.search-wrapper{
+    transform:scale(1.08) !important;
+    transform-origin:left center !important;
+    box-shadow:0 22px 50px rgba(37,99,235,.20) !important;
+}
+
+.category-card{
+    border-radius:22px !important;
+    box-shadow:0 16px 35px rgba(15,23,42,.10) !important;
+    border:1px solid #eaf0ff !important;
+    transition:.25s !important;
+}
+
+.category-card:hover{
+    transform:translateY(-6px) !important;
+}
+
+.experience-card,
+.card{
+    border-radius:24px !important;
+    box-shadow:0 20px 50px rgba(15,23,42,.12) !important;
+}
+
+.confession-card,
+.itiraf-card{
+    border-radius:28px !important;
+    background:linear-gradient(135deg,#db2777,#7c3aed) !important;
+    box-shadow:0 25px 60px rgba(219,39,119,.30) !important;
+}
