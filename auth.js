@@ -144,12 +144,24 @@ window.initAuth = function(){
             setTimeout(() => {
                 authModal.classList.remove("active");
 
-                const savedName = localStorage.getItem("kb_user_name");
+                let savedName = localStorage.getItem("kb_user_name");
 
-                loginButtons.forEach(btn => {
-                    btn.textContent = savedName || "Profilim";
-                    btn.classList.add("logged-in");
-                });
+if(!savedName){
+    savedName = "Profilim";
+    localStorage.setItem("kb_user_name", savedName);
+}
+
+loginButtons.forEach(btn => {
+    btn.textContent = savedName;
+    btn.classList.add("logged-in");
+});
+
+if(typeof window.initProfile === "function"){
+    window.initProfile();
+}
+                if(typeof window.initProfile === "function"){
+    window.initProfile();
+}
             }, 800);
 
         }catch(error){
@@ -202,6 +214,9 @@ window.initAuth = function(){
                     btn.textContent = user.displayName || "Profilim";
                     btn.classList.add("logged-in");
                 });
+                if(typeof window.initProfile === "function"){
+    window.initProfile();
+}
             }, 800);
 
         }catch(error){
