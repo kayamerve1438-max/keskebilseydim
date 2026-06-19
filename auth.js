@@ -150,6 +150,14 @@ localStorage.setItem(
                 authModal.classList.remove("active");
 
                 let savedName = localStorage.getItem("kb_user_name");
+                localStorage.setItem("kb_user_email", email);
+
+if(!localStorage.getItem("kb_register_date")){
+    localStorage.setItem(
+        "kb_register_date",
+        new Date().toLocaleDateString("tr-TR")
+    );
+}
 
 if(!savedName){
     savedName = "Profilim";
