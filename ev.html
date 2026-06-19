@@ -1062,6 +1062,10 @@ fetch("header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("header-container").innerHTML = data;
+
+    const headerScript = document.createElement("script");
+    headerScript.src = "header.js";
+    document.body.appendChild(headerScript);
   });
 
 fetch("footer.html")

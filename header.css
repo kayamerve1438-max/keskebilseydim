@@ -120,3 +120,8 @@ nav a,
 .mega-menu a:hover{
     color:#2563eb;
 }
+.active-nav{
+    color:#2563eb!important;
+    border-bottom:3px solid #2563eb;
+    padding-bottom:6px;
+}

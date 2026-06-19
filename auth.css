@@ -1,0 +1,155 @@
+.auth-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.auth-modal.active{
+    display:flex;
+}
+
+.auth-box{
+    width:90%;
+    max-width:430px;
+    background:white;
+    border-radius:8px;
+    padding:26px 34px 30px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.auth-close{
+    position:absolute;
+    top:10px;
+    right:14px;
+    border:0;
+    background:transparent;
+    font-size:34px;
+    color:#aaa;
+    cursor:pointer;
+}
+
+.auth-box h2{
+    text-align:center;
+    margin:0 0 34px;
+    font-size:28px;
+    color:#444;
+}
+
+.auth-register-text{
+    font-size:15px;
+    color:#555;
+    margin-bottom:28px;
+}
+
+.auth-register-text span{
+    color:#22c55e;
+    font-weight:800;
+}
+
+.auth-register-text button{
+    border:0;
+    background:transparent;
+    color:#22c55e;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.auth-name-field{
+    display:none;
+}
+
+.auth-box.register-mode .auth-name-field{
+    display:block;
+}
+
+.auth-box input{
+    width:100%;
+    box-sizing:border-box;
+    height:48px;
+    padding:0 12px;
+    border:1px solid #d8dde6;
+    border-radius:5px;
+    margin-bottom:14px;
+    font-size:15px;
+}
+
+.password-wrap{
+    position:relative;
+}
+
+.password-wrap input{
+    padding-right:45px;
+}
+
+.eye{
+    position:absolute;
+    right:14px;
+    top:13px;
+    cursor:pointer;
+}
+
+.auth-main-btn{
+    width:100%;
+    height:50px;
+    border:0;
+    border-radius:6px;
+    background:#86d39b;
+    color:white;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.forgot-pass{
+    display:block;
+    margin:10px 0 20px;
+    color:#777;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.or-line{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:10px 0 24px;
+    color:#aaa;
+    font-size:13px;
+}
+
+.or-line span{
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
+
+.social-btn{
+    width:100%;
+    height:46px;
+    background:white;
+    border:1px solid #d8dde6;
+    border-radius:6px;
+    margin-bottom:10px;
+    color:#555;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.auth-legal{
+    margin-top:20px;
+    color:#777;
+    font-size:11px;
+    line-height:1.5;
+    text-align:center;
+}
+
+.auth-message{
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+}
