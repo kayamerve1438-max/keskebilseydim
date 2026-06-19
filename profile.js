@@ -32,6 +32,7 @@ function initProfile(){
               e.preventDefault();
 
               profileDropdown.classList.toggle("active");
+              console.log("AÇ/KAPA ÇALIŞTI");
           });
 
           document.addEventListener("click", function(e){

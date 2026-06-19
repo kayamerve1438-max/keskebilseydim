@@ -1,14 +1,15 @@
 .profile-dropdown{
-    position:absolute;
-    top:60px;
-    right:0;
+    position:fixed;
+    top:90px;
+    right:20px;
     width:260px;
     background:white;
     border-radius:16px;
     box-shadow:0 18px 35px rgba(0,0,0,.15);
     padding:10px;
     display:none;
-    z-index:99999;
+    z-index:999999;
+    border:2px solid red;
 }
 
 .profile-dropdown.active{

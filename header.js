@@ -14,21 +14,31 @@ function initHeader(){
 }
 
 function loadAuth(){
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src = "auth.js";
+    const authScript = document.createElement("script");
+    authScript.type = "module";
+    authScript.src = "auth.js";
 
-    script.onload = function(){
+    authScript.onload = function(){
         fetch("auth.html")
           .then(res => res.text())
           .then(data => {
               const authContainer = document.getElementById("auth-container");
+              if(!authContainer) return;
 
-              if(authContainer){
-    authContainer.innerHTML = data;
+              authContainer.innerHTML = data;
 
-    initAuth();
+              if(typeof initAuth === "function"){
+                  initAuth();
+              }
 
+              loadProfile();
+          });
+    };
+
+    document.body.appendChild(authScript);
+}
+
+function loadProfile(){
     const profileScript = document.createElement("script");
     profileScript.src = "profile.js";
 
@@ -39,11 +49,6 @@ function loadAuth(){
     };
 
     document.body.appendChild(profileScript);
-}
-          });
-    };
-
-    document.body.appendChild(script);
 }
 
 initHeader();
