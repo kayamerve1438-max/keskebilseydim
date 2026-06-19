@@ -117,6 +117,11 @@ window.initAuth = function(){
             try{
                 await createUserWithEmailAndPassword(auth, email, password);
                 localStorage.setItem("kb_user_name", name);
+                localStorage.setItem("kb_user_email", email);
+localStorage.setItem(
+    "kb_register_date",
+    new Date().toLocaleDateString("tr-TR")
+);
 
                 authMessage.textContent = "Hesap başarıyla oluşturuldu. Şimdi giriş yapabilirsin.";
                 authMessage.style.color = "green";
@@ -203,6 +208,17 @@ if(typeof window.initProfile === "function"){
             const user = result.user;
 
             localStorage.setItem("kb_user_name", user.displayName || "Profilim");
+            localStorage.setItem(
+    "kb_user_email",
+    user.email || ""
+);
+
+if(!localStorage.getItem("kb_register_date")){
+    localStorage.setItem(
+        "kb_register_date",
+        new Date().toLocaleDateString("tr-TR")
+    );
+}
 
             authMessage.textContent = "Google ile giriş başarılı.";
             authMessage.style.color = "green";
