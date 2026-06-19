@@ -86,3 +86,29 @@ footer{
     background:#0f172a !important;
     color:#94a3b8 !important;
 }
+.logo-area img{
+    width:42px !important;
+    height:auto !important;
+}
+
+.site-name{
+    font-size:30px !important;
+    font-weight:900 !important;
+    letter-spacing:-1px !important;
+    color:#1d4ed8 !important;
+}
+
+h1{
+    font-family:Georgia, "Times New Roman", serif !important;
+    font-size:72px !important;
+    line-height:.98 !important;
+    letter-spacing:-3px !important;
+    font-weight:800 !important;
+    color:#f8fafc !important;
+    text-shadow:none !important;
+}
+
+.category-grid,
+.ev-subcategories{
+    display:none !important;
+}
