@@ -125,3 +125,7 @@ nav a,
     border-bottom:3px solid #2563eb;
     padding-bottom:6px;
 }
+a,
+button {
+    cursor: pointer;
+}
