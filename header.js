@@ -43,10 +43,15 @@ function loadProfile(){
     profileScript.src = "profile.js";
 
     profileScript.onload = function(){
-        if(typeof initProfile === "function"){
-            initProfile();
-        }
-    };
+
+    console.log("PROFILE JS YÜKLENDİ");
+
+    console.log(typeof initProfile);
+
+    if(typeof initProfile === "function"){
+        initProfile();
+    }
+};
 
     document.body.appendChild(profileScript);
 }
