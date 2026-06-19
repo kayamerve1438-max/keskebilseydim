@@ -9,7 +9,7 @@
     padding:10px;
     display:none;
     z-index:999999;
-    border:2px solid red;
+   
 }
 
 .profile-dropdown.active{

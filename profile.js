@@ -1,42 +1,47 @@
-function initProfile(){
+window.initProfile = function(){
 
     const loginBtn = document.querySelector(".login");
     if(!loginBtn) return;
 
-    const savedName = localStorage.getItem("kb_user_name");
-    if(!savedName) return;
+    let savedName = localStorage.getItem("kb_user_name");
+
+    if(!savedName){
+        if(loginBtn.classList.contains("logged-in")){
+            savedName = loginBtn.textContent.trim() || "Profilim";
+        }else{
+            return;
+        }
+    }
 
     loginBtn.textContent = savedName;
     loginBtn.classList.add("logged-in");
 
+    const oldMenu = document.getElementById("profileDropdown");
+    if(oldMenu) oldMenu.remove();
+
     fetch("profile.html")
-  .then(res => res.text())
-  .then(data => {
+      .then(res => res.text())
+      .then(data => {
 
-      console.log("PROFILE YÜKLENDİ");
-      console.log(data);
+          document.body.insertAdjacentHTML("beforeend", data);
 
-      document.body.insertAdjacentHTML("beforeend", data);
+          const profileDropdown = document.getElementById("profileDropdown");
+          const logoutBtn = document.getElementById("logoutBtn");
 
-      const profileDropdown = document.getElementById("profileDropdown");
-      
-      console.log("DROPDOWN:", profileDropdown);
+          if(!profileDropdown) return;
 
-      console.log(profileDropdown);
+          loginBtn.onclick = function(e){
+              e.preventDefault();
+              e.stopPropagation();
 
-      loginBtn.addEventListener("click", function(e){
-        
-        console.log("PROFİLE TIKLANDI");
-
-          if(!loginBtn.classList.contains("logged-in")) return;
-
-          e.preventDefault();
-
-          profileDropdown.classList.toggle("active");
-      });
+              profileDropdown.classList.toggle("active");
+          };
 
           document.addEventListener("click", function(e){
-              if(!profileDropdown.contains(e.target) && e.target !== loginBtn){
+              if(
+                  !profileDropdown.contains(e.target) &&
+                  e.target !== loginBtn
+              ){
                   profileDropdown.classList.remove("active");
               }
           });
@@ -49,4 +54,4 @@ function initProfile(){
           }
 
       });
-}
+};
