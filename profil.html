@@ -103,21 +103,20 @@ body{
             </div>
         </div>
 
-        <div class="profile-actions">
+    <div class="profile-row">
+    <div class="profile-label">Kullanıcı Adı</div>
+    <div class="profile-value" id="profileName">-</div>
+</div>
 
-            <button
-                class="profile-btn blue-btn"
-                onclick="location.href='sifre-guncelle.html'">
-                Şifre Güncelle
-            </button>
+<div class="profile-row">
+    <div class="profile-label">E-posta</div>
+    <div class="profile-value" id="profileEmail">-</div>
+</div>
 
-            <button
-                class="profile-btn red-btn"
-                id="logoutProfileBtn">
-                Çıkış Yap
-            </button>
-
-        </div>
+<div class="profile-row">
+    <div class="profile-label">Kayıt Tarihi</div>
+    <div class="profile-value" id="profileDate">-</div>
+</div>
 
     </div>
 
@@ -130,6 +129,9 @@ localStorage.getItem("kb_user_name");
 const savedEmail =
 localStorage.getItem("kb_user_email");
 
+const registerDate =
+localStorage.getItem("kb_register_date");
+
 document.getElementById("profileName").textContent =
 savedName || "Profilim";
 
@@ -138,6 +140,8 @@ savedEmail || "-";
 
 document.getElementById("logoutProfileBtn")
 .addEventListener("click", function(){
+    document.getElementById("profileDate").textContent =
+registerDate || "-";
 
     if(!confirm("Çıkış yapmak istiyor musun?")){
         return;
