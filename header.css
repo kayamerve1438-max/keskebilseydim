@@ -1,0 +1,122 @@
+/* ORTAK HEADER CSS */
+
+header{
+    height:78px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    border-bottom:1px solid #eef0f5;
+    position:relative;
+    z-index:1000;
+    overflow:visible;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:inherit;
+}
+
+.logo-area img{
+    height:54px;
+}
+
+.site-name{
+    font-size:26px;
+    font-weight:900;
+    color:#2563eb;
+}
+
+nav{
+    display:flex;
+    gap:34px;
+    align-items:center;
+}
+
+nav a,
+.nav-button{
+    color:#111;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.confession-nav{
+    color:#db2777!important;
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:22px!important;
+    border-bottom:2px solid #db2777;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.search-icon{
+    font-size:28px;
+}
+
+.login{
+    border:1px solid #2563eb;
+    color:#2563eb;
+    background:white;
+    border-radius:24px;
+    padding:12px 24px;
+    font-weight:800;
+}
+
+.nav-dropdown{
+    position:relative;
+}
+
+.mega-toggle{
+    display:none;
+}
+
+.mega-menu{
+    display:none;
+    position:absolute;
+    top:38px;
+    left:0;
+    width:820px;
+    background:white;
+    padding:30px;
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+    z-index:999999;
+    grid-template-columns:1fr 1fr 1.3fr;
+    gap:40px;
+    border-radius:0 0 18px 18px;
+    border:1px solid #eef0f5;
+}
+
+.nav-dropdown:hover .mega-menu,
+.mega-toggle:checked + .nav-button + .mega-menu{
+    display:grid;
+}
+
+.mega-menu h3{
+    margin:0 0 15px;
+    font-size:20px;
+    color:#101828;
+}
+
+.mega-menu a{
+    display:block;
+    margin-bottom:12px;
+    color:#344054;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+}
+
+.mega-menu a:hover{
+    color:#2563eb;
+}
