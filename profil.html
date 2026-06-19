@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Profilim</title>
 
 <link rel="stylesheet" href="header.css">
@@ -18,7 +17,7 @@ body{
 
 .profile-page{
     width:90%;
-    max-width:900px;
+    max-width:760px;
     margin:40px auto;
 }
 
@@ -49,31 +48,6 @@ body{
     font-size:20px;
     font-weight:700;
 }
-
-.profile-actions{
-    margin-top:35px;
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.profile-btn{
-    border:none;
-    border-radius:12px;
-    padding:14px 22px;
-    cursor:pointer;
-    font-weight:800;
-}
-
-.blue-btn{
-    background:#2563eb;
-    color:white;
-}
-
-.red-btn{
-    background:#ef4444;
-    color:white;
-}
 </style>
 </head>
 
@@ -82,90 +56,46 @@ body{
 <div id="header-container"></div>
 
 <div class="profile-page">
-
     <div class="profile-card">
 
-        <div class="profile-title">
-            Profil Bilgileri
-        </div>
+        <div class="profile-title">Profil Bilgileri</div>
 
         <div class="profile-row">
-            <div class="profile-label">Ad Soyad</div>
-            <div class="profile-value" id="profileName">
-                -
-            </div>
+            <div class="profile-label">Kullanıcı Adı</div>
+            <div class="profile-value" id="profileName">-</div>
         </div>
 
         <div class="profile-row">
             <div class="profile-label">E-posta</div>
-            <div class="profile-value" id="profileEmail">
-                -
-            </div>
+            <div class="profile-value" id="profileEmail">-</div>
         </div>
 
-    <div class="profile-row">
-    <div class="profile-label">Kullanıcı Adı</div>
-    <div class="profile-value" id="profileName">-</div>
-</div>
-
-<div class="profile-row">
-    <div class="profile-label">E-posta</div>
-    <div class="profile-value" id="profileEmail">-</div>
-</div>
-
-<div class="profile-row">
-    <div class="profile-label">Kayıt Tarihi</div>
-    <div class="profile-value" id="profileDate">-</div>
-</div>
+        <div class="profile-row">
+            <div class="profile-label">Kayıt Tarihi</div>
+            <div class="profile-value" id="profileDate">-</div>
+        </div>
 
     </div>
-
 </div>
 
 <script>
-const savedName =
-localStorage.getItem("kb_user_name");
+const savedName = localStorage.getItem("kb_user_name");
+const savedEmail = localStorage.getItem("kb_user_email");
+const registerDate = localStorage.getItem("kb_register_date");
 
-const savedEmail =
-localStorage.getItem("kb_user_email");
-
-const registerDate =
-localStorage.getItem("kb_register_date");
-
-document.getElementById("profileName").textContent =
-savedName || "Profilim";
-
-document.getElementById("profileEmail").textContent =
-savedEmail || "-";
-
-document.getElementById("logoutProfileBtn")
-.addEventListener("click", function(){
-    document.getElementById("profileDate").textContent =
-registerDate || "-";
-
-    if(!confirm("Çıkış yapmak istiyor musun?")){
-        return;
-    }
-
-    localStorage.removeItem("kb_user_name");
-    localStorage.removeItem("kb_user_email");
-
-    location.href = "index.html";
-});
+document.getElementById("profileName").textContent = savedName || "-";
+document.getElementById("profileEmail").textContent = savedEmail || "-";
+document.getElementById("profileDate").textContent = registerDate || "-";
 </script>
 
 <script>
 fetch("header.html")
 .then(res => res.text())
 .then(data => {
-
     document.getElementById("header-container").innerHTML = data;
 
-    const script =
-    document.createElement("script");
-
+    const script = document.createElement("script");
     script.src = "header.js";
-
     document.body.appendChild(script);
 });
 </script>
