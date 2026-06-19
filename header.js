@@ -25,9 +25,21 @@ function loadAuth(){
               const authContainer = document.getElementById("auth-container");
 
               if(authContainer){
-                  authContainer.innerHTML = data;
-                  initAuth();
-              }
+    authContainer.innerHTML = data;
+
+    initAuth();
+
+    const profileScript = document.createElement("script");
+    profileScript.src = "profile.js";
+
+    profileScript.onload = function(){
+        if(typeof initProfile === "function"){
+            initProfile();
+        }
+    };
+
+    document.body.appendChild(profileScript);
+}
           });
     };
 
@@ -36,12 +48,3 @@ function loadAuth(){
 
 initHeader();
 loadAuth();
-const profileScript = document.createElement("script");
-profileScript.src = "profile.js";
-document.body.appendChild(profileScript);
-
-profileScript.onload = function(){
-    if(typeof initProfile === "function"){
-        initProfile();
-    }
-};
