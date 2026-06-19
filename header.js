@@ -15,6 +15,7 @@ function initHeader(){
 
 function loadAuth(){
     const script = document.createElement("script");
+    script.type = "module";
     script.src = "auth.js";
 
     script.onload = function(){
