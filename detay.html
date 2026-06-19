@@ -203,25 +203,112 @@ h1{
 .show-comments-btn:hover{
     opacity:.9;
 }
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:inherit;
+}
+
+nav{
+    display:flex;
+    gap:34px;
+    align-items:center;
+}
+
+.confession-nav{
+    color:#db2777!important;
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:22px!important;
+    border-bottom:2px solid #db2777;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.search-icon{
+    font-size:28px;
+}
+
+.login{
+    border:1px solid #2563eb;
+    color:#2563eb;
+    background:white;
+    border-radius:24px;
+    padding:12px 24px;
+    font-weight:800;
+}
+
+.nav-dropdown{
+    position:relative;
+}
+
+.mega-toggle{
+    display:none;
+}
+
+.nav-button{
+    color:#111;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+    display:inline-block;
+}
+
+.mega-menu{
+    display:none;
+    position:absolute;
+    top:38px;
+    left:0;
+    width:820px;
+    background:white;
+    padding:30px;
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+    z-index:999999;
+    grid-template-columns:1fr 1fr 1.3fr;
+    gap:40px;
+    border-radius:0 0 18px 18px;
+    border:1px solid #eef0f5;
+}
+
+.nav-dropdown:hover .mega-menu{
+    display:grid;
+}
+
+.mega-column h3,
+.mega-menu h3{
+    margin:0 0 15px;
+    font-size:20px;
+    color:#101828;
+}
+
+.mega-column a,
+.mega-menu a{
+    display:block;
+    margin-bottom:12px;
+    color:#344054;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+}
+
+.mega-column a:hover,
+.mega-menu a:hover{
+    color:#2563eb;
+}
 </style>
 </head>
 
 <body>
+
 <div class="page">
-
-<header>
-    <a href="index.html" class="logo-area">
-        <img src="images/logo.png" alt="Keşke Bilseydim Logo">
-        <div class="site-name">Keşke Bilseydim</div>
-    </a>
-
-    <nav>
-        <a href="index.html">ANA SAYFA</a>
-        <a href="ev.html">EV</a>
-        <a href="ev.html?alt=kira">EV KİRALAMAK</a>
-    </nav>
-</header>
-
+<div id="header-container"></div>
 <main class="article-detail">
     <div class="breadcrumb">
     <a href="index.html">Ana Sayfa</a>
@@ -297,7 +384,10 @@ h1{
     <a href="ev.html?alt=kira" class="back">← Ev Kiralamak deneyimlerine dön</a>
 </main>
 
+<div id="footer-container"></div>
+
 </div>
+
 <script>
 const comments = [
     ["Ayşe K.", "Ben de aynı şeyi yaşadım. Eve girerken video çekmek gerçekten şartmış."],
@@ -359,6 +449,20 @@ if(showAllBtn){
         showAllBtn.style.display = "none";
     };
 }
+</script>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+  });
+
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer-container").innerHTML = data;
+  });
 </script>
 </body>
 </html>
