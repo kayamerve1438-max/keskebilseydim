@@ -5,12 +5,9 @@ window.initProfile = function(){
 
     let savedName = localStorage.getItem("kb_user_name");
 
-    if(!savedName){
-        if(loginBtn.classList.contains("logged-in")){
-            savedName = loginBtn.textContent.trim() || "Profilim";
-        }else{
-            return;
-        }
+    if(!savedName || savedName === "Profilim"){
+        savedName = "Profilim";
+        localStorage.setItem("kb_user_name", savedName);
     }
 
     loginBtn.textContent = savedName;
@@ -33,15 +30,11 @@ window.initProfile = function(){
           loginBtn.onclick = function(e){
               e.preventDefault();
               e.stopPropagation();
-
               profileDropdown.classList.toggle("active");
           };
 
           document.addEventListener("click", function(e){
-              if(
-                  !profileDropdown.contains(e.target) &&
-                  e.target !== loginBtn
-              ){
+              if(!profileDropdown.contains(e.target) && e.target !== loginBtn){
                   profileDropdown.classList.remove("active");
               }
           });
