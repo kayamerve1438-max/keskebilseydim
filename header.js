@@ -36,3 +36,12 @@ function loadAuth(){
 
 initHeader();
 loadAuth();
+const profileScript = document.createElement("script");
+profileScript.src = "profile.js";
+document.body.appendChild(profileScript);
+
+profileScript.onload = function(){
+    if(typeof initProfile === "function"){
+        initProfile();
+    }
+};
