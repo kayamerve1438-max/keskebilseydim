@@ -1,61 +1,48 @@
 function initProfile(){
 
     const loginBtn = document.querySelector(".login");
-
     if(!loginBtn) return;
 
     const savedName = localStorage.getItem("kb_user_name");
-
     if(!savedName) return;
 
-   loginBtn.textContent = savedName;
-   loginBtn.classList.add("logged-in");
+    loginBtn.textContent = savedName;
+    loginBtn.classList.add("logged-in");
 
     fetch("profile.html")
-  
-      .then(res => {
-    console.log("PROFILE STATUS:", res.status);
-    return res.text();
-})
-      .then(data => {
-        console.log("PROFILE YÜKLENDİ");
+  .then(res => res.text())
+  .then(data => {
 
-          document.body.insertAdjacentHTML("beforeend", data);
+      console.log("PROFILE YÜKLENDİ");
+      console.log(data);
 
-          const profileDropdown = document.getElementById("profileDropdown");
-          console.log(profileDropdown);
+      document.body.insertAdjacentHTML("beforeend", data);
 
-          loginBtn.addEventListener("click", function(e){
+      const profileDropdown = document.getElementById("profileDropdown");
 
-              if(!loginBtn.classList.contains("logged-in")) return;
+      console.log(profileDropdown);
 
-              e.preventDefault();
+      loginBtn.addEventListener("click", function(e){
 
-              profileDropdown.classList.toggle("active");
-              console.log("AÇ/KAPA ÇALIŞTI");
-          });
+          if(!loginBtn.classList.contains("logged-in")) return;
 
-          document.addEventListener("click", function(e){
+          e.preventDefault();
 
-              if(
-                  !profileDropdown.contains(e.target) &&
-                  e.target !== loginBtn
-              ){
-                  profileDropdown.classList.remove("active");
-              }
-
-          });
-
-          const logoutBtn = document.getElementById("logoutBtn");
-
-          logoutBtn.addEventListener("click", function(){
-
-              localStorage.removeItem("kb_user_name");
-
-              location.reload();
-
-          });
-
+          profileDropdown.classList.toggle("active");
       });
 
+          document.addEventListener("click", function(e){
+              if(!profileDropdown.contains(e.target) && e.target !== loginBtn){
+                  profileDropdown.classList.remove("active");
+              }
+          });
+
+          if(logoutBtn){
+              logoutBtn.onclick = function(){
+                  localStorage.removeItem("kb_user_name");
+                  location.reload();
+              };
+          }
+
+      });
 }
