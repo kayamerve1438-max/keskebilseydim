@@ -853,6 +853,7 @@ button:hover,
 }
 </style>
 <link rel="stylesheet" href="premium.css?v=1">
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -900,15 +901,52 @@ button:hover,
 <div class="section-title">Popüler Kategoriler</div>
 
 <section class="category-grid">
-<a href="ev.html" class="category-card"><span>🏠</span>Ev</a>
-<a href="is.html" class="category-card"><span>💼</span>İş</a>
-<a href="yasam.html" class="category-card"><span>🌍</span>Yaşam</a>
-<a href="egitim.html" class="category-card"><span>🎓</span>Eğitim</a>
-<a href="sinema.html" class="category-card"><span>🎬</span>Sinema</a>
-<a href="kitap.html" class="category-card"><span>📚</span>Kitap</a>
-<a href="eglence.html" class="category-card"><span>🎉</span>Eğlence</a>
-<a href="para.html" class="category-card"><span>💰</span>Para</a>
-<a href="itiraflar.html" class="category-card confession-card"><span>💗</span>İtiraflarımız</a>
+
+<a href="ev.html" class="category-card">
+    <i data-lucide="building-2"></i>
+    <span>Ev</span>
+</a>
+
+<a href="is.html" class="category-card">
+    <i data-lucide="briefcase-business"></i>
+    <span>İş</span>
+</a>
+
+<a href="yasam.html" class="category-card">
+    <i data-lucide="compass"></i>
+    <span>Yaşam</span>
+</a>
+
+<a href="egitim.html" class="category-card">
+    <i data-lucide="brain"></i>
+    <span>Eğitim</span>
+</a>
+
+<a href="sinema.html" class="category-card">
+    <i data-lucide="film"></i>
+    <span>Sinema</span>
+</a>
+
+<a href="kitap.html" class="category-card">
+    <i data-lucide="library"></i>
+    <span>Kitap</span>
+</a>
+
+<a href="eglence.html" class="category-card">
+    <i data-lucide="sparkles"></i>
+    <span>Eğlence</span>
+</a>
+
+<a href="para.html" class="category-card">
+    <i data-lucide="badge-dollar-sign"></i>
+    <span>Para</span>
+</a>
+
+<a href="itiraflar.html" class="category-card confession-card">
+    <i data-lucide="message-circle-heart"></i>
+    <span>İtiraflarımız</span>
+</a>
+
 </section>
 <div class="ev-subcategories">
     <a href="ev.html?alt=komsular">Komşular</a>
@@ -1165,6 +1203,9 @@ fetch("footer.html")
   .then(data => {
     document.getElementById("footer-container").innerHTML = data;
   });
+</script>
+<script>
+lucide.createIcons();
 </script>
 </body>
 </html>

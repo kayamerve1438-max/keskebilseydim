@@ -1,55 +1,88 @@
 body{
-    background:#eef3fb !important;
+    background:#0f172a !important;
 }
 
 .page{
-    max-width:1180px !important;
-    margin:28px auto 50px !important;
-    background:linear-gradient(135deg,#ffffff,#f8fbff) !important;
-    border-radius:30px !important;
-    padding:55px 70px !important;
-    box-shadow:0 30px 90px rgba(15,23,42,.14) !important;
-}
-
-.hero,
-.hero-section{
-    min-height:420px !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    padding:70px 9vw !important;
+    background:linear-gradient(135deg,#111827 0%,#1e293b 45%,#0f172a 100%) !important;
+    box-shadow:none !important;
+    color:white !important;
 }
 
 h1{
-    font-size:56px !important;
-    line-height:1.05 !important;
-    letter-spacing:-2px !important;
+    font-size:64px !important;
+    line-height:1.02 !important;
+    letter-spacing:-2.5px !important;
+    color:#f8fafc !important;
+    font-weight:950 !important;
+}
+
+.hero p,
+.page p{
+    color:#cbd5e1 !important;
 }
 
 .search-box,
-.search-area,
-.search-wrapper{
-    transform:scale(1.08) !important;
-    transform-origin:left center !important;
-    box-shadow:0 22px 50px rgba(37,99,235,.20) !important;
+.search-area{
+    background:white !important;
+    border-radius:18px !important;
+    box-shadow:0 25px 60px rgba(0,0,0,.35) !important;
 }
 
 .category-card{
+    background:rgba(255,255,255,.08) !important;
+    border:1px solid rgba(255,255,255,.14) !important;
+    color:white !important;
     border-radius:22px !important;
-    box-shadow:0 16px 35px rgba(15,23,42,.10) !important;
-    border:1px solid #eaf0ff !important;
-    transition:.25s !important;
+    backdrop-filter:blur(12px);
+    box-shadow:0 18px 45px rgba(0,0,0,.22) !important;
 }
 
 .category-card:hover{
+    background:rgba(255,255,255,.14) !important;
     transform:translateY(-6px) !important;
 }
 
-.experience-card,
-.card{
-    border-radius:24px !important;
-    box-shadow:0 20px 50px rgba(15,23,42,.12) !important;
+.category-card img,
+.category-card .icon,
+.category-card span:first-child{
+    filter:none !important;
 }
 
-.confession-card,
-.itiraf-card{
+.category-card a,
+.category-card div,
+.category-card span{
+    color:white !important;
+}
+
+.tag,
+.subcategory,
+.chip{
+    background:rgba(255,255,255,.10) !important;
+    color:#e0f2fe !important;
+    border:1px solid rgba(255,255,255,.16) !important;
+}
+
+.card,
+.experience-card,
+.recent-card{
+    background:rgba(255,255,255,.96) !important;
+    color:#0f172a !important;
+    border-radius:24px !important;
+}
+
+.itiraf-card,
+.confession-card{
+    background:linear-gradient(135deg,#be185d,#6d28d9) !important;
+    color:white !important;
     border-radius:28px !important;
-    background:linear-gradient(135deg,#db2777,#7c3aed) !important;
-    box-shadow:0 25px 60px rgba(219,39,119,.30) !important;
+}
+
+footer{
+    background:#0f172a !important;
+    color:#94a3b8 !important;
 }
