@@ -175,8 +175,7 @@ list.innerHTML = notifications.map(item => {
     const isRead = readNotifications.includes(item.id);
 
     return `
-        <a class="notification-item ${(!isRead && item.unread) ? "unread" : ""}" href="${item.url}">
-            <div class="notification-type ${item.className}">
+<a class="notification-item ${(!isRead && item.unread) ? "unread" : ""}" href="${item.url}" data-id="${item.id}">            <div class="notification-type ${item.className}">
                 ${item.type === "Beğeni" ? "❤️ Beğeni" : "💬 Yorum"}
             </div>
             <div class="notification-text">${item.text}</div>
@@ -184,7 +183,23 @@ list.innerHTML = notifications.map(item => {
         </a>
     `;
 }).join("");
+document.querySelectorAll(".notification-item").forEach(item => {
+    item.addEventListener("click", function(){
+        const id = Number(item.dataset.id);
 
+        let read =
+        JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+
+        if(!read.includes(id)){
+            read.push(id);
+        }
+
+        localStorage.setItem(
+            "kb_read_notifications",
+            JSON.stringify(read)
+        );
+    });
+});
 document.getElementById("markAllRead").onclick = function(){
     const allIds = notifications.map(x => x.id);
 

@@ -23,6 +23,23 @@ window.initProfile = function(){
           document.body.insertAdjacentHTML("beforeend", data);
 
           const profileDropdown = document.getElementById("profileDropdown");
+          const notificationBadge = document.getElementById("notificationBadge");
+
+const totalUnreadNotifications = 2; 
+const readNotifications =
+JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+
+const unreadCount = Math.max(totalUnreadNotifications - readNotifications.length, 0);
+
+if(notificationBadge){
+    if(unreadCount > 0){
+        notificationBadge.textContent = unreadCount;
+        notificationBadge.style.display = "flex";
+    }else{
+        notificationBadge.textContent = "0";
+        notificationBadge.style.display = "none";
+    }
+}
           const logoutBtn = document.getElementById("logoutBtn");
 
           if(!profileDropdown) return;
