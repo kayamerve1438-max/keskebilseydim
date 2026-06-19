@@ -208,8 +208,7 @@ if(typeof window.initProfile === "function"){
             const user = result.user;
 
             localStorage.setItem("kb_user_name", user.displayName || "Profilim");
-            localStorage.setItem(
-    "kb_user_email",
+            localStorage.setItem(    "kb_user_email",
     user.email || ""
 );
 
