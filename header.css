@@ -1,334 +1,122 @@
-/* ORTAK HEADER CSS */
-
-header{
-    height:78px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 5%;
-    border-bottom:1px solid #eef0f5;
-    position:relative;
-    z-index:1000;
-    overflow:visible;
-}
-
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    text-decoration:none;
-    color:inherit;
-    cursor:pointer;
-}
-
-.logo-area img{
-    height:54px;
-}
-
-.site-name{
-    font-size:26px;
-    font-weight:900;
-    color:#2563eb;
-}
-
-nav{
-    display:flex;
-    gap:34px;
-    align-items:center;
-}
-
-nav a,
-.nav-button{
-    color:#111;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:900;
-    cursor:pointer;
-}
-
-.confession-nav{
-    color:#db2777!important;
-    font-family:Georgia, serif;
-    font-style:italic;
-    font-size:22px!important;
-    border-bottom:2px solid #db2777;
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:22px;
-}
-
-.search-icon{
-    font-size:28px;
-}
-
-.login{
-    border:1px solid #2563eb;
-    color:#2563eb;
-    background:white;
-    border-radius:24px;
-    padding:12px 24px;
-    font-weight:800;
-}
-
-.nav-dropdown{
-    position:relative;
-}
-
-.mega-toggle{
-    display:none;
-}
-
-.mega-menu{
-    display:none;
-    position:absolute;
-    top:38px;
-    left:0;
-    width:820px;
-    background:white;
-    padding:30px;
-    box-shadow:0 18px 35px rgba(0,0,0,.18);
-    z-index:999999;
-    grid-template-columns:1fr 1fr 1.3fr;
-    gap:40px;
-    border-radius:0 0 18px 18px;
-    border:1px solid #eef0f5;
-}
-
-.nav-dropdown:hover .mega-menu,
-.mega-toggle:checked + .nav-button + .mega-menu{
-    display:grid;
-}
-
-.mega-menu h3{
-    margin:0 0 15px;
-    font-size:20px;
-    color:#101828;
-}
-
-.mega-menu a{
-    display:block;
-    margin-bottom:12px;
-    color:#344054;
-    text-decoration:none;
-    font-weight:600;
-    font-size:15px;
-}
-
-.mega-menu a:hover{
-    color:#2563eb;
-}
-.active-nav{
-    color:#2563eb!important;
-    border-bottom:3px solid #2563eb;
-    padding-bottom:6px;
-}
-a,
-button {
-    cursor: pointer;
-}
-/* PREMIUM HEADER UPDATE */
-
-header{
-    height:96px !important;
-    padding:0 6% !important;
-    background:rgba(255,255,255,.96) !important;
-    backdrop-filter:blur(14px);
-    box-shadow:0 12px 35px rgba(15,23,42,.08);
-    position:sticky;
-    top:0;
-    z-index:99999;
-}
-
-.logo-area img{
-    height:74px !important;
-}
-
-.site-name{
-    font-size:36px !important;
-    font-weight:950 !important;
-    letter-spacing:-1.4px !important;
-    color:#0f172a !important;
-}
-
-nav{
-    gap:26px !important;
-}
-
-nav a,
-.nav-button{
-    font-size:14px !important;
-    font-weight:850 !important;
-    letter-spacing:.5px !important;
-    color:#111827 !important;
-    transition:.22s ease;
-}
-
-nav a:hover,
-.nav-button:hover{
-    color:#2563eb !important;
-    transform:translateY(-2px);
-}
-
-.confession-nav{
-    color:#db2777 !important;
-    font-size:20px !important;
-    border-bottom:0 !important;
-}
-
-.login{
-    border:0 !important;
-    background:#0f172a !important;
-    color:white !important;
-    border-radius:999px !important;
-    padding:13px 24px !important;
-    box-shadow:0 12px 26px rgba(15,23,42,.18);
-}
-
-.search-icon{
-    font-size:24px !important;
-    color:#0f172a;
-}
-
-.mega-menu{
-    top:56px !important;
-    background:white !important;
-    border-radius:24px !important;
-    box-shadow:0 30px 80px rgba(15,23,42,.18) !important;
-    border:1px solid #eef2ff !important;
-    padding:34px !important;
-}
-
-.mega-menu h3{
-    font-size:18px !important;
-    color:#0f172a !important;
-}
-
-.mega-menu a{
-    font-size:15px !important;
-    color:#475569 !important;
-    padding:6px 0;
-}
-
-.mega-menu a:hover{
-    color:#2563eb !important;
-}
-.kb-top-cats{
-    width:100%;
-    background:#0f172a;
-    padding:18px 6%;
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    border-top:1px solid rgba(255,255,255,.06);
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.kb-top-cats a{
-    width:120px;
-    height:74px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:14px;
-    color:white;
-    text-decoration:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:7px;
-    font-weight:900;
-    box-shadow:0 8px 22px rgba(0,0,0,.18);
-    transition:.25s ease;
-}
-
-.kb-top-cats a:hover{
-    transform:translateY(-4px);
-    background:rgba(255,255,255,.14);
-}
-
-.kb-top-cats svg{
-    width:22px;
-    height:22px;
-    color:#e5e7eb;
-}
-
-.kb-top-cats span{
-    font-size:20px;
-    text-decoration:underline;
-    text-underline-offset:4px;
-}
-
-.kb-top-cats .pink{
-    background:linear-gradient(135deg,#db2777,#9333ea);
-}
 /* ========================================================
-   YENİ ÜST MENÜ BUTON VE RENK DÜZENLEMELERİ
+   Sıfırdan Düzenlenmiş Header ve Navigasyon CSS Dosyası
    ======================================================== */
 
-/* Üst navigasyon alanını yan yana düzgünce hizalar */
-/* ========================================================
-   YENİ ÜST MENÜ BUTON VE RENK DÜZENLEMELERİ
-   ======================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    background-color: #ffffff !important; /* Üst bar tamamen beyaz */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1000;
+}
 
-/* Üst navigasyon alanını yan yana düzgünce hizalar */
-header nav.kb-top-cats {
+.logo-area {
     display: flex;
     align-items: center;
-    gap: 8px; /* Butonların arasındaki boşluk */
+    gap: 10px;
+    text-decoration: none;
+    color: #1e293b;
 }
 
-/* Butonların genel tasarımı (Arka plan beyaz, yazılar görünür) */
-header nav.kb-top-cats a, 
+.logo-area img {
+    height: 40px;
+}
+
+.site-name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Butonların Yan Yana Düzgün Sıralanması */
+header nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* Tüm Menü Butonlarının Yeni Tasarımı */
+header nav a, 
 header .nav-button {
     display: flex !important;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    background-color: #f1f5f9; /* Hafif grimsi beyaz buton arka planı */
-    color: #1e293b !important; /* Yazı rengi koyu gri/siyah (okunabilir) */
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid #e2e8f0;
-    cursor: pointer;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 8px 14px !important;
+    background-color: #f1f5f9 !important; /* Buton içi hafif gri-beyaz */
+    color: #1e293b !important; /* Yazılar koyu, net okunur */
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid #e2e8f0 !important;
+    cursor: pointer !important;
 }
 
-/* Mouse ile butonların üzerine gelindiğinde (Hover durumu) */
-header nav.kb-top-cats a:hover, 
+/* Fareyle üzerine gelince (Hover) */
+header nav a:hover, 
 header .nav-button:hover {
-    background-color: #e2e8f0;
+    background-color: #e2e8f0 !important;
     color: #0f172a !important;
 }
 
-/* İtiraflarımız butonunun özel pembe rengini korur */
-header nav.kb-top-cats a.pink {
-    background: linear-gradient(135deg, #db2777, #9333ea);
+/* İtiraflarımız Butonunun Özel Rengi */
+header nav a.pink {
+    background: linear-gradient(135deg, #db2777, #9333ea) !important;
     color: #ffffff !important;
+    border: none !important;
+}
+
+/* Sağ taraftaki Giriş Yap ve Arama Alanı */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.login {
+    padding: 8px 16px;
+    background-color: #0f172a;
+    color: white;
     border: none;
-}
-header nav.kb-top-cats a.pink:hover {
-    opacity: 0.9;
-}
-
-/* EV butonunun checkbox kutusunu gizler */
-header .mega-toggle {
-    display: none;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-/* EV menüsünün dropdown kapsayıcısı */
-header .nav-dropdown {
+/* Dropdown ve Mega Menü Ayarları */
+.nav-dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Büyük beyaz açılır kutunun (Mega Menu) konumunu üst menüye göre ayarlar */
-header .mega-menu {
-    top: 45px; /* Menünün hemen altında açılması için */
+.mega-toggle {
+    display: none !important;
+}
+
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
     left: 0;
+    background: #ffffff;
+    box-shadow: 0px 8px 24px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 999;
+    width: 600px;
+}
+
+/* Checkbox tıklanınca menüyü açma mantığı */
+.mega-toggle:checked ~ .mega-menu {
+    display: flex !important;
+    gap: 20px;
 }
