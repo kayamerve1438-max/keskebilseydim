@@ -1120,5 +1120,67 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Dinamik Arama Kutusu (Yazıcı Efekti)
+    const searchInput = document.querySelector(".search-box input");
+    if (searchInput) {
+        const aramaMetinleri = [
+            "Ev almadan önce komşuları nasıl araştırırım?",
+            "Yüksek maaş için iş değiştirmeli miyim?",
+            "Üniversitede bu bölümü seçmeli miyim?",
+            "Ev kiralamadan önce depozitoyu nasıl garantiye alırım?",
+            "Başka bir şehre taşınırken neye dikkat etmeliyim?"
+        ];
+        
+        let metinIndeksi = 0;
+        let karakterIndeksi = 0;
+        let siliniyorMu = false; // Türkçe karakter ve boşluk hatası düzeltildi
+        
+        function placeholderYaz() {
+            const mevcutMetin = aramaMetinleri[metinIndeksi];
+            
+            if (!siliniyorMu) {
+                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi + 1));
+                karakterIndeksi++;
+                
+                if (karakterIndeksi === mevcutMetin.length) {
+                    siliniyorMu = true;
+                    setTimeout(placeholderYaz, 2000); // Cümle bitince 2 saniye bekle
+                    return;
+                }
+            } else {
+                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi - 1));
+                karakterIndeksi--;
+                
+                if (karakterIndeksi === 0) {
+                    siliniyorMu = false;
+                    metinIndeksi = (metinIndeksi + 1) % aramaMetinleri.length;
+                }
+            }
+            
+            setTimeout(placeholderYaz, siliniyorMu ? 30 : 60);
+        }
+        
+        placeholderYaz();
+    }
+
+    // 2. Bilge Kedi'nin Konuşma Balonunu Rastgele Canlandırma
+    const kediBalonu = document.querySelector(".speech");
+    if (kediBalonu) {
+        const kediSozleri = [
+            "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
+            "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
+            "Maaşına bakıp iş seçtin ama huzurun nerede? Mırr.. 💼",
+            "Ev kiralarken her köşenin fotoğrafını çekmeyi unutma! 📸",
+            "Keşke bilseydim demek istemiyorsan, doğru yerdesin. 😼"
+        ];
+        
+        // Sayfa her açıldığında ya da yenilendiğinde listeden rastgele bir söz seçer
+        const rastgeleSoz = kediSozleri[Math.floor(Math.random() * kediSozleri.length)];
+        kediBalonu.childNodes[0].textContent = rastgeleSoz;
+    }
+});
+</script>
 </body>
 </html>
