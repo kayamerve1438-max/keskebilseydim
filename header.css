@@ -270,6 +270,11 @@ nav a:hover,
    ======================================================== */
 
 /* Üst navigasyon alanını yan yana düzgünce hizalar */
+/* ========================================================
+   YENİ ÜST MENÜ BUTON VE RENK DÜZENLEMELERİ
+   ======================================================== */
+
+/* Üst navigasyon alanını yan yana düzgünce hizalar */
 header nav.kb-top-cats {
     display: flex;
     align-items: center;
