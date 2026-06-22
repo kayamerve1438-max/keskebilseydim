@@ -8,25 +8,26 @@
 
 <style>
 /* 1. KÜRESEL AYARLAR VE LÜKS GECE MODU */
+:root { color-scheme: dark; }
 *{box-sizing:border-box}
 
 body {
     margin: 0;
     font-family: 'Inter', Arial, sans-serif;
-    background-color: #0B0F19; /* Derin Gece Mavisi Siyahı */
-    color: #F3F4F6;
+    background-color: #0B0F19 !important; /* !important ekledik */
+    color: #F3F4F6 !important; /* !important ekledik */
     background-image: 
         radial-gradient(circle at 5% 15%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 95% 75%, rgba(255, 46, 147, 0.07) 0%, transparent 40%);
+        radial-gradient(circle at 95% 75%, rgba(255, 46, 147, 0.07) 0%, transparent 40%) !important;
     background-attachment: fixed;
 }
 
-/* ANA SARMALAYICI (GLASSMORPHISM CAM EFEKTİ) */
+/* ANA SARMALAYICI */
 .page {
     width: 92%;
     max-width: 1200px;
     margin: 40px auto 60px;
-    background: rgba(21, 30, 50, 0.5);
+    background: rgba(21, 30, 50, 0.5) !important; /* !important ekledik */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -63,6 +64,7 @@ header {
 .hero h1 .gradient-text {
     background: linear-gradient(135deg, #00D2FF, #FF2E93);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
 }
