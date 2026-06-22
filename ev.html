@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keşke Bilseydim</title>
+    <title>Keşke Bilseydim - Ev</title>
 
 <style>
 *{box-sizing:border-box}
@@ -23,7 +23,7 @@ body{
     margin:30px auto;
     background:#f8f9fd;
     box-shadow:0 18px 45px rgba(0,0,0,.12);
-    overflow:hidden;
+    overflow:visible; /* Tasarımların taşmaması için visible yapıldı */
 }
 
 /* HEADER */
@@ -41,14 +41,12 @@ header{
     display:flex;
     align-items:center;
     gap:14px;
+    text-decoration:none;
+    color:inherit;
 }
 
 .logo-area img{
     height:54px;
-}
-.logo-area{
-    text-decoration:none;
-    color:inherit;
 }
 
 .site-name{
@@ -173,96 +171,6 @@ nav a{
     background:white;
     color:#2563eb;
     border:1px solid #2563eb;
-}
-
-/* BİLGE KEDİ KAPSAYICI ALANI */
-.cat-hero{
-    position:relative;
-    height:360px;
-}
-
-/* Konuşma Balonunun Sabitlenmiş ve Okunabilir Yeni Tasarımı */
-.speech{
-    position:absolute;
-    left:240px; /* Kedinin hemen sağına sabitledik */
-    top:50px;
-    width:260px;
-    background:white;
-    border:2px solid #eadfd4;
-    border-radius:20px; /* Yazıların sığması için oval kutu yapıldı */
-    padding:18px 22px;
-    font-family:Georgia, serif;
-    font-size:15px;
-    line-height:1.5;
-    text-align:center;
-    box-shadow:0 8px 24px rgba(0,0,0,0.06);
-    z-index:10;
-}
-
-/* Balonun Kediyi Gösteren Oku */
-.speech:before{
-    content:"";
-    position:absolute;
-    left:-14px; /* Sol taraftaki kediye doğru bakar */
-    top:35px;
-    border-width:10px 14px 10px 0;
-    border-style:solid;
-    border-color:transparent white transparent transparent;
-    filter: drop-shadow(-2px 0px 1px #eadfd4);
-}
-
-.speech:after{
-    content:"🐾";
-    color:#ef3f7a;
-    display:block;
-    font-size:16px;
-    margin-top:6px;
-}
-
-/* Kedi Görselinin Sabit Konumu */
-.bilge-kedi_img{
-    position:absolute;
-    width:160px;
-    left:50px; /* Sol tarafta sabit duracak */
-    top:80px;
-    transition:all .4s ease;
-    z-index:2;
-}
-
-/* CATEGORIES */
-.section-title{
-    padding:0 7%;
-    font-size:24px;
-    font-weight:900;
-    margin-top:18px;
-}
-
-.category-grid{
-    padding:20px 7% 22px;
-    display:grid;
-    grid-template-columns:repeat(9,1fr);
-    gap:18px;
-}
-
-.category-card{
-    background:white;
-    border-radius:16px;
-    height:110px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    font-weight:900;
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
-}
-
-.category-card span{
-    font-size:34px;
-}
-
-.confession-card{
-    color:#db2777;
 }
 
 /* CONTENT */
@@ -417,8 +325,6 @@ footer,
 @media(max-width:1000px){
     nav{display:none}
     .hero{grid-template-columns:1fr}
-    .cat-hero{display:none}
-    .category-grid{grid-template-columns:repeat(3,1fr)}
     .main-content{grid-template-columns:1fr}
     .side-grid{grid-template-columns:1fr}
 }
@@ -447,22 +353,6 @@ footer,
     background:#2563eb;
     color:white;
     transform:translateY(-2px);
-}
-.nav-dropdown{
-    position:relative;
-}
-
-.mega-toggle{
-    display:none;
-}
-
-.nav-button{
-    color:#111;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:900;
-    cursor:pointer;
-    display:inline-block;
 }
 
 .mega-menu{
@@ -503,6 +393,7 @@ footer,
 .mega-menu a:hover{
     color:#2563eb;
 }
+
 .article-list-section{
     padding:30px 7%;
     display:none;
@@ -554,19 +445,12 @@ footer,
     color:#2563eb;
     font-weight:900;
 }
+
 body:has(.article-list-section[style*="block"]) .hero{
     padding-top:25px;
     padding-bottom:5px;
 }
 
-body:has(.article-list-section[style*="block"]) .cat-hero{
-    height:260px;
-}
-body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
-    width:120px !important;
-    top:40px !important;
-    left:20px !important;
-}
 .article-meta{
     margin-top:10px;
     font-size:14px;
@@ -686,41 +570,9 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const kedi = document.getElementById("bilgeKedi");
-    const balon = document.querySelector(".speech");
     const searchInput = document.querySelector(".search-box input");
 
-    // 1. TAM DÜZELTİLMİŞ VE KİLİTLENMİŞ BİLGE KEDİ SÖZLERİ FONKSİYONU
-    const sozler = [
-        "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
-        "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
-        "Maaşına bakıp iş seçtin ama huzurun nerede? Mırr.. 💼",
-        "Ev kiralarken her köşenin fotoğrafını çekmeyi unutma! 📸",
-        "Keşke bilseydim demek istemiyorsan, doğru yerdesin. 😼",
-        "Sen onu benim patime anlat. 🐾",
-        "Kitaplarımı taradım, mantığını bulamadım. 📚",
-        "Düşünmüşsün... ama yeterince değil. 🧠",
-        "Ben bile bu kadar meraklı değilim. 🐈"
-    ];
-
-    function yeniKediGetir(){
-        const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
-        const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
-
-        if(kedi && balon) {
-            kedi.style.opacity = "0";
-            setTimeout(() => {
-                kedi.src = `images/kedi_${rastgeleNumara}.png`;
-                balon.textContent = rastgeleSoz; // Yazıyı balona tam oturtur
-                kedi.style.opacity = "1";
-            }, 300);
-        }
-    }
-
-    yeniKediGetir();
-    setInterval(yeniKediGetir, 10000); // Her 10 saniyede bir yeni söz ve kedi gelir
-
-    // 2. DAKTİLO EFEKTİ (SEARCH PLACEHOLDER ANIMATION)
+    // DAKTİLO EFEKTİ (SEARCH PLACEHOLDER ANIMATION)
     if (searchInput) {
         const aramaMetinleri = [
             "Ev almadan önce komşuları nasıl araştırırım?",
@@ -801,8 +653,6 @@ if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
     document.querySelector(".hero h1").style.display = "none";
     document.querySelector(".hero p").style.display = "none";
     document.querySelector(".article-list-section").style.display = "block";
-    document.querySelector(".section-title")?.style.setProperty("display", "none");
-    document.querySelector(".category-grid")?.style.setProperty("display", "none");
     document.querySelector(".main-content")?.style.setProperty("display", "none");
 
     const veri = altKategoriIcerikleri[secilenAlt];

@@ -34,7 +34,6 @@ header{
     justify-content:space-between;
     padding:0 5%;
     border-bottom:1px solid #eef0f5;
-
     position:relative;
     z-index:1000;
     overflow:visible;
@@ -172,179 +171,6 @@ nav a{
     background:white;
     color:#2563eb;
     border:1px solid #2563eb;
-}
-
-/* CAT ILLUSTRATION */
-.cat-hero{
-    position:relative;
-    height:360px;
-}
-
-.speech{
-    position:absolute;
-    right:20px;
-    top:30px;
-    width:250px;
-    background:white;
-    border:2px solid #eadfd4;
-    border-radius:45% 45% 45% 45%;
-    padding:34px 28px;
-    font-family:Georgia, serif;
-    font-size:18px;
-    line-height:1.5;
-    text-align:center;
-}
-
-.speech:before{
-    content:"";
-    position:absolute;
-    left:-30px;
-    top:90px;
-    border-width:18px 30px 18px 0;
-    border-style:solid;
-    border-color:transparent #eadfd4 transparent transparent;
-}
-
-.speech:after{
-    content:"♡";
-    color:#ef3f7a;
-    display:block;
-    font-size:24px;
-    margin-top:8px;
-}
-
-.book-stack{
-    position:absolute;
-    left:95px;
-    bottom:0;
-    width:310px;
-    height:300px;
-}
-
-.book{
-    position:absolute;
-    width:270px;
-    height:42px;
-    left:20px;
-    border-radius:8px;
-    box-shadow:0 7px 12px rgba(0,0,0,.12);
-}
-
-.book1{bottom:0;background:#f59e0b}
-.book2{bottom:44px;background:#8dd3c7}
-.book3{bottom:88px;background:#f8c9c9}
-.book4{bottom:132px;background:#f97316}
-
-.book:after{
-    content:"";
-    position:absolute;
-    left:35px;
-    right:35px;
-    top:18px;
-    height:3px;
-    background:rgba(255,255,255,.8);
-    border-radius:5px;
-}
-
-.big-cat{
-    position:absolute;
-    left:100px;
-    bottom:155px;
-    width:180px;
-    height:190px;
-}
-
-.cat-body{
-    position:absolute;
-    left:54px;
-    top:70px;
-    width:84px;
-    height:110px;
-    background:#c8b4a2;
-    border-radius:45% 45% 35% 35%;
-}
-
-.cat-head{
-    position:absolute;
-    left:38px;
-    top:0;
-    width:110px;
-    height:92px;
-    background:#d6c3b1;
-    border-radius:50%;
-}
-
-.cat-ear{
-    position:absolute;
-    top:-10px;
-    width:34px;
-    height:34px;
-    background:#d6c3b1;
-    transform:rotate(45deg);
-}
-
-.cat-ear.left{left:16px}
-.cat-ear.right{right:16px}
-
-.cat-glasses span{
-    position:absolute;
-    top:32px;
-    width:43px;
-    height:43px;
-    border:4px solid #ef4444;
-    border-radius:50%;
-    z-index:4;
-}
-
-.cat-glasses span:first-child{left:12px}
-.cat-glasses span:last-child{right:12px}
-
-.cat-glasses:after{
-    content:"";
-    position:absolute;
-    top:53px;
-    left:52px;
-    width:10px;
-    height:4px;
-    background:#ef4444;
-}
-
-.cat-eye{
-    position:absolute;
-    top:47px;
-    width:11px;
-    height:11px;
-    background:#111;
-    border-radius:50%;
-    z-index:5;
-}
-
-.cat-eye.left{left:30px}
-.cat-eye.right{right:30px}
-
-.cat-mouth{
-    position:absolute;
-    top:64px;
-    left:48px;
-    font-size:18px;
-}
-
-.cat-paw{
-    position:absolute;
-    right:22px;
-    bottom:-4px;
-    width:70px;
-    height:24px;
-    background:#c8b4a2;
-    border-radius:50px;
-    transform:rotate(-10deg);
-}
-
-.cat-lines{
-    position:absolute;
-    left:55px;
-    top:95px;
-    font-size:32px;
 }
 
 /* CATEGORIES */
@@ -535,19 +361,11 @@ footer,
 @media(max-width:1000px){
     nav{display:none}
     .hero{grid-template-columns:1fr}
-    .cat-hero{display:none}
     .category-grid{grid-template-columns:repeat(3,1fr)}
     .main-content{grid-template-columns:1fr}
     .side-grid{grid-template-columns:1fr}
 }
-.bilge-kedi_img{
-    position:absolute;
-    width:150px;
-    left:300px;
-    top:145px;
-    transition:all .5s ease;
-    z-index:2;
-}
+
 .ev-subcategories{
     padding:0 7% 25px;
     display:flex;
@@ -572,220 +390,8 @@ footer,
     background:#2563eb;
     color:white;
     transform:translateY(-2px);
-
 }
 
-.nav-dropdown{
-    position:relative;
-}
-
-.mega-toggle{
-    display:none;
-}
-
-.nav-button{
-    color:#111;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:900;
-    cursor:pointer;
-    display:inline-block;
-}
-
-.mega-menu{
-    display:none;
-    position:absolute;
-    top:38px;
-    left:0;
-    width:820px;
-    background:white;
-    padding:30px;
-    box-shadow:0 18px 35px rgba(0,0,0,.18);
-    z-index:999999;
-    grid-template-columns:1fr 1fr 1.3fr;
-    gap:40px;
-    border-radius:0 0 18px 18px;
-    border:1px solid #eef0f5;
-}
-
-.mega-toggle:checked + .nav-button + .mega-menu,
-
-
-
-.mega-column h3,
-.mega-menu h3{
-    margin:0 0 15px;
-    font-size:20px;
-    color:#101828;
-}
-
-.mega-column a,
-.mega-menu a{
-    display:block;
-    margin-bottom:12px;
-    color:#344054;
-    text-decoration:none;
-    font-weight:600;
-    font-size:15px;
-}
-
-.mega-column a:hover,
-.mega-menu a:hover{
-    color:#2563eb;
-}
-.auth-modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-}
-
-.auth-modal.active{
-    display:flex;
-}
-
-.auth-box{
-    width:90%;
-    max-width:430px;
-    background:white;
-    border-radius:8px;
-    padding:26px 34px 30px;
-    position:relative;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-
-.auth-close{
-    position:absolute;
-    top:10px;
-    right:14px;
-    border:0;
-    background:transparent;
-    font-size:34px;
-    color:#aaa;
-    cursor:pointer;
-}
-
-.auth-box h2{
-    text-align:center;
-    margin:0 0 34px;
-    font-size:28px;
-    color:#444;
-}
-
-.auth-register-text{
-    font-size:15px;
-    color:#555;
-    margin-bottom:28px;
-}
-
-.auth-register-text span{
-    color:#22c55e;
-    font-weight:800;
-}
-.auth-name-field{
-    display:none;
-}
-
-.auth-box.register-mode .auth-name-field{
-    display:block;
-}
-
-.auth-register-text button{
-    border:0;
-    background:transparent;
-    color:#22c55e;
-    font-weight:900;
-    cursor:pointer;
-}
-.auth-box input{
-    width:100%;
-    box-sizing:border-box;
-    height:48px;
-    padding:0 12px;
-    border:1px solid #d8dde6;
-    border-radius:5px;
-    margin-bottom:14px;
-    font-size:15px;
-}
-
-.password-wrap{
-    position:relative;
-}
-
-.password-wrap input{
-    padding-right:45px;
-}
-
-.eye{
-    position:absolute;
-    right:14px;
-    top:13px;
-    cursor:pointer;
-}
-
-.auth-main-btn{
-    width:100%;
-    height:50px;
-    border:0;
-    border-radius:6px;
-    background:#86d39b;
-    color:white;
-    font-size:17px;
-    font-weight:900;
-    cursor:pointer;
-}
-
-.forgot-pass{
-    display:block;
-    margin:10px 0 20px;
-    color:#777;
-    text-decoration:none;
-    font-size:14px;
-}
-
-.or-line{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin:10px 0 24px;
-    color:#aaa;
-    font-size:13px;
-}
-
-.or-line span{
-    flex:1;
-    height:1px;
-    background:#ddd;
-}
-
-.social-btn{
-    width:100%;
-    height:46px;
-    background:white;
-    border:1px solid #d8dde6;
-    border-radius:6px;
-    margin-bottom:10px;
-    color:#555;
-    font-size:15px;
-    cursor:pointer;
-}
-
-.auth-legal{
-    margin-top:20px;
-    color:#777;
-    font-size:11px;
-    line-height:1.5;
-    text-align:center;
-}
-
-.auth-message{
-    text-align:center;
-    font-size:14px;
-    font-weight:700;
-}
 body{
     background:linear-gradient(180deg,#f3f6ff 0%,#eef1f8 45%,#f7f9fc 100%);
 }
@@ -821,9 +427,7 @@ h1{
 
 button,
 .category-card,
-.tag,
-.notification-item,
-.profile-card{
+.tag{
     transition:.25s ease;
 }
 
@@ -838,19 +442,6 @@ button:hover,
     border:1px solid #eef2ff;
     background:linear-gradient(180deg,#fff,#f8fbff);
 }
-
-.card,
-.experience-card{
-    border:1px solid #eef2ff;
-    box-shadow:0 18px 45px rgba(15,23,42,.08);
-    border-radius:22px;
-}
-
-.itiraf-card,
-.confession-card{
-    background:linear-gradient(135deg,#db2777,#7c3aed)!important;
-    box-shadow:0 22px 50px rgba(219,39,119,.25);
-}
 </style>
 <link rel="stylesheet" href="premium.css?v=1">
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -859,339 +450,164 @@ button:hover,
 <body>
 
 <div id="header-container"></div>
-
 <div id="auth-container"></div>
+
 <div class="top-category-strip">
-
-<section class="category-grid">
-
-<a href="ev.html" class="category-card">
-<i data-lucide="building-2"></i>
-<span>Ev</span>
-</a>
-
-<a href="is.html" class="category-card">
-<i data-lucide="briefcase-business"></i>
-<span>İş</span>
-</a>
-
-<a href="yasam.html" class="category-card">
-<i data-lucide="compass"></i>
-<span>Yaşam</span>
-</a>
-
-<a href="egitim.html" class="category-card">
-<i data-lucide="brain"></i>
-<span>Eğitim</span>
-</a>
-
-<a href="sinema.html" class="category-card">
-<i data-lucide="film"></i>
-<span>Sinema</span>
-</a>
-
-<a href="kitap.html" class="category-card">
-<i data-lucide="library"></i>
-<span>Kitap</span>
-</a>
-
-<a href="eglence.html" class="category-card">
-<i data-lucide="sparkles"></i>
-<span>Eğlence</span>
-</a>
-
-<a href="para.html" class="category-card">
-<i data-lucide="badge-dollar-sign"></i>
-<span>Para</span>
-</a>
-
-<a href="itiraflar.html" class="category-card confession-card">
-<i data-lucide="message-circle-heart"></i>
-<span>İtiraflarımız</span>
-</a>
-
-</section>
-
+    <section class="category-grid">
+        <a href="ev.html" class="category-card">
+            <i data-lucide="building-2"></i>
+            <span>Ev</span>
+        </a>
+        <a href="is.html" class="category-card">
+            <i data-lucide="briefcase-business"></i>
+            <span>İş</span>
+        </a>
+        <a href="yasam.html" class="category-card">
+            <i data-lucide="compass"></i>
+            <span>Yaşam</span>
+        </a>
+        <a href="egitim.html" class="category-card">
+            <i data-lucide="brain"></i>
+            <span>Eğitim</span>
+        </a>
+        <a href="sinema.html" class="category-card">
+            <i data-lucide="film"></i>
+            <span>Sinema</span>
+        </a>
+        <a href="kitap.html" class="category-card">
+            <i data-lucide="library"></i>
+            <span>Kitap</span>
+        </a>
+        <a href="eglence.html" class="category-card">
+            <i data-lucide="sparkles"></i>
+            <span>Eğlence</span>
+        </a>
+        <a href="para.html" class="category-card">
+            <i data-lucide="badge-dollar-sign"></i>
+            <span>Para</span>
+        </a>
+        <a href="itiraflar.html" class="category-card confession-card">
+            <i data-lucide="message-circle-heart"></i>
+            <span>İtiraflarımız</span>
+        </a>
+    </section>
 </div>
 
 <div class="page">
+    <section class="hero">
+        <div>
+            <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+            <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde.<br>Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
 
-
-
-<section class="hero">
-    <div>
-        <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
-        <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde.<br>Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
-
-        <div class="search-box">
-            <span>⌕</span>
-            <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
-            <button>Ara</button>
-        </div>
-
-        <div class="hero-buttons">
-            <button class="primary">Deneyimleri Oku</button>
-            <button class="secondary">Deneyimini Paylaş</button>
-        </div>
-    </div>
-
-    <bilge-kedi></bilge-kedi>
-
-   <img
-    id="bilgeKedi"
-    class="bilge-kedi_img"
-    src="images/kedi_1.png"
-    alt="Bilge Kedi">
-
-</div>
-</section>
-
-</section>
-<div class="ev-subcategories">
-    <a href="ev.html?alt=komsular">Komşular</a>
-    <a href="ev.html?alt=kira">Ev Kiralamak</a>
-    <a href="ev.html?alt=ev-almak">Ev Almak</a>
-    <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
-    <a href="ev.html?alt=tasinma">Taşınma</a>
-    <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
-    <a href="ev.html?alt=emlakci">Emlakçılar</a>
-    <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
-    <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
-    <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
-</div>
-<section class="main-content">
-    <div class="recent">
-        <div class="recent-head">
-            <span>Son Eklenen Deneyimler</span>
-            <a href="#">Tümünü Gör ›</a>
-        </div>
-
-        <div class="experience">
-            <span class="tag ev">EV</span>
-            <div>
-                <div class="exp-title">Ev almadan önce keşke komşuları araştırsaydım</div>
-                <div class="exp-text">Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</div>
+            <div class="search-box">
+                <span>⌕</span>
+                <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
+                <button>Ara</button>
             </div>
-            <div class="exp-stats">♡ 128<br>☰ 34</div>
-        </div>
 
-        <div class="experience">
-            <span class="tag is">İŞ</span>
-            <div>
-                <div class="exp-title">Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</div>
-                <div class="exp-text">Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</div>
+            <div class="hero-buttons">
+                <button class="primary">Deneyimleri Oku</button>
+                <button class="secondary">Deneyimini Paylaş</button>
             </div>
-            <div class="exp-stats">♡ 92<br>☰ 18</div>
         </div>
 
-        <div class="experience">
-            <span class="tag egitim">EĞİTİM</span>
-            <div>
-                <div class="exp-title">Bölüm seçerken sadece puana baktım, hayalime değil</div>
-                <div class="exp-text">Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</div>
+        <bilge-kedi></bilge-kedi>
+    </section>
+
+    <div class="ev-subcategories">
+        <a href="ev.html?alt=komsular">Komşular</a>
+        <a href="ev.html?alt=kira">Ev Kiralamak</a>
+        <a href="ev.html?alt=ev-almak">Ev Almak</a>
+        <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
+        <a href="ev.html?alt=tasinma">Taşınma</a>
+        <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
+        <a href="ev.html?alt=emlakci">Emlakçılar</a>
+        <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
+        <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
+        <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
+    </div>
+
+    <section class="main-content">
+        <div class="recent">
+            <div class="recent-head">
+                <span>Son Eklenen Deneyimler</span>
+                <a href="#">Tümünü Gör ›</a>
             </div>
-            <div class="exp-stats">♡ 76<br>☰ 21</div>
+
+            <div class="experience">
+                <span class="tag ev">EV</span>
+                <div>
+                    <div class="exp-title">Ev almadan önce keşke komşuları araştırsaydım</div>
+                    <div class="exp-text">Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</div>
+                </div>
+                <div class="exp-stats">♡ 128<br>☰ 34</div>
+            </div>
+
+            <div class="experience">
+                <span class="tag is">İŞ</span>
+                <div>
+                    <div class="exp-title">Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</div>
+                    <div class="exp-text">Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</div>
+                </div>
+                <div class="exp-stats">♡ 92<br>☰ 18</div>
+            </div>
+
+            <div class="experience">
+                <span class="tag egitim">EĞİTİM</span>
+                <div>
+                    <div class="exp-title">Bölüm seçerken sadece puana baktım, hayalime değil</div>
+                    <div class="exp-text">Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</div>
+                </div>
+                <div class="exp-stats">♡ 76<br>☰ 21</div>
+            </div>
         </div>
-    </div>
 
-    <div class="side-grid">
-        <div class="confession-box">
-            <h2>itiraflarımız ♡</h2>
-            <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
-            <button>İtirafını Paylaş</button>
+        <div class="side-grid">
+            <div class="confession-box">
+                <h2>itiraflarımız ♡</h2>
+                <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
+                <button>İtirafını Paylaş</button>
+            </div>
+
+            <div class="cat-note">
+                <b>Bugünün Bilge Kedi Notu 🐾</b>
+                <p>“Ucuz etin yahnisi değil, yorumu da çok olur.”</p>
+                <div class="cat-face-small"></div>
+            </div>
+
+            <div class="stats">
+                <span>👥 125.489 üye</span>
+                <span>📄 18.736 deneyim</span>
+                <span>💬 243.192 yorum</span>
+            </div>
         </div>
-
-        <div class="cat-note">
-            <b>Bugünün Bilge Kedi Notu 🐾</b>
-            <p>“Ucuz etin yahnisi değil, yorumu da çok olur.”</p>
-            <div class="cat-face-small"></div>
-        </div>
-
-        <div class="stats">
-            <span>👥 125.489 üye</span>
-            <span>📄 18.736 deneyim</span>
-            <span>💬 243.192 yorum</span>
-        </div>
-    </div>
-</section>
-
-    </div>
-</div>
-</div>
-
-<div id="footer-container"></div>
-
+    </section>
 </div>
 
 <div id="footer-container"></div>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  GoogleAuthProvider,
-  signInWithPopup
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyCfWhRF8BpXTxXlE5Hzs45FDuoocWy9H9E",
+        authDomain: "keskebilseydim-f56dc.firebaseapp.com",
+        projectId: "keskebilseydim-f56dc",
+        storageBucket: "keskebilseydim-f56dc.firebasestorage.app",
+        messagingSenderId: "524443729178",
+        appId: "1:524443729178:web:abc85bbcbcf65a3075c0a3"
+    };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCfWhRF8BpXTxXlE5Hzs45FDuoocWy9H9E",
-  authDomain: "keskebilseydim-f56dc.firebaseapp.com",
-  projectId: "keskebilseydim-f56dc",
-  storageBucket: "keskebilseydim-f56dc.firebasestorage.app",
-  messagingSenderId: "524443729178",
-  appId: "1:524443729178:web:abc85bbcbcf65a3075c0a3"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const kedi = document.getElementById("bilgeKedi");
-const balon = document.querySelector(".speech");
-
-const sozler = [
-"Sen onu benim patime anlat.",
-"Bu bilgiyi tüylerim diken diken olmadan dinledim.",
-"Kitaplarımı taradım, mantığını bulamadım.",
-"İnsanlar yine insanlık yapmış.",
-"Ben bile bu kadar meraklı değilim.",
-"Bu konuya bir kutu mama harcadım.",
-"Düşünmüşsün... ama yeterince değil.",
-"Miyavcıklopediye göre durum karışık.",
-"Beni şaşırtmak gittikçe zorlaşıyor.",
-"Biraz daha oku, sonra gel.",
-"Patisel araştırmalarım tamamlandı.",
-"Bu bilgi premium mama seviyesinde.",
-"Bunu not ettim. Lazım olur.",
-"Ben olsam farklı yapardım.",
-"Kedisel mantık bunu onaylıyor.",
-"İnsan mantığı yine beni yordu.",
-"Bu sorunun dokuz canı var.",
-"Şüpheli derecede mantıklı.",
-"Kulağa doğru geliyor.",
-"Patilerime kadar ikna oldum.",
-"Benim bile merakımı uyandırdı.",
-"Bu kadarını ben de beklemiyordum.",
-"Kitapları yere düşürdüm şaşkınlıktan.",
-"Bu bilgi rafın üst sıralık.",
-"Karar senin, miyavlamak benim.",
-"Biraz riskli ama eğlenceli.",
-"Bu konuda tüyolarım var.",
-"Pati izi bırakacak bir bilgi.",
-"Beynimi kaşıdın şu an.",
-"Bunu duyan fareler kaçtı.",
-"İlginç... devam et.",
-"Şimdi işler miyavlaşıyor.",
-"Bunun üstüne biraz uyurum.",
-"Pati konseyi toplandı.",
-"Bilgelik kurulumuz onayladı.",
-"Ben olsam ikinci kez düşünürdüm.",
-"Mantık seviyesi yükseliyor.",
-"Bu bilgi güneş gören pencere köşesi gibi.",
-"Şaşırtıcı derecede işe yarar.",
-"Bir miyav kadar yaklaştın.",
-"Kafamdaki yumak çözüldü.",
-"Benim bile cevabım yoktu.",
-"Bu kitaplıkta yerini aldı.",
-"Tüylerim haklı çıktığımı söylüyor.",
-"Bu kadarını beklemiyordum dostum.",
-"Miyavoloji bunu destekliyor.",
-"Düşünce güzel, uygulama sende.",
-"Ben sadece kediyim ama...",
-"Kedi sezgilerim alarm veriyor.",
-"Bu konuda içim rahat.",
-"Ben olsam kuyruk sallamazdım.",
-"Biraz cesaret, biraz mama.",
-"Bunu tarihe geçirelim.",
-"Şüphe iyidir, mama gibidir.",
-"Fazla düşünme, patile.",
-"Kader ağlarını değil, tırnaklarını örüyor.",
-"Bir raf daha devrildi aklımda.",
-"Bu bilgi tam pencere önü kalitesinde.",
-"Benim notlarımda yıldız aldı.",
-"Bunu fareler de konuşuyor.",
-"Miyav diyorsam vardır bir bildiğim.",
-"Çok uzaklara gitmeye gerek yok.",
-"Mantık tıkır tıkır çalışıyor.",
-"Ben olsam bunu saklardım.",
-"İşte aradığın tüyosu.",
-"Bir kedi olarak etkileyici buldum.",
-"Bu konu mamadan önemli olabilir.",
-"Az önce bilgeleştim.",
-"Cevap rafın arkasında değildi.",
-"İyi yakaladın.",
-"Bu işte bir pati var.",
-"Ben buna kuyruk basarım.",
-"Akıl yürüttüm, biraz da uyudum.",
-"Sonuçlar tatmin edici.",
-"Şüpheli derecede güzel.",
-"Kitaplar alkışlıyor.",
-"Bu bilgiye pati basıyorum.",
-"Düşünce kaslarını çalıştırmışsın.",
-"Miyavversite bunu öğretiyor.",
-"Biraz daha zorlarsan filozof olacaksın.",
-"Benim bile hoşuma gitti.",
-"Bu konuya ikinci mama hakkımı veririm.",
-"Mantık motoru çalışıyor.",
-"İyi ki sordun.",
-"Bazen cevap basittir.",
-"Bazen insanlar da haklı çıkar.",
-"Ben de bunu merak etmiştim.",
-"Kedi konseyi şaşkın.",
-"Şu an bilgeliğim parlıyor.",
-"Bu kadar bilgiye bir uyku lazım.",
-"Tırnak kadar hata payı var.",
-"Patisel araştırma tamamlandı.",
-"Bilgi seviyesi: Kutu açılmış mama.",
-"Beni etkilemeyi başardın.",
-"Bu soruyu sevdim.",
-"Patilerim alkışlıyor.",
-"Tam yerinde bir soru.",
-"Bugün de boş miyavlamadık.",
-"Bilgelik stoklarımız güncellendi.",
-"Şimdi git ve insanları şaşırt."
-];
-
-function yeniKediGetir(){
-    if(!kedi) return;
-    
-    const toplamResimSayisi = 90; // Görselde gördüğümüz gibi 90 resim var
-    const rastgeleNumara = Math.floor(Math.random() * toplamResimSayisi) + 1;
-    const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
-
-    const boyut = 130 + Math.floor(Math.random() * 35);
-    const sol = 280 + Math.floor(Math.random() * 70);
-    const ust = 130 + Math.floor(Math.random() * 55);
-
-    kedi.style.opacity = "0";
-
-    setTimeout(() => {
-        // Dosya yolunun başına "./" ekleyerek mevcut klasörden başlamasını garantiledik
-        kedi.src = `./images/kedi_${rastgeleNumara}.png`; 
-        
-        kedi.style.width = boyut + "px";
-        kedi.style.left = sol + "px";
-        kedi.style.top = ust + "px";
-        kedi.style.bottom = "auto";
-        if(balon) balon.textContent = rastgeleSoz;
-        kedi.style.opacity = "1";
-    }, 300);
-}
-
-yeniKediGetir();
-setInterval(yeniKediGetir, 15000);
-    
-
-
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 </script>
+
 <script>
 fetch("header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("header-container").innerHTML = data;
-
     const headerScript = document.createElement("script");
     headerScript.src = "header.js";
     document.body.appendChild(headerScript);
@@ -1203,6 +619,7 @@ fetch("footer.html")
     document.getElementById("footer-container").innerHTML = data;
   });
 </script>
+
 <script>
 lucide.createIcons();
 </script>
