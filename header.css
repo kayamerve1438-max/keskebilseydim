@@ -130,3 +130,89 @@ a,
 button {
     cursor: pointer;
 }
+/* PREMIUM HEADER UPDATE */
+
+header{
+    height:96px !important;
+    padding:0 6% !important;
+    background:rgba(255,255,255,.96) !important;
+    backdrop-filter:blur(14px);
+    box-shadow:0 12px 35px rgba(15,23,42,.08);
+    position:sticky;
+    top:0;
+    z-index:99999;
+}
+
+.logo-area img{
+    height:74px !important;
+}
+
+.site-name{
+    font-size:36px !important;
+    font-weight:950 !important;
+    letter-spacing:-1.4px !important;
+    color:#0f172a !important;
+}
+
+nav{
+    gap:26px !important;
+}
+
+nav a,
+.nav-button{
+    font-size:14px !important;
+    font-weight:850 !important;
+    letter-spacing:.5px !important;
+    color:#111827 !important;
+    transition:.22s ease;
+}
+
+nav a:hover,
+.nav-button:hover{
+    color:#2563eb !important;
+    transform:translateY(-2px);
+}
+
+.confession-nav{
+    color:#db2777 !important;
+    font-size:20px !important;
+    border-bottom:0 !important;
+}
+
+.login{
+    border:0 !important;
+    background:#0f172a !important;
+    color:white !important;
+    border-radius:999px !important;
+    padding:13px 24px !important;
+    box-shadow:0 12px 26px rgba(15,23,42,.18);
+}
+
+.search-icon{
+    font-size:24px !important;
+    color:#0f172a;
+}
+
+.mega-menu{
+    top:56px !important;
+    background:white !important;
+    border-radius:24px !important;
+    box-shadow:0 30px 80px rgba(15,23,42,.18) !important;
+    border:1px solid #eef2ff !important;
+    padding:34px !important;
+}
+
+.mega-menu h3{
+    font-size:18px !important;
+    color:#0f172a !important;
+}
+
+.mega-menu a{
+    font-size:15px !important;
+    color:#475569 !important;
+    padding:6px 0;
+}
+
+.mega-menu a:hover{
+    color:#2563eb !important;
+}
