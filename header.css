@@ -265,3 +265,22 @@ nav a:hover,
 .kb-top-cats .pink{
     background:linear-gradient(135deg,#db2777,#9333ea);
 }
+/* Üst menüdeki butonların yan yana düzgün sıralanmasını sağlar */
+header nav.kb-top-cats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ev butonunun dropdown yapısıyla uyumlu genişlikte durmasını sağlar */
+header .nav-dropdown {
+    display: inline-block;
+}
+
+/* Ev butonunun içindeki ikon ve yazıyı hizalar */
+header .nav-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
