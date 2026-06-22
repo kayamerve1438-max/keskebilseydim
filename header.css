@@ -265,22 +265,65 @@ nav a:hover,
 .kb-top-cats .pink{
     background:linear-gradient(135deg,#db2777,#9333ea);
 }
-/* Üst menüdeki butonların yan yana düzgün sıralanmasını sağlar */
+/* ========================================================
+   YENİ ÜST MENÜ BUTON VE RENK DÜZENLEMELERİ
+   ======================================================== */
+
+/* Üst navigasyon alanını yan yana düzgünce hizalar */
 header nav.kb-top-cats {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px; /* Butonların arasındaki boşluk */
 }
 
-/* Ev butonunun dropdown yapısıyla uyumlu genişlikte durmasını sağlar */
+/* Butonların genel tasarımı (Arka plan beyaz, yazılar görünür) */
+header nav.kb-top-cats a, 
+header .nav-button {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #f1f5f9; /* Hafif grimsi beyaz buton arka planı */
+    color: #1e293b !important; /* Yazı rengi koyu gri/siyah (okunabilir) */
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+}
+
+/* Mouse ile butonların üzerine gelindiğinde (Hover durumu) */
+header nav.kb-top-cats a:hover, 
+header .nav-button:hover {
+    background-color: #e2e8f0;
+    color: #0f172a !important;
+}
+
+/* İtiraflarımız butonunun özel pembe rengini korur */
+header nav.kb-top-cats a.pink {
+    background: linear-gradient(135deg, #db2777, #9333ea);
+    color: #ffffff !important;
+    border: none;
+}
+header nav.kb-top-cats a.pink:hover {
+    opacity: 0.9;
+}
+
+/* EV butonunun checkbox kutusunu gizler */
+header .mega-toggle {
+    display: none;
+}
+
+/* EV menüsünün dropdown kapsayıcısı */
 header .nav-dropdown {
+    position: relative;
     display: inline-block;
 }
 
-/* Ev butonunun içindeki ikon ve yazıyı hizalar */
-header .nav-button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
+/* Büyük beyaz açılır kutunun (Mega Menu) konumunu üst menüye göre ayarlar */
+header .mega-menu {
+    top: 45px; /* Menünün hemen altında açılması için */
+    left: 0;
 }
