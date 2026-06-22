@@ -723,9 +723,65 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 </head>
 
 <body>
-    <div id="auth-container"></div>
+
 <div id="header-container"></div>
-    <div class="page">
+
+<div id="auth-container"></div>
+
+<div class="top-category-strip">
+
+<section class="category-grid">
+
+<a href="ev.html" class="category-card">
+<i data-lucide="building-2"></i>
+<span>Ev</span>
+</a>
+
+<a href="is.html" class="category-card">
+<i data-lucide="briefcase-business"></i>
+<span>İş</span>
+</a>
+
+<a href="yasam.html" class="category-card">
+<i data-lucide="compass"></i>
+<span>Yaşam</span>
+</a>
+
+<a href="egitim.html" class="category-card">
+<i data-lucide="brain"></i>
+<span>Eğitim</span>
+</a>
+
+<a href="sinema.html" class="category-card">
+<i data-lucide="film"></i>
+<span>Sinema</span>
+</a>
+
+<a href="kitap.html" class="category-card">
+<i data-lucide="library"></i>
+<span>Kitap</span>
+</a>
+
+<a href="eglence.html" class="category-card">
+<i data-lucide="sparkles"></i>
+<span>Eğlence</span>
+</a>
+
+<a href="para.html" class="category-card">
+<i data-lucide="badge-dollar-sign"></i>
+<span>Para</span>
+</a>
+
+<a href="itiraflar.html" class="category-card confession-card">
+<i data-lucide="message-circle-heart"></i>
+<span>İtiraflarımız</span>
+</a>
+
+</section>
+
+</div>
+
+<div class="page">
 
 <section class="hero">
     <div>
@@ -762,18 +818,6 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 </div>
 </section>
 
-<div class="ev-subcategories">
-    <a href="ev.html?alt=komsular">Komşular</a>
-    <a href="ev.html?alt=kira">Ev Kiralamak</a>
-    <a href="ev.html?alt=ev-almak">Ev Almak</a>
-    <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
-    <a href="ev.html?alt=tasinma">Taşınma</a>
-    <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
-    <a href="ev.html?alt=emlakci">Emlakçılar</a>
-    <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
-    <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
-    <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
-</div>
 <section class="article-list-section">
     <h2 id="altKategoriBaslik">Ev Deneyimleri</h2>
     <div id="articleList" class="article-list"></div>
@@ -1063,6 +1107,9 @@ fetch("footer.html")
   .then(data => {
     document.getElementById("footer-container").innerHTML = data;
   });
+</script>
+<script>
+lucide.createIcons();
 </script>
 </body>
 </html>
