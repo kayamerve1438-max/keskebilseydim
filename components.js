@@ -3,7 +3,6 @@ class BilgeKedi extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
 
-    // Sözler listesi
     this.sozler = [
       "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
       "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
@@ -20,8 +19,6 @@ class BilgeKedi extends HTMLElement {
   connectedCallback() {
     this.render();
     this.yeniKediGetir();
-    
-    // Her 10 saniyede bir kedi resmini ve sözü güvenli bir şekilde günceller
     this.intervalId = setInterval(() => this.yeniKediGetir(), 10000);
   }
 
@@ -31,14 +28,13 @@ class BilgeKedi extends HTMLElement {
 
   yeniKediGetir() {
     const kediImg = this.shadowRoot.getElementById('kediGorsel');
-    const balon Kutusu = this.shadowRoot.getElementById('balonKutusu');
+    const balonKutusu = this.shadowRoot.getElementById('balonKutusu');
     
     if (!kediImg || !balonKutusu) return;
 
     const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
     const rastgeleSoz = this.sozler[Math.floor(Math.random() * this.sozler.length)];
 
-    // Animasyonlu geçiş efekti
     kediImg.style.opacity = '0';
     setTimeout(() => {
       kediImg.src = `images/kedi_${rastgeleNumara}.png`;
@@ -56,34 +52,33 @@ class BilgeKedi extends HTMLElement {
           align-items: center;
           position: relative;
           width: 100%;
-          height: 380px;
           min-height: 380px;
         }
 
         .cat-container {
           position: relative;
-          width: 450px;
-          height: 100%;
+          width: 100%;
+          max-width: 400px;
           display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          padding-bottom: 20px;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          height: 380px;
         }
 
         .bilge-kedi_img {
-          width: 150px;
+          width: 140px;
           height: auto;
           z-index: 2;
           transition: opacity 0.3s ease-in-out;
-          opacity: 0;
+          margin-top: auto;
         }
 
         .speech {
-          position: absolute;
-          bottom: 210px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 280px;
+          position: relative;
+          margin-bottom: 20px;
+          width: 100%;
+          max-width: 280px;
           background: white;
           border: 2px solid #eadfd4;
           border-radius: 20px;
@@ -120,14 +115,13 @@ class BilgeKedi extends HTMLElement {
       </style>
 
       <div class="cat-container">
-        <div class="speech" id="balonKutusu">Yükleniyor... 🐾</div>
+        <div class="speech" id="balonKutusu">Yükleniyor...</div>
         <img class="bilge-kedi_img" id="kediGorsel" src="images/kedi_1.png" alt="Bilge Kedi">
       </div>
     `;
   }
 }
 
-// Bileşeni tarayıcıya kaydetme
 if (!customElements.get('bilge-kedi')) {
   customElements.define('bilge-kedi', BilgeKedi);
 }
