@@ -2,10 +2,10 @@
 <html lang="tr">
 <head>
     <link rel="stylesheet" href="premium.css?v=1">
-<script src="https://unpkg.com/lucide@latest"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keşke Bilseydim</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşke Bilseydim</title>
 
 <style>
 *{box-sizing:border-box}
@@ -175,177 +175,58 @@ nav a{
     border:1px solid #2563eb;
 }
 
-/* CAT ILLUSTRATION */
+/* BİLGE KEDİ KAPSAYICI ALANI */
 .cat-hero{
     position:relative;
     height:360px;
 }
 
+/* Konuşma Balonunun Sabitlenmiş ve Okunabilir Yeni Tasarımı */
 .speech{
     position:absolute;
-    right:20px;
-    top:30px;
-    width:250px;
+    left:240px; /* Kedinin hemen sağına sabitledik */
+    top:50px;
+    width:260px;
     background:white;
     border:2px solid #eadfd4;
-    border-radius:45% 45% 45% 45%;
-    padding:34px 28px;
+    border-radius:20px; /* Yazıların sığması için oval kutu yapıldı */
+    padding:18px 22px;
     font-family:Georgia, serif;
-    font-size:18px;
+    font-size:15px;
     line-height:1.5;
     text-align:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    z-index:10;
 }
 
+/* Balonun Kediyi Gösteren Oku */
 .speech:before{
     content:"";
     position:absolute;
-    left:-30px;
-    top:90px;
-    border-width:18px 30px 18px 0;
+    left:-14px; /* Sol taraftaki kediye doğru bakar */
+    top:35px;
+    border-width:10px 14px 10px 0;
     border-style:solid;
-    border-color:transparent #eadfd4 transparent transparent;
+    border-color:transparent white transparent transparent;
+    filter: drop-shadow(-2px 0px 1px #eadfd4);
 }
 
 .speech:after{
-    content:"♡";
+    content:"🐾";
     color:#ef3f7a;
     display:block;
-    font-size:24px;
-    margin-top:8px;
+    font-size:16px;
+    margin-top:6px;
 }
 
-.book-stack{
+/* Kedi Görselinin Sabit Konumu */
+.bilge-kedi_img{
     position:absolute;
-    left:95px;
-    bottom:0;
-    width:310px;
-    height:300px;
-}
-
-.book{
-    position:absolute;
-    width:270px;
-    height:42px;
-    left:20px;
-    border-radius:8px;
-    box-shadow:0 7px 12px rgba(0,0,0,.12);
-}
-
-.book1{bottom:0;background:#f59e0b}
-.book2{bottom:44px;background:#8dd3c7}
-.book3{bottom:88px;background:#f8c9c9}
-.book4{bottom:132px;background:#f97316}
-
-.book:after{
-    content:"";
-    position:absolute;
-    left:35px;
-    right:35px;
-    top:18px;
-    height:3px;
-    background:rgba(255,255,255,.8);
-    border-radius:5px;
-}
-
-.big-cat{
-    position:absolute;
-    left:100px;
-    bottom:155px;
-    width:180px;
-    height:190px;
-}
-
-.cat-body{
-    position:absolute;
-    left:54px;
-    top:70px;
-    width:84px;
-    height:110px;
-    background:#c8b4a2;
-    border-radius:45% 45% 35% 35%;
-}
-
-.cat-head{
-    position:absolute;
-    left:38px;
-    top:0;
-    width:110px;
-    height:92px;
-    background:#d6c3b1;
-    border-radius:50%;
-}
-
-.cat-ear{
-    position:absolute;
-    top:-10px;
-    width:34px;
-    height:34px;
-    background:#d6c3b1;
-    transform:rotate(45deg);
-}
-
-.cat-ear.left{left:16px}
-.cat-ear.right{right:16px}
-
-.cat-glasses span{
-    position:absolute;
-    top:32px;
-    width:43px;
-    height:43px;
-    border:4px solid #ef4444;
-    border-radius:50%;
-    z-index:4;
-}
-
-.cat-glasses span:first-child{left:12px}
-.cat-glasses span:last-child{right:12px}
-
-.cat-glasses:after{
-    content:"";
-    position:absolute;
-    top:53px;
-    left:52px;
-    width:10px;
-    height:4px;
-    background:#ef4444;
-}
-
-.cat-eye{
-    position:absolute;
-    top:47px;
-    width:11px;
-    height:11px;
-    background:#111;
-    border-radius:50%;
-    z-index:5;
-}
-
-.cat-eye.left{left:30px}
-.cat-eye.right{right:30px}
-
-.cat-mouth{
-    position:absolute;
-    top:64px;
-    left:48px;
-    font-size:18px;
-}
-
-.cat-paw{
-    position:absolute;
-    right:22px;
-    bottom:-4px;
-    width:70px;
-    height:24px;
-    background:#c8b4a2;
-    border-radius:50px;
-    transform:rotate(-10deg);
-}
-
-.cat-lines{
-    position:absolute;
-    left:55px;
-    top:95px;
-    font-size:32px;
+    width:160px;
+    left:50px; /* Sol tarafta sabit duracak */
+    top:80px;
+    transition:all .4s ease;
+    z-index:2;
 }
 
 /* CATEGORIES */
@@ -541,14 +422,7 @@ footer,
     .main-content{grid-template-columns:1fr}
     .side-grid{grid-template-columns:1fr}
 }
-.bilge-kedi_img{
-    position:absolute;
-    width:150px;
-    left:300px;
-    top:145px;
-    transition:all .5s ease;
-    z-index:2;
-}
+
 .ev-subcategories{
     padding:0 7% 25px;
     display:flex;
@@ -607,16 +481,10 @@ footer,
     border:1px solid #eef0f5;
 }
 
-.mega-toggle:checked + .nav-button + .mega-menu{
-    display:grid;
-}
-
 .nav-dropdown:hover .mega-menu{
     display:grid;
 }
-.mega-toggle:checked + .nav-button + .mega-menu{
-    display:grid;
-}
+
 .mega-menu h3{
     margin:0 0 15px;
     font-size:20px;
@@ -696,7 +564,8 @@ body:has(.article-list-section[style*="block"]) .cat-hero{
 }
 body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
     width:120px !important;
-    top:110px !important;
+    top:40px !important;
+    left:20px !important;
 }
 .article-meta{
     margin-top:10px;
@@ -725,7 +594,6 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 <body>
 
 <div id="header-container"></div>
-
 <div id="auth-container"></div>
 
 <div class="page">
@@ -737,13 +605,13 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 
         <div class="search-box">
             <span>⌕</span>
-            <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
+            <input placeholder="Ne hakkında deneyim arıyorsun?">
             <button>Ara</button>
         </div>
-<div class="ev-subcategories">
-<a href="ev.html?alt=komsular">🏘️ Komşular</a>
-<a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
-</div>
+        <div class="ev-subcategories">
+            <a href="ev.html?alt=komsular">🏘️ Komşular</a>
+            <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
+        </div>
         <div class="hero-buttons">
             <button class="primary">Deneyimleri Oku</button>
             <button class="secondary">Deneyimini Paylaş</button>
@@ -751,24 +619,16 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
     </div>
 
     <div class="cat-hero">
-
-    <div class="speech">
-        Keşke demek bedavadır ama sonucu bazen pahalıya patlar.
+        <div class="speech">Yükleniyor...</div>
+        <img id="bilgeKedi" class="bilge-kedi_img" src="images/kedi_1.png" alt="Bilge Kedi">
     </div>
-
-   <img
-    id="bilgeKedi"
-    class="bilge-kedi_img"
-    src="images/kedi_1.png"
-    alt="Bilge Kedi">
-
-</div>
 </section>
 
 <section class="article-list-section">
     <h2 id="altKategoriBaslik">Ev Deneyimleri</h2>
     <div id="articleList" class="article-list"></div>
 </section>
+
 <section class="main-content">
     <div class="recent">
         <div class="recent-head">
@@ -826,136 +686,91 @@ body:has(.article-list-section[style*="block"]) .bilge-kedi_img{
 </section>
 
 </div>
+
 <script>
-const kedi = document.getElementById("bilgeKedi");
-const balon = document.querySelector(".speech");
+document.addEventListener("DOMContentLoaded", function() {
+    const kedi = document.getElementById("bilgeKedi");
+    const balon = document.querySelector(".speech");
+    const searchInput = document.querySelector(".search-box input");
 
-const sozler = [
-"Sen onu benim patime anlat.",
-"Bu bilgiyi tüylerim diken diken olmadan dinledim.",
-"Kitaplarımı taradım, mantığını bulamadım.",
-"İnsanlar yine insanlık yapmış.",
-"Ben bile bu kadar meraklı değilim.",
-"Bu konuya bir kutu mama harcadım.",
-"Düşünmüşsün... ama yeterince değil.",
-"Miyavcıklopediye göre durum karışık.",
-"Beni şaşırtmak gittikçe zorlaşıyor.",
-"Biraz daha oku, sonra gel.",
-"Patisel araştırmalarım tamamlandı.",
-"Bu bilgi premium mama seviyesinde.",
-"Bunu not ettim. Lazım olur.",
-"Ben olsam farklı yapardım.",
-"Kedisel mantık bunu onaylıyor.",
-"İnsan mantığı yine beni yordu.",
-"Bu sorunun dokuz canı var.",
-"Şüpheli derecede mantıklı.",
-"Kulağa doğru geliyor.",
-"Patilerime kadar ikna oldum.",
-"Benim bile merakımı uyandırdı.",
-"Bu kadarını ben de beklemiyordum.",
-"Kitapları yere düşürdüm şaşkınlıktan.",
-"Bu bilgi rafın üst sıralık.",
-"Karar senin, miyavlamak benim.",
-"Biraz riskli ama eğlenceli.",
-"Bu konuda tüyolarım var.",
-"Pati izi bırakacak bir bilgi.",
-"Beynimi kaşıdın şu an.",
-"Bunu duyan fareler kaçtı.",
-"İlginç... devam et.",
-"Şimdi işler miyavlaşıyor.",
-"Bunun üstüne biraz uyurum.",
-"Pati konseyi toplandı.",
-"Bilgelik kurulumuz onayladı.",
-"Ben olsam ikinci kez düşünürdüm.",
-"Mantık seviyesi yükseliyor.",
-"Bu bilgi güneş gören pencere köşesi gibi.",
-"Şaşırtıcı derecede işe yarar.",
-"Bir miyav kadar yaklaştın.",
-"Kafamdaki yumak çözüldü.",
-"Benim bile cevabım yoktu.",
-"Bu kitaplıkta yerini aldı.",
-"Tüylerim haklı çıktığımı söylüyor.",
-"Bu kadarını beklemiyordum dostum.",
-"Miyavoloji bunu destekliyor.",
-"Düşünce güzel, uygulama sende.",
-"Ben sadece kediyim ama...",
-"Kedi sezgilerim alarm veriyor.",
-"Bu konuda içim rahat.",
-"Ben olsam kuyruk sallamazdım.",
-"Biraz cesaret, biraz mama.",
-"Bunu tarihe geçirelim.",
-"Şüphe iyidir, mama gibidir.",
-"Fazla düşünme, patile.",
-"Kader ağlarını değil, tırnaklarını örüyor.",
-"Bir raf daha devrildi aklımda.",
-"Bu bilgi tam pencere önü kalitesinde.",
-"Benim notlarımda yıldız aldı.",
-"Bunu fareler de konuşuyor.",
-"Miyav diyorsam vardır bir bildiğim.",
-"Çok uzaklara gitmeye gerek yok.",
-"Mantık tıkır tıkır çalışıyor.",
-"Ben olsam bunu saklardım.",
-"İşte aradığın tüyosu.",
-"Bir kedi olarak etkileyici buldum.",
-"Bu konu mamadan önemli olabilir.",
-"Az önce bilgeleştim.",
-"Cevap rafın arkasında değildi.",
-"İyi yakaladın.",
-"Bu işte bir pati var.",
-"Ben buna kuyruk basarım.",
-"Akıl yürüttüm, biraz da uyudum.",
-"Sonuçlar tatmin edici.",
-"Şüpheli derecede güzel.",
-"Kitaplar alkışlıyor.",
-"Bu bilgiye pati basıyorum.",
-"Düşünce kaslarını çalıştırmışsın.",
-"Miyavversite bunu öğretiyor.",
-"Biraz daha zorlarsan filozof olacaksın.",
-"Benim bile hoşuma gitti.",
-"Bu konuya ikinci mama hakkımı veririm.",
-"Mantık motoru çalışıyor.",
-"İyi ki sordun.",
-"Bazen cevap basittir.",
-"Bazen insanlar da haklı çıkar.",
-"Ben de bunu merak etmiştim.",
-"Kedi konseyi şaşkın.",
-"Şu an bilgeliğim parlıyor.",
-"Bu kadar bilgiye bir uyku lazım.",
-"Tırnak kadar hata payı var.",
-"Patisel araştırma tamamlandı.",
-"Bilgi seviyesi: Kutu açılmış mama.",
-"Beni etkilemeyi başardın.",
-"Bu soruyu sevdim.",
-"Patilerim alkışlıyor.",
-"Tam yerinde bir soru.",
-"Bugün de boş miyavlamadık.",
-"Bilgelik stoklarımız güncellendi.",
-"Şimdi git ve insanları şaşırt."
-];
+    // 1. TAM DÜZELTİLMİŞ VE KİLİTLENMİŞ BİLGE KEDİ SÖZLERİ FONKSİYONU
+    const sozler = [
+        "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
+        "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
+        "Maaşına bakıp iş seçtin ama huzurun nerede? Mırr.. 💼",
+        "Ev kiralarken her köşenin fotoğrafını çekmeyi unutma! 📸",
+        "Keşke bilseydim demek istemiyorsan, doğru yerdesin. 😼",
+        "Sen onu benim patime anlat. 🐾",
+        "Kitaplarımı taradım, mantığını bulamadım. 📚",
+        "Düşünmüşsün... ama yeterince değil. 🧠",
+        "Ben bile bu kadar meraklı değilim. 🐈"
+    ];
 
-function yeniKediGetir(){
-    const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
-    const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
+    function yeniKediGetir(){
+        const rastgeleNumara = Math.floor(Math.random() * 90) + 1;
+        const rastgeleSoz = sozler[Math.floor(Math.random() * sozler.length)];
 
-const boyut = 130 + Math.floor(Math.random() * 35);
-const sol = 280 + Math.floor(Math.random() * 70);
-const ust = 130 + Math.floor(Math.random() * 55);
+        if(kedi && balon) {
+            kedi.style.opacity = "0";
+            setTimeout(() => {
+                kedi.src = `images/kedi_${rastgeleNumara}.png`;
+                balon.textContent = rastgeleSoz; // Yazıyı balona tam oturtur
+                kedi.style.opacity = "1";
+            }, 300);
+        }
+    }
 
-    kedi.style.opacity = "0";
+    yeniKediGetir();
+    setInterval(yeniKediGetir, 10000); // Her 10 saniyede bir yeni söz ve kedi gelir
 
-    setTimeout(() => {
-        kedi.src = `images/kedi_${rastgeleNumara}.png`;
-        kedi.style.width = boyut + "px";
-        kedi.style.left = sol + "px";
-        kedi.style.top = ust + "px";
-        kedi.style.bottom = "auto";
-        balon.textContent = rastgeleSoz;
-        kedi.style.opacity = "1";
-    }, 300);
-}
+    // 2. DAKTİLO EFEKTİ (SEARCH PLACEHOLDER ANIMATION)
+    if (searchInput) {
+        const aramaMetinleri = [
+            "Ev almadan önce komşuları nasıl araştırırım?",
+            "Yüksek maaş için iş değiştirmeli miyim?",
+            "Üniversitede bu bölümü seçmeli miyim?",
+            "Ev kiralamadan önce depozitoyu nasıl garantiye alırım?",
+            "Başka bir şehre taşınırken neye dikkat etmeliyim?"
+        ];
+        
+        let metinIndeksi = 0;
+        let karakterIndeksi = 0;
+        let siliniyorMu = false;
+        
+        function placeholderYaz() {
+            const mevcutMetin = aramaMetinleri[metinIndeksi];
+            
+            if (!siliniyorMu) {
+                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi + 1));
+                karakterIndeksi++;
+                
+                if (karakterIndeksi === mevcutMetin.length) {
+                    siliniyorMu = true;
+                    setTimeout(placeholderYaz, 2000);
+                    return;
+                }
+            } else {
+                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi - 1));
+                karakterIndeksi--;
+                
+                if (karakterIndeksi === 0) {
+                    siliniyorMu = false;
+                    metinIndeksi = (metinIndeksi + 1) % aramaMetinleri.length;
+                }
+            }
+            
+            setTimeout(placeholderYaz, siliniyorMu ? 30 : 60);
+        }
+        placeholderYaz();
+    }
+});
 
-yeniKediGetir();
-setInterval(yeniKediGetir, 15000);
+// ALT KATEGORİ PARAMETRE KONTROLLERİ
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
 const altKategoriIcerikleri = {
     kira: {
         baslik: "Ev Kiralamak Deneyimleri",
@@ -967,18 +782,9 @@ const altKategoriIcerikleri = {
                 link: "detay.html?id=kira-1",
                 meta: "👁️ 1.284 görüntülenme · 💬 37 yorum · ⏱️ 4 dk okuma",
                 risk: "★★★★☆"
-            },
-            {
-                img: "images/kedi_5.png",
-                title: "Emlakçı komisyonunu hafife aldım",
-                desc: "İlk ay kira, depozito, komisyon derken taşınmadan fakirleştim.",
-                link: "detay.html?id=kira-2",
-                meta: "👁️ 892 görüntülenme · 💬 21 yorum · ⏱️ 3 dk okuma",
-                risk: "★★★☆☆"
             }
         ]
     },
-
     komsular: {
         baslik: "Komşular Deneyimleri",
         yazilar: [
@@ -994,56 +800,39 @@ const altKategoriIcerikleri = {
     }
 };
 
-const urlParams = new URLSearchParams(window.location.search);
-const secilenAlt = urlParams.get("alt");
-
-const articleList = document.getElementById("articleList");
-const altKategoriBaslik = document.getElementById("altKategoriBaslik");
-
 if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
-document.querySelector(".hero h1").style.display = "none";
-document.querySelector(".hero p").style.display = "none";
-document.querySelector(".article-list-section").style.display = "block";
-document.querySelector(".section-title")?.style.setProperty("display", "none");
-document.querySelector(".category-grid")?.style.setProperty("display", "none");
-document.querySelector(".main-content")?.style.setProperty("display", "none");
+    document.querySelector(".hero h1").style.display = "none";
+    document.querySelector(".hero p").style.display = "none";
+    document.querySelector(".article-list-section").style.display = "block";
+    document.querySelector(".section-title")?.style.setProperty("display", "none");
+    document.querySelector(".category-grid")?.style.setProperty("display", "none");
+    document.querySelector(".main-content")?.style.setProperty("display", "none");
 
-const allSubcats = document.querySelectorAll(".ev-subcategories");
-if(allSubcats.length > 1){
-    allSubcats[1].style.display = "none";
-}
     const veri = altKategoriIcerikleri[secilenAlt];
-
     altKategoriBaslik.textContent = veri.baslik;
-
     articleList.innerHTML = veri.yazilar.map(yazi => `
-    <a href="${yazi.link}" class="article-card">
-        <img src="${yazi.img}" alt="${yazi.title}">
-        <div>
-            <div class="risk-score">🐾 Bilge Kedi Risk Puanı <span>${yazi.risk}</span></div>
-            <h3>${yazi.title}</h3>
-            <p>${yazi.desc}</p>
-            <div class="article-meta">${yazi.meta}</div>
-            <span>Deneyimi Oku →</span>
-        </div>
-    </a>
-`).join("");
+        <a href="${yazi.link}" class="article-card">
+            <img src="${yazi.img}" alt="${yazi.title}">
+            <div>
+                <div class="risk-score">🐾 Bilge Kedi Risk Puanı <span>${yazi.risk}</span></div>
+                <h3>${yazi.title}</h3>
+                <p>${yazi.desc}</p>
+                <div class="article-meta">${yazi.meta}</div>
+                <span>Deneyimi Oku →</span>
+            </div>
+        </a>
+    `).join("");
 }
-document.querySelectorAll('a[href*="ev.html?alt="]').forEach(link => {
-    link.addEventListener("click", function(e){
-        e.preventDefault();
-        window.location.href = this.href;
-    });
-});
 </script>
+
 <div id="footer-container"></div>
 
 <script>
+// Dışarıdan dosya çekme fonksiyonları
 fetch("header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("header-container").innerHTML = data;
-
     const headerScript = document.createElement("script");
     headerScript.src = "header.js";
     document.body.appendChild(headerScript);
@@ -1055,132 +844,6 @@ fetch("footer.html")
     document.getElementById("footer-container").innerHTML = data;
   });
 </script>
-<script>
-lucide.createIcons();
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. Dinamik Arama Kutusu (Placeholder Yazıcı Efekti)
-    const searchInput = document.querySelector(".search-box input");
-    if (searchInput) {
-        const aramaMetinleri = [
-            "Ev almadan önce komşuları nasıl araştırırım?",
-            "Yüksek maaş için iş değiştirmeli miyim?",
-            "Üniversitede bu bölümü seçmeli miyim?",
-            "Ev kiralamadan önce depozitoyu nasıl garantiye alırım?",
-            "Başka bir şehre taşınırken neye dikkat etmeliyim?"
-        ];
-        
-        let metinIndeksi = 0;
-        let karakterIndeksi = 0;
-        let siliniyor Mu = false;
-        
-        function placeholderYaz() {
-            const mevcutMetin = aramaMetinleri[metinIndeksi];
-            
-            if (!siliniyorMu) {
-                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi + 1));
-                karakterIndeksi++;
-                
-                if (karakterIndeksi === mevcutMetin.length) {
-                    siliniyorMu = true;
-                    setTimeout(placeholderYaz, 2000); // Cümle bitince 2 saniye bekle
-                    return;
-                }
-            } else {
-                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi - 1));
-                karakterIndeksi--;
-                
-                if (karakterIndeksi === 0) {
-                    siliniyorMu = false;
-                    metinIndeksi = (metinIndeksi + 1) % aramaMetinleri.length;
-                }
-            }
-            
-            setTimeout(placeholderYaz, siliniyorMu ? 30 : 60); // Yazma ve silme hızı
-        }
-        
-        placeholderYaz();
-    }
-
-    // 2. Bilge Kedi'nin Konuşma Balonunu Canlandırma
-    const kediBalonu = document.querySelector(".speech");
-    if (kediBalonu) {
-        const kediSozleri = [
-            "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
-            "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
-            "Maaşına bakıp iş seçtin ama huzurun nerede? Mırr.. 💼",
-            "Ev kiralarken her köşenin fotoğrafını çekmeyi unutma! 📸",
-            "Keşke bilseydim demek istemiyorsan, doğru yerdesin. 😼"
-        ];
-        
-        // Her sayfa yenilendiğinde listeden rastgele bir söz seçer
-        const rastgeleSoz = kediSozleri[Math.floor(Math.random() * kediSozleri.length)];
-        kediBalonu.childNodes[0].textContent = rastgeleSoz;
-    }
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. Dinamik Arama Kutusu (Yazıcı Efekti)
-    const searchInput = document.querySelector(".search-box input");
-    if (searchInput) {
-        const aramaMetinleri = [
-            "Ev almadan önce komşuları nasıl araştırırım?",
-            "Yüksek maaş için iş değiştirmeli miyim?",
-            "Üniversitede bu bölümü seçmeli miyim?",
-            "Ev kiralamadan önce depozitoyu nasıl garantiye alırım?",
-            "Başka bir şehre taşınırken neye dikkat etmeliyim?"
-        ];
-        
-        let metinIndeksi = 0;
-        let karakterIndeksi = 0;
-        let siliniyorMu = false; // Türkçe karakter ve boşluk hatası düzeltildi
-        
-        function placeholderYaz() {
-            const mevcutMetin = aramaMetinleri[metinIndeksi];
-            
-            if (!siliniyorMu) {
-                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi + 1));
-                karakterIndeksi++;
-                
-                if (karakterIndeksi === mevcutMetin.length) {
-                    siliniyorMu = true;
-                    setTimeout(placeholderYaz, 2000); // Cümle bitince 2 saniye bekle
-                    return;
-                }
-            } else {
-                searchInput.setAttribute("placeholder", mevcutMetin.substring(0, karakterIndeksi - 1));
-                karakterIndeksi--;
-                
-                if (karakterIndeksi === 0) {
-                    siliniyorMu = false;
-                    metinIndeksi = (metinIndeksi + 1) % aramaMetinleri.length;
-                }
-            }
-            
-            setTimeout(placeholderYaz, siliniyorMu ? 30 : 60);
-        }
-        
-        placeholderYaz();
-    }
-
-    // 2. Bilge Kedi'nin Konuşma Balonunu Rastgele Canlandırma
-    const kediBalonu = document.querySelector(".speech");
-    if (kediBalonu) {
-        const kediSozleri = [
-            "Sözleşme okumak sıkıcıdır ama depozitodan ucuzdur. 🐾",
-            "Sessiz mahalle dediler, alt katım müzisyen çıktı... 🎸",
-            "Maaşına bakıp iş seçtin ama huzurun nerede? Mırr.. 💼",
-            "Ev kiralarken her köşenin fotoğrafını çekmeyi unutma! 📸",
-            "Keşke bilseydim demek istemiyorsan, doğru yerdesin. 😼"
-        ];
-        
-        // Sayfa her açıldığında ya da yenilendiğinde listeden rastgele bir söz seçer
-        const rastgeleSoz = kediSozleri[Math.floor(Math.random() * kediSozleri.length)];
-        kediBalonu.childNodes[0].textContent = rastgeleSoz;
-    }
-});
-</script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
