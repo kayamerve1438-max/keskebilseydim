@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="auth.css">
 <link rel="stylesheet" href="profile.css">
@@ -55,4 +56,22 @@
         <button class="login">Giriş Yap</button>
     </div>
 </header>
+<div class="kb-top-cats">
+    <a href="ev.html"><i data-lucide="building-2"></i><span>Ev</span></a>
+    <a href="is.html"><i data-lucide="briefcase-business"></i><span>İş</span></a>
+    <a href="yasam.html"><i data-lucide="compass"></i><span>Yaşam</span></a>
+    <a href="egitim.html"><i data-lucide="brain"></i><span>Eğitim</span></a>
+    <a href="sinema.html"><i data-lucide="film"></i><span>Sinema</span></a>
+    <a href="kitap.html"><i data-lucide="library"></i><span>Kitap</span></a>
+    <a href="eglence.html"><i data-lucide="sparkles"></i><span>Eğlence</span></a>
+    <a href="para.html"><i data-lucide="badge-dollar-sign"></i><span>Para</span></a>
+    <a href="itiraflar.html" class="pink"><i data-lucide="message-circle-heart"></i><span>itiraflarımız</span></a>
+</div>
 <div id="auth-container"></div>
+<script>
+setTimeout(() => {
+    if(window.lucide){
+        lucide.createIcons();
+    }
+}, 300);
+</script>
