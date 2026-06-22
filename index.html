@@ -7,441 +7,355 @@
 <link rel="icon" type="image/png" href="images/logo.png">
 
 <style>
+/* 1. KÜRESEL AYARLAR VE LÜKS GECE MODU */
 *{box-sizing:border-box}
 
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#eef1f8;
-    color:#101828;
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #0B0F19; /* Derin Gece Mavisi Siyahı */
+    color: #F3F4F6;
+    background-image: 
+        radial-gradient(circle at 5% 15%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 95% 75%, rgba(255, 46, 147, 0.07) 0%, transparent 40%);
+    background-attachment: fixed;
 }
 
-.page{
-    width:92%;
-    max-width:1500px;
-    margin:30px auto;
-    background:#f8f9fd;
-    box-shadow:0 18px 45px rgba(0,0,0,.12);
-    overflow:visible;
+/* ANA SARMALAYICI (GLASSMORPHISM CAM EFEKTİ) */
+.page {
+    width: 92%;
+    max-width: 1200px;
+    margin: 40px auto 60px;
+    background: rgba(21, 30, 50, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    padding: 40px;
+    overflow: visible;
 }
 
-/* HEADER */
-header{
-    height:78px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 5%;
-    border-bottom:1px solid #eef0f5;
-    position:relative;
-    z-index:1000;
-    overflow:visible;
+/* 2. DİNAMİK HEADER AYARI */
+header {
+    background: rgba(11, 15, 25, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.logo-area img{
-    height:54px;
-}
-
-.site-name{
-    font-size:26px;
-    font-weight:900;
-    color:#2563eb;
-}
-
-nav{
-    display:flex;
-    gap:34px;
-    align-items:center;
-}
-
-nav a{
-    color:#111;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:900;
-}
-
-.confession-nav{
-    color:#db2777!important;
-    font-family:Georgia, serif;
-    font-style:italic;
-    font-size:22px!important;
-    border-bottom:2px solid #db2777;
-}
-
-.header-right{
-    display:flex;
-    align-items:center;
-    gap:22px;
-}
-
-.search-icon{
-    font-size:28px;
-}
-
-.login{
-    border:1px solid #2563eb;
-    color:#2563eb;
-    background:white;
-    border-radius:24px;
-    padding:12px 24px;
-    font-weight:800;
-}
-
-/* HERO */
-/* Bu ayarı index.html içindeki style alanında güncelleyin */
+/* 3. HERO (GİRİŞ) ALANI */
 .hero {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Sağ tarafa kedi için net alan ayrıldı */
-    gap: 40px;
-    padding: 55px 7% 25px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    padding: 40px 20px 60px;
     align-items: center;
 }
 
-.hero h1{
-    font-size:54px;
-    line-height:1.12;
-    margin:0 0 18px;
-    letter-spacing:-1px;
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    letter-spacing: -1.5px;
 }
 
-.hero p{
-    color:#667085;
-    font-size:19px;
-    line-height:1.5;
-    margin:0 0 26px;
+.hero h1 .gradient-text {
+    background: linear-gradient(135deg, #00D2FF, #FF2E93);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
 }
 
-.search-box{
-    width:100%;
-    max-width:560px;
-    background:white;
-    display:flex;
-    align-items:center;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,.1);
-    margin-bottom:22px;
+.hero p {
+    color: #9CA3AF;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 35px;
 }
 
-.search-box span{
-    padding-left:20px;
-    color:#94a3b8;
-    font-size:22px;
+/* SİBER NEON ARAMA KUTUSU */
+.search-box {
+    width: 100%;
+    max-width: 540px;
+    background: rgba(10, 14, 23, 0.8);
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
 }
 
-.search-box input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:20px 14px;
-    font-size:16px;
+.search-box:hover, .search-box:focus-within {
+    border-color: #00D2FF;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
 }
 
-.search-box button{
-    background:#2563eb;
-    color:white;
-    border:0;
-    padding:21px 34px;
-    font-weight:900;
-    font-size:15px;
+.search-box span {
+    padding-left: 20px;
+    color: #00D2FF;
+    font-size: 22px;
 }
 
-.hero-buttons button{
-    padding:15px 28px;
-    border-radius:14px;
-    font-weight:900;
-    margin-right:14px;
-    cursor:pointer;
+.search-box input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 18px 14px;
+    color: #F3F4F6;
+    font-size: 16px;
 }
 
-.primary{
-    background:#2563eb;
-    color:white;
-    border:0;
+.search-box button {
+    background: linear-gradient(135deg, #00D2FF, #00A3FF);
+    color: #0B0F19;
+    border: 0;
+    padding: 18px 34px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-.secondary{
-    background:white;
-    color:#2563eb;
-    border:1px solid #2563eb;
+.search-box button:hover {
+    transform: scale(1.02);
 }
 
-/* CATEGORIES */
-.section-title{
-    padding:0 7%;
-    font-size:24px;
-    font-weight:900;
-    margin-top:18px;
+/* BUTONLAR */
+.hero-buttons button {
+    padding: 15px 30px;
+    border-radius: 14px;
+    font-weight: 700;
+    margin-right: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
-.category-grid{
-    padding:20px 7% 22px;
-    display:grid;
-    grid-template-columns:repeat(9,1fr);
-    gap:18px;
+.primary {
+    background: #00D2FF;
+    color: #0B0F19;
+    border: 0;
 }
 
-.category-card{
-    background:white;
-    border-radius:16px;
-    height:110px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    font-weight:900;
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
+.primary:hover {
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    transform: translateY(-2px);
 }
 
-.category-card span{
-    font-size:34px;
+.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #F3F4F6;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.confession-card{
-    color:#db2777;
+.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
-/* CONTENT */
-.main-content{
-    padding:0 7% 35px;
-    display:grid;
-    grid-template-columns:2fr 1.55fr;
-    gap:22px;
+/* ALT KATEGORİ ŞERİDİ */
+.ev-subcategories {
+    padding: 0 20px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.recent{
-    background:white;
-    border-radius:18px;
-    padding:22px;
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
+.ev-subcategories a {
+    background: rgba(255, 255, 255, 0.03);
+    color: #00D2FF;
+    text-decoration: none;
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
 }
 
-.recent-head{
-    display:flex;
-    justify-content:space-between;
-    font-size:22px;
-    font-weight:900;
-    margin-bottom:16px;
+.ev-subcategories a:hover {
+    background: #00D2FF;
+    color: #0B0F19;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
 }
 
-.recent-head a{
-    color:#2563eb;
-    text-decoration:none;
-    font-size:15px;
+/* 4. İÇERİK ALANI (DENEYİMLER VE İTİRAFLAR) */
+.main-content {
+    padding: 0 20px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    gap: 30px;
 }
 
-.experience{
-    display:grid;
-    grid-template-columns:auto 1fr auto;
-    gap:14px;
-    align-items:start;
-    padding:14px 0;
-    border-bottom:1px solid #edf0f5;
+.recent {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.tag{
-    padding:7px 14px;
-    border-radius:20px;
-    color:white;
-    font-size:13px;
-    font-weight:900;
+.recent-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 15px;
 }
 
-.ev{background:#2563eb}
-.is{background:#16a34a}
-.egitim{background:#f97316}
-
-.exp-title{
-    font-weight:900;
-    margin-bottom:7px;
+.recent-head a {
+    color: #00D2FF;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.exp-text{
-    color:#555;
-    font-size:14px;
+.experience {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.exp-stats{
-    color:#667085;
-    font-size:14px;
-    white-space:nowrap;
+.experience:last-child {
+    border-bottom: none;
 }
 
-.side-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.tag {
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-.confession-box{
-    background:linear-gradient(135deg,#db2777,#9333ea);
-    color:white;
-    border-radius:18px;
-    padding:30px;
+.ev { background: #2563eb; box-shadow: 0 0 15px rgba(37,99,235,0.3); }
+.is { background: #16a34a; box-shadow: 0 0 15px rgba(22,163,74,0.3); }
+.egitim { background: #f97316; box-shadow: 0 0 15px rgba(249,115,22,0.3); }
+
+.exp-title {
+    font-weight: 700;
+    font-size: 17px;
+    color: #F3F4F6;
+    margin-bottom: 5px;
 }
 
-.confession-box h2{
-    font-family:Georgia, serif;
-    font-style:italic;
-    font-size:38px;
-    margin:0 0 16px;
+.exp-text {
+    color: #9CA3AF;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-.confession-box button{
-    background:white;
-    color:#db2777;
-    border:0;
-    padding:14px 28px;
-    border-radius:14px;
-    font-weight:900;
-    margin-top:20px;
+.exp-stats {
+    color: #6B7280;
+    font-size: 13px;
+    font-family: monospace;
+    text-align: right;
+    line-height: 1.6;
 }
 
-.cat-note{
-    background:white;
-    border-radius:18px;
-    padding:24px;
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
-    text-align:center;
+/* SAĞ TARAF TABLOLARI */
+.side-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-.cat-face-small{
-    width:120px;
-    height:75px;
-    background:#d6c3b1;
-    border-radius:60px 60px 25px 25px;
-    margin:20px auto 0;
-    position:relative;
+/* SİBER İTİRAF KUTUSU */
+.confession-box {
+    background: linear-gradient(135deg, #FF2E93, #9333ea);
+    color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(255, 46, 147, 0.15);
+    position: relative;
+    overflow: hidden;
 }
 
-.cat-face-small:before,
-.cat-face-small:after{
-    content:"";
-    position:absolute;
-    top:-10px;
-    width:34px;
-    height:34px;
-    background:#d6c3b1;
-    transform:rotate(45deg);
+.confession-box h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    margin: 0 0 12px;
+    letter-spacing: -1px;
 }
 
-.cat-face-small:before{left:18px}
-.cat-face-small:after{right:18px}
-
-.stats{
-    grid-column:1/3;
-    background:white;
-    border-radius:18px;
-    padding:18px;
-    display:flex;
-    justify-content:space-around;
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
-    color:#475467;
-    font-weight:700;
+.confession-box p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
 }
 
-footer,
-.site-footer{
-    background:white;
-    text-align:center;
-    padding:28px;
-    color:#777;
-    width:100%;
-    display:block;
+.confession-box button {
+    background: #0B0F19;
+    color: #FF2E93;
+    border: 1px solid rgba(255, 46, 147, 0.3);
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
+.confession-box button:hover {
+    background: white;
+    color: #0B0F19;
+    transform: translateY(-2px);
+}
+
+/* BİLGE KEDİ GÜNLÜK NOT ALANI */
+.cat-note {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.cat-note b {
+    color: #FF2E93;
+    font-size: 16px;
+}
+
+.cat-note p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #E5E7EB;
+    line-height: 1.6;
+}
+
+/* CANLI SAYAÇLAR ALANI */
+.stats {
+    background: rgba(10, 14, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    color: #9CA3AF;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* MOBİL UYUMLULUK */
 @media(max-width:1000px){
-    nav{display:none}
-    .hero{grid-template-columns:1fr}
-    .category-grid{grid-template-columns:repeat(3,1fr)}
-    .main-content{grid-template-columns:1fr}
-    .side-grid{grid-template-columns:1fr}
-}
-
-.ev-subcategories{
-    padding:0 7% 25px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.ev-subcategories a{
-    background:white;
-    color:#2563eb;
-    text-decoration:none;
-    border:1px solid #dbeafe;
-    border-radius:999px;
-    padding:10px 18px;
-    font-size:14px;
-    font-weight:900;
-    box-shadow:0 6px 16px rgba(0,0,0,.06);
-    transition:.25s;
-}
-
-.ev-subcategories a:hover{
-    background:#2563eb;
-    color:white;
-    transform:translateY(-2px);
-}
-
-body{
-    background:linear-gradient(180deg,#f3f6ff 0%,#eef1f8 45%,#f7f9fc 100%);
-}
-
-header{
-    height:86px;
-    box-shadow:0 8px 30px rgba(37,99,235,.08);
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(14px);
-}
-
-.page{
-    max-width:1180px;
-    margin:32px auto 50px;
-    border-radius:28px;
-    background:linear-gradient(135deg,#ffffff 0%,#f8faff 100%);
-    box-shadow:0 30px 80px rgba(15,23,42,.10);
-    padding:54px 70px;
-}
-
-h1{
-    letter-spacing:-1.5px;
-    line-height:1.08;
-}
-
-.search-box,
-.search-area{
-    box-shadow:0 18px 45px rgba(37,99,235,.14);
-    border-radius:18px!important;
-}
-
-button,
-.category-card,
-.tag{
-    transition:.25s ease;
-}
-
-button:hover,
-.category-card:hover,
-.tag:hover{
-    transform:translateY(-3px);
-    box-shadow:0 14px 30px rgba(37,99,235,.18);
-}
-
-.category-card{
-    border:1px solid #eef2ff;
-    background:linear-gradient(180deg,#fff,#f8fbff);
+    .hero { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .search-box { margin: 0 auto 30px; }
+    .main-content { grid-template-columns: 1fr; }
+    .ev-subcategories { justify-content: center; }
 }
 </style>
 <link rel="stylesheet" href="premium.css?v=1">
@@ -453,51 +367,11 @@ button:hover,
 <div id="header-container"></div>
 <div id="auth-container"></div>
 
-<div class="top-category-strip">
-    <section class="category-grid">
-        <a href="ev.html" class="category-card">
-            <i data-lucide="building-2"></i>
-            <span>Ev</span>
-        </a>
-        <a href="is.html" class="category-card">
-            <i data-lucide="briefcase-business"></i>
-            <span>İş</span>
-        </a>
-        <a href="yasam.html" class="category-card">
-            <i data-lucide="compass"></i>
-            <span>Yaşam</span>
-        </a>
-        <a href="egitim.html" class="category-card">
-            <i data-lucide="brain"></i>
-            <span>Eğitim</span>
-        </a>
-        <a href="sinema.html" class="category-card">
-            <i data-lucide="film"></i>
-            <span>Sinema</span>
-        </a>
-        <a href="kitap.html" class="category-card">
-            <i data-lucide="library"></i>
-            <span>Kitap</span>
-        </a>
-        <a href="eglence.html" class="category-card">
-            <i data-lucide="sparkles"></i>
-            <span>Eğlence</span>
-        </a>
-        <a href="para.html" class="category-card">
-            <i data-lucide="badge-dollar-sign"></i>
-            <span>Para</span>
-        </a>
-        <a href="itiraflar.html" class="category-card confession-card">
-            <i data-lucide="message-circle-heart"></i>
-            <span>İtiraflarımız</span>
-        </a>
-    </section>
-</div>
-
 <div class="page">
+    
     <section class="hero">
         <div>
-            <h1>Bir karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+            <h1>Bir karar vermeden önce,<br><span class="gradient-text">o yolu yürüyenleri dinle.</span></h1>
             <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde.<br>Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
 
             <div class="search-box">
@@ -524,11 +398,12 @@ button:hover,
         <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
         <a href="ev.html?alt=emlakci">Emlakçılar</a>
         <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
-        <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
+        <a href="ev.html?alt=dekorasyon">Decorasyon</a>
         <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
     </div>
 
     <section class="main-content">
+        
         <div class="recent">
             <div class="recent-head">
                 <span>Son Eklenen Deneyimler</span>
@@ -544,7 +419,7 @@ button:hover,
                 <div class="exp-stats">♡ 128<br>☰ 34</div>
             </div>
 
-            <div class="experience">
+<div class="experience">
                 <span class="tag is">İŞ</span>
                 <div>
                     <div class="exp-title">Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</div>
@@ -563,6 +438,7 @@ button:hover,
             </div>
         </div>
 
+        <!-- SAĞ ALAN: YAN PANEL -->
         <div class="side-grid">
             <div class="confession-box">
                 <h2>itiraflarımız ♡</h2>
@@ -573,7 +449,6 @@ button:hover,
             <div class="cat-note">
                 <b>Bugünün Bilge Kedi Notu 🐾</b>
                 <p>“Ucuz etin yahnisi değil, yorumu da çok olur.”</p>
-                <div class="cat-face-small"></div>
             </div>
 
             <div class="stats">
@@ -587,6 +462,7 @@ button:hover,
 
 <div id="footer-container"></div>
 
+<!-- FIREBASE BAĞLANTILARI -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
@@ -604,6 +480,7 @@ button:hover,
     const auth = getAuth(app);
 </script>
 
+<!-- ASENKRON BİLEŞEN YÜKLEYİCİLER -->
 <script>
 fetch("header.html")
   .then(res => res.text())
@@ -622,7 +499,11 @@ fetch("footer.html")
 </script>
 
 <script>
-lucide.createIcons();
+setTimeout(() => {
+    if(window.lucide){
+        lucide.createIcons();
+    }
+}, 400);
 </script>
 <script src="components.js"></script>
 </body>
