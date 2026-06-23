@@ -65,14 +65,52 @@ class BilgeKedi extends HTMLElement {
           justify-content: flex-end;
           height: 380px;
         }
+          .cat-container::before {
+  content: "";
+  position: absolute;
+  width: 460px;
+  height: 260px;
+  right: -40px;
+  bottom: 15px;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 70% 35%, rgba(236,72,153,.45), transparent 32%),
+    radial-gradient(circle at 30% 65%, rgba(56,189,248,.35), transparent 34%),
+    linear-gradient(to top, rgba(15,23,42,.95), transparent 70%);
+  filter: blur(2px);
+  opacity: .85;
+}
+
+.cat-container::after {
+  content: "✦  ·  ✧     ✦        ·  ✧";
+  position: absolute;
+  right: -10px;
+  top: 40px;
+  width: 380px;
+  height: 240px;
+  color: rgba(236,72,153,.75);
+  font-size: 24px;
+  letter-spacing: 22px;
+  line-height: 2.4;
+  z-index: 1;
+  pointer-events: none;
+  text-shadow:
+    0 0 12px rgba(236,72,153,.8),
+    0 0 18px rgba(56,189,248,.45);
+}
 
         .bilge-kedi_img {
-          width: 140px;
-          height: auto;
-          z-index: 2;
-          transition: opacity 0.3s ease-in-out;
-          margin-top: auto;
-        }
+  width: 150px;
+  height: auto;
+  z-index: 3;
+  transition: opacity 0.3s ease-in-out;
+  margin-top: auto;
+  filter:
+    drop-shadow(0 0 18px rgba(236,72,153,.35))
+    drop-shadow(0 0 26px rgba(56,189,248,.18));
+}
 
         .speech {
           position: relative;
