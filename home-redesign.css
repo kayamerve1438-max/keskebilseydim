@@ -536,234 +536,39 @@ hero-stats,
   border-color:rgba(236,72,153,.35) !important;
   box-shadow:0 0 26px rgba(168,85,247,.12);
 }
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <link rel="stylesheet" href="home-redesign.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keşke Bilseydim</title>
-<link rel="icon" type="image/png" href="images/logo.png">
-<script src="https://unpkg.com/lucide@latest"></script>
-</head>
-
-<body>
-
-<div id="header-container"></div>
-<div id="auth-container"></div>
-
-<main class="home-container">
-
-
-    
-    <section class="hero">
-        <div>
-            <h1>Bir karar vermeden önce,<br><span class="gradient-text">o yolu yürüyenleri dinle.</span></h1>
-            <p>Gerçek deneyimler, itiraflar, tavsiyeler ve pişmanlıklar tek yerde.<br>Bilge Kedi bazen alay eder ama çoğunlukla haklıdır.</p>
-
-            <div class="search-box">
-                <span>⌕</span>
-                <input placeholder="Ne hakkında deneyim arıyorsun? Örn: ev almak, iş değiştirmek">
-                <button>Ara</button>
-            </div>
-
-            <div class="hero-buttons">
-                <button class="primary">Deneyimleri Oku</button>
-                <button class="secondary">Deneyimini Paylaş</button>
-            </div>
-            <div class="hero-stats">
-    <div class="stat-item">
-        <strong>15.342</strong>
-        <span>Deneyim</span>
-    </div>
-
-    <div class="stat-item">
-        <strong>12.875</strong>
-        <span>Kullanıcı</span>
-    </div>
-
-    <div class="stat-item">
-        <strong>48.215</strong>
-        <span>İtiraf</span>
-    </div>
-
-    <div class="stat-item">
-        <strong>4,9</strong>
-        <span>Ortalama Puan</span>
-    </div>
-</div>
-        </div>
-        <bilge-kedi></bilge-kedi>
-    </section>
-
-    <div class="ev-subcategories">
-        <a href="ev.html?alt=komsular">Komşular</a>
-        <a href="ev.html?alt=kira">Ev Kiralamak</a>
-        <a href="ev.html?alt=ev-almak">Ev Almak</a>
-        <a href="ev.html?alt=aidat">Aidat & Site Hayatı</a>
-        <a href="ev.html?alt=tasinma">Taşınma</a>
-        <a href="ev.html?alt=deprem">Deprem & Bina Güvenliği</a>
-        <a href="ev.html?alt=emlakci">Emlakçılar</a>
-        <a href="ev.html?alt=tadilat">Tadilat & Ustalar</a>
-        <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
-        <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
-    </div>
-    <section class="weekly-section">
-    <div class="section-head">
-        <h2>🔥 Bu Hafta En Çok Okunanlar</h2>
-        <a href="#">Tüm Kategoriler ›</a>
-    </div>
-
-    <div class="weekly-grid">
-        <div class="weekly-card blue">
-            <div class="weekly-icon"><i data-lucide="home"></i></div>
-            <h3>EV</h3>
-            <p>Ev alma, taşınma, komşu, site hayatı...</p>
-            <strong>3.245 okuma</strong>
-        </div>
-
-        <div class="weekly-card purple">
-            <div class="weekly-icon"><i data-lucide="briefcase-business"></i></div>
-            <h3>İŞ</h3>
-            <p>İş hayatı, patronlar, istifa, maaş...</p>
-            <strong>2.987 okuma</strong>
-        </div>
-
-        <div class="weekly-card green">
-            <div class="weekly-icon"><i data-lucide="banknote"></i></div>
-            <h3>PARA</h3>
-            <p>Yatırım, borç, maaş, kredi, tasarruf...</p>
-            <strong>2.156 okuma</strong>
-        </div>
-
-        <div class="weekly-card orange">
-            <div class="weekly-icon"><i data-lucide="graduation-cap"></i></div>
-            <h3>EĞİTİM</h3>
-            <p>Okul, üniversite, sınavlar, tercihler...</p>
-            <strong>1.854 okuma</strong>
-        </div>
-
-        <div class="weekly-card pink">
-            <div class="weekly-icon"><i data-lucide="heart"></i></div>
-            <h3>İLİŞKİLER</h3>
-            <p>Aşk, arkadaşlık, ayrılık, evlilik...</p>
-            <strong>1.642 okuma</strong>
-        </div>
-    </div>
-</section>
-
-<section class="home-lower">
-    <div class="recent redesign-recent">
-        <div class="recent-head">
-            <span>Son Eklenen Deneyimler ⚡</span>
-            <a href="#">Tümünü Gör →</a>
-        </div>
-
-        <div class="recent-card-grid">
-            <article class="new-exp-card">
-                <span class="tag ev">EV</span>
-                <h3>Ev almadan önce keşke komşuları araştırsaydım</h3>
-                <p>Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış...</p>
-                <div class="exp-footer">
-                    <span>Anonim · 2 saat önce</span>
-                    <span>♡ 128 · ☰ 34</span>
-                </div>
-            </article>
-
-            <article class="new-exp-card">
-                <span class="tag is">İŞ</span>
-                <h3>Maaşı büyük diye girdim, ruhum küçük kaldı</h3>
-                <p>Paranın yetmediği yerde insanın kendisi eriyor. Keşke sadece maaşa bakmasaydım...</p>
-                <div class="exp-footer">
-                    <span>Anonim · 5 saat önce</span>
-                    <span>♡ 96 · ☰ 21</span>
-                </div>
-            </article>
-
-            <article class="new-exp-card">
-                <span class="tag para">PARA</span>
-                <h3>Bütün seçenekler sadece pahalı bakım, hayalime değil</h3>
-                <p>Ücretsiz birikim yok, ya paranla kazanır ya da zamanınla ödersin...</p>
-                <div class="exp-footer">
-                    <span>Anonim · 7 saat önce</span>
-                    <span>♡ 78 · ☰ 18</span>
-                </div>
-            </article>
-        </div>
-    </div>
-
-    <aside class="confession-panel">
-        <h2>İtiraflarımız ♡</h2>
-        <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
-        <button>İtirafını Paylaş</button>
-
-        <div class="confession-stats">
-            <span><b>32.458</b> itiraf</span>
-            <span><b>18.736</b> yorum</span>
-            <span><b>241.782</b> beğeni</span>
-        </div>
-    </aside>
-</section>
-
-<section class="bottom-note">
-    <span>❝</span>
-    Bazen pişmanlık paylaşılınca azalır, bazen de gülümsetir. Sen de paylaş, birilerine ışık ol...
-    <span>🐾</span>
-</section>
-</main>
-<footer>
-    © 2026 Keşke Bilseydim — Gerçek deneyimler, daha iyi kararlar.
-</footer>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyCfWhRF8BpXTxXlE5Hzs45FDuoocWy9H9E",
-        authDomain: "keskebilseydim-f56dc.firebaseapp.com",
-        projectId: "keskebilseydim-f56dc",
-        storageBucket: "keskebilseydim-f56dc.firebasestorage.app",
-        messagingSenderId: "524443729178",
-        appId: "1:524443729178:web:abc85bbcbcf65a3075c0a3"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-</script>
-
-<script>
-fetch("header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("header-container").innerHTML = data;
-    const headerScript = document.createElement("script");
-    headerScript.src = "header.js";
-    document.body.appendChild(headerScript);
-  });
-
-const footerContainer = document.getElementById("footer-container");
-
-if (footerContainer) {
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => {
-      footerContainer.innerHTML = data;
-    });
+.user-mini{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-</script>
 
-<script>
-setTimeout(() => {
-    if(window.lucide){
-        lucide.createIcons();
-    }
-}, 400);
-</script>
-<script src="components.js"></script>
-<script src="https://webneko.net/n.js"></script>
-<script>
-  nekoInit();
-</script>
-</body>
-</html>
+.user-avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#fdf2f8,#fbcfe8);
+  border:2px solid rgba(236,72,153,.55);
+  box-shadow:0 0 14px rgba(236,72,153,.28);
+  font-size:20px;
+}
+
+.user-mini strong{
+  display:block;
+  color:white;
+  font-size:14px;
+}
+
+.user-mini span{
+  color:#94a3b8;
+  font-size:12px;
+}
+
+.card-actions{
+  display:flex;
+  gap:12px;
+  color:#cbd5e1;
+  font-size:14px;
+  white-space:nowrap;
+}
