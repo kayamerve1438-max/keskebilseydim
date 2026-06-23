@@ -572,3 +572,59 @@ hero-stats,
   font-size:14px;
   white-space:nowrap;
 }
+/* === HEADER PREMIUM NEON UYUM === */
+
+#header-container{
+  background:rgba(2,6,23,.92) !important;
+  border-bottom:1px solid rgba(56,189,248,.18) !important;
+  box-shadow:0 0 34px rgba(14,165,233,.10) !important;
+}
+
+#header-container header,
+#header-container .header,
+#header-container nav{
+  background:transparent !important;
+}
+
+#header-container a,
+#header-container button,
+#header-container span{
+  color:#e5f3ff !important;
+}
+
+#header-container .nav-item,
+#header-container .category-btn,
+#header-container nav a,
+#header-container nav button{
+  background:rgba(15,23,42,.78) !important;
+  border:1px solid rgba(148,163,184,.20) !important;
+  border-radius:14px !important;
+  color:#e5f3ff !important;
+  box-shadow:0 0 16px rgba(14,165,233,.07) !important;
+}
+
+#header-container .nav-item:hover,
+#header-container .category-btn:hover,
+#header-container nav a:hover,
+#header-container nav button:hover{
+  border-color:rgba(56,189,248,.55) !important;
+  box-shadow:0 0 22px rgba(56,189,248,.18) !important;
+  transform:translateY(-1px);
+}
+
+#header-container .login,
+#header-container #loginBtn,
+#header-container .profile-btn{
+  background:#020617 !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  color:white !important;
+}
+
+#header-container .confession-nav,
+#header-container a[href*="itiraf"],
+#header-container button.confession-nav{
+  background:linear-gradient(135deg,#ec4899,#7c3aed) !important;
+  border:0 !important;
+  color:white !important;
+  box-shadow:0 0 28px rgba(236,72,153,.30) !important;
+}
