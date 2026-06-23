@@ -9,8 +9,16 @@ body{
 }
 
 .home-container{
-  width:min(92vw,1680px);
-  margin:34px auto 60px;
+  width:92vw !important;
+  max-width:none !important;
+  margin:34px auto 60px !important;
+}
+.hero,
+.weekly-section,
+.home-lower,
+.bottom-note{
+  width:100% !important;
+  max-width:none !important;
 }
 
 .hero{
