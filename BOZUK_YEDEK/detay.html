@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depozitoyu alırım sandım, alamadım</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#eef1f8;
+    color:#101828;
+}
+
+.page{
+    width:92%;
+    max-width:1500px;
+    margin:30px auto;
+    background:#f8f9fd;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+}
+
+.article-detail{
+    max-width:1100px;
+    margin:0 auto;
+    padding:45px 8%;
+}
+
+.article-detail img{
+    width:100%;
+    max-height:380px;
+    object-fit:cover;
+    border-radius:18px;
+    margin:25px 0;
+    background:#e5e7eb;
+}
+
+.category{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:8px 16px;
+    border-radius:999px;
+    font-weight:900;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:44px;
+    line-height:1.15;
+    margin:0 0 18px;
+}
+
+.meta{
+    color:#667085;
+    margin-bottom:20px;
+}
+
+.article-detail p{
+    font-size:19px;
+    line-height:1.75;
+    color:#344054;
+}
+
+.quote{
+    background:white;
+    border-left:5px solid #2563eb;
+    padding:18px 22px;
+    margin:28px 0;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:700;
+}
+
+.back{
+    display:inline-block;
+    margin-top:25px;
+    color:#2563eb;
+    font-weight:900;
+    text-decoration:none;
+}
+.bilge-note{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    margin:28px 0;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+
+.bilge-note img{
+    width:90px;
+    height:auto;
+    margin:0;
+    border-radius:0;
+}
+
+.bilge-note div{
+    font-size:18px;
+    line-height:1.5;
+    font-weight:700;
+    color:#344054;
+}
+
+.lesson-box{
+    background:#eef4ff;
+    border:1px solid #dbeafe;
+    border-radius:18px;
+    padding:24px;
+    margin:28px 0;
+}
+
+.lesson-box h3{
+    margin-top:0;
+    font-size:24px;
+}
+.breadcrumb{
+    margin-bottom:25px;
+    font-size:14px;
+    color:#667085;
+}
+
+.breadcrumb a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
+}
+.comments-section{
+    margin-top:35px;
+}
+
+.comments-section h2{
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.comment{
+    background:white;
+    border-radius:16px;
+    padding:18px 22px;
+    margin-bottom:14px;
+    box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+
+.comment b{
+    color:#101828;
+}
+
+.comment p{
+    font-size:16px;
+    margin:8px 0 0;
+}
+.show-comments-btn{
+    background:#2563eb;
+    color:white;
+    border:0;
+    border-radius:14px;
+    padding:14px 24px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.show-comments-btn:hover{
+    opacity:.9;
+}
+#footer-container{
+    width:100%;
+    text-align:center;
+    margin-top:30px;
+}
+
+.site-footer{
+    width:100%;
+    text-align:center;
+    padding:28px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+<div id="header-container"></div>
+<main class="article-detail">
+    <div class="breadcrumb">
+    <a href="index.html">Ana Sayfa</a>
+    >
+    <a href="ev.html">Ev</a>
+    >
+    <a href="ev.html?alt=kira">Ev Kiralamak</a>
+</div>
+    <span class="category">EV KİRALAMAK</span>
+
+    <h1>Depozitoyu alırım sandım, alamadım</h1>
+
+    <div class="meta">Gerçek deneyim • 4 dk okuma • Bilge Kedi onaylı 🐾</div>
+
+    <img src="images/depozito.jpg" alt="Ev kiralama ve depozito deneyimi">
+
+    <p>
+        Evi tutarken her şey çok güzel görünüyordu. Ev sahibi güler yüzlüydü, emlakçı hızlıydı,
+        ev de fotoğraflardaki gibiydi. Ben de açıkçası depozito konusunu fazla sorgulamadım.
+        “Nasıl olsa evi temiz teslim ederim, paramı geri alırım” diye düşündüm.
+    </p>
+
+    <p>
+        Taşınma günü geldiğinde evi gerçekten tertemiz bıraktım. Duvarlarda büyük bir hasar yoktu,
+        mutfak temizdi, banyoyu bile detaylı temizlettim. Ama iş depozitoyu almaya gelince ev sahibi
+        bir anda küçük küçük bahaneler sıralamaya başladı.
+    </p>
+
+    <div class="quote">
+        “Keşke eve girerken her köşenin fotoğrafını çekseydim.”
+    </div>
+    <div class="bilge-note">
+    <img src="images/kedi_4.png" alt="Bilge Kedi">
+    <div>
+        Bilge Kedi der ki: “Sözleşme okumak sıkıcıdır ama depozitodan daha ucuzdur.”
+    </div>
+</div>
+
+<div class="lesson-box">
+    <h3>Keşke Bilseydim</h3>
+    <p>
+        Eve girerken mutlaka fotoğraf ve video çek. Teslim tutanağı hazırla.
+        Depozitonun hangi durumlarda kesileceğini sözleşmeye açıkça yazdır.
+    </p>
+</div>
+
+    <p>
+        Önce perdelerin yıprandığını söyledi. Sonra duvarda eski bir iz olduğunu iddia etti.
+        En sonunda da “boya badana gerekir” diyerek depozitonun büyük kısmını vermek istemedi.
+        O an anladım ki sözlü güven, kiralık ev işlerinde yetmiyormuş.
+    </p>
+
+    <p>
+        Benim bu deneyimden çıkardığım ders şu oldu: Eve girerken mutlaka fotoğraf ve video çekilmeli.
+        Teslim tutanağı hazırlanmalı. Depozitonun hangi şartlarda kesileceği sözleşmeye açıkça yazılmalı.
+        Yoksa haklı olsan bile bunu kanıtlamak zorlaşıyor.
+    </p>
+
+    <p>
+        Şimdi geriye dönüp bakınca evin konumundan çok, sözleşmenin detaylarına bakmam gerektiğini
+        anlıyorum. Çünkü bazen evi değil, aslında ileride yaşayacağın tartışmayı kiralıyorsun.
+    </p>
+<section class="comments-section">
+    <h2>Yorumlar 💬 <span>37 yorum</span></h2>
+
+    <div id="commentsList"></div>
+
+    <button id="showAllComments" class="show-comments-btn">
+        Tüm 37 yorumu göster
+    </button>
+</section>
+
+    <a href="ev.html?alt=kira" class="back">← Ev Kiralamak deneyimlerine dön</a>
+</main>
+
+<div id="footer-container"></div>
+
+</div>
+
+<script>
+const comments = [
+    ["Ayşe K.", "Ben de aynı şeyi yaşadım. Eve girerken video çekmek gerçekten şartmış."],
+    ["Mert D.", "Depozito konusu sözleşmede net yazmıyorsa sonradan çok uğraştırıyor."],
+    ["Bilge Kedi 🐾", "Söz uçar, tutanak kalır. Miyav ama resmi."],
+    ["Selin A.", "Ben artık eve girerken her odanın fotoğrafını çekiyorum."],
+    ["Can B.", "Ev sahibiyle yazılı konuşmak çok önemli. WhatsApp mesajları bile işe yarıyor."],
+    ["Derya M.", "Boya bahanesi en klasik depozito kesme yöntemi olabilir."],
+    ["Onur T.", "Ben depozito için teslim tutanağı imzalatmıştım, çok işime yaradı."],
+    ["Elif S.", "Kiracı olarak haklarımızı bilmeden hareket ediyoruz, sonra zorlanıyoruz."],
+    ["Burak Y.", "Emlakçı da bu konuda daha net bilgi vermeliydi bence."],
+    ["Nazlı P.", "Evden çıkarken temizlik faturası bile saklanmalıymış."],
+    ["Gökhan R.", "Benzer durumda Tüketici Hakem Heyeti’ne başvuran arkadaşım parasını aldı."],
+    ["İrem C.", "Sözleşmedeki küçük detaylar gerçekten büyük fark yaratıyor."],
+    ["Tolga E.", "Anahtar tesliminde fotoğraf çekmek aklıma hiç gelmezdi."],
+    ["Buse N.", "Ev sahibi iyi biri gibi görünse bile belge şart."],
+    ["Emre L.", "Depozito yüzünden ev değiştirmekten soğudum resmen."],
+    ["Aylin V.", "Tutanak konusu çok doğru. Sözlü anlaşma yetmiyor."],
+    ["Kerem H.", "Ben de perde bahanesiyle kesinti yaşadım."],
+    ["Melis G.", "Keşke bu yazıyı ilk evimi tutmadan önce okusaydım."],
+    ["Serkan D.", "Bence her kiracı eve giriş videosu çekmeli."],
+    ["Zeynep F.", "Ev sahibinin söylediği her şeyi yazılı almak lazım."],
+    ["Hakan İ.", "Depozito iadesi baştan konuşulmalı, sona kalınca sorun oluyor."],
+    ["Ceren O.", "Ben duvar izleri için eski fotoğrafları göstermiştim, işe yaradı."],
+    ["Kaan U.", "Ev kiralamak sadece evi beğenmek değilmiş, bunu anladım."],
+    ["Seda T.", "Kira sözleşmesini okumadan imzalamamak gerekiyormuş."],
+    ["Alp M.", "Bazı masrafların depozitodan kesilemeyeceğini yeni öğrendim."],
+    ["Ece Y.", "Bilge Kedi yine haklı çıktı."],
+    ["Deniz K.", "Evden çıkarken komşudan şahit istemek bile mantıklı olabilir."],
+    ["Funda Ş.", "Bu tür deneyimler gerçekten çok işe yarıyor."],
+    ["Ali R.", "Ben olsam artık her şeyi maille onaylatırım."],
+    ["Nisan B.", "Depozito için ayrı madde yazdırmak gerekiyormuş."],
+    ["Ozan C.", "Küçük hasar büyük tartışmaya dönüşebiliyor."],
+    ["Pelin A.", "Ev teslim tutanağı hayat kurtarır."],
+    ["Murat S.", "Kiracıların bu konularda daha bilinçli olması lazım."],
+    ["Yağmur E.", "Eve girerken de çıkarken de fotoğraf şart."],
+    ["Cem V.", "Depozito kesintisi için kanıt istemek gerekiyor."],
+    ["Aslı D.", "Bu yazıyı arkadaşıma gönderdim, o da taşınacak."],
+    ["Bilge Kedi 🐾", "Fotoğraf çek, tutanak yap, sonra rahat uyu."]
+];
+
+const commentsList = document.getElementById("commentsList");
+const showAllBtn = document.getElementById("showAllComments");
+
+function renderComments(limit){
+    commentsList.innerHTML = comments.slice(0, limit).map(comment => `
+        <div class="comment">
+            <b>${comment[0]}</b>
+            <p>${comment[1]}</p>
+        </div>
+    `).join("");
+}
+
+renderComments(5);
+
+if(showAllBtn){
+    showAllBtn.onclick = function(){
+        renderComments(comments.length);
+        showAllBtn.style.display = "none";
+    };
+}
+</script>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+
+    const headerScript = document.createElement("script");
+    headerScript.src = "header.js";
+    document.body.appendChild(headerScript);
+  });
+
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer-container").innerHTML = data;
+  });
+</script>
+</body>
+</html>

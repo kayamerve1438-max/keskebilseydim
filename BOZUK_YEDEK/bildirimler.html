@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bildirimler - Keşke Bilseydim</title>
+
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="auth.css">
+<link rel="stylesheet" href="profile.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef1f8;
+    color:#101828;
+}
+
+.page{
+    width:92%;
+    max-width:1300px;
+    margin:30px auto;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 18px 45px rgba(0,0,0,.10);
+    overflow:hidden;
+}
+
+.notifications-head{
+    padding:28px 34px;
+    border-bottom:1px solid #e5e7eb;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.notifications-head h1{
+    margin:0;
+    font-size:32px;
+}
+
+.mark-read{
+    border:0;
+    background:#2563eb;
+    color:white;
+    border-radius:12px;
+    padding:12px 18px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.notification-list{
+    width:100%;
+}
+
+.notification-item{
+    display:grid;
+    grid-template-columns:150px 1fr 110px;
+    gap:20px;
+    align-items:center;
+    padding:18px 34px;
+    border-bottom:1px solid #eef0f5;
+    text-decoration:none;
+    color:#101828;
+}
+
+.notification-item:hover{
+    background:#f8fafc;
+}
+
+.notification-type{
+    font-weight:900;
+    color:#2563eb;
+}
+
+.notification-type.comment{
+    color:#16a34a;
+}
+
+.notification-text{
+    font-size:15px;
+    line-height:1.45;
+}
+
+.notification-text b{
+    font-weight:900;
+}
+
+.notification-date{
+    text-align:right;
+    color:#667085;
+    font-size:14px;
+}
+
+.notification-item.unread{
+    background:#f0f6ff;
+}
+
+.notification-item.unread .notification-text:before{
+    content:"";
+    display:inline-block;
+    width:9px;
+    height:9px;
+    background:#2563eb;
+    border-radius:50%;
+    margin-right:8px;
+}
+
+@media(max-width:700px){
+    .notification-item{
+        grid-template-columns:1fr;
+        gap:8px;
+    }
+    .notification-date{
+        text-align:left;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="auth-container"></div>
+
+<div class="page">
+    <div class="notifications-head">
+        <h1>Bildirimler</h1>
+        <button class="mark-read" id="markAllRead">Tümünü okundu yap</button>
+    </div>
+
+    <div class="notification-list" id="notificationList"></div>
+</div>
+
+<div id="footer-container"></div>
+
+<script>
+const readNotifications =
+JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+
+const notifications = [
+    {
+        id:1,
+        type:"Beğeni",
+        className:"like",
+        text:'<b>Merve Kaya</b>, “Depozitoyu alırım sandım, alamadım” yorumunu beğendi.',
+        date:"Bugün",
+        unread:true,
+        url:"detay.html?id=kira-1"
+    },
+    {
+        id:2,
+        type:"Yorum",
+        className:"comment",
+        text:'<b>Ahmet Y.</b>, “Ev almadan önce keşke komşuları araştırsaydım” gönderine yorum yaptı.',
+        date:"Dün",
+        unread:true,
+        url:"detay.html?id=komsu-1"
+    },
+    {
+        id:3,
+        type:"Beğeni",
+        className:"like",
+        text:'<b>Selin A.</b>, “Maaşa bakıp iş değiştirdim” yorumunu beğendi.',
+        date:"18 Haz",
+        unread:false,
+        url:"detay.html?id=is-1"
+    }
+];
+
+const list = document.getElementById("notificationList");
+
+list.innerHTML = notifications.map(item => {
+    const isRead = readNotifications.includes(item.id);
+
+    return `
+<a class="notification-item ${(!isRead && item.unread) ? "unread" : ""}" href="${item.url}" data-id="${item.id}">            <div class="notification-type ${item.className}">
+                ${item.type === "Beğeni" ? "❤️ Beğeni" : "💬 Yorum"}
+            </div>
+            <div class="notification-text">${item.text}</div>
+            <div class="notification-date">${item.date}</div>
+        </a>
+    `;
+}).join("");
+document.querySelectorAll(".notification-item").forEach(item => {
+    item.addEventListener("click", function(){
+        const id = Number(item.dataset.id);
+
+        let read =
+        JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+
+        if(!read.includes(id)){
+            read.push(id);
+        }
+
+        localStorage.setItem(
+            "kb_read_notifications",
+            JSON.stringify(read)
+        );
+    });
+});
+document.getElementById("markAllRead").onclick = function(){
+    const allIds = notifications.map(x => x.id);
+
+    localStorage.setItem(
+        "kb_read_notifications",
+        JSON.stringify(allIds)
+    );
+
+    document.querySelectorAll(".notification-item").forEach(item => {
+        item.classList.remove("unread");
+    });
+
+    document.querySelectorAll(".badge").forEach(badge => {
+        badge.textContent = "0";
+        badge.style.display = "none";
+    });
+};
+</script>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+
+    const headerScript = document.createElement("script");
+    headerScript.src = "header.js";
+    document.body.appendChild(headerScript);
+  });
+
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer-container").innerHTML = data;
+  });
+</script>
+
+</body>
+</html>

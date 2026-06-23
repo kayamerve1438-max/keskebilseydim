@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşke Bilseydim</title>
+    <style>
+        :root { color-scheme: dark; --primary: #00D2FF; --secondary: #FF2E93; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #060913; color: #F3F4F6; min-height: 100vh; }
+        
+        /* HEADER - LOGO ALANI */
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
+        .logo { font-size: 24px; font-weight: 800; color: white; }
+
+        .page { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        
+        /* HERO */
+        .hero { margin-bottom: 60px; text-align: center; }
+        .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; font-size: 3rem; }
+        
+        /* ARAMA */
+        .search-container { max-width: 600px; margin: 30px auto; background: #0f172a; padding: 10px; border-radius: 16px; display: flex; border: 1px solid #334155; }
+        .search-container input { flex: 1; background: transparent; border: 0; padding: 12px; color: white; outline: none; }
+        .search-container button { background: var(--primary); border: 0; padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+        /* ANA İÇERİK */
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        .card { background: #0f172a; padding: 24px; border-radius: 20px; border: 1px solid #1e293b; margin-bottom: 20px; }
+        .confession-box { background: linear-gradient(135deg, var(--secondary), #7c3aed); padding: 30px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Keşke Bilseydim</div>
+    <nav style="display: flex; gap: 20px;">
+        <a href="#" style="color: #94a3b8; text-decoration: none;">Giriş</a>
+        <a href="#" style="color: white; font-weight: 700; text-decoration: none;">Kayıt Ol</a>
+    </nav>
+</header>
+
+<div class="page">
+    <section class="hero">
+        <h1>Bir karar vermeden önce,<br><span class="gradient-text">o yolu yürüyenleri dinle.</span></h1>
+        <div class="search-container">
+            <input placeholder="Ne hakkında deneyim arıyorsun?">
+            <button>Ara</button>
+        </div>
+    </section>
+
+    <div class="main-grid">
+        <section class="recent">
+            <h2>Son Eklenen Deneyimler</h2>
+            <div class="card">
+                <h3>Ev almadan önce keşke komşuları araştırsaydım</h3>
+                <p style="color: #94a3b8;">Aidat değil, asıl mesele WhatsApp grubuymuş.</p>
+            </div>
+            <div class="card">
+                <h3>Maaşa bakıp iş değiştirdim</h3>
+                <p style="color: #94a3b8;">Maaş artar, huzur azalırsa o hesap tutmuyor.</p>
+            </div>
+        </section>
+
+        <section class="side">
+            <div class="confession-box">
+                <h2>İtiraflarımız ♡</h2>
+                <p>Kimseye anlatamadığın şeyi buraya bırak.</p>
+                <button style="margin-top: 20px; padding: 10px 20px; border-radius: 8px; border: 0; cursor: pointer;">İtirafını Paylaş</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profilim</title>
+
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="profile.css">
+
+<style>
+body{
+    margin:0;
+    background:#eef1f8;
+    font-family:Arial,sans-serif;
+}
+
+.profile-page{
+    width:90%;
+    max-width:760px;
+    margin:40px auto;
+}
+
+.profile-card{
+    background:white;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.profile-title{
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:30px;
+}
+
+.profile-row{
+    margin-bottom:25px;
+}
+
+.profile-label{
+    font-size:14px;
+    color:#667085;
+    margin-bottom:8px;
+}
+
+.profile-value{
+    font-size:20px;
+    font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+
+<div class="profile-page">
+    <div class="profile-card">
+
+        <div class="profile-title">Profil Bilgileri</div>
+
+        <div class="profile-row">
+            <div class="profile-label">Kullanıcı Adı</div>
+            <div class="profile-value" id="profileName">-</div>
+        </div>
+
+        <div class="profile-row">
+            <div class="profile-label">E-posta</div>
+            <div class="profile-value" id="profileEmail">-</div>
+        </div>
+
+        <div class="profile-row">
+            <div class="profile-label">Kayıt Tarihi</div>
+            <div class="profile-value" id="profileDate">-</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const savedName = localStorage.getItem("kb_user_name");
+const savedEmail = localStorage.getItem("kb_user_email");
+const registerDate = localStorage.getItem("kb_register_date");
+
+document.getElementById("profileName").textContent = savedName || "-";
+document.getElementById("profileEmail").textContent = savedEmail || "-";
+document.getElementById("profileDate").textContent = registerDate || "-";
+</script>
+
+<script>
+fetch("header.html")
+.then(res => res.text())
+.then(data => {
+    document.getElementById("header-container").innerHTML = data;
+
+    const script = document.createElement("script");
+    script.src = "header.js";
+    document.body.appendChild(script);
+});
+</script>
+
+</body>
+</html>
