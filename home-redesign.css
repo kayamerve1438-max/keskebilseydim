@@ -94,3 +94,35 @@ body {
     .hero h1 { font-size: 32px; }
     .weekly-grid, .recent-card-grid { grid-template-columns: 1fr; }
 }
+/* Ekran genişliğine göre sütun sayısını otomatik ayarla */
+.weekly-grid, .recent-card-grid {
+    display: grid;
+    /* Ekran küçülürse sütunları otomatik 1'e indirir */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+}
+
+/* Alt bölüm (Deneyimler ve İtiraflar) için mobil ayarı */
+.home-lower {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* 1024px'in altında (tablet ve mobilde) alt alta diz */
+@media (max-width: 1024px) {
+    .home-lower {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 768px'in altında (telefonlarda) tüm gridleri 1 sütun yap */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .weekly-grid, .recent-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
