@@ -1,4 +1,16 @@
-body{
+
+.home-container{
+  width:min(92vw, 1380px);
+  margin:34px auto 50px;
+}
+
+.hero,
+.weekly-section,
+.home-lower,
+.bottom-note{
+  width:100% !important;
+  max-width:none !important;
+}body{
   background:linear-gradient(135deg,#03111f,#12051b)!important;
 }
 
