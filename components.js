@@ -161,3 +161,7 @@ render() {
   `;
 }
 }
+
+if (!customElements.get('bilge-kedi')) {
+  customElements.define('bilge-kedi', BilgeKedi);
+}
