@@ -208,3 +208,176 @@ h1{
     transform: translateY(-5px) rotate(1deg);
   }
 }
+/* === PREMIUM REDESIGN V1 === */
+
+body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(0, 195, 255, .18), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(255, 45, 170, .18), transparent 30%),
+    linear-gradient(135deg, #020617 0%, #07111f 45%, #16071e 100%) !important;
+}
+
+.page {
+  max-width: 1380px !important;
+  margin: 28px auto 40px !important;
+  border-radius: 28px !important;
+  padding: 48px 54px !important;
+  background:
+    radial-gradient(circle at 75% 28%, rgba(217, 70, 239, .16), transparent 32%),
+    linear-gradient(180deg, rgba(15,23,42,.92), rgba(2,6,23,.94)) !important;
+  border: 1px solid rgba(56, 189, 248, .22) !important;
+  box-shadow: 0 0 80px rgba(14,165,233,.12), inset 0 0 60px rgba(255,255,255,.02) !important;
+}
+
+h1 {
+  font-size: clamp(42px, 4.8vw, 72px) !important;
+  line-height: .98 !important;
+  letter-spacing: -3px !important;
+}
+
+h1 span,
+.gradient-text {
+  background: linear-gradient(90deg, #06b6d4, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search-box,
+.search-area {
+  background: rgba(2, 6, 23, .72) !important;
+  border: 1px solid rgba(56,189,248,.35) !important;
+  box-shadow: 0 0 30px rgba(14,165,233,.18) !important;
+}
+
+button,
+.btn,
+.primary-btn {
+  box-shadow: 0 0 22px rgba(236,72,153,.22);
+}
+
+.category-card,
+.experience-card,
+.card {
+  background: linear-gradient(180deg, rgba(15,23,42,.88), rgba(2,6,23,.92)) !important;
+  border: 1px solid rgba(56,189,248,.18) !important;
+  box-shadow: 0 0 30px rgba(14,165,233,.08) !important;
+  border-radius: 22px !important;
+}
+
+.category-card:hover,
+.experience-card:hover,
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(236,72,153,.45) !important;
+  box-shadow: 0 0 36px rgba(236,72,153,.18) !important;
+}
+/* === HERO PREMIUM V2 === */
+
+.hero {
+  min-height: 430px !important;
+  display: grid !important;
+  grid-template-columns: 1.1fr .9fr !important;
+  align-items: center !important;
+  gap: 40px !important;
+  padding: 72px 72px 54px !important;
+  border-radius: 28px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 72% 25%, rgba(236,72,153,.22), transparent 28%),
+    radial-gradient(circle at 20% 15%, rgba(14,165,233,.18), transparent 30%),
+    linear-gradient(135deg, rgba(2,6,23,.95), rgba(15,23,42,.92)) !important;
+  border: 1px solid rgba(56,189,248,.28) !important;
+  box-shadow: 0 0 70px rgba(14,165,233,.14) !important;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.22) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: .08;
+  pointer-events: none;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  max-width: 720px !important;
+  font-size: clamp(48px, 5vw, 82px) !important;
+  line-height: .95 !important;
+  letter-spacing: -3.5px !important;
+  margin-bottom: 24px !important;
+}
+
+.hero p {
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+  max-width: 620px !important;
+  color: #cbd5e1 !important;
+}
+
+.search-box {
+  max-width: 650px !important;
+  height: 58px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 7px 8px 7px 18px !important;
+  margin-top: 28px !important;
+  background: rgba(2,6,23,.78) !important;
+  border: 1px solid rgba(56,189,248,.42) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 34px rgba(14,165,233,.20) !important;
+}
+
+.search-box input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  color: white !important;
+  font-size: 15px !important;
+}
+
+.search-box button {
+  height: 44px !important;
+  min-width: 92px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  color: white !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #06b6d4, #2563eb, #c026d3) !important;
+  box-shadow: 0 0 24px rgba(37,99,235,.45) !important;
+}
+
+.hero-buttons {
+  display: flex !important;
+  gap: 16px !important;
+  margin-top: 24px !important;
+}
+
+.hero-buttons button {
+  min-width: 165px !important;
+  height: 52px !important;
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+}
+
+.hero-buttons .primary {
+  background: linear-gradient(135deg, #06b6d4, #2563eb, #ec4899) !important;
+  border: 0 !important;
+  color: white !important;
+  box-shadow: 0 0 28px rgba(236,72,153,.32) !important;
+}
+
+.hero-buttons .secondary {
+  background: rgba(15,23,42,.72) !important;
+  border: 1px solid rgba(236,72,153,.55) !important;
+  color: white !important;
+}
