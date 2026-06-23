@@ -173,3 +173,68 @@ bilge-kedi{
   justify-self: center;
   transform: scale(1.18);
 }
+/* === HERO GÖRSEL PARLATMA - ÖLÇEKLEMEYE DOKUNMAZ === */
+
+.hero{
+  background:
+    radial-gradient(circle at 80% 25%, rgba(236,72,153,.28), transparent 32%),
+    radial-gradient(circle at 18% 20%, rgba(14,165,233,.20), transparent 34%),
+    linear-gradient(135deg,#07111f,#090b1c 55%,#19071f) !important;
+  border:1px solid rgba(56,189,248,.28) !important;
+  box-shadow:0 0 70px rgba(14,165,233,.14) !important;
+}
+
+.hero h1{
+  color:#fff !important;
+  text-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.gradient-text{
+  background:linear-gradient(90deg,#06b6d4,#6366f1,#ec4899) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+}
+
+.search-box{
+  background:rgba(2,6,23,.78) !important;
+  border:1px solid rgba(56,189,248,.40) !important;
+  border-radius:16px !important;
+  box-shadow:0 0 28px rgba(14,165,233,.18) !important;
+}
+
+.search-box input{
+  background:transparent !important;
+  border:0 !important;
+  outline:0 !important;
+  color:white !important;
+}
+
+.search-box button,
+.hero-buttons .primary{
+  background:linear-gradient(135deg,#06b6d4,#2563eb,#ec4899) !important;
+  color:white !important;
+  border:0 !important;
+  box-shadow:0 0 22px rgba(236,72,153,.32) !important;
+}
+
+.hero-buttons .secondary{
+  background:rgba(15,23,42,.72) !important;
+  color:white !important;
+  border:1px solid rgba(236,72,153,.45) !important;
+}
+
+.hero-stats{
+  color:white !important;
+}
+
+.stat-item strong{
+  color:white !important;
+}
+
+.stat-item span{
+  color:#94a3b8 !important;
+}
+
+bilge-kedi{
+  filter:drop-shadow(0 0 24px rgba(236,72,153,.25));
+}
