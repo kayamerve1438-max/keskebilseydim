@@ -289,3 +289,94 @@ hero-stats,
   gap: 30px !important;
   margin-top: 26px !important;
 }
+/* === NEON KATEGORİ KARTLARI === */
+
+.weekly-card{
+  position:relative;
+  overflow:hidden;
+  transition:.25s ease;
+}
+
+.weekly-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.16;
+  pointer-events:none;
+}
+
+.weekly-card:hover{
+  transform:translateY(-5px);
+}
+
+/* ikon kutusu */
+.weekly-icon{
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+/* EV */
+.weekly-card.blue{
+  border-color:rgba(14,165,233,.55);
+  box-shadow:0 0 28px rgba(14,165,233,.16);
+}
+.weekly-card.blue .weekly-icon{
+  background:rgba(14,165,233,.16);
+  box-shadow:0 0 24px rgba(14,165,233,.28);
+}
+
+/* İŞ */
+.weekly-card.purple{
+  border-color:rgba(168,85,247,.55);
+  box-shadow:0 0 28px rgba(168,85,247,.16);
+}
+.weekly-card.purple .weekly-icon{
+  background:rgba(168,85,247,.16);
+  box-shadow:0 0 24px rgba(168,85,247,.28);
+}
+
+/* PARA */
+.weekly-card.green{
+  border-color:rgba(34,197,94,.55);
+  box-shadow:0 0 28px rgba(34,197,94,.16);
+}
+.weekly-card.green .weekly-icon{
+  background:rgba(34,197,94,.16);
+  box-shadow:0 0 24px rgba(34,197,94,.28);
+}
+
+/* EĞİTİM */
+.weekly-card.orange{
+  border-color:rgba(249,115,22,.55);
+  box-shadow:0 0 28px rgba(249,115,22,.16);
+}
+.weekly-card.orange .weekly-icon{
+  background:rgba(249,115,22,.16);
+  box-shadow:0 0 24px rgba(249,115,22,.28);
+}
+
+/* İLİŞKİLER */
+.weekly-card.pink{
+  border-color:rgba(236,72,153,.60);
+  box-shadow:0 0 28px rgba(236,72,153,.18);
+}
+.weekly-card.pink .weekly-icon{
+  background:rgba(236,72,153,.16);
+  box-shadow:0 0 24px rgba(236,72,153,.30);
+}
+
+/* Son eklenen kartlara hafif neon */
+.new-exp-card{
+  transition:.25s ease;
+}
+
+.new-exp-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(56,189,248,.55);
+  box-shadow:0 0 26px rgba(56,189,248,.16);
+}
