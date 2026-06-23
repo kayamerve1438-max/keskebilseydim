@@ -127,3 +127,27 @@ body {
     grid-template-columns:1fr;
   }
 }
+/* HERO İSTATİSTİKLER */
+
+.hero-stats{
+    display:flex;
+    gap:40px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.stat-item{
+    display:flex;
+    flex-direction:column;
+}
+
+.stat-item strong{
+    font-size:28px;
+    font-weight:800;
+    color:white;
+}
+
+.stat-item span{
+    font-size:14px;
+    color:#94a3b8;
+}
