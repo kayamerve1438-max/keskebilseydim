@@ -150,3 +150,16 @@ header nav a.pink {
     display: flex !important;
     gap: 20px;
 }
+.logo-area img,
+.logo-area > img,
+#header-container .logo-area img{
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  object-fit: contain !important;
+}
+
+.logo-area{
+  min-width: 260px !important;
+}
