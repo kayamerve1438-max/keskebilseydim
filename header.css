@@ -153,10 +153,10 @@ header nav a.pink {
 .logo-area img,
 .logo-area > img,
 #header-container .logo-area img{
-  width: 120px !important;
-  height: 120px !important;
-  min-width: 120px !important;
-  max-width: 120px !important;
+  width: 220px !important;
+  height: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
   object-fit: contain !important;
 }
 
