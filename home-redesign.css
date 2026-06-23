@@ -151,3 +151,26 @@ body {
     font-size:14px;
     color:#94a3b8;
 }
+/* SAYFAYI TEK PARÇA ÖLÇEKLE */
+.home-container{
+  width: min(1400px, 96vw) !important;
+  transform-origin: top center;
+}
+
+@media (max-width: 1400px){
+  .home-container{
+    transform: scale(calc(100vw / 1400));
+    width: 1400px !important;
+    margin-left: 50% !important;
+    translate: -50% 0;
+  }
+}
+
+@media (max-width: 900px){
+  .home-container{
+    transform: none;
+    width: 94vw !important;
+    margin: 24px auto !important;
+    translate: none;
+  }
+}
