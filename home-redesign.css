@@ -38,3 +38,37 @@ body { background: #060913 !important; color: #F3F4F6 !important; font-family: '
 @media (max-width: 768px) {
     .weekly-grid, .recent-card-grid { grid-template-columns: 1fr; }
 }
+/* HERO İÇERİK HİZALAMA */
+.hero {
+  display: grid !important;
+  grid-template-columns: 1.1fr .9fr !important;
+  align-items: center !important;
+  gap: 60px !important;
+  padding: 70px 90px !important;
+}
+
+.hero > div:first-child {
+  max-width: 720px !important;
+}
+
+.hero h1 {
+  font-size: clamp(44px, 4.8vw, 76px) !important;
+  line-height: 1 !important;
+  letter-spacing: -3px !important;
+}
+
+.search-box {
+  display: flex !important;
+  align-items: center !important;
+  max-width: 620px !important;
+  height: 54px !important;
+  gap: 10px !important;
+}
+
+.search-box input {
+  flex: 1 !important;
+}
+
+bilge-kedi {
+  justify-self: center !important;
+}
