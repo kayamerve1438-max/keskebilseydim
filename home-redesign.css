@@ -628,3 +628,36 @@ hero-stats,
   color:white !important;
   box-shadow:0 0 28px rgba(236,72,153,.30) !important;
 }
+/* === LOGO VE SİTE ADI PREMIUM FINAL === */
+
+#header-container .logo-area{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  text-decoration:none !important;
+}
+
+#header-container .logo-area img{
+  width:48px !important;
+  height:48px !important;
+  object-fit:contain !important;
+  filter:drop-shadow(0 0 10px rgba(56,189,248,.35)) !important;
+}
+
+#header-container .site-name{
+  font-size:22px !important;
+  font-weight:950 !important;
+  letter-spacing:-.6px !important;
+
+  background:linear-gradient(90deg,#38bdf8,#818cf8,#ec4899) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+
+  color:transparent !important;
+  text-shadow:0 0 18px rgba(236,72,153,.18) !important;
+}
+
+#header-container .logo-area:hover .site-name{
+  filter:drop-shadow(0 0 10px rgba(236,72,153,.35)) !important;
+}
