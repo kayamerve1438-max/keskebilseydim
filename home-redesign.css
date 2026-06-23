@@ -72,3 +72,104 @@ body { background: #060913 !important; color: #F3F4F6 !important; font-family: '
 bilge-kedi {
   justify-self: center !important;
 }
+/* === HERO FINAL PREMIUM === */
+
+.hero{
+  max-width: 1380px;
+  margin: 28px auto 34px;
+  padding: 70px 80px;
+  min-height: 520px;
+
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 60px;
+
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+
+  background:
+    radial-gradient(circle at 78% 28%, rgba(236,72,153,.25), transparent 30%),
+    radial-gradient(circle at 22% 22%, rgba(14,165,233,.18), transparent 32%),
+    linear-gradient(135deg, #07111f 0%, #080b1a 55%, #17071e 100%);
+
+  border: 1px solid rgba(56,189,248,.22);
+  box-shadow: 0 0 70px rgba(14,165,233,.12);
+}
+
+.hero h1{
+  font-size: clamp(46px, 4.8vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  margin: 0 0 22px;
+}
+
+.hero p{
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 620px;
+  color: #cbd5e1;
+}
+
+.search-box{
+  margin-top: 26px;
+  max-width: 650px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 0 18px;
+  border-radius: 16px;
+  background: rgba(2,6,23,.72);
+  border: 1px solid rgba(56,189,248,.35);
+}
+
+.search-box input{
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.search-box button{
+  height: 42px;
+  min-width: 86px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  font-weight: 800;
+  background: linear-gradient(135deg,#06b6d4,#2563eb,#c026d3);
+}
+
+.hero-buttons{
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.hero-buttons button{
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 14px;
+  font-weight: 800;
+}
+
+.hero-stats{
+  display: flex;
+  gap: 38px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.stat-item strong{
+  font-size: 24px;
+}
+
+bilge-kedi{
+  justify-self: center;
+  transform: scale(1.18);
+}
