@@ -380,3 +380,68 @@ hero-stats,
   border-color:rgba(56,189,248,.55);
   box-shadow:0 0 26px rgba(56,189,248,.16);
 }
+/* === DAHA PARLAK PREMIUM NEON KARTLAR === */
+
+.weekly-card{
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,.09), transparent 28%),
+    rgba(2,6,23,.82) !important;
+}
+
+.weekly-card::after{
+  content:"";
+  position:absolute;
+  right:-35px;
+  bottom:-35px;
+  width:120px;
+  height:120px;
+  border-radius:999px;
+  filter:blur(26px);
+  opacity:.45;
+  pointer-events:none;
+}
+
+.weekly-card.blue::after{background:#06b6d4;}
+.weekly-card.purple::after{background:#a855f7;}
+.weekly-card.green::after{background:#22c55e;}
+.weekly-card.orange::after{background:#f97316;}
+.weekly-card.pink::after{background:#ec4899;}
+
+.weekly-card h3{
+  font-size:22px;
+  letter-spacing:.3px;
+}
+
+.weekly-icon{
+  font-size:34px;
+  transform:scale(1.08);
+}
+
+.weekly-card strong{
+  box-shadow:0 0 18px rgba(255,255,255,.14);
+}
+
+.weekly-card.blue strong{
+  color:#7dd3fc;
+  background:rgba(14,165,233,.18);
+}
+
+.weekly-card.purple strong{
+  color:#d8b4fe;
+  background:rgba(168,85,247,.18);
+}
+
+.weekly-card.green strong{
+  color:#86efac;
+  background:rgba(34,197,94,.18);
+}
+
+.weekly-card.orange strong{
+  color:#fdba74;
+  background:rgba(249,115,22,.18);
+}
+
+.weekly-card.pink strong{
+  color:#f9a8d4;
+  background:rgba(236,72,153,.18);
+}
