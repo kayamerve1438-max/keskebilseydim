@@ -638,10 +638,10 @@ hero-stats,
 }
 
 #header-container .logo-area img{
-  width:48px !important;
-  height:48px !important;
-  object-fit:contain !important;
-  filter:drop-shadow(0 0 10px rgba(56,189,248,.35)) !important;
+    width:140px !important;
+    height:140px !important;
+    object-fit:contain !important;
+    filter:drop-shadow(0 0 12px rgba(56,189,248,.35)) !important;
 }
 
 #header-container .site-name{
