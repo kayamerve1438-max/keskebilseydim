@@ -458,3 +458,81 @@ hero-stats,
 .weekly-card.green .weekly-icon svg{color:#22c55e;}
 .weekly-card.orange .weekly-icon svg{color:#f97316;}
 .weekly-card.pink .weekly-icon svg{color:#ec4899;}
+/* === ALT BÖLÜM PREMIUM PARLATMA === */
+
+.redesign-recent{
+  background:
+    radial-gradient(circle at 20% 0%, rgba(14,165,233,.10), transparent 35%),
+    rgba(15,23,42,.82) !important;
+  box-shadow:0 0 40px rgba(14,165,233,.08);
+}
+
+.new-exp-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 100% 100%, rgba(56,189,248,.10), transparent 35%),
+    rgba(2,6,23,.86) !important;
+  transition:.25s ease;
+}
+
+.new-exp-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(56,189,248,.55);
+  box-shadow:0 0 28px rgba(56,189,248,.18);
+}
+
+.tag{
+  display:inline-flex;
+  width:max-content;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.tag.ev{background:#2563eb;color:white}
+.tag.is{background:#a21caf;color:white}
+.tag.para{background:#16a34a;color:white}
+.tag.egitim{background:#ea580c;color:white}
+
+.confession-panel{
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 55px rgba(236,72,153,.28);
+}
+
+.confession-panel::after{
+  content:"✉";
+  position:absolute;
+  right:38px;
+  top:42px;
+  font-size:120px;
+  opacity:.12;
+  transform:rotate(-18deg);
+}
+
+.confession-panel h2{
+  font-size:34px;
+  margin-bottom:16px;
+}
+
+.confession-stats span{
+  display:flex;
+  flex-direction:column;
+  font-size:13px;
+  opacity:.95;
+}
+
+.confession-stats b{
+  font-size:22px;
+  color:white;
+}
+
+.bottom-note{
+  max-width:760px;
+  margin:26px auto 0 !important;
+  border-color:rgba(236,72,153,.35) !important;
+  box-shadow:0 0 26px rgba(168,85,247,.12);
+}
