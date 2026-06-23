@@ -661,3 +661,21 @@ hero-stats,
 #header-container .logo-area:hover .site-name{
   filter:drop-shadow(0 0 10px rgba(236,72,153,.35)) !important;
 }
+/* === LOGO DAHA BÜYÜK VE OKUNUR === */
+
+#header-container .logo-area{
+  min-width:260px !important;
+  gap:16px !important;
+}
+
+#header-container .logo-area img{
+  width:72px !important;
+  height:72px !important;
+}
+
+#header-container .site-name{
+  font-size:32px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  letter-spacing:-1px !important;
+}
