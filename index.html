@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <link rel="stylesheet" href="home-redesign.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keşke Bilseydim</title>
@@ -241,7 +242,7 @@ footer {
 <div id="header-container"></div>
 <div id="auth-container"></div>
 
-<div class="page">
+
     
     <section class="hero">
         <div>
@@ -275,63 +276,108 @@ footer {
         <a href="ev.html?alt=dekorasyon">Dekorasyon</a>
         <a href="ev.html?alt=ev-arkadasi">Ev Arkadaşı</a>
     </div>
+    <section class="weekly-section">
+    <div class="section-head">
+        <h2>🔥 Bu Hafta En Çok Okunanlar</h2>
+        <a href="#">Tüm Kategoriler ›</a>
+    </div>
 
-    <section class="main-content">
-        
-        <div class="recent">
-            <div class="recent-head">
-                <span>Son Eklenen Deneyimler</span>
-                <a href="#">Tümünü Gör ›</a>
-            </div>
+    <div class="weekly-grid">
+        <div class="weekly-card blue">
+            <div class="weekly-icon">🏠</div>
+            <h3>EV</h3>
+            <p>Ev alma, taşınma, komşu, site hayatı...</p>
+            <strong>3.245 okuma</strong>
+        </div>
 
-            <div class="experience">
+        <div class="weekly-card purple">
+            <div class="weekly-icon">💼</div>
+            <h3>İŞ</h3>
+            <p>İş hayatı, patronlar, istifa, maaş...</p>
+            <strong>2.987 okuma</strong>
+        </div>
+
+        <div class="weekly-card green">
+            <div class="weekly-icon">💸</div>
+            <h3>PARA</h3>
+            <p>Yatırım, borç, maaş, kredi, tasarruf...</p>
+            <strong>2.156 okuma</strong>
+        </div>
+
+        <div class="weekly-card orange">
+            <div class="weekly-icon">🎓</div>
+            <h3>EĞİTİM</h3>
+            <p>Okul, üniversite, sınavlar, tercihler...</p>
+            <strong>1.854 okuma</strong>
+        </div>
+
+        <div class="weekly-card pink">
+            <div class="weekly-icon">💗</div>
+            <h3>İLİŞKİLER</h3>
+            <p>Aşk, arkadaşlık, ayrılık, evlilik...</p>
+            <strong>1.642 okuma</strong>
+        </div>
+    </div>
+</section>
+
+<section class="home-lower">
+    <div class="recent redesign-recent">
+        <div class="recent-head">
+            <span>Son Eklenen Deneyimler ⚡</span>
+            <a href="#">Tümünü Gör →</a>
+        </div>
+
+        <div class="recent-card-grid">
+            <article class="new-exp-card">
                 <span class="tag ev">EV</span>
-                <div>
-                    <div class="exp-title">Ev almadan önce keşke komşuları araştırsaydım</div>
-                    <div class="exp-text">Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış.</div>
+                <h3>Ev almadan önce keşke komşuları araştırsaydım</h3>
+                <p>Aidat değil, asıl mesele apartman WhatsApp grubunun psikolojik dayanıklılık testi olmasıymış...</p>
+                <div class="exp-footer">
+                    <span>Anonim · 2 saat önce</span>
+                    <span>♡ 128 · ☰ 34</span>
                 </div>
-                <div class="exp-stats">♡ 128<br>☰ 34</div>
-            </div>
+            </article>
 
-            <div class="experience">
+            <article class="new-exp-card">
                 <span class="tag is">İŞ</span>
-                <div>
-                    <div class="exp-title">Maaşa bakıp iş değiştirdim, müdürü hesaba katmadım</div>
-                    <div class="exp-text">Bilge Kedi haklıymış: Maaş artar, huzur azalırsa hesap tutmuyor.</div>
+                <h3>Maaşı büyük diye girdim, ruhum küçük kaldı</h3>
+                <p>Paranın yetmediği yerde insanın kendisi eriyor. Keşke sadece maaşa bakmasaydım...</p>
+                <div class="exp-footer">
+                    <span>Anonim · 5 saat önce</span>
+                    <span>♡ 96 · ☰ 21</span>
                 </div>
-                <div class="exp-stats">♡ 92<br>☰ 18</div>
-            </div>
+            </article>
 
-            <div class="experience">
-                <span class="tag egitim">EĞİTİM</span>
-                <div>
-                    <div class="exp-title">Bölüm seçerken sadece puana baktım, hayalime değil</div>
-                    <div class="exp-text">Üniversite tercihi yaparken herkes konuşur, mezun olunca faturayı sen ödersin.</div>
+            <article class="new-exp-card">
+                <span class="tag para">PARA</span>
+                <h3>Bütün seçenekler sadece pahalı bakım, hayalime değil</h3>
+                <p>Ücretsiz birikim yok, ya paranla kazanır ya da zamanınla ödersin...</p>
+                <div class="exp-footer">
+                    <span>Anonim · 7 saat önce</span>
+                    <span>♡ 78 · ☰ 18</span>
                 </div>
-                <div class="exp-stats">♡ 76<br>☰ 21</div>
-            </div>
+            </article>
         </div>
+    </div>
 
-        <div class="side-grid">
-            <div class="confession-box">
-                <h2>itiraflarımız ♡</h2>
-                <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
-                <button>İtirafını Paylaş</button>
-            </div>
+    <aside class="confession-panel">
+        <h2>İtiraflarımız ♡</h2>
+        <p>Kimseye anlatamadığın şeyi buraya bırak. Bilge Kedi yargılamaz, sadece biraz göz devirir.</p>
+        <button>İtirafını Paylaş</button>
 
-            <div class="cat-note">
-                <b>Bugünün Bilge Kedi Notu 🐾</b>
-                <p>“Ucuz etin yahnisi değil, yorumu da çok olur.”</p>
-            </div>
-
-            <div class="stats">
-                <span>👥 125.489 üye</span>
-                <span>📄 18.736 deneyim</span>
-                <span>💬 243.192 yorum</span>
-            </div>
+        <div class="confession-stats">
+            <span><b>32.458</b> itiraf</span>
+            <span><b>18.736</b> yorum</span>
+            <span><b>241.782</b> beğeni</span>
         </div>
-    </section>
-</div>
+    </aside>
+</section>
+
+<section class="bottom-note">
+    <span>❝</span>
+    Bazen pişmanlık paylaşılınca azalır, bazen de gülümsetir. Sen de paylaş, birilerine ışık ol...
+    <span>🐾</span>
+</section>
 
 <footer>
     © 2026 Keşke Bilseydim — Gerçek deneyimler, daha iyi kararlar.
