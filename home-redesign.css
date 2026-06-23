@@ -1,152 +1,81 @@
-
-.home-container{
-  width:min(92vw, 1380px);
-  margin:34px auto 50px;
+/* 1. GLOBAL TEMEL VE ZEMİN */
+body {
+    background: linear-gradient(135deg, #03111f, #12051b) !important;
+    color: #F3F4F6 !important;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    overflow-x: hidden; /* Sağ tarafa kaymaları engeller */
 }
 
-.hero,
-.weekly-section,
-.home-lower,
-.bottom-note{
-  width:100% !important;
-  max-width:none !important;
-}body{
-  background:linear-gradient(135deg,#03111f,#12051b)!important;
+/* 2. ANA KONTEYNER */
+.home-container {
+    width: min(95vw, 1380px);
+    margin: 40px auto;
 }
 
-.page{
-  max-width:1380px!important;
-  margin:36px auto!important;
-  padding:0!important;
-  background:transparent!important;
+/* 3. HERO (BAŞLIK) BÖLÜMÜ */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 60px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
+    gap: 40px;
 }
 
-.hero,
-.weekly-section,
-.home-lower,
-.bottom-note{
-  max-width:1320px;
-  margin:0 auto 28px;
+.hero h1 { 
+    font-size: clamp(40px, 5vw, 72px); 
+    line-height: 1; 
+    letter-spacing: -3px; 
+    margin-bottom: 20px;
 }
 
-.weekly-grid,
-.recent-card-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:18px;
+.hero .gradient-text { 
+    background: linear-gradient(135deg, #00D2FF, #FF2E93); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
 }
 
-.weekly-section,
-.redesign-recent,
-.confession-panel,
-.bottom-note{
-  background:rgba(15,23,42,.72);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:24px;
-  padding:24px;
-  box-shadow:0 0 40px rgba(14,165,233,.08);
+/* 4. GRID VE KART SİSTEMİ */
+.weekly-grid, .recent-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.weekly-card,
-.new-exp-card{
-  background:rgba(2,6,23,.72);
-  border:1px solid rgba(56,189,248,.22);
-  border-radius:20px;
-  padding:22px;
-  min-height:150px;
+.card {
+    background: rgba(2, 6, 23, 0.72);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
 }
 
-.weekly-card h3,
-.new-exp-card h3{
-  color:white;
-  margin:10px 0;
+.card:hover { 
+    transform: translateY(-5px); 
+    border-color: rgba(56, 189, 248, 0.5); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.weekly-card p,
-.new-exp-card p{
-  color:#cbd5e1;
+/* 5. ALT BÖLÜM (HOME-LOWER) */
+.home-lower {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
 }
 
-.weekly-card strong{
-  display:inline-block;
-  margin-top:12px;
-  background:rgba(255,255,255,.08);
-  padding:8px 14px;
-  border-radius:999px;
-  color:white;
+/* 6. RESPONSIVE (MOBİL UYUMLULUK) */
+@media (max-width: 1024px) {
+    .home-lower { grid-template-columns: 1fr; }
+    .weekly-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.home-lower{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:24px;
-}
-
-.recent-card-grid{
-  grid-template-columns:repeat(3,1fr);
-}
-
-.confession-panel{
-  background:linear-gradient(135deg,#ec4899,#7c3aed);
-  color:white;
-}
-
-.confession-panel button{
-  background:#020617;
-  color:white;
-  border:0;
-  border-radius:12px;
-  padding:13px 22px;
-  font-weight:800;
-}
-
-.confession-stats{
-  display:flex;
-  gap:18px;
-  margin-top:24px;
-}
-
-.bottom-note{
-  text-align:center;
-  color:#d8b4fe;
-}
-/* HERO büyütme */
-.hero{
-  padding:90px 90px 70px!important;
-  gap:90px!important;
-  min-height:520px!important;
-}
-
-.hero h1{
-  font-size:clamp(58px,5.8vw,92px)!important;
-  line-height:.95!important;
-  letter-spacing:-4px!important;
-}
-
-.hero p{
-  font-size:18px!important;
-}
-
-.hero img,
-bilge-kedi img{
-  transform:scale(1.18);
-}
-body{
-    overflow-x:hidden;
-}
-
-.hero,
-.weekly-section,
-.home-lower,
-.bottom-note{
-    width:95vw !important;
-    max-width:1400px !important;
-}
-
-.weekly-grid{
-    grid-template-columns:repeat(5,1fr) !important;
-}
-
-.home-lower{
-    grid-template-columns:2fr 1fr !important;
+@media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 30px; text-align: center; }
+    .hero h1 { font-size: 32px; }
+    .weekly-grid { grid-template-columns: 1fr; }
 }
