@@ -166,9 +166,9 @@ header nav a.pink {
 /* === LOGO YAZISI ÇAKIŞMA DÜZELTME === */
 
 .site-name {
-  font-size: clamp(18px, 1.4vw, 24px) !important;
+  font-size: clamp(16px, 1.2vw, 21px) !important;
   line-height: 0.9 !important;
-  max-width: 135px !important;
+  max-width: 125px !important;
   display: inline-block !important;
   white-space: normal !important;
 }
