@@ -92,14 +92,21 @@ function showLogoutConfirm(){
     };
 
     document.getElementById("confirmLogout").onclick = async function(e){
-        e.preventDefault();
+    e.preventDefault();
 
-        localStorage.removeItem("kb_user_name");
+    const { getAuth, signOut } = await import("https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js");
 
-        modal.remove();
+    const auth = getAuth();
 
-        window.location.href = "index.html";
-    };
+    await signOut(auth);
+
+    localStorage.removeItem("kb_user_name");
+    localStorage.removeItem("kb_user");
+
+    modal.remove();
+
+    window.location.href = "index.html";
+};
 
     modal.onclick = function(e){
         if(e.target === modal){

@@ -185,6 +185,53 @@ h1{
     padding:28px;
     color:#777;
 }
+.auth-required-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+.auth-required-modal.active{
+    display:flex;
+}
+
+.auth-required-box{
+    width:420px;
+    max-width:90%;
+    background:#0f172a;
+    border:1px solid rgba(59,130,246,.4);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+}
+
+.auth-required-box img{
+    width:130px;
+    display:block;
+    margin:0 auto 15px;
+}
+
+.auth-required-box h3{
+    color:white;
+}
+
+.auth-required-box p{
+    color:#cbd5e1;
+}
+
+.auth-required-box button{
+    border:none;
+    border-radius:14px;
+    padding:14px 26px;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(90deg,#3b82f6,#ec4899);
+}
 /* === DETAY SAYFASI DARK / NEON TEMA === */
 
 .page{
@@ -287,6 +334,32 @@ h1,
 #header-container .header-right{
     background:transparent !important;
 }
+.interaction-bar{
+    display:flex;
+    gap:12px;
+    margin:20px 0 30px;
+}
+
+.interaction-bar button{
+    background:#111827;
+    color:white;
+    border:1px solid rgba(59,130,246,.3);
+    border-radius:12px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s;
+}
+
+.interaction-bar button:hover{
+    border-color:#38bdf8;
+    transform:translateY(-2px);
+}
+.interaction-bar button.liked{
+    background:linear-gradient(135deg,#ef4444,#ec4899);
+    border-color:#fb7185;
+    box-shadow:0 0 18px rgba(236,72,153,.45);
+}
 </style>
 </head>
 
@@ -307,6 +380,11 @@ h1,
     <h1>Depozitoyu alırım sandım, alamadım</h1>
 
     <div class="meta">Gerçek deneyim • 4 dk okuma • Bilge Kedi onaylı 🐾</div>
+    <div class="interaction-bar">
+  <button id="likeBtn">❤️ <span id="likeCount">128</span></button>
+  <button id="commentBtn">💬 37</button>
+  <button id="saveBtn">🔖 Kaydet</button>
+</div>
 
     <img src="images/depozito.jpg" alt="Ev kiralama ve depozito deneyimi">
 
@@ -452,6 +530,196 @@ fetch("footer.html")
   .then(data => {
     document.getElementById("footer-container").innerHTML = data;
   });
+</script>
+<script type="module">
+import { db } from "./firebase-db.js";
+
+import {
+  doc,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+  increment
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const articleId = "depozito-article";
+
+const auth = getAuth();
+
+const likeCountRef = doc(db, "likes", articleId);
+
+const likeBtn = document.getElementById("likeBtn");
+const likeCount = document.getElementById("likeCount");
+
+let currentUser = null;
+let userLiked = false;
+
+function openLoginWithMessage(){
+    showAuthRequiredModal();
+}
+
+async function loadLikeCount(){
+    const snap = await getDoc(likeCountRef);
+
+    if(!snap.exists()){
+        await setDoc(likeCountRef,{ count:128 });
+        likeCount.textContent = 128;
+        return;
+    }
+
+    likeCount.textContent = snap.data().count || 0;
+}
+
+async function checkUserLike(){
+    if(!currentUser) return;
+
+    const userLikeRef = doc(db, "likes", articleId, "users", currentUser.uid);
+    const snap = await getDoc(userLikeRef);
+
+    userLiked = snap.exists();
+
+    if(userLiked){
+        likeBtn.classList.add("liked");
+    }else{
+        likeBtn.classList.remove("liked");
+    }
+}
+
+onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+
+    await loadLikeCount();
+
+    if(user){
+        const name = user.displayName || user.email;
+        localStorage.setItem("kb_user_name", name);
+        await checkUserLike();
+    }else{
+        localStorage.removeItem("kb_user_name");
+        localStorage.removeItem("kb_user");
+        userLiked = false;
+        likeBtn.classList.remove("liked");
+    }
+});
+
+likeBtn.addEventListener("click", async () => {
+
+    const freshUser = auth.currentUser;
+    const savedName = localStorage.getItem("kb_user_name");
+
+if(!savedName){
+    currentUser = null;
+    userLiked = false;
+    likeBtn.classList.remove("liked");
+
+    openLoginWithMessage("Beğeni yapmak için giriş yapmanız gerek.");
+    return;
+}
+
+    if(!freshUser){
+        currentUser = null;
+        userLiked = false;
+        likeBtn.classList.remove("liked");
+
+        openLoginWithMessage("Beğeni yapmak için giriş yapmanız gerek.");
+        return;
+    }
+
+    currentUser = freshUser;
+
+    const userLikeRef = doc(db, "likes", articleId, "users", currentUser.uid);
+
+    const userLikeSnap = await getDoc(userLikeRef);
+
+    if(userLikeSnap.exists()){
+
+        await deleteDoc(userLikeRef);
+
+        await updateDoc(likeCountRef,{
+            count: increment(-1)
+        });
+
+        userLiked = false;
+        likeBtn.classList.remove("liked");
+
+    }else{
+
+        await setDoc(userLikeRef,{
+            uid: currentUser.uid,
+            likedAt: new Date().toISOString()
+        });
+
+        await updateDoc(likeCountRef,{
+            count: increment(1)
+        });
+
+        userLiked = true;
+        likeBtn.classList.add("liked");
+    }
+
+    const snap = await getDoc(likeCountRef);
+
+    likeCount.textContent = snap.data().count;
+});
+
+
+</script>
+<div class="auth-required-modal" id="authRequiredModal">
+    <div class="auth-required-box">
+
+        <img src="images/kedi_57.png" alt="Bilge Kedi">
+
+        <h3>🐾 Önce tanışalım mı, insan dostum?</h3>
+
+        <p>
+            Devam etmek için giriş yap veya hesap oluştur.
+        </p>
+
+        <button id="authRequiredBtn">
+            Giriş Yap
+        </button>
+
+    </div>
+</div>
+<script>
+function showAuthRequiredModal(){
+    const modal = document.getElementById("authRequiredModal");
+    if(modal){
+        modal.classList.add("active");
+    }
+}
+
+const authRequiredBtn = document.getElementById("authRequiredBtn");
+
+if(authRequiredBtn){
+    authRequiredBtn.onclick = function(){
+        const modal = document.getElementById("authRequiredModal");
+        if(modal){
+            modal.classList.remove("active");
+        }
+
+        const loginBtn = document.querySelector(".login");
+        if(loginBtn){
+            loginBtn.click();
+        }
+    };
+}
+
+const authRequiredModal = document.getElementById("authRequiredModal");
+
+if(authRequiredModal){
+    authRequiredModal.onclick = function(e){
+        if(e.target === authRequiredModal){
+            authRequiredModal.classList.remove("active");
+        }
+    };
+}
 </script>
 </body>
 </html>
