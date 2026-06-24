@@ -679,3 +679,30 @@ hero-stats,
   line-height:1 !important;
   letter-spacing:-1px !important;
 }
+/* === LOGO YAZISI VE BİLGE KEDİ DÜZELTME === */
+
+.site-name {
+  font-size: 22px !important;
+  line-height: 0.85 !important;
+  max-width: 145px !important;
+}
+
+#walkingCat {
+  position: absolute !important;
+  left: 50% !important;
+  top: 62% !important;
+  transform: translateX(-50%) !important;
+  z-index: 30 !important;
+  width: 90px !important;
+}
+
+#walkingCatImg {
+  width: 90px !important;
+  height: auto !important;
+}
+
+#catBubble {
+  bottom: 100px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
