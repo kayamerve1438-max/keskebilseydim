@@ -65,19 +65,29 @@ header nav a,
 header .nav-button {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;              /* İkon ile yazı arası boşluk biraz arttı */
-    padding: 10px 18px !important;    /* Butonların iç genişliği ve yüksekliği büyüdü */
-    background-color: #f1f5f9 !important; 
-    color: #1e293b !important; 
-    border-radius: 10px !important;   /* Köşeler daha yumuşak oldu */
+    gap: 8px !important;
+    padding: 10px 18px !important;
+
+    background: rgba(15,23,42,.85) !important;
+    color: #ffffff !important;
+
+    border: 1px solid rgba(255,255,255,.08) !important;
+
+    border-radius: 10px !important;
     text-decoration: none !important;
-    font-size: 15px !important;       /* Yazı boyutu 13'ten 15'e yükseldi */
+    font-size: 15px !important;
     font-weight: 600 !important;
-    transition: all 0.2s ease !important;
-    border: 1px solid #e2e8f0 !important;
+    transition: all .2s ease !important;
     cursor: pointer !important;
 }
+header .nav-button:hover {
+    background: rgba(30,41,59,.95) !important;
+}
 
+.mega-toggle:checked + .nav-button {
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+}
 /* İkonların kendi boyutunu da orantılı büyütelim */
 header nav a i,
 header .nav-button i {

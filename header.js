@@ -58,3 +58,30 @@ function loadProfile(){
 
 initHeader();
 loadAuth();
+setTimeout(() => {
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    const toggles = document.querySelectorAll(".mega-toggle");
+
+    toggles.forEach((toggle) => {
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                toggles.forEach((other) => {
+                    if (other !== toggle) {
+                        other.checked = false;
+                    }
+                });
+            }
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-dropdown")) {
+            toggles.forEach((toggle) => {
+                toggle.checked = false;
+            });
+        }
+    });
+}, 300);
