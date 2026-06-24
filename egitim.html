@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<link rel="stylesheet" href="premium.css?v=1">
+<script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keşke Bilseydim - Eğitim</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#060913;
+color:#101828;
+}
+
+.page{
+width:92%;
+max-width:1500px;
+margin:30px auto;
+background:transparent;
+box-shadow:0 18px 45px rgba(0,0,0,.12);
+overflow:visible;
+}
+
+.hero{
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:40px;
+padding:55px 7% 25px;
+align-items:center;
+}
+
+.hero h1{
+font-size:54px;
+line-height:1.12;
+margin:0 0 18px;
+}
+
+.hero p{
+color:#667085;
+font-size:19px;
+line-height:1.5;
+}
+
+.search-box{
+width:100%;
+max-width:560px;
+background:white;
+display:flex;
+align-items:center;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,.1);
+margin:25px 0;
+}
+
+.search-box span{
+padding-left:20px;
+color:#94a3b8;
+}
+
+.search-box input{
+flex:1;
+border:0;
+outline:0;
+padding:20px 14px;
+}
+
+.search-box button{
+background:#2563eb;
+color:white;
+border:0;
+padding:21px 34px;
+font-weight:900;
+}
+
+.is-subcategories{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:20px;
+}
+
+.is-subcategories a{
+background:white;
+color:#2563eb;
+text-decoration:none;
+border:1px solid #bfdbfe;
+border-radius:999px;
+padding:10px 18px;
+font-size:14px;
+font-weight:900;
+}
+
+.hero-buttons button{
+padding:15px 28px;
+border-radius:14px;
+font-weight:900;
+margin-right:14px;
+cursor:pointer;
+}
+
+.primary{
+background:#2563eb;
+color:white;
+border:0;
+}
+
+.secondary{
+background:white;
+color:#2563eb;
+border:1px solid #2563eb;
+}
+
+.article-list-section{
+padding:30px 7%;
+display:none;
+}
+
+.article-list{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.article-card{
+background:rgba(15,23,42,.95);
+border:1px solid rgba(59,130,246,.25);
+border-radius:16px;
+display:grid;
+grid-template-columns:260px 1fr;
+gap:22px;
+padding:16px;
+text-decoration:none;
+color:white;
+transition:.25s;
+}
+
+.article-card:hover{
+transform:translateY(-3px);
+border-color:#38bdf8;
+}
+
+.article-card h3{
+color:white;
+}
+
+.article-card p{
+color:#cbd5e1;
+}
+
+.article-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.risk-score{
+display:inline-block;
+background:#dbeafe;
+color:#1d4ed8;
+padding:8px 14px;
+border-radius:999px;
+font-size:13px;
+font-weight:800;
+margin-bottom:12px;
+}
+
+.main-content{
+padding:0 7% 35px;
+}
+
+.recent{
+background:rgba(15,23,42,.95);
+border:1px solid rgba(59,130,246,.25);
+border-radius:18px;
+padding:22px;
+}
+
+.recent-head{
+font-size:22px;
+font-weight:900;
+margin-bottom:16px;
+color:white;
+}
+
+.experience{
+margin-bottom:18px;
+color:white;
+}
+
+.experience p{
+color:#cbd5e1;
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="auth-container"></div>
+
+<div class="page">
+
+<section class="hero">
+<div>
+
+<h1>Eğitim konusunda karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+
+<p>
+Üniversite, bölüm seçimi, sınavlar, kurslar ve eğitim hayatının içinden gerçek deneyimler burada.
+Bilge Kedi der ki: Her diploma başarı getirmez, ama her tecrübe bir şey öğretir.
+</p>
+
+<div class="search-box">
+<span>⌕</span>
+<input placeholder="Ne hakkında deneyim arıyorsun?">
+<button>Ara</button>
+</div>
+
+<div class="is-subcategories">
+<a href="egitim.html?alt=universite">🎓 Üniversite</a>
+<a href="egitim.html?alt=bolum-secimi">📚 Bölüm Seçimi</a>
+<a href="egitim.html?alt=sinavlar">📝 Sınavlar</a>
+<a href="egitim.html?alt=yabanci-dil">🌍 Yabancı Dil</a>
+<a href="egitim.html?alt=kurslar">🏫 Kurslar</a>
+<a href="egitim.html?alt=online-egitim">💻 Online Eğitim</a>
+<a href="egitim.html?alt=yurt-disinda-egitim">✈️ Yurt Dışında Eğitim</a>
+<a href="egitim.html?alt=staj">💼 Staj</a>
+<a href="egitim.html?alt=yuksek-lisans">🎯 Yüksek Lisans</a>
+<a href="egitim.html?alt=sertifikalar">📜 Sertifikalar</a>
+</div>
+
+<div class="hero-buttons">
+<button class="primary">Deneyimleri Oku</button>
+<button class="secondary">Deneyimini Paylaş</button>
+</div>
+
+</div>
+
+<bilge-kedi></bilge-kedi>
+
+</section>
+
+<section class="article-list-section">
+<h2 id="altKategoriBaslik">Eğitim Deneyimleri</h2>
+<div id="articleList" class="article-list"></div>
+</section>
+
+<section class="main-content" id="mainContent">
+<div class="recent">
+
+<div class="recent-head">
+Son Eklenen Eğitim Deneyimleri
+</div>
+
+<div class="experience">
+<span style="background:#2563eb;color:white;padding:7px 14px;border-radius:20px;">EĞİTİM</span>
+<div>
+<b>Üniversiteyi bölüm için değil şehir için seçtim</b>
+<p>Dört yıl boyunca bunun bedelini ödedim.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#2563eb;color:white;padding:7px 14px;border-radius:20px;">EĞİTİM</span>
+<div>
+<b>İngilizceyi okulda değil oyun oynarken öğrendim</b>
+<p>Yöntem bazen kitaptan daha önemli olabiliyor.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#2563eb;color:white;padding:7px 14px;border-radius:20px;">EĞİTİM</span>
+<div>
+<b>Diploma aldım ama mesleği sevmediğimi geç fark ettim</b>
+<p>Bölüm seçerken sadece puana bakmamak gerekiyormuş.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
+const altKategoriIcerikleri = {
+
+universite:{
+baslik:"Üniversite Deneyimleri",
+yazilar:[{
+img:"images/kedi_1.png",
+title:"Üniversiteyi şehir için seçtim",
+desc:"Şehir güzeldi ama bölüm hayatımı etkiledi.",
+link:"#",
+meta:"👁️ 2.148 görüntülenme · 💬 74 yorum · ⏱️ 6 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+"bolum-secimi":{
+baslik:"Bölüm Seçimi",
+yazilar:[{
+img:"images/kedi_2.png",
+title:"Puanıma göre bölüm seçtim",
+desc:"Sevmediğim işi yapmak zorunda kaldım.",
+link:"#",
+meta:"👁️ 3.011 görüntülenme · 💬 112 yorum · ⏱️ 8 dk okuma",
+risk:"★★★★★"
+}]
+},
+
+sinavlar:{
+baslik:"Sınav Deneyimleri",
+yazilar:[{
+img:"images/kedi_3.png",
+title:"Son gece çalışmak kahramanlık değilmiş",
+desc:"Bir dönem boyunca çalışmamanın faturası ağır oldu.",
+link:"#",
+meta:"👁️ 1.754 görüntülenme · 💬 45 yorum · ⏱️ 4 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+"yabanci-dil":{
+baslik:"Yabancı Dil",
+yazilar:[{
+img:"images/kedi_4.png",
+title:"İngilizceyi ezberle öğrenemedim",
+desc:"Konuşmadan dil öğrenilmiyormuş.",
+link:"#",
+meta:"👁️ 2.442 görüntülenme · 💬 63 yorum · ⏱️ 5 dk okuma",
+risk:"★★★☆☆"
+}]
+},
+
+kurslar:{
+baslik:"Kurs Deneyimleri",
+yazilar:[{
+img:"images/kedi_5.png",
+title:"Sertifika var diye kurs aldım",
+desc:"İçeriği araştırmadan kayıt yaptırdım.",
+link:"#",
+meta:"👁️ 1.397 görüntülenme · 💬 28 yorum · ⏱️ 4 dk okuma",
+risk:"★★★☆☆"
+}]
+},
+
+"online-egitim":{
+baslik:"Online Eğitim",
+yazilar:[{
+img:"images/kedi_6.png",
+title:"100 kurs aldım, 3 tanesini bitirdim",
+desc:"Satın almak öğrenmek anlamına gelmiyormuş.",
+link:"#",
+meta:"👁️ 2.228 görüntülenme · 💬 59 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+"yurt-disinda-egitim":{
+baslik:"Yurt Dışında Eğitim",
+yazilar:[{
+img:"images/kedi_7.png",
+title:"Gitmeden önce kültür şokunu hesaplamadım",
+desc:"Dil kadar adapte olmak da önemliymiş.",
+link:"#",
+meta:"👁️ 1.921 görüntülenme · 💬 47 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+staj:{
+baslik:"Staj Deneyimleri",
+yazilar:[{
+img:"images/kedi_8.png",
+title:"Fotokopi çekmek için staj yapmadım",
+desc:"İyi stajın kariyeri değiştirdiğini sonradan gördüm.",
+link:"#",
+meta:"👁️ 1.688 görüntülenme · 💬 34 yorum · ⏱️ 4 dk okuma",
+risk:"★★★☆☆"
+}]
+},
+
+"yuksek-lisans":{
+baslik:"Yüksek Lisans",
+yazilar:[{
+img:"images/kedi_9.png",
+title:"Kaçış için yüksek lisans yaptım",
+desc:"Ne istediğimi bilmeden devam etmek çözüm değilmiş.",
+link:"#",
+meta:"👁️ 1.366 görüntülenme · 💬 25 yorum · ⏱️ 4 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+sertifikalar:{
+baslik:"Sertifikalar",
+yazilar:[{
+img:"images/kedi_10.png",
+title:"CV doldurmak için sertifika topladım",
+desc:"İşveren deneyime daha çok bakıyormuş.",
+link:"#",
+meta:"👁️ 2.017 görüntülenme · 💬 52 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+}
+
+};
+
+if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+
+document.querySelector(".hero").style.display="none";
+document.querySelector(".article-list-section").style.display="block";
+document.getElementById("mainContent").style.display="none";
+
+const veri = altKategoriIcerikleri[secilenAlt];
+
+altKategoriBaslik.textContent = veri.baslik;
+
+articleList.innerHTML = veri.yazilar.map(yazi => `
+<a href="${yazi.link}" class="article-card">
+<img src="${yazi.img}" alt="">
+<div>
+<div class="risk-score">🐾 Bilge Kedi Risk Puanı ${yazi.risk}</div>
+<h3>${yazi.title}</h3>
+<p>${yazi.desc}</p>
+<div>${yazi.meta}</div>
+</div>
+</a>
+`).join("");
+}
+
+fetch("header.html")
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("header-container").innerHTML=data;
+});
+
+fetch("footer.html")
+.then(res=>res.text())
+.then(data=>{
+const footer=document.createElement("div");
+footer.innerHTML=data;
+document.body.appendChild(footer);
+});
+</script>
+
+<script src="components.js"></script>
+
+</body>
+</html>

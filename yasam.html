@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="premium.css?v=1">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşke Bilseydim - Yaşam</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#060913;;
+    color:#101828;
+}
+
+.page{
+    width:92%;
+    max-width:1500px;
+    margin:30px auto;
+    background:transparent;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    overflow:visible;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:40px;
+    padding:55px 7% 25px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:54px;
+    line-height:1.12;
+    margin:0 0 18px;
+}
+
+.hero p{
+    color:#667085;
+    font-size:19px;
+    line-height:1.5;
+}
+
+.search-box{
+    width:100%;
+    max-width:560px;
+    background:white;
+    display:flex;
+    align-items:center;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+    margin:25px 0;
+}
+
+.search-box span{
+    padding-left:20px;
+    color:#94a3b8;
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:20px 14px;
+}
+
+.search-box button{
+    background:#8b5cf6;
+    color:white;
+    border:0;
+    padding:21px 34px;
+    font-weight:900;
+}
+
+.is-subcategories{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.is-subcategories a{
+    background:white;
+    color:#8b5cf6;
+    text-decoration:none;
+    border:1px solid #ddd6fe;
+    border-radius:999px;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:900;
+}
+
+.hero-buttons button{
+    padding:15px 28px;
+    border-radius:14px;
+    font-weight:900;
+    margin-right:14px;
+    cursor:pointer;
+}
+
+.primary{
+    background:#8b5cf6;
+    color:white;
+    border:0;
+}
+
+.secondary{
+    background:white;
+    color:#8b5cf6;
+    border:1px solid #8b5cf6;
+}
+
+.article-list-section{
+    padding:30px 7%;
+    display:none;
+}
+
+.article-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.article-card{
+    background:rgba(15,23,42,.95);
+    border:1px solid rgba(59,130,246,.25);
+    border-radius:16px;
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:22px;
+    padding:16px;
+    text-decoration:none;
+    color:white;
+    transition:.25s;
+}
+
+.article-card:hover{
+    transform:translateY(-3px);
+    border-color:#38bdf8;
+}
+
+.article-card h3{
+    color:white;
+}
+
+.article-card p{
+    color:#cbd5e1;
+}
+
+.article-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.risk-score{
+    display:inline-block;
+    background:#f3e8ff;
+    color:#7e22ce;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.main-content{
+    padding:0 7% 35px;
+}
+
+.recent{
+    background:rgba(15,23,42,.95);
+    border:1px solid rgba(59,130,246,.25);
+    border-radius:18px;
+    padding:22px;
+}
+
+.recent-head{
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:16px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="auth-container"></div>
+
+<div class="page">
+
+<section class="hero">
+<div>
+
+<h1>Yaşam konusunda karar vermeden önce,<br>o yolu yürüyenleri dinle.</h1>
+
+<p>
+Aile, arkadaşlık, ilişkiler, sağlık ve hayatın içinden gerçek deneyimler burada.
+Bilge Kedi der ki: Hayat bazen dersleri önce verir, anlamını sonra açıklar.
+</p>
+
+<div class="search-box">
+<span>⌕</span>
+<input placeholder="Ne hakkında deneyim arıyorsun?">
+<button>Ara</button>
+</div>
+
+<div class="is-subcategories">
+<a href="yasam.html?alt=aile">👨‍👩‍👧 Aile</a>
+<a href="yasam.html?alt=arkadaslik">🤝 Arkadaşlık</a>
+<a href="yasam.html?alt=iliskiler">❤️ İlişkiler</a>
+<a href="yasam.html?alt=saglik">🏥 Sağlık</a>
+<a href="yasam.html?alt=gunluk-hayat">☀️ Günlük Hayat</a>
+<a href="yasam.html?alt=pismanliklar">😔 Pişmanlıklar</a>
+<a href="yasam.html?alt=tavsiyeler">💡 Tavsiyeler</a>
+<a href="yasam.html?alt=buyuk-kararlar">🧭 Büyük Kararlar</a>
+<a href="yasam.html?alt=alisikliklar">🔄 Alışkanlıklar</a>
+<a href="yasam.html?alt=kendine-donmek">🪞 Kendine Dönmek</a>
+</div>
+
+<div class="hero-buttons">
+<button class="primary">Deneyimleri Oku</button>
+<button class="secondary">Deneyimini Paylaş</button>
+</div>
+
+</div>
+
+<bilge-kedi></bilge-kedi>
+
+</section>
+
+<section class="article-list-section">
+<h2 id="altKategoriBaslik">Yaşam Deneyimleri</h2>
+<div id="articleList" class="article-list"></div>
+</section>
+
+<section class="main-content" id="mainContent">
+<div class="recent">
+
+<div class="recent-head">
+Son Eklenen Yaşam Deneyimleri
+</div>
+<div class="experience">
+<span style="background:#8b5cf6;color:white;padding:7px 14px;border-radius:20px;">YAŞAM</span>
+<div>
+<b>Keşke o gün susmasaydım</b>
+<p>Söylenmeyen bazı sözler yıllarca insanın içinde kalabiliyor.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#8b5cf6;color:white;padding:7px 14px;border-radius:20px;">YAŞAM</span>
+<div>
+<b>Arkadaş sandım, enerji vampiri çıktı</b>
+<p>Yanlış insanlarla geçirilen zamanın maliyetini sonradan anladım.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#8b5cf6;color:white;padding:7px 14px;border-radius:20px;">YAŞAM</span>
+<div>
+<b>Kırmızı bayrakları dekor sanmışım</b>
+<p>İlk gün gördüğüm şeyler son gün ayrılık sebebi oldu.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<script>
+
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
+const altKategoriIcerikleri = {
+
+aile:{
+baslik:"Aile Deneyimleri",
+yazilar:[{
+img:"images/kedi_1.png",
+title:"Ailem benim iyiliğimi istedi ama karar benim olmalıymış",
+desc:"İyi niyet her zaman doğru karar anlamına gelmiyor.",
+link:"#",
+meta:"👁️ 1.624 görüntülenme · 💬 48 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+arkadaslik:{
+baslik:"Arkadaşlık Deneyimleri",
+yazilar:[{
+img:"images/kedi_2.png",
+title:"Arkadaş sandım, sadece işi düşünüyormuş",
+desc:"Bazı insanlar dost değil fırsat kolluyormuş.",
+link:"#",
+meta:"👁️ 2.013 görüntülenme · 💬 57 yorum · ⏱️ 6 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+iliskiler:{
+baslik:"İlişki Deneyimleri",
+yazilar:[{
+img:"images/kedi_3.png",
+title:"Kırmızı bayrakları dekor sandım",
+desc:"İlk gün gördüğüm şeyleri son gün yaşadım.",
+link:"#",
+meta:"👁️ 3.452 görüntülenme · 💬 116 yorum · ⏱️ 8 dk okuma",
+risk:"★★★★★"
+}]
+},
+
+saglik:{
+baslik:"Sağlık Deneyimleri",
+yazilar:[{
+img:"images/kedi_4.png",
+title:"Belirtiyi önemsemedim, keşke daha erken gitseydim",
+desc:"Ertelemek bazen sorunu büyütüyor.",
+link:"#",
+meta:"👁️ 1.389 görüntülenme · 💬 35 yorum · ⏱️ 4 dk okuma",
+risk:"★★★★★"
+}]
+},
+
+"gunluk-hayat":{
+baslik:"Günlük Hayat",
+yazilar:[{
+img:"images/kedi_5.png",
+title:"Küçük alışkanlıklar büyük fark yaratıyormuş",
+desc:"Her gün yapılan şeyler hayatı şekillendiriyor.",
+link:"#",
+meta:"👁️ 1.101 görüntülenme · 💬 22 yorum · ⏱️ 3 dk okuma",
+risk:"★★★☆☆"
+}]
+},
+
+pismanliklar:{
+baslik:"Pişmanlıklar",
+yazilar:[{
+img:"images/kedi_6.png",
+title:"Keşke o gün susmasaydım",
+desc:"Söylenmeyen sözler bazen daha ağır geliyor.",
+link:"#",
+meta:"👁️ 2.845 görüntülenme · 💬 81 yorum · ⏱️ 7 dk okuma",
+risk:"★★★★★"
+}]
+},
+
+tavsiyeler:{
+baslik:"Tavsiyeler",
+yazilar:[{
+img:"images/kedi_7.png",
+title:"Keşke biri bunu bana 10 yıl önce söyleseydi",
+desc:"Hayatı kolaylaştıran küçük dersler.",
+link:"#",
+meta:"👁️ 1.954 görüntülenme · 💬 41 yorum · ⏱️ 4 dk okuma",
+risk:"★★★☆☆"
+}]
+},
+
+"buyuk-kararlar":{
+baslik:"Büyük Kararlar",
+yazilar:[{
+img:"images/kedi_8.png",
+title:"Bir karar hayatımın yönünü değiştirdi",
+desc:"Bazı kararlar geri dönülmez oluyor.",
+link:"#",
+meta:"👁️ 2.764 görüntülenme · 💬 69 yorum · ⏱️ 6 dk okuma",
+risk:"★★★★★"
+}]
+},
+
+alisikliklar:{
+baslik:"Alışkanlıklar",
+yazilar:[{
+img:"images/kedi_9.png",
+title:"Bırakması başlamaktan daha zormuş",
+desc:"Kötü alışkanlıkların gizli maliyeti büyük.",
+link:"#",
+meta:"👁️ 1.743 görüntülenme · 💬 43 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+},
+
+"kendine-donmek":{
+baslik:"Kendine Dönmek",
+yazilar:[{
+img:"images/kedi_10.png",
+title:"Herkesi dinledim, kendimi unuttum",
+desc:"Bir gün durup ne istediğimi sormam gerekti.",
+link:"#",
+meta:"👁️ 2.337 görüntülenme · 💬 62 yorum · ⏱️ 5 dk okuma",
+risk:"★★★★☆"
+}]
+}
+
+};
+
+if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+
+document.querySelector(".hero").style.display="none";
+document.querySelector(".article-list-section").style.display="block";
+document.getElementById("mainContent").style.display="none";
+
+const veri = altKategoriIcerikleri[secilenAlt];
+
+altKategoriBaslik.textContent = veri.baslik;
+
+articleList.innerHTML = veri.yazilar.map(yazi => `
+<a href="${yazi.link}" class="article-card">
+<img src="${yazi.img}" alt="">
+<div>
+<div class="risk-score">🐾 Bilge Kedi Risk Puanı ${yazi.risk}</div>
+<h3>${yazi.title}</h3>
+<p>${yazi.desc}</p>
+<div>${yazi.meta}</div>
+</div>
+</a>
+`).join("");
+}
+
+fetch("header.html")
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("header-container").innerHTML=data;
+});
+
+fetch("footer.html")
+.then(res=>res.text())
+.then(data=>{
+const footer=document.createElement("div");
+footer.innerHTML=data;
+document.body.appendChild(footer);
+});
+
+</script>
+
+<script src="components.js"></script>
+
+</body>
+</html>

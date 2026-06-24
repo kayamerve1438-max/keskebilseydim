@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<link rel="stylesheet" href="premium.css?v=1">
+<script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keşke Bilseydim - İtiraflarımız</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#060913;color:#101828}
+.page{width:92%;max-width:1500px;margin:30px auto;background:transparent;box-shadow:0 18px 45px rgba(0,0,0,.12);overflow:visible}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;padding:55px 7% 25px;align-items:center}
+.hero h1{font-size:54px;line-height:1.12;margin:0 0 18px;color:white}
+.hero p{color:#cbd5e1;font-size:19px;line-height:1.5}
+.search-box{width:100%;max-width:560px;background:white;display:flex;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.1);margin:25px 0}
+.search-box span{padding-left:20px;color:#94a3b8}
+.search-box input{flex:1;border:0;outline:0;padding:20px 14px}
+.search-box button{background:#db2777;color:white;border:0;padding:21px 34px;font-weight:900}
+.is-subcategories{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.is-subcategories a{background:white;color:#db2777;text-decoration:none;border:1px solid #fbcfe8;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:900}
+.hero-buttons button{padding:15px 28px;border-radius:14px;font-weight:900;margin-right:14px;cursor:pointer}
+.primary{background:#db2777;color:white;border:0}
+.secondary{background:white;color:#db2777;border:1px solid #db2777}
+.article-list-section{padding:30px 7%;display:none}
+.article-list{display:flex;flex-direction:column;gap:18px}
+.article-card{background:rgba(15,23,42,.95);border:1px solid rgba(219,39,119,.35);border-radius:16px;display:grid;grid-template-columns:260px 1fr;gap:22px;padding:16px;text-decoration:none;color:white;transition:.25s}
+.article-card:hover{transform:translateY(-3px);border-color:#db2777}
+.article-card h3{color:white}
+.article-card p{color:#cbd5e1}
+.article-card img{width:100%;height:150px;object-fit:cover;border-radius:12px}
+.risk-score{display:inline-block;background:#fce7f3;color:#be185d;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:12px}
+.main-content{padding:0 7% 35px}
+.recent{background:rgba(15,23,42,.95);border:1px solid rgba(219,39,119,.35);border-radius:18px;padding:22px}
+.recent-head{font-size:22px;font-weight:900;margin-bottom:16px;color:white}
+.experience{margin-bottom:18px;color:white}
+.experience p{color:#cbd5e1}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="auth-container"></div>
+
+<div class="page">
+
+<section class="hero">
+<div>
+
+<h1>İtiraflarımızı okumadan önce,<br>o duyguyu yaşayanları dinle.</h1>
+
+<p>
+Aşk, aile, iş, para, okul ve kimseye söyleyemediklerin burada.
+Bilge Kedi der ki: İtiraf etmek bazen rahatlatır, bazen de “ben ne yaptım?” dedirtir.
+</p>
+
+<div class="search-box">
+<span>⌕</span>
+<input placeholder="Ne hakkında itiraf arıyorsun?">
+<button>Ara</button>
+</div>
+
+<div class="is-subcategories">
+<a href="itiraflar.html?alt=ask">❤️ Aşk İtirafları</a>
+<a href="itiraflar.html?alt=evlilik">💍 Evlilik İtirafları</a>
+<a href="itiraflar.html?alt=is">💼 İş Hayatı İtirafları</a>
+<a href="itiraflar.html?alt=aile">👨‍👩‍👧 Aile İtirafları</a>
+<a href="itiraflar.html?alt=arkadas">🤝 Arkadaşlık İtirafları</a>
+<a href="itiraflar.html?alt=para">💸 Para İtirafları</a>
+<a href="itiraflar.html?alt=okul">🎓 Okul İtirafları</a>
+<a href="itiraflar.html?alt=sosyal-medya">📱 Sosyal Medya İtirafları</a>
+<a href="itiraflar.html?alt=gizli">🤫 Kimseye Söyleyemediklerim</a>
+<a href="itiraflar.html?alt=komik">😂 Komik İtiraflar</a>
+</div>
+
+<div class="hero-buttons">
+<button class="primary">İtirafları Oku</button>
+<button class="secondary">İtirafını Paylaş</button>
+</div>
+
+</div>
+
+<bilge-kedi></bilge-kedi>
+</section>
+
+<section class="article-list-section">
+<h2 id="altKategoriBaslik">İtiraflarımız</h2>
+<div id="articleList" class="article-list"></div>
+</section>
+
+<section class="main-content" id="mainContent">
+<div class="recent">
+<div class="recent-head">Son Eklenen İtiraflar</div>
+
+<div class="experience">
+<span style="background:#db2777;color:white;padding:7px 14px;border-radius:20px;">İTİRAF</span>
+<div>
+<b>Eski sevgilimin hesabına hâlâ bazen bakıyorum</b>
+<p>Ayrılalı yıllar oldu ama merak duygusu tamamen gitmedi.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#db2777;color:white;padding:7px 14px;border-radius:20px;">İTİRAF</span>
+<div>
+<b>CV'mde biraz abartı yaptım</b>
+<p>Mülakata girince anlattığım şeyi gerçekten öğrenmek zorunda kaldım.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#db2777;color:white;padding:7px 14px;border-radius:20px;">İTİRAF</span>
+<div>
+<b>Online toplantıda kamera kapalıyken uyuyakaldım</b>
+<p>Adım söylenince hayatımın en hızlı uyanışını yaşadım.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
+const altKategoriIcerikleri = {
+
+ask:{baslik:"Aşk İtirafları",yazilar:[{img:"images/kedi_1.png",title:"Mesajı görüp 3 gün cevap vermedim",desc:"Cool görünmeye çalışırken ilişkiyi kaçırdım.",link:"#",meta:"👁️ 4.382 görüntülenme · 💬 181 yorum · ⏱️ 7 dk okuma",risk:"★★★★★"}]},
+
+evlilik:{baslik:"Evlilik İtirafları",yazilar:[{img:"images/kedi_2.png",title:"Haklıydım ama özür diledim",desc:"Bazen huzur kazanmak tartışmayı kazanmaktan önemliymiş.",link:"#",meta:"👁️ 3.117 görüntülenme · 💬 96 yorum · ⏱️ 6 dk okuma",risk:"★★★★☆"}]},
+
+is:{baslik:"İş Hayatı İtirafları",yazilar:[{img:"images/kedi_3.png",title:"Excel biliyorum dedim",desc:"Sonra YouTube videolarıyla gece sabahladım.",link:"#",meta:"👁️ 5.012 görüntülenme · 💬 224 yorum · ⏱️ 8 dk okuma",risk:"★★★★★"}]},
+
+aile:{baslik:"Aile İtirafları",yazilar:[{img:"images/kedi_4.png",title:"Annem haklı çıktı",desc:"Kabul etmek yıllar sürdü.",link:"#",meta:"👁️ 2.885 görüntülenme · 💬 77 yorum · ⏱️ 5 dk okuma",risk:"★★★★☆"}]},
+
+arkadas:{baslik:"Arkadaşlık İtirafları",yazilar:[{img:"images/kedi_5.png",title:"Doğum gününü unuttum",desc:"Hatırladığımda iş işten geçmişti.",link:"#",meta:"👁️ 2.194 görüntülenme · 💬 63 yorum · ⏱️ 4 dk okuma",risk:"★★★☆☆"}]},
+
+para:{baslik:"Para İtirafları",yazilar:[{img:"images/kedi_6.png",title:"İndirimde diye ihtiyacım olmayan şeyi aldım",desc:"Sonra hiç kullanmadım.",link:"#",meta:"👁️ 3.771 görüntülenme · 💬 128 yorum · ⏱️ 6 dk okuma",risk:"★★★★☆"}]},
+
+okul:{baslik:"Okul İtirafları",yazilar:[{img:"images/kedi_7.png",title:"Sunumu okumadan çıktım",desc:"Hayatımın en uzun 10 dakikasıydı.",link:"#",meta:"👁️ 1.993 görüntülenme · 💬 41 yorum · ⏱️ 4 dk okuma",risk:"★★★★☆"}]},
+
+"sosyal-medya":{baslik:"Sosyal Medya İtirafları",yazilar:[{img:"images/kedi_8.png",title:"Bir bakayım dedim, 2 saat geçti",desc:"Algoritma yine kazandı.",link:"#",meta:"👁️ 4.941 görüntülenme · 💬 201 yorum · ⏱️ 5 dk okuma",risk:"★★★★★"}]},
+
+gizli:{baslik:"Kimseye Söyleyemediklerim",yazilar:[{img:"images/kedi_9.png",title:"Bugüne kadar kimseye anlatmadım",desc:"Ama içimde tutmak daha zormuş.",link:"#",meta:"👁️ 6.220 görüntülenme · 💬 317 yorum · ⏱️ 9 dk okuma",risk:"★★★★★"}]},
+
+komik:{baslik:"Komik İtiraflar",yazilar:[{img:"images/kedi_10.png",title:"Yanlış kişiye mesaj attım",desc:"Sonra telefonu kapatıp hayatı sorguladım.",link:"#",meta:"👁️ 3.864 görüntülenme · 💬 149 yorum · ⏱️ 4 dk okuma",risk:"★★★☆☆"}]}
+
+};
+
+if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+document.querySelector(".hero").style.display="none";
+document.querySelector(".article-list-section").style.display="block";
+document.getElementById("mainContent").style.display="none";
+
+const veri = altKategoriIcerikleri[secilenAlt];
+altKategoriBaslik.textContent = veri.baslik;
+
+articleList.innerHTML = veri.yazilar.map(yazi => `
+<a href="${yazi.link}" class="article-card">
+<img src="${yazi.img}" alt="">
+<div>
+<div class="risk-score">🐾 Bilge Kedi Risk Puanı ${yazi.risk}</div>
+<h3>${yazi.title}</h3>
+<p>${yazi.desc}</p>
+<div>${yazi.meta}</div>
+</div>
+</a>
+`).join("");
+}
+
+fetch("header.html")
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("header-container").innerHTML=data;
+});
+
+fetch("footer.html")
+.then(res=>res.text())
+.then(data=>{
+const footer=document.createElement("div");
+footer.innerHTML=data;
+document.body.appendChild(footer);
+});
+</script>
+
+<script src="components.js"></script>
+
+</body>
+</html>

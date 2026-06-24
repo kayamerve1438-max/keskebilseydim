@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<link rel="stylesheet" href="premium.css?v=1">
+<script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keşke Bilseydim - Para</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#060913;color:#101828}
+.page{width:92%;max-width:1500px;margin:30px auto;background:transparent;box-shadow:0 18px 45px rgba(0,0,0,.12);overflow:visible}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;padding:55px 7% 25px;align-items:center}
+.hero h1{font-size:54px;line-height:1.12;margin:0 0 18px}
+.hero p{color:#cbd5e1;font-size:19px;line-height:1.5}
+.search-box{width:100%;max-width:560px;background:white;display:flex;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.1);margin:25px 0}
+.search-box span{padding-left:20px;color:#94a3b8}
+.search-box input{flex:1;border:0;outline:0;padding:20px 14px}
+.search-box button{background:#22c55e;color:white;border:0;padding:21px 34px;font-weight:900}
+.is-subcategories{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.is-subcategories a{background:white;color:#22c55e;text-decoration:none;border:1px solid #bbf7d0;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:900}
+.hero-buttons button{padding:15px 28px;border-radius:14px;font-weight:900;margin-right:14px;cursor:pointer}
+.primary{background:#22c55e;color:white;border:0}
+.secondary{background:white;color:#22c55e;border:1px solid #22c55e}
+.article-list-section{padding:30px 7%;display:none}
+.article-list{display:flex;flex-direction:column;gap:18px}
+.article-card{background:rgba(15,23,42,.95);border:1px solid rgba(34,197,94,.35);border-radius:16px;display:grid;grid-template-columns:260px 1fr;gap:22px;padding:16px;text-decoration:none;color:white;transition:.25s}
+.article-card:hover{transform:translateY(-3px);border-color:#22c55e}
+.article-card h3{color:white}
+.article-card p{color:#cbd5e1}
+.article-card img{width:100%;height:150px;object-fit:cover;border-radius:12px}
+.risk-score{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:12px}
+.main-content{padding:0 7% 35px}
+.recent{background:rgba(15,23,42,.95);border:1px solid rgba(34,197,94,.35);border-radius:18px;padding:22px}
+.recent-head{font-size:22px;font-weight:900;margin-bottom:16px;color:white}
+.experience{margin-bottom:18px;color:white}
+.experience p{color:#cbd5e1}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="auth-container"></div>
+
+<div class="page">
+
+<section class="hero">
+<div>
+
+<h1>Para konusunda karar vermeden önce,<br>o hesabı yapanları dinle.</h1>
+
+<p>
+Birikim, yatırım, kredi kartı, borç, tasarruf ve harcama deneyimleri burada.
+Bilge Kedi der ki: En pahalı şey bazen ucuz diye alınandır.
+</p>
+
+<div class="search-box">
+<span>⌕</span>
+<input placeholder="Ne hakkında deneyim arıyorsun?">
+<button>Ara</button>
+</div>
+
+<div class="is-subcategories">
+<a href="para.html?alt=birikim">💰 Birikim</a>
+<a href="para.html?alt=yatirim">📈 Yatırım</a>
+<a href="para.html?alt=borsa">🏦 Borsa</a>
+<a href="para.html?alt=altin">🥇 Altın</a>
+<a href="para.html?alt=kripto">🪙 Kripto</a>
+<a href="para.html?alt=kredi-kartlari">💳 Kredi Kartları</a>
+<a href="para.html?alt=borclar">🧾 Borçlar</a>
+<a href="para.html?alt=tasarruf">🐾 Tasarruf</a>
+<a href="para.html?alt=maas-yonetimi">📊 Maaş Yönetimi</a>
+<a href="para.html?alt=ek-gelir">🧩 Ek Gelir</a>
+</div>
+
+<div class="hero-buttons">
+<button class="primary">Deneyimleri Oku</button>
+<button class="secondary">Deneyimini Paylaş</button>
+</div>
+
+</div>
+
+<bilge-kedi></bilge-kedi>
+</section>
+
+<section class="article-list-section">
+<h2 id="altKategoriBaslik">Para Deneyimleri</h2>
+<div id="articleList" class="article-list"></div>
+</section>
+
+<section class="main-content" id="mainContent">
+<div class="recent">
+<div class="recent-head">Son Eklenen Para Deneyimleri</div>
+
+<div class="experience">
+<span style="background:#22c55e;color:white;padding:7px 14px;border-radius:20px;">PARA</span>
+<div>
+<b>Ucuz diye aldım, iki kere aldım</b>
+<p>Tasarruf sandığım şey kalitesiz seçim yüzünden daha pahalıya geldi.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#22c55e;color:white;padding:7px 14px;border-radius:20px;">PARA</span>
+<div>
+<b>Kredi kartı limitini para sandım</b>
+<p>Limitin benim param olmadığını ekstre gelince anladım.</p>
+</div>
+</div>
+
+<div class="experience">
+<span style="background:#22c55e;color:white;padding:7px 14px;border-radius:20px;">PARA</span>
+<div>
+<b>Harcamaları yazsaydım keşke</b>
+<p>Küçük küçük giden paraların ay sonunda büyük bir şaşkınlığa dönüştüğünü gördüm.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const secilenAlt = urlParams.get("alt");
+
+const articleList = document.getElementById("articleList");
+const altKategoriBaslik = document.getElementById("altKategoriBaslik");
+
+const altKategoriIcerikleri = {
+
+birikim:{baslik:"Birikim Deneyimleri",yazilar:[{img:"images/kedi_1.png",title:"Para artınca değil, alışkanlık değişince birikim oluyormuş",desc:"Gelirim arttı ama harcamalarım da artınca hesap yine sıfıra geldi.",link:"#",meta:"👁️ 2.244 görüntülenme · 💬 78 yorum · ⏱️ 6 dk okuma",risk:"★★★★☆"}]},
+
+yatirim:{baslik:"Yatırım Deneyimleri",yazilar:[{img:"images/kedi_2.png",title:"Herkes alıyor diye yatırım yaptım",desc:"Bilmediğim şeye para koymanın heyecan değil risk olduğunu öğrendim.",link:"#",meta:"👁️ 3.102 görüntülenme · 💬 121 yorum · ⏱️ 8 dk okuma",risk:"★★★★★"}]},
+
+borsa:{baslik:"Borsa Deneyimleri",yazilar:[{img:"images/kedi_3.png",title:"Tavsiye hisse aldım, tavsiye veren kayboldu",desc:"Kazanç hayali kurarken araştırma yapmayı unuttum.",link:"#",meta:"👁️ 2.788 görüntülenme · 💬 93 yorum · ⏱️ 7 dk okuma",risk:"★★★★★"}]},
+
+altin:{baslik:"Altın Deneyimleri",yazilar:[{img:"images/kedi_4.png",title:"Altını tepeden aldım, sabrı dipten öğrendim",desc:"Kısa vadeli panik uzun vadeli planı bozabiliyormuş.",link:"#",meta:"👁️ 1.844 görüntülenme · 💬 47 yorum · ⏱️ 5 dk okuma",risk:"★★★☆☆"}]},
+
+kripto:{baslik:"Kripto Deneyimleri",yazilar:[{img:"images/kedi_5.png",title:"Gece zengin olurum sandım, sabaha ders aldım",desc:"Kripto piyasasında heyecanla işlem yapmak cüzdanı hafifletiyormuş.",link:"#",meta:"👁️ 4.251 görüntülenme · 💬 154 yorum · ⏱️ 9 dk okuma",risk:"★★★★★"}]},
+
+"kredi-kartlari":{baslik:"Kredi Kartı Deneyimleri",yazilar:[{img:"images/kedi_6.png",title:"Limitimi gelir sandım",desc:"Kartla ödemek kolaydı, ekstreyle yüzleşmek zor oldu.",link:"#",meta:"👁️ 2.376 görüntülenme · 💬 69 yorum · ⏱️ 6 dk okuma",risk:"★★★★☆"}]},
+
+borclar:{baslik:"Borç Deneyimleri",yazilar:[{img:"images/kedi_7.png",title:"Küçük borçları önemsemedim, toplamı büyüdü",desc:"Her ay az az dediğim şeyler bütçeyi sessizce yedi.",link:"#",meta:"👁️ 1.963 görüntülenme · 💬 55 yorum · ⏱️ 5 dk okuma",risk:"★★★★☆"}]},
+
+tasarruf:{baslik:"Tasarruf Deneyimleri",yazilar:[{img:"images/kedi_8.png",title:"Tasarrufu kendimi cezalandırmak sandım",desc:"Asıl mesele hiçbir şey almamak değil, gerçekten neye ihtiyacım olduğunu bilmekmiş.",link:"#",meta:"👁️ 1.522 görüntülenme · 💬 34 yorum · ⏱️ 4 dk okuma",risk:"★★★☆☆"}]},
+
+"maas-yonetimi":{baslik:"Maaş Yönetimi",yazilar:[{img:"images/kedi_9.png",title:"Maaş yattı, nereye gitti anlamadım",desc:"Plan yapmadan gelen para plansız şekilde kayboluyormuş.",link:"#",meta:"👁️ 2.093 görüntülenme · 💬 64 yorum · ⏱️ 5 dk okuma",risk:"★★★★☆"}]},
+
+"ek-gelir":{baslik:"Ek Gelir Deneyimleri",yazilar:[{img:"images/kedi_10.png",title:"Ek gelir diye başladım, ek yorgunluk çıktı",desc:"Para kazanmak güzel ama zaman ve enerji hesabını da yapmak gerekiyormuş.",link:"#",meta:"👁️ 1.711 görüntülenme · 💬 41 yorum · ⏱️ 5 dk okuma",risk:"★★★★☆"}]}
+
+};
+
+if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+document.querySelector(".hero").style.display="none";
+document.querySelector(".article-list-section").style.display="block";
+document.getElementById("mainContent").style.display="none";
+
+const veri = altKategoriIcerikleri[secilenAlt];
+altKategoriBaslik.textContent = veri.baslik;
+
+articleList.innerHTML = veri.yazilar.map(yazi => `
+<a href="${yazi.link}" class="article-card">
+<img src="${yazi.img}" alt="">
+<div>
+<div class="risk-score">🐾 Bilge Kedi Risk Puanı ${yazi.risk}</div>
+<h3>${yazi.title}</h3>
+<p>${yazi.desc}</p>
+<div>${yazi.meta}</div>
+</div>
+</a>
+`).join("");
+}
+
+fetch("header.html")
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("header-container").innerHTML=data;
+});
+
+fetch("footer.html")
+.then(res=>res.text())
+.then(data=>{
+const footer=document.createElement("div");
+footer.innerHTML=data;
+document.body.appendChild(footer);
+});
+</script>
+
+<script src="components.js"></script>
+
+</body>
+</html>

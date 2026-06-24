@@ -189,3 +189,25 @@ header nav a.pink {
   min-width: 260px !important;
   flex-shrink: 0 !important;
 }
+/* === MEGA MENÜ ÜST ÜSTE BİNME DÜZELTME === */
+.mega-menu {
+  top: 62px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 999999 !important;
+  max-height: 430px !important;
+  overflow-y: auto !important;
+}
+
+header {
+  z-index: 999999 !important;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* İtiraf sayfasında hero biraz aşağı insin */
+body:has(title) .page {
+  margin-top: 80px;
+}
