@@ -22,8 +22,8 @@ header {
 }
 
 .logo-area img{
-    width: 42px;
-    height: 42px;
+    width: 190px !important;
+    height: 190px !important;
     object-fit: contain;
 }
 
@@ -152,12 +152,13 @@ header nav a.pink {
 }
 .logo-area img,
 .logo-area > img,
+.logo-area img,
+.logo-area > img,
 #header-container .logo-area img{
-  width: 220px !important;
-  height: 220px !important;
-  min-width: 220px !important;
-  max-width: 220px !important;
-  object-fit: contain !important;
+  width: 190px !important;
+  height: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
 }
 
 .logo-area{
@@ -166,14 +167,11 @@ header nav a.pink {
 /* === LOGO YAZISI ÇAKIŞMA DÜZELTME === */
 
 .site-name {
-    font-size: clamp(10px, 1.1vw, 14px) !important; /* Biraz daha küçülttük */
-    line-height: 1 !important;
-    max-width: 120px !important; /* Biraz genişlettik ki yazı sığsın */
-    display: flex !important;    /* Flexbox kullanarak hizalamayı güçlendirdik */
-    align-items: center !important;
-    white-space: nowrap !important; /* KRİTİK: Yazıyı alt satıra geçmekten kurtarır */
-    overflow: hidden !important;
-    text-overflow: ellipsis !important; /* Çok uzunsa "..." yapar */
+  font-size: clamp(13px, 1.05vw, 17px) !important;
+  line-height: 0.85 !important;
+  max-width: 105px !important;
+  display: inline-block !important;
+  white-space: normal !important;
 }
 
 .logo-area {
