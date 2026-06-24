@@ -166,11 +166,14 @@ header nav a.pink {
 /* === LOGO YAZISI ÇAKIŞMA DÜZELTME === */
 
 .site-name {
-  font-size: clamp(10px, 1.1vw, 15px) !important;
-  line-height: 0.9 !important;
-  max-width: 90px !important;
-  display: inline-block !important;
-  white-space: normal !important;
+    font-size: clamp(10px, 1.1vw, 14px) !important; /* Biraz daha küçülttük */
+    line-height: 1 !important;
+    max-width: 120px !important; /* Biraz genişlettik ki yazı sığsın */
+    display: flex !important;    /* Flexbox kullanarak hizalamayı güçlendirdik */
+    align-items: center !important;
+    white-space: nowrap !important; /* KRİTİK: Yazıyı alt satıra geçmekten kurtarır */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; /* Çok uzunsa "..." yapar */
 }
 
 .logo-area {
