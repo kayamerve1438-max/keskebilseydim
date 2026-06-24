@@ -407,3 +407,63 @@ button,
   max-width: 320px !important;
   text-align: center !important;
 }
+/* === KATEGORİ SAYFALARI GENEL ÖLÇEK DÜZELTME === */
+body:not(.home-page) .page{
+  width: min(92vw, 1500px) !important;
+  transform: scale(.82);
+  transform-origin: top center;
+  margin: 30px auto -120px !important;
+}
+
+body:not(.home-page) .hero{
+  padding: 45px 7% 25px !important;
+}
+
+body:not(.home-page) .hero h1{
+  font-size: clamp(36px, 4vw, 54px) !important;
+  line-height: 1.05 !important;
+}
+
+body:not(.home-page) .article-list-section,
+body:not(.home-page) .main-content{
+  padding-left: 7% !important;
+  padding-right: 7% !important;
+}
+/* === TÜM SAYFALAR GENEL RESPONSIVE ÖLÇEK === */
+html {
+  font-size: clamp(12px, 0.78vw, 16px);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.page,
+.home-container {
+  width: min(92vw, 1500px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  max-width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4.2vw, 4.8rem) !important;
+  line-height: 1.05 !important;
+}
+
+.hero p {
+  font-size: clamp(0.9rem, 1.1vw, 1.2rem) !important;
+}
+
+.search-box {
+  max-width: min(560px, 100%) !important;
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    grid-template-columns: 1fr !important;
+  }
+}

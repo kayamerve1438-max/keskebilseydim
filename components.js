@@ -165,3 +165,58 @@ render() {
 if (!customElements.get('bilge-kedi')) {
   customElements.define('bilge-kedi', BilgeKedi);
 }
+/* === TÜM KATEGORİ SAYFALARI GENEL ÖLÇEK AYARI === */
+(function () {
+  const path = window.location.pathname;
+
+  const isHome =
+    path.endsWith("/") ||
+    path.endsWith("/index.html") ||
+    path.includes("index");
+
+  if (isHome) return;
+
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .page {
+      width: min(92vw, 1500px) !important;
+      max-width: 1500px !important;
+      margin: 30px auto 40px !important;
+    }
+
+    .hero {
+      grid-template-columns: 1.15fr .85fr !important;
+      padding: 38px 7% 24px !important;
+      gap: 28px !important;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 3.2vw, 48px) !important;
+      line-height: 1.05 !important;
+    }
+
+    .hero p {
+      font-size: clamp(14px, 1vw, 17px) !important;
+      line-height: 1.45 !important;
+    }
+
+    .search-box {
+      max-width: 520px !important;
+    }
+
+    .is-subcategories a {
+      font-size: 13px !important;
+      padding: 8px 14px !important;
+    }
+
+    .hero-buttons button {
+      padding: 13px 24px !important;
+    }
+
+    bilge-kedi {
+      transform: scale(.88) !important;
+      transform-origin: center !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();

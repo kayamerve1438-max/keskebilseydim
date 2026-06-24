@@ -36,6 +36,16 @@ body{margin:0;font-family:Arial,sans-serif;background:#060913;color:#101828}
 .recent-head{font-size:22px;font-weight:900;margin-bottom:16px;color:white}
 .experience{margin-bottom:18px;color:white}
 .experience p{color:#cbd5e1}
+body.alt-page .hero,
+body.alt-page .hero-buttons,
+body.alt-page .search-box,
+body.alt-page bilge-kedi{
+    display:none !important;
+}
+
+body.alt-page .article-list-section{
+    display:block !important;
+}
 </style>
 </head>
 
@@ -155,6 +165,7 @@ yayincilar:{baslik:"Yayıncı Deneyimleri",yazilar:[{img:"images/kedi_10.png",ti
 };
 
 if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
+    document.body.classList.add("alt-page");
 document.querySelector(".hero").style.display="none";
 document.querySelector(".article-list-section").style.display="block";
 document.getElementById("mainContent").style.display="none";
