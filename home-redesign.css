@@ -706,3 +706,27 @@ hero-stats,
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
+/* === HEADER LOGO AKTİF DÜZELTME === */
+
+.site-name {
+  font-size: clamp(13px, 1.05vw, 17px) !important;
+  line-height: 0.85 !important;
+  max-width: 105px !important;
+  display: inline-block !important;
+  white-space: normal !important;
+}
+
+.logo-area img,
+.logo-area > img,
+#header-container .logo-area img {
+  width: 190px !important;
+  height: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
+  object-fit: contain !important;
+}
+
+.logo-area {
+  min-width: 235px !important;
+  gap: 4px !important;
+}
