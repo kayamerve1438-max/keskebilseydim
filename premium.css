@@ -381,3 +381,29 @@ button,
   border: 1px solid rgba(236,72,153,.55) !important;
   color: white !important;
 }
+/* === BİLGE KEDİYİ ARAMA KUTUSU ÜSTÜNE AL === */
+
+#walkingCat {
+  position: absolute !important;
+  left: 50% !important;
+  top: 58% !important;
+  transform: translateX(-50%) !important;
+  z-index: 20 !important;
+  width: 90px !important;
+}
+
+#walkingCatImg {
+  width: 90px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+#catBubble {
+  position: absolute !important;
+  bottom: 100px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  min-width: 260px !important;
+  max-width: 320px !important;
+  text-align: center !important;
+}

@@ -163,3 +163,25 @@ header nav a.pink {
 .logo-area{
   min-width: 260px !important;
 }
+/* === LOGO YAZISI ÇAKIŞMA DÜZELTME === */
+
+.site-name {
+  font-size: 22px !important;
+  line-height: 0.85 !important;
+  max-width: 145px !important;
+  display: inline-block !important;
+}
+
+.logo-area {
+  gap: 6px !important;
+  min-width: 330px !important;
+}
+
+.logo-area img,
+.logo-area > img,
+#header-container .logo-area img {
+  width: 220px !important;
+  height: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
