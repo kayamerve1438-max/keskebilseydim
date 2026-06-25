@@ -360,6 +360,201 @@ h1,
     border-color:#fb7185;
     box-shadow:0 0 18px rgba(236,72,153,.45);
 }
+.comment-form{
+    background:rgba(15,23,42,.85);
+    border:1px solid rgba(56,189,248,.20);
+    border-radius:18px;
+    padding:18px;
+    margin:18px 0 22px;
+}
+
+.comment-form textarea{
+    width:100%;
+    min-height:100px;
+    resize:vertical;
+    border:1px solid rgba(56,189,248,.20);
+    border-radius:14px;
+    padding:14px;
+    outline:none;
+    background:#020617;
+    color:white;
+    font-size:15px;
+    line-height:1.5;
+}
+
+.comment-form textarea::placeholder{
+    color:#64748b;
+}
+
+.comment-form button{
+    margin-top:12px;
+    background:linear-gradient(135deg,#0ea5e9,#a855f7);
+    color:white;
+    border:0;
+    border-radius:14px;
+    padding:13px 22px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.comment-form button:hover{
+    opacity:.92;
+}
+
+.comment-actions{
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+}
+
+.comment-actions button{
+    background:transparent;
+    border:1px solid rgba(56,189,248,.18);
+    color:#cbd5e1;
+    border-radius:999px;
+    padding:7px 12px;
+    cursor:pointer;
+}
+
+.comment-actions button:hover{
+    border-color:#38bdf8;
+    color:white;
+}
+.comment-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+.delete-comment-btn{
+    background:rgba(239,68,68,.12);
+    color:#fca5a5;
+    border:1px solid rgba(239,68,68,.35);
+    border-radius:999px;
+    padding:6px 12px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.delete-comment-btn:hover{
+    background:#ef4444;
+    color:white;
+}
+.site-footer{
+    width:100%;
+    text-align:center;
+    padding:28px;
+    color:#777;
+}
+
+/* BURAYA EKLE */
+
+.delete-confirm-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+.delete-confirm-modal.active{
+    display:flex;
+}
+
+.delete-confirm-box{
+    width:420px;
+    max-width:90%;
+    background:#0f172a;
+    border:1px solid rgba(239,68,68,.4);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 35px rgba(239,68,68,.25);
+}
+
+.delete-confirm-box img{
+    width:120px;
+    display:block;
+    margin:0 auto 14px;
+}
+
+.delete-confirm-box h3{
+    color:white;
+}
+
+.delete-confirm-box p{
+    color:#cbd5e1;
+}
+
+.delete-confirm-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:20px;
+}
+
+.cancel-delete,
+.confirm-delete{
+    border:0;
+    border-radius:14px;
+    padding:12px 22px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.cancel-delete{
+    background:#334155;
+    color:white;
+}
+
+.confirm-delete{
+    background:linear-gradient(135deg,#ef4444,#ec4899);
+    color:white;
+}
+.quote-preview,
+.quoted-comment{
+    background:rgba(56,189,248,.08);
+    border-left:4px solid #38bdf8;
+    border-radius:12px;
+    padding:10px 14px;
+    margin-bottom:12px;
+}
+
+.quote-preview{
+    position:relative;
+}
+
+.quote-preview strong,
+.quoted-comment strong{
+    color:#38bdf8;
+    font-size:14px;
+}
+
+.quote-preview p,
+.quoted-comment p{
+    margin:5px 0 0;
+    color:#cbd5e1 !important;
+    font-size:14px !important;
+    line-height:1.4 !important;
+}
+
+#cancelQuoteBtn{
+    position:absolute;
+    right:10px;
+    top:8px;
+    border:0;
+    background:rgba(239,68,68,.2);
+    color:#fca5a5;
+    border-radius:50%;
+    width:24px;
+    height:24px;
+    cursor:pointer;
+}
+</style>
 </style>
 </head>
 
@@ -367,7 +562,7 @@ h1,
 
 <div class="page">
 <div id="header-container"></div>
-<main class="article-detail">
+<main class="article-detail" data-article-id="depozito-article">
     <div class="breadcrumb">
     <a href="index.html">Ana Sayfa</a>
     >
@@ -435,13 +630,14 @@ h1,
         anlıyorum. Çünkü bazen evi değil, aslında ileride yaşayacağın tartışmayı kiralıyorsun.
     </p>
 <section class="comments-section">
-    <h2>Yorumlar 💬 <span>37 yorum</span></h2>
+    <h2>Yorumlar 💬 <span id="commentCountText">0 yorum</span></h2>
+
+    <div class="comment-form">
+        <textarea id="commentInput" placeholder="Deneyimini, fikrini veya uyarını yaz..."></textarea>
+        <button id="sendCommentBtn">Yorum Yap</button>
+    </div>
 
     <div id="commentsList"></div>
-
-    <button id="showAllComments" class="show-comments-btn">
-        Tüm 37 yorumu göster
-    </button>
 </section>
 
     <a href="ev.html?alt=kira" class="back">← Ev Kiralamak deneyimlerine dön</a>
@@ -451,68 +647,6 @@ h1,
 
 </div>
 
-<script>
-const comments = [
-    ["Ayşe K.", "Ben de aynı şeyi yaşadım. Eve girerken video çekmek gerçekten şartmış."],
-    ["Mert D.", "Depozito konusu sözleşmede net yazmıyorsa sonradan çok uğraştırıyor."],
-    ["Bilge Kedi 🐾", "Söz uçar, tutanak kalır. Miyav ama resmi."],
-    ["Selin A.", "Ben artık eve girerken her odanın fotoğrafını çekiyorum."],
-    ["Can B.", "Ev sahibiyle yazılı konuşmak çok önemli. WhatsApp mesajları bile işe yarıyor."],
-    ["Derya M.", "Boya bahanesi en klasik depozito kesme yöntemi olabilir."],
-    ["Onur T.", "Ben depozito için teslim tutanağı imzalatmıştım, çok işime yaradı."],
-    ["Elif S.", "Kiracı olarak haklarımızı bilmeden hareket ediyoruz, sonra zorlanıyoruz."],
-    ["Burak Y.", "Emlakçı da bu konuda daha net bilgi vermeliydi bence."],
-    ["Nazlı P.", "Evden çıkarken temizlik faturası bile saklanmalıymış."],
-    ["Gökhan R.", "Benzer durumda Tüketici Hakem Heyeti’ne başvuran arkadaşım parasını aldı."],
-    ["İrem C.", "Sözleşmedeki küçük detaylar gerçekten büyük fark yaratıyor."],
-    ["Tolga E.", "Anahtar tesliminde fotoğraf çekmek aklıma hiç gelmezdi."],
-    ["Buse N.", "Ev sahibi iyi biri gibi görünse bile belge şart."],
-    ["Emre L.", "Depozito yüzünden ev değiştirmekten soğudum resmen."],
-    ["Aylin V.", "Tutanak konusu çok doğru. Sözlü anlaşma yetmiyor."],
-    ["Kerem H.", "Ben de perde bahanesiyle kesinti yaşadım."],
-    ["Melis G.", "Keşke bu yazıyı ilk evimi tutmadan önce okusaydım."],
-    ["Serkan D.", "Bence her kiracı eve giriş videosu çekmeli."],
-    ["Zeynep F.", "Ev sahibinin söylediği her şeyi yazılı almak lazım."],
-    ["Hakan İ.", "Depozito iadesi baştan konuşulmalı, sona kalınca sorun oluyor."],
-    ["Ceren O.", "Ben duvar izleri için eski fotoğrafları göstermiştim, işe yaradı."],
-    ["Kaan U.", "Ev kiralamak sadece evi beğenmek değilmiş, bunu anladım."],
-    ["Seda T.", "Kira sözleşmesini okumadan imzalamamak gerekiyormuş."],
-    ["Alp M.", "Bazı masrafların depozitodan kesilemeyeceğini yeni öğrendim."],
-    ["Ece Y.", "Bilge Kedi yine haklı çıktı."],
-    ["Deniz K.", "Evden çıkarken komşudan şahit istemek bile mantıklı olabilir."],
-    ["Funda Ş.", "Bu tür deneyimler gerçekten çok işe yarıyor."],
-    ["Ali R.", "Ben olsam artık her şeyi maille onaylatırım."],
-    ["Nisan B.", "Depozito için ayrı madde yazdırmak gerekiyormuş."],
-    ["Ozan C.", "Küçük hasar büyük tartışmaya dönüşebiliyor."],
-    ["Pelin A.", "Ev teslim tutanağı hayat kurtarır."],
-    ["Murat S.", "Kiracıların bu konularda daha bilinçli olması lazım."],
-    ["Yağmur E.", "Eve girerken de çıkarken de fotoğraf şart."],
-    ["Cem V.", "Depozito kesintisi için kanıt istemek gerekiyor."],
-    ["Aslı D.", "Bu yazıyı arkadaşıma gönderdim, o da taşınacak."],
-    ["Bilge Kedi 🐾", "Fotoğraf çek, tutanak yap, sonra rahat uyu."]
-];
-
-const commentsList = document.getElementById("commentsList");
-const showAllBtn = document.getElementById("showAllComments");
-
-function renderComments(limit){
-    commentsList.innerHTML = comments.slice(0, limit).map(comment => `
-        <div class="comment">
-            <b>${comment[0]}</b>
-            <p>${comment[1]}</p>
-        </div>
-    `).join("");
-}
-
-renderComments(5);
-
-if(showAllBtn){
-    showAllBtn.onclick = function(){
-        renderComments(comments.length);
-        showAllBtn.style.display = "none";
-    };
-}
-</script>
 
 <script>
 fetch("header.html")
@@ -673,7 +807,7 @@ if(!savedName){
 <div class="auth-required-modal" id="authRequiredModal">
     <div class="auth-required-box">
 
-        <img src="images/kedi_57.png" alt="Bilge Kedi">
+        <img src="images/kedi_43.png" alt="Bilge Kedi">
 
         <h3>🐾 Önce tanışalım mı, insan dostum?</h3>
 
@@ -687,6 +821,7 @@ if(!savedName){
 
     </div>
 </div>
+<script type="module" src="./comments.js"></script>
 <script>
 function showAuthRequiredModal(){
     const modal = document.getElementById("authRequiredModal");
@@ -720,6 +855,60 @@ if(authRequiredModal){
         }
     };
 }
+let pendingDeleteAction = null;
+
+window.showDeleteConfirmModal = function(onConfirm){
+    pendingDeleteAction = onConfirm;
+
+    const modal = document.getElementById("deleteConfirmModal");
+    if(modal){
+        modal.classList.add("active");
+    }
+};
+
+document.addEventListener("click", async function(e){
+
+    if(e.target.id === "cancelDeleteComment"){
+        pendingDeleteAction = null;
+
+        const modal = document.getElementById("deleteConfirmModal");
+        if(modal){
+            modal.classList.remove("active");
+        }
+    }
+
+    if(e.target.id === "confirmDeleteComment"){
+        if(pendingDeleteAction){
+            await pendingDeleteAction();
+        }
+
+        pendingDeleteAction = null;
+
+        const modal = document.getElementById("deleteConfirmModal");
+        if(modal){
+            modal.classList.remove("active");
+        }
+    }
+
+    if(e.target.id === "deleteConfirmModal"){
+        pendingDeleteAction = null;
+        e.target.classList.remove("active");
+    }
+});
+
 </script>
+<div class="delete-confirm-modal" id="deleteConfirmModal">
+  <div class="delete-confirm-box">
+    <img src="images/kedi_43.png?v=2" alt="Bilge Kedi">
+
+    <h3>🐾 Emin misin, insan dostum?</h3>
+    <p>Bu yorumu sildiğinde geri getiremeyiz.</p>
+
+    <div class="delete-confirm-actions">
+      <button id="cancelDeleteComment" class="cancel-delete">Vazgeç</button>
+      <button id="confirmDeleteComment" class="confirm-delete">Sil</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
