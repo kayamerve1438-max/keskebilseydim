@@ -160,7 +160,9 @@ async function loadComments(){
             ↩️ Alıntıla
           </button>
 
-          <button type="button">💬 Mesaj</button>
+          <button type="button" class="message-comment-btn" data-comment-id="${comment.id}">
+  💬 Mesaj
+</button>
         </div>
       </div>
     `;
@@ -249,8 +251,20 @@ commentsList?.addEventListener("click", async (e) => {
 
     return;
   }
+const messageBtn = e.target.closest(".message-comment-btn");
 
-  const reactionBtn = e.target.closest(".reaction-btn");
+if(messageBtn){
+  const commentId = messageBtn.dataset.commentId;
+  const comment = cachedComments.find(item => item.id === commentId);
+
+  if(!comment) return;
+
+  window.openMessageModal?.(comment);
+
+  return;
+}
+
+const reactionBtn = e.target.closest(".reaction-btn");
 
   if(reactionBtn){
     const freshUser = auth.currentUser;

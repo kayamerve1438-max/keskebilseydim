@@ -554,6 +554,140 @@ h1,
     height:24px;
     cursor:pointer;
 }
+.message-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+.message-modal.active{
+    display:flex;
+}
+
+.message-box{
+    width:460px;
+    max-width:92%;
+    background:#0f172a;
+    border:1px solid rgba(56,189,248,.35);
+    border-radius:24px;
+    padding:26px;
+    box-shadow:0 0 35px rgba(56,189,248,.22);
+}
+
+.message-box h3{
+    color:white;
+    margin-top:0;
+}
+
+.message-quote{
+    background:rgba(56,189,248,.08);
+    border-left:4px solid #38bdf8;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:14px;
+}
+
+.message-quote strong{
+    color:#38bdf8;
+}
+
+.message-quote p{
+    color:#cbd5e1 !important;
+    font-size:14px !important;
+    margin:6px 0 0 !important;
+}
+
+#messageInput{
+    width:100%;
+    min-height:110px;
+    background:#020617;
+    color:white;
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:14px;
+    padding:14px;
+    resize:vertical;
+}
+
+.message-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:16px;
+}
+
+#cancelMessageBtn,
+#sendMessageBtn{
+    border:0;
+    border-radius:14px;
+    padding:12px 20px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+#cancelMessageBtn{
+    background:#334155;
+    color:white;
+}
+
+#sendMessageBtn{
+    background:linear-gradient(135deg,#0ea5e9,#a855f7);
+    color:white;
+}
+.success-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+.success-modal.active{
+    display:flex;
+}
+
+.success-box{
+    width:420px;
+    max-width:90%;
+    background:#0f172a;
+    border:1px solid rgba(56,189,248,.4);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 35px rgba(56,189,248,.25);
+}
+
+.success-box img{
+    width:120px;
+    display:block;
+    margin:0 auto 14px;
+}
+
+.success-box h3{
+    color:white;
+}
+
+.success-box p{
+    color:#cbd5e1;
+}
+
+.success-box button{
+    margin-top:14px;
+    border:0;
+    border-radius:14px;
+    padding:12px 24px;
+    color:white;
+    cursor:pointer;
+    font-weight:900;
+    background:linear-gradient(135deg,#0ea5e9,#a855f7);
+}
 </style>
 </style>
 </head>
@@ -822,6 +956,7 @@ if(!savedName){
     </div>
 </div>
 <script type="module" src="./comments.js"></script>
+<script type="module" src="./comments.js"></script>
 <script>
 function showAuthRequiredModal(){
     const modal = document.getElementById("authRequiredModal");
@@ -895,7 +1030,24 @@ document.addEventListener("click", async function(e){
         e.target.classList.remove("active");
     }
 });
+window.showSuccessModal = function(message){
+    const modal = document.getElementById("successModal");
+    const text = document.getElementById("successModalText");
 
+    if(text){
+        text.textContent = message;
+    }
+
+    if(modal){
+        modal.classList.add("active");
+    }
+};
+
+document.addEventListener("click", function(e){
+    if(e.target.id === "closeSuccessModal" || e.target.id === "successModal"){
+        document.getElementById("successModal")?.classList.remove("active");
+    }
+});
 </script>
 <div class="delete-confirm-modal" id="deleteConfirmModal">
   <div class="delete-confirm-box">
@@ -907,8 +1059,38 @@ document.addEventListener("click", async function(e){
     <div class="delete-confirm-actions">
       <button id="cancelDeleteComment" class="cancel-delete">Vazgeç</button>
       <button id="confirmDeleteComment" class="confirm-delete">Sil</button>
+        </div>
+  </div>
+</div>
+<div class="message-modal" id="messageModal">
+  <div class="message-box">
+    <h3>💬 Mesaj Gönder</h3>
+
+    <div class="message-quote">
+      <strong id="messageTargetName"></strong>
+      <p id="messageQuotedText"></p>
+    </div>
+
+    <textarea id="messageInput" placeholder="Mesajını yaz..."></textarea>
+
+    <div class="message-actions">
+      <button id="cancelMessageBtn">Vazgeç</button>
+      <button id="sendMessageBtn">Gönder</button>
     </div>
   </div>
 </div>
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <img src="images/kedi_59.png?v=2" alt="Bilge Kedi">
+
+    <h3> Tamamdır!</h3>
+    <p id="successModalText">İşlem başarılı.</p>
+
+    <button id="closeSuccessModal">Kapat</button>
+  </div>
+</div>
+<script type="module" src="./comments.js"></script>
+<script type="module" src="./messages.js"></script>
+
 </body>
 </html>
