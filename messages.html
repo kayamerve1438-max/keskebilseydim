@@ -384,7 +384,13 @@ onAuthStateChanged(auth, async (user) => {
   currentUser = user;
 loadConversations();
 });
+replyInput?.addEventListener("keydown", function(e){
+    if(e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        sendReplyBtn?.click();
+    }
+});
 </script>
-
+<script src="keyboard.js"></script>
 </body>
 </html>

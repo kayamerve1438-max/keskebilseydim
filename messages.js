@@ -130,3 +130,9 @@ try{
     window.showSuccessModal?.("Mesaj gönderildi 🐾");
   }
 });
+document.addEventListener("keydown", function(e){
+  if(e.key === "Enter" && !e.shiftKey && e.target.id === "messageInput"){
+    e.preventDefault();
+    document.getElementById("sendMessageBtn")?.click();
+  }
+});

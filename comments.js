@@ -320,3 +320,12 @@ commentBtn?.addEventListener("click", () => {
 
 ensureQuotePreview();
 loadComments();
+ensureQuotePreview();
+loadComments();
+
+commentInput?.addEventListener("keydown", function(e){
+  if(e.key === "Enter" && !e.shiftKey){
+    e.preventDefault();
+    sendCommentBtn?.click();
+  }
+});
