@@ -1,29 +1,28 @@
 import { db } from "./firebase-db.js";
 
 import {
+  doc,
+  getDoc,
+  setDoc,
   collection,
   addDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-import {
-  getAuth
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { createNotification } from "./notifications.js";
 
 const auth = getAuth();
 
-const articleEl = document.querySelector(".article-detail");
-const articleId = articleEl?.dataset.articleId || "depozito-article";
-
 let selectedMessageTarget = null;
 
-function safeText(text){
-  return String(text || "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function getConversationId(uid1, uid2){
+  return [uid1, uid2].sort().join("_");
+}
+
+function formatUserName(user){
+  const savedName = localStorage.getItem("kb_user_name");
+  return user.displayName || savedName || user.email || "Kullanıcı";
 }
 
 window.openMessageModal = function(comment){
@@ -31,6 +30,16 @@ window.openMessageModal = function(comment){
 
   if(!user){
     window.showAuthRequiredModal?.();
+    return;
+  }
+
+  if(!comment.userId || comment.userId === "seed-user"){
+    window.showSuccessModal?.("Bu yorum örnek içerik olduğu için mesaj gönderilemez. 🐾");
+    return;
+  }
+
+  if(comment.userId === user.uid){
+    window.showSuccessModal?.("Kendi yorumuna mesaj gönderemezsin, insan dostum. 🐾");
     return;
   }
 
@@ -49,7 +58,7 @@ window.openMessageModal = function(comment){
 
 window.closeMessageModal = function(){
   selectedMessageTarget = null;
-  document.getElementById("messageModal").classList.remove("active");
+  document.getElementById("messageModal")?.classList.remove("active");
 };
 
 document.addEventListener("click", async function(e){
@@ -75,23 +84,48 @@ document.addEventListener("click", async function(e){
     }
 
     if(!messageText){
-      alert("Mesaj yazmadan gönderemezsin.");
+      window.showSuccessModal?.("Mesaj yazmadan gönderemezsin, insan dostum. 🐾");
       return;
     }
 
-    await addDoc(collection(db, "messages"), {
-      articleId,
+    const conversationId = getConversationId(user.uid, selectedMessageTarget.userId);
+    const conversationRef = doc(db, "conversations", conversationId);
+
+    await setDoc(conversationRef, {
+  participants: [user.uid, selectedMessageTarget.userId],
+  participantNames: {
+    [user.uid]: formatUserName(user),
+    [selectedMessageTarget.userId]: selectedMessageTarget.userName || "Kullanıcı"
+  },
+  lastMessage: messageText,
+  lastMessageFrom: user.uid,
+  unreadBy: {
+    [selectedMessageTarget.userId]: true,
+    [user.uid]: false
+  },
+  updatedAt: serverTimestamp()
+}, { merge:true });
+
+    await addDoc(collection(db, "conversations", conversationId, "messages"), {
       fromUserId: user.uid,
-      fromUserName: user.displayName || user.email || "Kullanıcı",
-      toUserId: selectedMessageTarget.userId || "",
-      toUserName: selectedMessageTarget.userName || "",
+      fromUserName: formatUserName(user),
+      toUserId: selectedMessageTarget.userId,
+      toUserName: selectedMessageTarget.userName || "Kullanıcı",
+      message: messageText,
       quotedCommentId: selectedMessageTarget.id || "",
       quotedCommentText: selectedMessageTarget.text || "",
-      message: messageText,
       createdAt: serverTimestamp(),
-      isRead: false
+      isRead:false
     });
+try{
 
+    console.log("✅ Bildirim oluşturuldu");
+
+}catch(err){
+
+    console.error("❌ Notification Error:", err);
+
+}
     window.closeMessageModal();
     window.showSuccessModal?.("Mesaj gönderildi 🐾");
   }

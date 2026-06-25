@@ -29,21 +29,6 @@ window.initProfile = function(){
 
           if(!profileDropdown) return;
 
-          const totalUnreadNotifications = 2;
-          const readNotifications =
-          JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
-
-          const unreadCount = Math.max(totalUnreadNotifications - readNotifications.length, 0);
-
-          if(notificationBadge){
-              if(unreadCount > 0){
-                  notificationBadge.textContent = unreadCount;
-                  notificationBadge.style.display = "flex";
-              }else{
-                  notificationBadge.style.display = "none";
-              }
-          }
-
           loginBtn.onclick = function(e){
               e.preventDefault();
               e.stopPropagation();
@@ -64,6 +49,16 @@ window.initProfile = function(){
               };
           }
       });
+      const oldLiveScript = document.getElementById("liveScript");
+if(oldLiveScript){
+    oldLiveScript.remove();
+}
+
+const liveScript = document.createElement("script");
+liveScript.type = "module";
+liveScript.src = "live.js";
+liveScript.id = "liveScript";
+document.body.appendChild(liveScript);
 };
 
 function showLogoutConfirm(){

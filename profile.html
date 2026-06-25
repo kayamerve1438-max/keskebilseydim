@@ -1,19 +1,52 @@
 <div class="profile-dropdown" id="profileDropdown">
 
-    <a href="profil.html">👤 Profilim</a>
-
-    <a href="bildirimler.html">
-        🔔 Bildirimler
-        <span class="badge" id="notificationBadge">3</span>
+    <a href="profil.html" class="profile-menu-item">
+        👤 Profilim
     </a>
-<!--
-<a href="yorumlarim.html">💬 Yorumlarım</a>
--->
-<!--
-    <a href="begendiklerim.html">❤️ Beğendiklerim</a>
--->
-    <a href="sifre-guncelle.html">🔑 Şifre Güncelle</a>
+
+    <a href="messages.html" class="profile-menu-item">
+        💬 Mesaj Kutusu
+        <span class="menu-badge" id="messageBadge"></span>
+    </a>
+
+    <a href="bildirimler.html" class="profile-menu-item">
+        🔔 Bildirimler
+        <span class="menu-badge" id="notificationBadge"></span>
+    </a>
+
+    <!--
+    <a href="yorumlarim.html" class="profile-menu-item">💬 Yorumlarım</a>
+    -->
+
+    <!--
+    <a href="begendiklerim.html" class="profile-menu-item">❤️ Beğendiklerim</a>
+    -->
+
+    <a href="sifre-guncelle.html" class="profile-menu-item">
+        🔑 Şifre Güncelle
+    </a>
 
     <button type="button" id="logoutBtn">🚪 Çıkış Yap</button>
 
 </div>
+<style>.profile-menu-item{
+    position:relative;
+    display:flex !important;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.menu-badge{
+    min-width:20px;
+    height:20px;
+    padding:0 6px;
+    border-radius:999px;
+    background:#ef4444;
+    color:white;
+    font-size:12px;
+    font-weight:900;
+    display:none;
+    align-items:center;
+    justify-content:center;
+}</style>

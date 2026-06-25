@@ -134,89 +134,177 @@ body{
 </div>
 
 <div id="footer-container"></div>
+<script type="module">
+import { db } from "./firebase-db.js";
 
-<script>
-const readNotifications =
-JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-const notifications = [
-    {
-        id:1,
-        type:"Beğeni",
-        className:"like",
-        text:'<b>Merve Kaya</b>, “Depozitoyu alırım sandım, alamadım” yorumunu beğendi.',
-        date:"Bugün",
-        unread:true,
-        url:"detay.html?id=kira-1"
-    },
-    {
-        id:2,
-        type:"Yorum",
-        className:"comment",
-        text:'<b>Ahmet Y.</b>, “Ev almadan önce keşke komşuları araştırsaydım” gönderine yorum yaptı.',
-        date:"Dün",
-        unread:true,
-        url:"detay.html?id=komsu-1"
-    },
-    {
-        id:3,
-        type:"Beğeni",
-        className:"like",
-        text:'<b>Selin A.</b>, “Maaşa bakıp iş değiştirdim” yorumunu beğendi.',
-        date:"18 Haz",
-        unread:false,
-        url:"detay.html?id=is-1"
-    }
-];
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+const auth = getAuth();
 const list = document.getElementById("notificationList");
+const markAllReadBtn = document.getElementById("markAllRead");
 
-list.innerHTML = notifications.map(item => {
-    const isRead = readNotifications.includes(item.id);
+let currentUser = null;
+let currentNotifications = [];
 
-    return `
-<a class="notification-item ${(!isRead && item.unread) ? "unread" : ""}" href="${item.url}" data-id="${item.id}">            <div class="notification-type ${item.className}">
-                ${item.type === "Beğeni" ? "❤️ Beğeni" : "💬 Yorum"}
+function safeText(text){
+    return String(text || "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function formatDate(value){
+    if(!value) return "";
+
+    try{
+        const date = value.toDate ? value.toDate() : new Date(value);
+        return date.toLocaleString("tr-TR");
+    }catch(e){
+        return "";
+    }
+}
+
+function getNotificationIcon(type){
+    if(type === "message") return "💬 Mesaj";
+    if(type === "like") return "❤️ Beğeni";
+    if(type === "comment") return "💭 Yorum";
+    if(type === "quote") return "↩️ Alıntı";
+    return "🔔 Bildirim";
+}
+
+function renderNotifications(){
+    if(currentNotifications.length === 0){
+        list.innerHTML = `
+            <div class="notification-item">
+                <div class="notification-type">🐾 Bilge Kedi</div>
+                <div class="notification-text">Henüz bildirimin yok, insan dostum.</div>
+                <div class="notification-date"></div>
             </div>
-            <div class="notification-text">${item.text}</div>
-            <div class="notification-date">${item.date}</div>
+        `;
+        return;
+    }
+
+    list.innerHTML = currentNotifications.map(item => `
+        <a 
+          class="notification-item ${item.isRead ? "" : "unread"}"
+          href="${safeText(item.link || "#")}"
+          data-id="${item.id}">
+            <div class="notification-type ${safeText(item.type || "")}">
+                ${getNotificationIcon(item.type)}
+            </div>
+
+            <div class="notification-text">
+                <b>${safeText(item.title || "Bildirim")}</b><br>
+                ${safeText(item.text || "")}
+            </div>
+
+            <div class="notification-date">
+                ${formatDate(item.createdAt)}
+            </div>
         </a>
-    `;
-}).join("");
-document.querySelectorAll(".notification-item").forEach(item => {
-    item.addEventListener("click", function(){
-        const id = Number(item.dataset.id);
+    `).join("");
+}
 
-        let read =
-        JSON.parse(localStorage.getItem("kb_read_notifications")) || [];
+async function loadNotifications(){
+    const q = query(
+    collection(db, "notifications"),
+    where("toUserId", "==", currentUser.uid)
+);
 
-        if(!read.includes(id)){
-            read.push(id);
-        }
+    const snap = await getDocs(q);
 
-        localStorage.setItem(
-            "kb_read_notifications",
-            JSON.stringify(read)
-        );
-    });
+    currentNotifications = [];
+
+    snap.forEach(docSnap => {
+    const data = docSnap.data();
+
+    if(data.type !== "message"){
+        currentNotifications.push({
+            id: docSnap.id,
+            ...data
+        });
+    }
 });
-document.getElementById("markAllRead").onclick = function(){
-    const allIds = notifications.map(x => x.id);
+currentNotifications.sort((a,b)=>{
+    const ad = a.createdAt?.toMillis?.() || 0;
+    const bd = b.createdAt?.toMillis?.() || 0;
+    return bd - ad;
+});
+    renderNotifications();
+}
 
-    localStorage.setItem(
-        "kb_read_notifications",
-        JSON.stringify(allIds)
+list.addEventListener("click", async function(e){
+    const item = e.target.closest(".notification-item");
+    if(!item) return;
+
+    e.preventDefault();
+
+    const id = item.dataset.id;
+    const href = item.getAttribute("href");
+
+    if(id){
+        await updateDoc(doc(db, "notifications", id), {
+            isRead:true
+        });
+    }
+
+    if(href && href !== "#"){
+        window.location.href = href;
+    }else{
+        await loadNotifications();
+    }
+});
+
+markAllReadBtn.onclick = async function(){
+    if(!currentNotifications.length) return;
+
+    const unread = currentNotifications.filter(item => !item.isRead);
+
+    await Promise.all(
+        unread.map(item =>
+            updateDoc(doc(db, "notifications", item.id), {
+                isRead:true
+            })
+        )
     );
 
-    document.querySelectorAll(".notification-item").forEach(item => {
-        item.classList.remove("unread");
-    });
+    currentNotifications = currentNotifications.map(item => ({
+        ...item,
+        isRead:true
+    }));
 
-    document.querySelectorAll(".badge").forEach(badge => {
-        badge.textContent = "0";
-        badge.style.display = "none";
-    });
+    renderNotifications();
 };
+
+onAuthStateChanged(auth, async (user) => {
+    if(!user){
+        list.innerHTML = `
+            <div class="notification-item">
+                <div class="notification-type">🐾 Bilge Kedi</div>
+                <div class="notification-text">Bildirimlerini görmek için giriş yapmalısın.</div>
+                <div class="notification-date"></div>
+            </div>
+        `;
+        return;
+    }
+
+    currentUser = user;
+    await loadNotifications();
+});
 </script>
 
 <script>
