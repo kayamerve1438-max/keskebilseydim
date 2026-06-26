@@ -376,4 +376,92 @@
     word-break:break-word !important;
   }
 }
+/* === FINAL REAL PHONE WIDTH FIX === */
+@media (max-width:768px){
+
+  html,
+  body{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:hidden !important;
+  }
+
+  *{
+    box-sizing:border-box !important;
+  }
+
+  body{
+    margin:0 !important;
+  }
+
+  #header-container,
+  #auth-container,
+  #footer-container,
+  main,
+  section,
+  .home-container,
+  .page,
+  .messages-page,
+  .profile-page,
+  .hero,
+  .article-detail,
+  .messages-layout{
+    width:100% !important;
+    max-width:100% !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    overflow-x:hidden !important;
+  }
+
+  img,
+  video,
+  canvas,
+  iframe{
+    max-width:100% !important;
+    height:auto !important;
+  }
+
+  .hero{
+    display:flex !important;
+    flex-direction:column !important;
+    padding:18px 14px !important;
+  }
+
+  .hero > *,
+  .hero div{
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+
+  .hero h1{
+    font-size:26px !important;
+    line-height:1.15 !important;
+    overflow-wrap:break-word !important;
+  }
+
+  .hero p{
+    font-size:14px !important;
+    line-height:1.5 !important;
+  }
+
+  .search-box,
+  .hero-buttons,
+  .hero-stats{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .search-box input,
+  .search-box button,
+  .hero-buttons button,
+  .hero-buttons a{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .mobile-menu{
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
 }
