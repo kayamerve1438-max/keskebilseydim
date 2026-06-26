@@ -394,4 +394,74 @@ html, body{
   .hero{
     margin-top:-10px !important;
   }
+  /* === EMERGENCY REAL PHONE FIX === */
+@media (max-width:768px){
+
+  html,
+  body{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow-x:hidden !important;
+  }
+
+  *{
+    box-sizing:border-box !important;
+  }
+
+  #header-container,
+  #auth-container,
+  #footer-container,
+  main,
+  .home-container,
+  section,
+  .hero,
+  .hero *,
+  .search-box,
+  .hero-buttons,
+  .hero-stats{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    left:auto !important;
+    right:auto !important;
+    overflow-x:hidden !important;
+  }
+
+  .home-container{
+    padding:0 !important;
+  }
+
+  .hero{
+    padding:18px 14px !important;
+    border-radius:0 !important;
+  }
+
+  .hero h1{
+    font-size:25px !important;
+    line-height:1.15 !important;
+    overflow-wrap:break-word !important;
+  }
+
+  .gradient-text{
+    display:inline !important;
+    overflow-wrap:break-word !important;
+  }
+
+  .search-box{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+
+  .search-box input,
+  .search-box button,
+  .hero-buttons button,
+  .hero-buttons a{
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
 }
