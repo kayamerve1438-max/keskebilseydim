@@ -85,3 +85,21 @@ setTimeout(() => {
         }
     });
 }, 300);
+setTimeout(() => {
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if(!mobileBtn || !mobileMenu) return;
+
+    mobileBtn.onclick = function(){
+        mobileMenu.classList.toggle("active");
+        mobileBtn.textContent = mobileMenu.classList.contains("active") ? "×" : "☰";
+    };
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+        link.onclick = function(){
+            mobileMenu.classList.remove("active");
+            mobileBtn.textContent = "☰";
+        };
+    });
+}, 300);

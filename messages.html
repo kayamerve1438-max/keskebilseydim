@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mesaj Kutusu - Keşke Bilseydim</title>
 <link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="responsive.css?v=1">
+<link rel="stylesheet" href="responsive-pages.css?v=1">
 
 <style>
 *{box-sizing:border-box}
@@ -29,6 +31,22 @@ body{
   display:grid;
   grid-template-columns:360px 1fr;
   gap:20px;
+}
+@media (max-width:768px){
+
+.messages-page{
+    width:100% !important;
+    margin:0 !important;
+    padding:16px !important;
+}
+
+.messages-layout{
+    display:flex !important;
+    flex-direction:column !important;
+    grid-template-columns:none !important;
+    gap:16px !important;
+}
+
 }
 
 .panel{
@@ -144,6 +162,34 @@ body{
   font-size:11px;
   padding:3px 8px;
   border-radius:999px;
+}
+@media (max-width:768px){
+  #header-container{
+    overflow:hidden !important;
+  }
+
+  #header-container nav,
+  #header-container .nav,
+  #header-container .menu,
+  #header-container .nav-menu{
+    display:none !important;
+  }
+
+  .messages-page{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:14px !important;
+    box-sizing:border-box !important;
+  }
+
+  .messages-layout{
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+    max-width:100% !important;
+    grid-template-columns:none !important;
+  }
 }
 </style>
 </head>

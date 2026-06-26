@@ -1,0 +1,397 @@
+/* ===============================
+   KESKE BILSEYDIM RESPONSIVE CORE
+   PC + TELEFON
+================================ */
+
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+.mobile-menu-btn,
+.mobile-menu{
+  display:none;
+}
+
+/* TELEFON */
+@media(max-width:768px){
+
+  body{
+    width:100%;
+  }
+
+  main,
+  .home-container,
+  .page,
+  .messages-page,
+  .profile-page{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:14px !important;
+    border-radius:0 !important;
+  }
+
+  /* HEADER */
+  header,
+  .header,
+  .site-header,
+  .main-header{
+    width:100% !important;
+    padding:12px 18px !important;
+    min-height:72px !important;
+  }
+
+  .header-inner,
+  .nav-container,
+  .navbar,
+  .topbar{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:14px !important;
+  }
+
+  .logo,
+  .logo-area,
+  .brand{
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    width:100% !important;
+    transform:scale(.75);
+    transform-origin:left center;
+  }
+
+  .logo img,
+  .brand img{
+    max-width:90px !important;
+    height:auto !important;
+  }
+
+  nav,
+  .nav,
+  .menu,
+  .nav-menu,
+  .category-nav,
+  header nav,
+  .header nav{
+    display:none !important;
+  }
+
+  .login,
+  .profile-btn{
+    margin:0 auto !important;
+    font-size:12px !important;
+    padding:8px 14px !important;
+  }
+
+  /* MOBIL HAMBURGER */
+  .mobile-menu-btn{
+    display:block !important;
+    position:absolute;
+    top:22px;
+    right:18px;
+    z-index:99999;
+    border:1px solid rgba(255,255,255,.2);
+    background:#111827;
+    color:white;
+    border-radius:12px;
+    padding:10px 14px;
+    font-size:22px;
+    font-weight:900;
+  }
+
+  .mobile-menu{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(2,6,23,.96);
+    z-index:99998;
+    padding:90px 24px 24px;
+  }
+
+  .mobile-menu.active{
+    display:flex !important;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:900;
+    padding:14px 16px;
+    border-radius:14px;
+    background:rgba(255,255,255,.06);
+  }
+
+  /* ANA SAYFA HERO */
+  .hero{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    padding:24px 16px !important;
+    gap:22px !important;
+    border-radius:20px !important;
+  }
+
+  .hero h1{
+    font-size:30px !important;
+    line-height:1.15 !important;
+    text-align:left !important;
+  }
+
+  .hero p{
+    font-size:15px !important;
+    line-height:1.5 !important;
+  }
+
+  .search-box{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+  }
+
+  .search-box input,
+  .search-box button{
+    width:100% !important;
+  }
+
+  .hero-buttons{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+  }
+
+  .hero-buttons button,
+  .hero-buttons a{
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .hero-stats{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+  }
+
+  .cat-note,
+  .cat-area,
+  .hero-visual{
+    width:100% !important;
+    max-width:100% !important;
+    transform:none !important;
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+  }
+
+  .cat-note img,
+  .hero-visual img{
+    max-width:180px !important;
+    height:auto !important;
+    margin:0 auto !important;
+    display:block !important;
+  }
+
+  /* KARTLAR */
+  .cards,
+  .category-grid,
+  .weekly-grid,
+  .new-experience-grid,
+  .home-lower{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  .card,
+  .category-card,
+  .weekly-card,
+  .new-exp-card{
+    width:100% !important;
+    margin:0 !important;
+  }
+
+  /* DETAY SAYFASI */
+  .article-detail{
+    width:100% !important;
+    max-width:100% !important;
+    padding:24px 16px !important;
+    border-radius:0 !important;
+  }
+
+  .article-detail h1{
+    font-size:28px !important;
+    line-height:1.2 !important;
+  }
+
+  .article-detail img{
+    width:100% !important;
+    height:auto !important;
+    border-radius:16px !important;
+  }
+
+  .interaction-bar{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:8px !important;
+  }
+
+  .interaction-bar button{
+    flex:1 1 100% !important;
+  }
+
+  .comments-section{
+    width:100% !important;
+  }
+
+  .comment-form,
+  .comment-box{
+    width:100% !important;
+  }
+
+  .comment textarea,
+  #commentInput{
+    width:100% !important;
+  }
+
+  .comment-actions{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:8px !important;
+  }
+
+  .comment-actions button{
+    flex:1 1 100% !important;
+  }
+
+  /* MESAJLAR */
+  .messages-layout{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+
+  .panel{
+    width:100% !important;
+    border-radius:18px !important;
+  }
+
+  .message-bubble{
+    max-width:95% !important;
+  }
+
+  .chat-input{
+    flex-direction:column !important;
+  }
+
+  .chat-input textarea,
+  .chat-input button{
+    width:100% !important;
+  }
+
+  /* BİLDİRİMLER */
+  .notifications-head{
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:12px !important;
+  }
+
+  .notification-item{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+
+  .notification-date{
+    text-align:left !important;
+  }
+
+  /* PROFİL DROPDOWN */
+  .profile-dropdown{
+    right:10px !important;
+    left:auto !important;
+    width:260px !important;
+  }
+    .hero,
+  .hero > div,
+  .hero-content,
+  .hero-left,
+  .hero-right{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+
+  .hero{
+    align-items:stretch !important;
+  }
+
+  .hero h1,
+  .hero p,
+  .gradient-text{
+    max-width:100% !important;
+    word-break:normal !important;
+    overflow-wrap:break-word !important;
+  }
+    #header-container{
+    min-height:auto !important;
+  }
+
+  header{
+    min-height:110px !important;
+    padding:10px 14px !important;
+  }
+
+  .logo,
+  .logo-area,
+  .brand{
+    transform:scale(.62) !important;
+    margin-top:-12px !important;
+  }
+
+  .hero{
+    margin-top:0 !important;
+  }
+
+  .home-container{
+    padding-top:0 !important;
+  }
+    #header-container{
+    height:auto !important;
+  }
+
+  #header-container header,
+  header{
+    min-height:86px !important;
+    padding:8px 12px !important;
+  }
+
+  .logo,
+  .logo-area,
+  .brand{
+    transform:scale(.52) !important;
+    margin-top:-22px !important;
+    margin-bottom:-28px !important;
+  }
+
+  .mobile-menu-btn{
+    top:18px !important;
+    right:16px !important;
+    padding:8px 12px !important;
+    font-size:20px !important;
+  }
+
+  .hero{
+    margin-top:-10px !important;
+  }
+}

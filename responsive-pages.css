@@ -1,0 +1,379 @@
+/* ===============================
+   PAGE SPECIFIC MOBILE RESPONSIVE
+   INDEX + DETAIL + USER PAGES
+================================ */
+
+@media(max-width:768px){
+
+  /* INDEX */
+  .home-container .hero{
+    margin-top:0 !important;
+  }
+
+  .home-container .hero h1{
+    font-size:30px !important;
+  }
+
+  /* DETAIL */
+  /* ===============================
+   DETAIL PAGE MOBILE
+================================ */
+
+@media(max-width:768px){
+
+  .article-detail{
+    width:100% !important;
+    max-width:100% !important;
+    padding:18px 14px !important;
+  }
+
+  .breadcrumb{
+    font-size:12px !important;
+    line-height:1.5 !important;
+    margin-bottom:14px !important;
+  }
+
+  .category{
+    font-size:11px !important;
+    padding:7px 12px !important;
+    margin-bottom:14px !important;
+  }
+
+  .article-detail h1{
+    font-size:26px !important;
+    line-height:1.18 !important;
+    margin-bottom:14px !important;
+  }
+
+  .meta{
+    font-size:13px !important;
+    line-height:1.5 !important;
+    margin-bottom:16px !important;
+  }
+
+  .interaction-bar{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+    margin:16px 0 22px !important;
+  }
+
+  .interaction-bar button{
+    width:100% !important;
+    padding:13px 14px !important;
+    font-size:14px !important;
+  }
+
+  .article-detail img{
+    width:100% !important;
+    max-height:none !important;
+    border-radius:16px !important;
+    margin:18px 0 !important;
+  }
+
+  .article-detail p{
+    font-size:16px !important;
+    line-height:1.65 !important;
+  }
+
+  .quote{
+    font-size:17px !important;
+    padding:16px !important;
+    margin:22px 0 !important;
+  }
+
+  .bilge-note{
+    flex-direction:column !important;
+    text-align:center !important;
+    padding:18px !important;
+  }
+
+  .bilge-note img{
+    width:95px !important;
+  }
+
+  .lesson-box{
+    padding:18px !important;
+  }
+
+  .lesson-box h3{
+    font-size:22px !important;
+  }
+
+  .comments-section h2{
+    font-size:24px !important;
+  }
+
+  .comment-form{
+    padding:14px !important;
+  }
+
+  #commentInput{
+    min-height:110px !important;
+    font-size:15px !important;
+  }
+
+  .comment{
+    padding:15px !important;
+  }
+
+  .comment-top{
+    align-items:flex-start !important;
+  }
+
+  .comment-actions{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+
+  .comment-actions button{
+    width:100% !important;
+    font-size:13px !important;
+    padding:9px 10px !important;
+  }
+
+  .back{
+    display:block !important;
+    text-align:center !important;
+    margin-top:24px !important;
+  }
+
+}
+  .article-detail,
+  .article-detail *{
+    max-width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  .article-detail h1{
+    font-size:24px !important;
+    line-height:1.2 !important;
+    word-break:normal !important;
+    overflow-wrap:break-word !important;
+  }
+
+  .interaction-bar{
+    width:100% !important;
+  }
+
+  .interaction-bar button{
+    width:100% !important;
+    min-width:0 !important;
+  }
+  /* ===============================
+   MESSAGES PAGE MOBILE
+================================ */
+
+@media(max-width:768px){
+
+  .messages-page,
+  .messages-layout{
+    width:100% !important;
+    max-width:100% !important;
+    padding:12px !important;
+    margin:0 !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+    box-sizing:border-box !important;
+  }
+
+  .messages-sidebar,
+  .conversation-list,
+  .chat-panel,
+  .messages-panel,
+  .panel{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  .messages-sidebar,
+  .chat-panel,
+  .messages-panel{
+    border-radius:18px !important;
+    padding:16px !important;
+  }
+
+  .messages-sidebar h1,
+  .messages-sidebar h2,
+  .chat-panel h1,
+  .chat-panel h2{
+    font-size:24px !important;
+    line-height:1.2 !important;
+  }
+
+  .conversation-item{
+    width:100% !important;
+    padding:14px !important;
+    border-radius:14px !important;
+  }
+
+  .conversation-name{
+    font-size:15px !important;
+  }
+
+  .conversation-last{
+    font-size:13px !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .messages-list,
+  .chat-messages,
+  #messagesList{
+    width:100% !important;
+    max-height:55vh !important;
+    overflow-y:auto !important;
+    padding:10px 0 !important;
+  }
+
+  .message-bubble{
+    max-width:92% !important;
+    padding:12px 14px !important;
+    border-radius:16px !important;
+    font-size:14px !important;
+    line-height:1.45 !important;
+  }
+
+  .message-bubble.mine{
+    margin-left:auto !important;
+  }
+
+  .message-bubble.their{
+    margin-right:auto !important;
+  }
+
+  .chat-input,
+  .reply-box,
+  .message-input-row{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+  }
+
+  #replyInput,
+  #messageInput,
+  .chat-input textarea,
+  .reply-box textarea{
+    width:100% !important;
+    min-height:90px !important;
+    font-size:15px !important;
+    box-sizing:border-box !important;
+  }
+
+  #sendReplyBtn,
+  #sendMessageBtn,
+  .chat-input button,
+  .reply-box button{
+    width:100% !important;
+    min-height:46px !important;
+    font-size:15px !important;
+  }
+
+}
+/* ===============================
+   NOTIFICATIONS PAGE MOBILE
+================================ */
+
+@media(max-width:768px){
+
+  .page{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+  }
+
+  .notifications-head{
+    padding:18px 16px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:12px !important;
+  }
+
+  .notifications-head h1{
+    font-size:28px !important;
+    line-height:1.2 !important;
+  }
+
+  .mark-read{
+    width:100% !important;
+    padding:13px 14px !important;
+    font-size:14px !important;
+  }
+
+  .notification-list{
+    width:100% !important;
+  }
+
+  .notification-item{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+    padding:16px !important;
+    box-sizing:border-box !important;
+  }
+
+  .notification-type{
+    font-size:14px !important;
+  }
+
+  .notification-text{
+    font-size:14px !important;
+    line-height:1.45 !important;
+  }
+
+  .notification-date{
+    text-align:left !important;
+    font-size:12px !important;
+  }
+}
+/* ===============================
+   PROFILE PAGE MOBILE
+================================ */
+
+@media(max-width:768px){
+
+  .profile-page{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:18px 14px !important;
+    box-sizing:border-box !important;
+  }
+
+  .profile-card{
+    width:100% !important;
+    padding:24px 18px !important;
+    border-radius:20px !important;
+    box-sizing:border-box !important;
+  }
+
+  .profile-title{
+    font-size:30px !important;
+    line-height:1.2 !important;
+    margin-bottom:22px !important;
+  }
+
+  .profile-row{
+    margin-bottom:20px !important;
+  }
+
+  .profile-label{
+    font-size:13px !important;
+  }
+
+  .profile-value{
+    font-size:17px !important;
+    word-break:break-word !important;
+  }
+}
+}
