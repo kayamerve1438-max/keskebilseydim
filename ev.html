@@ -472,11 +472,12 @@ body:has(.article-list-section[style*="block"]) .hero{
 .risk-score span{
     margin-left:8px;
 }
-body.alt-page .hero,
-body.alt-page .hero-buttons,
-body.alt-page .search-box,
-body.alt-page bilge-kedi {
+body.alt-page .hero{
     display: none !important;
+}
+
+body.alt-page .article-list-section {
+    display: block !important;
 }
 
 body.alt-page .article-list-section {
@@ -661,10 +662,7 @@ body.alt-page .article-list-section {
             <input placeholder="Ne hakkında deneyim arıyorsun?">
             <button>Ara</button>
         </div>
-        <div class="ev-subcategories">
-            <a href="ev.html?alt=komsular">🏘️ Komşular</a>
-            <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
-        </div>
+      
         <div class="hero-buttons">
             <button class="primary">Deneyimleri Oku</button>
             <button class="secondary">Deneyimini Paylaş</button>
@@ -673,6 +671,10 @@ body.alt-page .article-list-section {
 
     <bilge-kedi></bilge-kedi>
 </section>
+  <div class="ev-subcategories">
+            <a href="ev.html?alt=komsular">🏘️ Komşular</a>
+            <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
+        </div>
 
 <section class="article-list-section">
     <h2 id="altKategoriBaslik">Ev Deneyimleri</h2>

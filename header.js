@@ -103,3 +103,26 @@ setTimeout(() => {
         };
     });
 }, 300);
+setTimeout(() => {
+    const evLink = document.querySelector('#mobileMenu a[href="ev.html"]');
+    if (!evLink) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "mobile-dropdown";
+
+    wrapper.innerHTML = `
+        <button class="mobile-dropdown-btn">Ev</button>
+        <div class="mobile-submenu">
+            <a href="ev.html">Ev Ana Sayfa</a>
+            <a href="ev.html?alt=komsular">🏘️ Komşular</a>
+            <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
+        </div>
+    `;
+
+    evLink.replaceWith(wrapper);
+
+    const btn = wrapper.querySelector(".mobile-dropdown-btn");
+    btn.addEventListener("click", () => {
+        wrapper.classList.toggle("open");
+    });
+}, 500);

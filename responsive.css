@@ -212,4 +212,34 @@ img, video, canvas, iframe{
     display:none !important;
   }
 }
+@media(max-width:768px){
+  .mobile-dropdown-btn{
+    width:100%;
+    border:0;
+    text-align:left;
+    color:white;
+    font-size:20px;
+    font-weight:900;
+    padding:14px 16px;
+    border-radius:14px;
+    background:rgba(255,255,255,.06);
+  }
+
+  .mobile-submenu{
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    margin:8px 0 4px 14px;
+  }
+
+  .mobile-dropdown.open .mobile-submenu{
+    display:flex;
+  }
+
+  .mobile-submenu a{
+    font-size:16px !important;
+    padding:12px 14px !important;
+    background:rgba(255,255,255,.04) !important;
+  }
+}
 }
