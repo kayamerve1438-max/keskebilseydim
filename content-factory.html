@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İçerik Fabrikası - Keşke Bilseydim</title>
+
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="responsive.css?v=30">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef1f8;
+  color:#101828;
+}
+
+.factory-page{
+  width:92%;
+  max-width:1200px;
+  margin:30px auto;
+  background:white;
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 18px 45px rgba(0,0,0,.10);
+}
+
+.factory-title{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  margin-bottom:26px;
+}
+
+.factory-title h1{
+  margin:0;
+  font-size:36px;
+}
+
+.factory-title p{
+  margin:8px 0 0;
+  color:#667085;
+}
+
+.status-pill{
+  background:#ecfdf3;
+  color:#15803d;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.factory-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  border:1px solid #d0d5dd;
+  border-radius:14px;
+  padding:14px;
+  font-size:15px;
+  box-sizing:border-box;
+}
+
+.option-box{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin:22px 0;
+}
+
+.option-box label{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  margin:22px 0;
+}
+
+.actions button{
+  border:0;
+  border-radius:14px;
+  padding:14px 22px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.primary{
+  background:#2563eb;
+  color:white;
+}
+
+.secondary{
+  background:#eef2ff;
+  color:#2563eb;
+}
+
+.danger{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.preview-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:26px;
+  margin-bottom:14px;
+}
+
+.preview-head h2{
+  margin:0;
+}
+
+.preview-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.content-card{
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:18px;
+  background:#f8fafc;
+}
+
+.content-card h3{
+  margin:0 0 8px;
+}
+
+.content-card p{
+  color:#475467;
+  line-height:1.5;
+}
+
+.card-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.card-meta span{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.json-area{
+  width:100%;
+  min-height:260px;
+  margin-top:18px;
+  border:1px solid #d0d5dd;
+  border-radius:14px;
+  padding:14px;
+  font-family:Consolas,monospace;
+  box-sizing:border-box;
+}
+
+.result-box{
+  margin-top:18px;
+  padding:14px;
+  border-radius:14px;
+  background:#f1f5f9;
+  font-weight:800;
+}
+
+@media(max-width:768px){
+  .factory-page{
+    width:100%;
+    margin:0;
+    border-radius:0;
+    padding:18px;
+  }
+
+  .factory-title{
+    flex-direction:column;
+  }
+
+  .factory-grid,
+  .option-box{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions button{
+    width:100%;
+  }
+  .cms-dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.dash-card{
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:white;
+  border-radius:18px;
+  padding:20px;
+}
+
+.dash-card strong{
+  display:block;
+  font-size:30px;
+  margin-bottom:6px;
+}
+
+.dash-card span{
+  color:#cbd5e1;
+  font-weight:800;
+}
+
+.trend-panel{
+  background:#0f172a;
+  color:white;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:24px;
+}
+
+.trend-panel h2{
+  margin-top:0;
+}
+
+.trend-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.trend-item{
+  background:#1e293b;
+  border:1px solid #334155;
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.trend-item:hover{
+  background:#2563eb;
+}
+
+@media(max-width:768px){
+  .cms-dashboard{
+    grid-template-columns:1fr 1fr;
+  }
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+
+<div class="factory-page">
+    <div class="cms-dashboard">
+  <div class="dash-card">
+    <strong id="totalContent">0</strong>
+    <span>Yayındaki İçerik</span>
+  </div>
+  <div class="dash-card">
+    <strong id="todayContent">0</strong>
+    <span>Bugün Üretilen</span>
+  </div>
+  <div class="dash-card">
+    <strong>96</strong>
+    <span>SEO Skoru</span>
+  </div>
+  <div class="dash-card">
+    <strong id="pendingImages">0</strong>
+    <span>Görsel Bekliyor</span>
+  </div>
+</div>
+
+<div class="trend-panel">
+  <h2>🔥 Bugünün Trend Konuları</h2>
+  <div id="trendList" class="trend-list"></div>
+</div>
+
+  <div class="factory-title">
+    <div>
+      <h1>İçerik Fabrikası 🏭</h1>
+      <p>SEO uyumlu deneyim paketleri oluştur, incele ve Firebase’e kaydet.</p>
+    </div>
+    <div class="status-pill">CMS v2 Hazır</div>
+  </div>
+
+  <div class="factory-grid">
+    <div class="field">
+      <label>Kategori</label>
+      <select id="category">
+        <option value="ev">Ev</option>
+        <option value="is">İş</option>
+        <option value="yasam">Yaşam</option>
+        <option value="egitim">Eğitim</option>
+        <option value="sinema">Sinema</option>
+        <option value="kitap">Kitap</option>
+        <option value="eglence">Eğlence</option>
+        <option value="para">Para</option>
+        <option value="itiraflar">İtiraflarımız</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Alt Kategori</label>
+      <input id="subcategory" value="komsular">
+    </div>
+
+    <div class="field">
+      <label>İçerik Sayısı</label>
+      <input id="contentCount" type="number" value="10" min="1" max="50">
+    </div>
+  </div>
+
+  <div class="option-box">
+    <label><input type="checkbox" checked id="seoOpt"> SEO Optimize</label>
+    <label><input type="checkbox" checked id="catOpt"> Bilge Kedi</label>
+    <label><input type="checkbox" checked id="commentOpt"> İlk Yorumlar</label>
+    <label><input type="checkbox" checked id="imageOpt"> Görsel Prompt</label>
+    <label><input type="checkbox" checked id="scoreOpt"> Pişmanlık Skoru</label>
+  </div>
+
+  <div class="actions">
+    <button class="primary" id="generateBtn">🚀 Taslak Paket Oluştur</button>
+    <button class="secondary" id="fillSampleBtn">Örnek JSON Doldur</button>
+    <button class="secondary" id="previewBtn">İncele</button>
+    <button class="primary" id="saveBtn">Firebase’e Kaydet</button>
+    <button class="danger" id="clearBtn">Temizle</button>
+  </div>
+
+  <textarea id="jsonArea" class="json-area" placeholder="Buraya ChatGPT’den aldığın JSON paketini yapıştır."></textarea>
+
+  <div class="preview-head">
+    <h2>Önizleme</h2>
+    <span id="previewCount">0 içerik</span>
+  </div>
+
+  <div class="preview-list" id="previewList"></div>
+
+  <div class="result-box" id="resultBox">Hazır.</div>
+
+</div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+
+    const script = document.createElement("script");
+    script.src = "header.js";
+    document.body.appendChild(script);
+  });
+</script>
+
+<script type="module" src="content-factory.js"></script>
+
+</body>
+</html>
