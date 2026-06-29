@@ -266,9 +266,19 @@ footer{
   color:#64748b;
   padding:24px;
 }
-/* Zoom yapınca düzen bozulmasın */
-.home-container{
-  min-width: 1180px;
+/* Zoom yapınca PC düzeni bozulmasın */
+@media(min-width:769px){
+  .home-container{
+    min-width:1180px;
+  }
+}
+
+@media(max-width:768px){
+  .home-container{
+    min-width:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
 }
 /* HERO YÜKSEKLİK DÜZELTME */
 .hero{
@@ -729,4 +739,179 @@ hero-stats,
 .logo-area {
   min-width: 235px !important;
   gap: 4px !important;
+}
+/* ===== MOBİL HERO OVERRIDE ===== */
+
+@media (max-width:768px){
+
+  .hero{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    min-height:auto !important;
+    overflow:visible !important;
+    padding:20px 16px 28px !important;
+    gap:18px !important;
+  }
+
+  .hero h1{
+    font-size:28px !important;
+    line-height:1.12 !important;
+  }
+
+  .hero p{
+    font-size:13px !important;
+    line-height:1.45 !important;
+  }
+
+  .search-box,
+  .hero-buttons,
+  .hero-stats{
+    display:flex !important;
+    width:100% !important;
+  }
+
+  .search-box{
+    flex-direction:column !important;
+    height:auto !important;
+  }
+
+  .hero-buttons{
+    flex-direction:column !important;
+  }
+
+  .hero-stats{
+    flex-wrap:wrap !important;
+    gap:14px !important;
+  }
+  /* === FINAL MOBILE HOME FIX === */
+@media(max-width:768px){
+
+  body{
+    overflow-x:hidden !important;
+  }
+
+  .home-container{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+
+  .home-container .hero{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    padding:10px 14px 18px !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    overflow:visible !important;
+  }
+  .home-container .hero h1{
+  font-size:20px !important;
+  line-height:1.1 !important;
+}
+
+.home-container .hero p{
+  font-size:11px !important;
+  line-height:1.3 !important;
+}
+
+.home-container .search-box{
+  margin:8px 0 !important;
+}
+
+.home-container .hero-buttons{
+  margin-top:6px !important;
+}
+
+.home-container .hero-stats{
+  margin-top:8px !important;
+}
+
+  .home-container .hero > div{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+
+  .home-container .hero h1{
+    font-size:24px !important;
+    line-height:1.12 !important;
+    letter-spacing:-.6px !important;
+    margin:0 0 10px !important;
+  }
+
+  .home-container .hero p{
+    font-size:12px !important;
+    line-height:1.4 !important;
+    margin:0 0 12px !important;
+  }
+
+  .home-container .hero br{
+    display:none !important;
+  }
+
+  .home-container bilge-kedi{
+    display:none !important;
+  }
+
+  .home-container .search-box{
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    margin:12px 0 !important;
+    padding:8px !important;
+    gap:8px !important;
+  }
+
+  .home-container .search-box span{
+    display:none !important;
+  }
+
+  .home-container .search-box input,
+  .home-container .search-box button{
+    width:100% !important;
+    height:40px !important;
+    min-width:0 !important;
+  }
+
+  .home-container .hero-buttons{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:8px !important;
+    margin-top:10px !important;
+  }
+
+  .home-container .hero-buttons button{
+    width:100% !important;
+    height:42px !important;
+    margin:0 !important;
+  }
+
+  .home-container .hero-stats{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+    margin-top:14px !important;
+  }
+
+  .home-container .stat-item strong{
+    font-size:18px !important;
+  }
+
+  .home-container .stat-item span{
+    font-size:11px !important;
+  }
+}
 }

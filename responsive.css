@@ -1,11 +1,15 @@
-/* ===============================
-   KESKE BILSEYDIM RESPONSIVE CORE
-   PC + TELEFON
-================================ */
-
 html, body{
   max-width:100%;
   overflow-x:hidden;
+}
+
+*, *::before, *::after{
+  box-sizing:border-box;
+}
+
+img, video, canvas, iframe{
+  max-width:100%;
+  height:auto;
 }
 
 .mobile-menu-btn,
@@ -13,61 +17,74 @@ html, body{
   display:none;
 }
 
-/* TELEFON */
 @media(max-width:768px){
 
+  html,
   body{
-    width:100%;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow-x:hidden !important;
   }
 
+  #header-container,
+  #auth-container,
+  #footer-container,
   main,
-  .home-container,
+  section,
   .page,
+  .home-container,
   .messages-page,
   .profile-page{
     width:100% !important;
     max-width:100% !important;
+    min-width:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    overflow-x:hidden !important;
+  }
+
+  .page,
+  .home-container{
     margin:0 !important;
-    padding:14px !important;
+    padding:0 !important;
     border-radius:0 !important;
+    box-shadow:none !important;
   }
 
-  /* HEADER */
-  header,
-  .header,
-  .site-header,
-  .main-header{
+  #header-container header,
+  header{
     width:100% !important;
-    padding:12px 18px !important;
-    min-height:72px !important;
-  }
-
-  .header-inner,
-  .nav-container,
-  .navbar,
-  .topbar{
-    width:100% !important;
+    max-width:100% !important;
+    min-height:86px !important;
+    padding:10px 14px !important;
     display:flex !important;
-    flex-direction:column !important;
     align-items:center !important;
-    gap:14px !important;
+    justify-content:space-between !important;
+    overflow:hidden !important;
   }
 
-  .logo,
-  .logo-area,
-  .brand{
-    display:flex !important;
-    justify-content:center !important;
-    align-items:center !important;
-    width:100% !important;
-    transform:scale(.75);
-    transform-origin:left center;
+  .logo-area{
+    width:auto !important;
+    min-width:0 !important;
+    max-width:70% !important;
+    gap:8px !important;
+    transform:none !important;
+    margin:0 !important;
   }
 
-  .logo img,
-  .brand img{
-    max-width:90px !important;
-    height:auto !important;
+  .logo-area img{
+    width:62px !important;
+    height:62px !important;
+    min-width:62px !important;
+    max-width:62px !important;
+    object-fit:contain !important;
+  }
+
+  .site-name{
+    font-size:18px !important;
+    line-height:1.1 !important;
   }
 
   nav,
@@ -80,26 +97,18 @@ html, body{
     display:none !important;
   }
 
-  .login,
-  .profile-btn{
-    margin:0 auto !important;
-    font-size:12px !important;
-    padding:8px 14px !important;
-  }
-
-  /* MOBIL HAMBURGER */
   .mobile-menu-btn{
     display:block !important;
     position:absolute;
-    top:22px;
-    right:18px;
+    top:18px;
+    right:16px;
     z-index:99999;
     border:1px solid rgba(255,255,255,.2);
     background:#111827;
     color:white;
     border-radius:12px;
-    padding:10px 14px;
-    font-size:22px;
+    padding:8px 12px;
+    font-size:20px;
     font-weight:900;
   }
 
@@ -107,6 +116,8 @@ html, body{
     display:none;
     position:fixed;
     inset:0;
+    width:100% !important;
+    max-width:100% !important;
     background:rgba(2,6,23,.96);
     z-index:99998;
     padding:90px 24px 24px;
@@ -127,341 +138,78 @@ html, body{
     border-radius:14px;
     background:rgba(255,255,255,.06);
   }
+  /* === FINAL HEADER MOBILE FIX === */
+@media(max-width:768px){
 
-  /* ANA SAYFA HERO */
-  .hero{
-    width:100% !important;
-    display:flex !important;
-    flex-direction:column !important;
-    padding:24px 16px !important;
-    gap:22px !important;
-    border-radius:20px !important;
-  }
-
-  .hero h1{
-    font-size:30px !important;
-    line-height:1.15 !important;
-    text-align:left !important;
+  header nav,
+  .nav,
+  .nav-menu,
+  .menu,
+  .desktop-menu,
+  .category-nav,
+  .header-actions{
+    display:none !important;
   }
 
-  .hero p{
-    font-size:15px !important;
-    line-height:1.5 !important;
+  header,
+  .site-header,
+  .main-header{
+    min-height:72px !important;
+    height:72px !important;
+    padding:8px 14px !important;
   }
 
-  .search-box{
-    width:100% !important;
-    display:flex !important;
-    flex-direction:column !important;
-    gap:10px !important;
-  }
-
-  .search-box input,
-  .search-box button{
-    width:100% !important;
-  }
-
-  .hero-buttons{
-    width:100% !important;
-    display:flex !important;
-    flex-direction:column !important;
-    gap:10px !important;
-  }
-
-  .hero-buttons button,
-  .hero-buttons a{
-    width:100% !important;
-    text-align:center !important;
-  }
-
-  .hero-stats{
-    width:100% !important;
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    gap:10px !important;
-  }
-
-  .cat-note,
-  .cat-area,
-  .hero-visual{
-    width:100% !important;
-    max-width:100% !important;
-    transform:none !important;
-    position:relative !important;
-    left:auto !important;
-    right:auto !important;
-    top:auto !important;
-  }
-
-  .cat-note img,
-  .hero-visual img{
-    max-width:180px !important;
-    height:auto !important;
-    margin:0 auto !important;
-    display:block !important;
-  }
-
-  /* KARTLAR */
-  .cards,
-  .category-grid,
-  .weekly-grid,
-  .new-experience-grid,
-  .home-lower{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:14px !important;
-  }
-
-  .card,
-  .category-card,
-  .weekly-card,
-  .new-exp-card{
-    width:100% !important;
-    margin:0 !important;
-  }
-
-  /* DETAY SAYFASI */
-  .article-detail{
-    width:100% !important;
-    max-width:100% !important;
-    padding:24px 16px !important;
-    border-radius:0 !important;
-  }
-
-  .article-detail h1{
-    font-size:28px !important;
-    line-height:1.2 !important;
-  }
-
-  .article-detail img{
-    width:100% !important;
-    height:auto !important;
-    border-radius:16px !important;
-  }
-
-  .interaction-bar{
-    display:flex !important;
-    flex-wrap:wrap !important;
-    gap:8px !important;
-  }
-
-  .interaction-bar button{
-    flex:1 1 100% !important;
-  }
-
-  .comments-section{
-    width:100% !important;
-  }
-
-  .comment-form,
-  .comment-box{
-    width:100% !important;
-  }
-
-  .comment textarea,
-  #commentInput{
-    width:100% !important;
-  }
-
-  .comment-actions{
-    display:flex !important;
-    flex-wrap:wrap !important;
-    gap:8px !important;
-  }
-
-  .comment-actions button{
-    flex:1 1 100% !important;
-  }
-
-  /* MESAJLAR */
-  .messages-layout{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:16px !important;
-  }
-
-  .panel{
-    width:100% !important;
-    border-radius:18px !important;
-  }
-
-  .message-bubble{
-    max-width:95% !important;
-  }
-
-  .chat-input{
-    flex-direction:column !important;
-  }
-
-  .chat-input textarea,
-  .chat-input button{
-    width:100% !important;
-  }
-
-  /* BİLDİRİMLER */
-  .notifications-head{
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    gap:12px !important;
-  }
-
-  .notification-item{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:8px !important;
-  }
-
-  .notification-date{
-    text-align:left !important;
-  }
-
-  /* PROFİL DROPDOWN */
-  .profile-dropdown{
-    right:10px !important;
-    left:auto !important;
-    width:260px !important;
-  }
-    .hero,
-  .hero > div,
-  .hero-content,
-  .hero-left,
-  .hero-right{
-    width:100% !important;
-    max-width:100% !important;
-    min-width:0 !important;
-    overflow:hidden !important;
-  }
-
-  .hero{
-    align-items:stretch !important;
-  }
-
-  .hero h1,
-  .hero p,
-  .gradient-text{
-    max-width:100% !important;
-    word-break:normal !important;
-    overflow-wrap:break-word !important;
-  }
-    #header-container{
-    min-height:auto !important;
-  }
-
-  header{
-    min-height:110px !important;
-    padding:10px 14px !important;
-  }
-
-  .logo,
-  .logo-area,
-  .brand{
-    transform:scale(.62) !important;
-    margin-top:-12px !important;
-  }
-
-  .hero{
-    margin-top:0 !important;
-  }
-
-  .home-container{
-    padding-top:0 !important;
-  }
-    #header-container{
-    height:auto !important;
-  }
-
-  #header-container header,
-  header{
-    min-height:86px !important;
-    padding:8px 12px !important;
-  }
-
-  .logo,
-  .logo-area,
-  .brand{
-    transform:scale(.52) !important;
-    margin-top:-22px !important;
-    margin-bottom:-28px !important;
+  .logo-area{
+    max-width:70% !important;
+    transform:scale(.72) !important;
+    transform-origin:left center !important;
   }
 
   .mobile-menu-btn{
-    top:18px !important;
-    right:16px !important;
-    padding:8px 12px !important;
-    font-size:20px !important;
+    display:block !important;
+    top:14px !important;
+    right:14px !important;
+  }
+}
+/* === HEADER FINAL MOBILE CLEAN FIX === */
+@media(max-width:768px){
+
+  #header-container header > nav,
+  #header-container header > .nav,
+  #header-container header > .nav-menu,
+  #header-container header > .menu,
+  #header-container header > .header-actions,
+  #header-container header > .desktop-menu{
+    display:none !important;
   }
 
-  .hero{
-    margin-top:-10px !important;
-  }
-  /* === EMERGENCY REAL PHONE FIX === */
-@media (max-width:768px){
-
-  html,
-  body{
-    width:100% !important;
-    max-width:100% !important;
-    margin:0 !important;
-    padding:0 !important;
-    overflow-x:hidden !important;
+  #header-container .mobile-menu-btn{
+    display:block !important;
+    position:absolute !important;
+    top:14px !important;
+    right:14px !important;
+    z-index:99999 !important;
   }
 
-  *{
-    box-sizing:border-box !important;
+  #header-container .mobile-menu{
+    display:none !important;
   }
 
-  #header-container,
-  #auth-container,
-  #footer-container,
-  main,
-  .home-container,
-  section,
-  .hero,
-  .hero *,
-  .search-box,
-  .hero-buttons,
-  .hero-stats{
-    width:100% !important;
-    max-width:100% !important;
-    min-width:0 !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-    left:auto !important;
-    right:auto !important;
-    overflow-x:hidden !important;
-  }
-
-  .home-container{
-    padding:0 !important;
-  }
-
-  .hero{
-    padding:18px 14px !important;
-    border-radius:0 !important;
-  }
-
-  .hero h1{
-    font-size:25px !important;
-    line-height:1.15 !important;
-    overflow-wrap:break-word !important;
-  }
-
-  .gradient-text{
-    display:inline !important;
-    overflow-wrap:break-word !important;
-  }
-
-  .search-box{
+  #header-container .mobile-menu.active{
     display:flex !important;
     flex-direction:column !important;
+    gap:12px !important;
   }
 
-  .search-box input,
-  .search-box button,
-  .hero-buttons button,
-  .hero-buttons a{
+  #header-container .mobile-menu.active a{
+    display:block !important;
     width:100% !important;
-    max-width:100% !important;
+  }
+}
+@media(max-width:768px){
+  #header-container .login,
+  #header-container .profile-btn{
+    display:none !important;
   }
 }
 }
