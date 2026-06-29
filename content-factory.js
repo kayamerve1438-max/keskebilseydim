@@ -32,24 +32,19 @@ function slugify(text){
     .replace(/^-+|-+$/g,"");
 }
 
-function parseJson(){
+function parseJson() {
   let text = jsonArea.value.trim();
 
-  if(!text) return [];
+  if (!text) return [];
 
-  text = text
-    .replace(/^```json\s*/i, "")
-    .replace(/^```\s*/i, "")
-    .replace(/\s*```$/i, "")
-    .trim();
+  // Markdown kod bloklarını tamamen temizle
+  text = text.replace(/```json/g, "");
+  text = text.replace(/```/g, "");
+  text = text.trim();
 
   const parsed = JSON.parse(text);
 
-  if(!Array.isArray(parsed)){
-    throw new Error("JSON liste formatında olmalı.");
-  }
-
-  return parsed;
+  return Array.isArray(parsed) ? parsed : [];
 }
 
 function renderPreview(items){
@@ -123,6 +118,7 @@ generateBtn.onclick = async () => {
     });
 
     const data = await response.json();
+    console.log("AI CEVABI:", data.text);
 
     if (!response.ok) {
       resultBox.textContent = "Hata: " + (data.error || "AI içerik üretilemedi.");
