@@ -33,10 +33,18 @@ function slugify(text){
 }
 
 function parseJson(){
-  const raw = jsonArea.value.trim();
-  if(!raw) return [];
+  let text = jsonArea.value.trim();
 
-  const parsed = JSON.parse(raw);
+  if(!text) return [];
+
+  text = text
+    .replace(/^```json\s*/i, "")
+    .replace(/^```\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+
+  const parsed = JSON.parse(text);
+
   if(!Array.isArray(parsed)){
     throw new Error("JSON liste formatında olmalı.");
   }
@@ -51,7 +59,6 @@ function renderPreview(items){
     previewList.innerHTML = "";
     return;
   }
-
   previewList.innerHTML = items.map((item, index) => `
     <div class="content-card">
       <h3>${index + 1}. ${item.title || "Başlıksız"}</h3>
