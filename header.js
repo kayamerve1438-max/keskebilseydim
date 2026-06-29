@@ -111,13 +111,21 @@ setTimeout(() => {
     wrapper.className = "mobile-dropdown";
 
     wrapper.innerHTML = `
-        <button class="mobile-dropdown-btn">Ev</button>
-        <div class="mobile-submenu">
-            <a href="ev.html">Ev Ana Sayfa</a>
-            <a href="ev.html?alt=komsular">🏘️ Komşular</a>
-            <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
-        </div>
-    `;
+    <button class="mobile-dropdown-btn">Ev</button>
+    <div class="mobile-submenu">
+        <a href="ev.html">Ev Ana Sayfa</a>
+        <a href="ev.html?alt=komsular">🏘️ Komşular</a>
+        <a href="ev.html?alt=kira">🔑 Ev Kiralamak</a>
+        <a href="ev.html?alt=ev-almak">🏠 Ev Almak</a>
+        <a href="ev.html?alt=aidat">💸 Aidat & Site Hayatı</a>
+        <a href="ev.html?alt=tasinma">📦 Taşınma</a>
+        <a href="ev.html?alt=emlakci">🏢 Emlakçılar</a>
+        <a href="ev.html?alt=tadilat">🔨 Tadilat & Ustalar</a>
+        <a href="ev.html?alt=dekorasyon">🛋️ Dekorasyon</a>
+        <a href="ev.html?alt=ev-arkadasi">👥 Ev Arkadaşı</a>
+        <a href="ev.html?alt=deprem">🏗️ Deprem & Bina Güvenliği</a>
+    </div>
+`;
 
     evLink.replaceWith(wrapper);
 
