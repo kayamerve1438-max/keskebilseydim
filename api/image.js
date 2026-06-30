@@ -22,6 +22,10 @@ export default async function handler(req, res) {
     });
 
     const imageData = await imageResponse.json();
+
+    console.log("OpenAI response:", JSON.stringify(imageData, null, 2));
+    console.log("OpenAI status:", imageResponse.status);
+    
     const b64 = imageData.data?.[0]?.b64_json;
 
     if (!b64) {
