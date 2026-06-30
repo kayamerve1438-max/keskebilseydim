@@ -1101,39 +1101,51 @@ const params = new URLSearchParams(window.location.search);
 const firebaseArticleId = params.get("id");
 
 async function loadFirebaseDetail(){
-  if(!firebaseArticleId) return;
-const ref = doc(db, "articles", firebaseArticleId);
+
+  console.log("1-Fonksiyon çalıştı");
+
+  if(!firebaseArticleId){
+    console.log("2-ID bulunamadı");
+    return;
+  }
+
+  console.log("3-ID:", firebaseArticleId);
+
+  const ref = doc(db, "articles", firebaseArticleId);
   const snap = await getDoc(ref);
+
+  console.log("4-Doküman var mı?", snap.exists());
 
   if(!snap.exists()) return;
 
   const yazi = snap.data();
-  console.log("FIREBASE DETAY VERİSİ:", yazi);
 
-  document.querySelector("h1").textContent = yazi.title || "Başlıksız Deneyim";
+  console.log("5-FIREBASE VERİSİ:", yazi);
+
+  document.querySelector("h1").textContent =
+    yazi.title || "Başlıksız Deneyim";
 
   const meta = document.querySelector(".detail-meta");
   if(meta){
-    meta.innerHTML = `Gerçek deneyim • 5 dk okuma • Bilge Kedi onaylı 🐾`;
+    meta.innerHTML =
+      `Gerçek deneyim • 5 dk okuma • Bilge Kedi onaylı 🐾`;
   }
 
   const img = document.querySelector(".detail-image img");
-if(img){
-  console.log("FIREBASE YAZI:", yazi);
+  if(img){
+    img.src =
+      yazi.imageUrl ||
+      yazi.image ||
+      yazi.img ||
+      "images/kedi_1.png";
 
-  img.src =
-    yazi.imageUrl ||
-    yazi.image ||
-    yazi.img ||
-    "images/kedi_1.png";
-
-  img.alt = yazi.title || "";
-}
+    img.alt = yazi.title || "";
+  }
 
   const content = document.querySelector(".detail-content");
   if(content){
     content.innerHTML = `
-      <p>${(yazi.content || "").replace(/\n/g, "</p><p>")}</p>
+      <p>${(yazi.content || "").replace(/\n/g,"</p><p>")}</p>
 
       <div class="bilge-kedi-note">
         <strong>🐾 Bilge Kedi Yorumu:</strong>
