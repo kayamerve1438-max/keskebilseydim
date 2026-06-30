@@ -50,7 +50,9 @@ async function generateImageForItem(item){
     keyword = "apartment building";
   }
 
-  return `https://source.unsplash.com/1200x800/?${encodeURIComponent(keyword)}`;
+  const imageKeyword = keyword.replaceAll(" ", ",");
+
+return `https://loremflickr.com/1200/800/${imageKeyword}?lock=${Date.now()}`;
 }
 
 function parseJson() {
