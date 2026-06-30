@@ -1131,16 +1131,16 @@ async function loadFirebaseDetail(){
       `Gerçek deneyim • 5 dk okuma • Bilge Kedi onaylı 🐾`;
   }
 
-  const img = document.querySelector(".detail-image img");
-  if(img){
-    img.src =
-      yazi.imageUrl ||
-      yazi.image ||
-      yazi.img ||
-      "images/kedi_1.png";
+  const img = document.querySelector(".article-detail img");
 
-    img.alt = yazi.title || "";
-  }
+if(img){
+  img.src =
+    yazi.imageUrl ||
+    yazi.image ||
+    yazi.img ||
+    "images/kedi_1.png";
+
+  img.alt = yazi.title || "";
 
   const content = document.querySelector(".detail-content");
   if(content){

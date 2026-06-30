@@ -50,6 +50,11 @@ export default async function handler(req, res) {
 
     const cloudinaryData = await cloudinaryResponse.json();
 
+    console.log("Cloudinary response:", cloudinaryData);
+    console.log("Cloud name:", process.env.CLOUDINARY_CLOUD_NAME);
+    console.log("API key var mı:", !!process.env.CLOUDINARY_API_KEY);
+    console.log("Secret var mı:", !!process.env.CLOUDINARY_API_SECRET);
+
     if (!cloudinaryData.secure_url) {
       console.error("Cloudinary hata:", cloudinaryData);
       return res.status(500).json({
