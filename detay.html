@@ -1118,8 +1118,15 @@ async function loadFirebaseDetail(){
   }
 
   const img = document.querySelector(".detail-image img");
-  if(img){
-  img.src = yazi.image || yazi.imageUrl || yazi.img || "images/kedi_1.png";
+if(img){
+  console.log("FIREBASE YAZI:", yazi);
+
+  img.src =
+    yazi.imageUrl ||
+    yazi.image ||
+    yazi.img ||
+    "images/kedi_1.png";
+
   img.alt = yazi.title || "";
 }
 
