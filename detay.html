@@ -1108,6 +1108,7 @@ const ref = doc(db, "articles", firebaseArticleId);
   if(!snap.exists()) return;
 
   const yazi = snap.data();
+  console.log("FIREBASE DETAY VERİSİ:", yazi);
 
   document.querySelector("h1").textContent = yazi.title || "Başlıksız Deneyim";
 
