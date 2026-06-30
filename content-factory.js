@@ -31,7 +31,31 @@ function slugify(text){
     .replace(/[^a-z0-9]+/g,"-")
     .replace(/^-+|-+$/g,"");
 }
+function getTopicImage(item){
+  const text = `${item.title || ""} ${item.summary || ""} ${item.content || ""} ${item.imagePrompt || ""}`.toLowerCase();
 
+  if(text.includes("depozito") || text.includes("para") || text.includes("kira")){
+    return "images/ev-depozito.jpg";
+  }
+
+  if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
+    return "images/ev-komsu-gurultu.jpg";
+  }
+
+  if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
+    return "images/ev-tadilat.jpg";
+  }
+
+  if(text.includes("taşınma") || text.includes("nakliye")){
+    return "images/ev-tasinma.jpg";
+  }
+
+  if(text.includes("emlakçı") || text.includes("ilan")){
+    return "images/ev-emlakci.jpg";
+  }
+
+  return "images/ev-genel.jpg";
+}
 function parseJson() {
   let text = jsonArea.value.trim();
 
@@ -184,11 +208,13 @@ saveBtn.onclick = async () => {
         regretScore:item.regretScore || 0,
         comments:item.comments || [],
         imagePrompt:item.imagePrompt || "",
+        imageUrl: item.imageUrl || item.image || item.img || getTopicImage(item),
         viewCount:item.viewCount || Math.floor(Math.random() * 900) + 100,
         likeCount:item.likeCount || Math.floor(Math.random() * 80) + 10,
         isGenerated:true,
         status:"published",
         createdAt:serverTimestamp()
+        
       });
 
       saved++;
