@@ -1093,5 +1093,50 @@ document.addEventListener("click", function(e){
 <script type="module" src="./comments.js"></script>
 <script type="module" src="./messages.js"></script>
 <script src="keyboard.js"></script>
+<script type="module">
+import { db } from "./firebase-db.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const params = new URLSearchParams(window.location.search);
+const articleId = params.get("id");
+
+async function loadFirebaseDetail(){
+  if(!articleId) return;
+
+  const ref = doc(db, "articles", articleId);
+  const snap = await getDoc(ref);
+
+  if(!snap.exists()) return;
+
+  const yazi = snap.data();
+
+  document.querySelector("h1").textContent = yazi.title || "Başlıksız Deneyim";
+
+  const meta = document.querySelector(".detail-meta");
+  if(meta){
+    meta.innerHTML = `Gerçek deneyim • 5 dk okuma • Bilge Kedi onaylı 🐾`;
+  }
+
+  const img = document.querySelector(".detail-image img");
+  if(img){
+    img.src = "images/kedi_1.png";
+    img.alt = yazi.title || "";
+  }
+
+  const content = document.querySelector(".detail-content");
+  if(content){
+    content.innerHTML = `
+      <p>${(yazi.content || "").replace(/\n/g, "</p><p>")}</p>
+
+      <div class="bilge-kedi-note">
+        <strong>🐾 Bilge Kedi Yorumu:</strong>
+        <p>${yazi.bilgeKedi || ""}</p>
+      </div>
+    `;
+  }
+}
+
+loadFirebaseDetail();
+</script>
 </body>
 </html>
