@@ -209,7 +209,7 @@ saveBtn.onclick = async () => {
         regretScore:item.regretScore || 0,
         comments:item.comments || [],
         imagePrompt:item.imagePrompt || "",
-        imageUrl: generatedImageUrl || item.imageUrl || item.image || item.img || "",
+        imageUrl: generatedImageUrl,
         viewCount:item.viewCount || Math.floor(Math.random() * 900) + 100,
         likeCount:item.likeCount || Math.floor(Math.random() * 80) + 10,
         isGenerated:true,
