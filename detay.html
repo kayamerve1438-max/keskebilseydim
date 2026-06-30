@@ -1119,9 +1119,9 @@ async function loadFirebaseDetail(){
 
   const img = document.querySelector(".detail-image img");
   if(img){
-    img.src = "images/kedi_1.png";
-    img.alt = yazi.title || "";
-  }
+  img.src = yazi.image || yazi.imageUrl || yazi.img || "images/kedi_1.png";
+  img.alt = yazi.title || "";
+}
 
   const content = document.querySelector(".detail-content");
   if(content){
