@@ -1098,12 +1098,11 @@ import { db } from "./firebase-db.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const params = new URLSearchParams(window.location.search);
-const articleId = params.get("id");
+const firebaseArticleId = params.get("id");
 
 async function loadFirebaseDetail(){
-  if(!articleId) return;
-
-  const ref = doc(db, "articles", articleId);
+  if(!firebaseArticleId) return;
+const ref = doc(db, "articles", firebaseArticleId);
   const snap = await getDoc(ref);
 
   if(!snap.exists()) return;
