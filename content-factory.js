@@ -1,15 +1,10 @@
-import { db, storage } from "./firebase-db.js";
+import { db } from "./firebase-db.js";
 
 import {
   collection,
   addDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-import {
-  ref,
-  uploadString,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 
 const categoryEl = document.getElementById("category");
 const subcategoryEl = document.getElementById("subcategory");
@@ -58,12 +53,7 @@ async function generateImageForItem(item){
     return "";
   }
 
-  const fileName = `article-images/${Date.now()}-${slugify(item.title)}.png`;
-  const imageRef = ref(storage, fileName);
-
-  await uploadString(imageRef, data.imageDataUrl, "data_url");
-
-  return await getDownloadURL(imageRef);
+  return data.imageUrl || "";
 }
 
 function parseJson() {

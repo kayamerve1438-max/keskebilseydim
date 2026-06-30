@@ -6,15 +6,11 @@ export default async function handler(req, res) {
   try {
     const { prompt } = req.body;
 
-    if (!prompt) {
-      return res.status(400).json({ error: "Prompt boş olamaz." });
-    }
-
-    const response = await fetch("https://api.openai.com/v1/images/generations", {
+    const imageResponse = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: "gpt-image-1",
@@ -23,25 +19,34 @@ export default async function handler(req, res) {
       })
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      return res.status(response.status).json({
-        error: data.error?.message || "Görsel üretilemedi."
-      });
-    }
-
-    const b64 = data.data?.[0]?.b64_json;
+    const imageData = await imageResponse.json();
+    const b64 = imageData.data?.[0]?.b64_json;
 
     if (!b64) {
-      return res.status(500).json({ error: "Görsel verisi dönmedi." });
+      return res.status(500).json({ error: "OpenAI görsel üretmedi." });
     }
 
-    res.status(200).json({
-  imageDataUrl: `data:image/png;base64,${b64}`
-});
+    const cloudinaryResponse = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: new URLSearchParams({
+          file: `data:image/png;base64,${b64}`,
+          upload_preset: "ml_default"
+        })
+      }
+    );
 
+    const cloudinaryData = await cloudinaryResponse.json();
+
+    if (!cloudinaryData.secure_url) {
+      return res.status(500).json({ error: "Cloudinary yükleme başarısız." });
+    }
+
+    return res.status(200).json({
+      imageUrl: cloudinaryData.secure_url
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }
