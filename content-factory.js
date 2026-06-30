@@ -31,30 +31,29 @@ function slugify(text){
     .replace(/[^a-z0-9]+/g,"-")
     .replace(/^-+|-+$/g,"");
 }
-function getTopicImage(item){
-  const text = `${item.title || ""} ${item.summary || ""} ${item.content || ""} ${item.imagePrompt || ""}`.toLowerCase();
+async function generateImageForItem(item){
+  const prompt =
+    item.imagePrompt ||
+    item.seoTitle ||
+    item.title ||
+    "Gerçekçi blog kapak görseli";
 
-  if(text.includes("depozito") || text.includes("para") || text.includes("kira")){
-    return "images/ev-depozito.jpg";
+  const response = await fetch("/api/image", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ prompt })
+  });
+
+  const data = await response.json();
+
+  if(!response.ok){
+    console.error("Görsel üretim hatası:", data.error);
+    return "";
   }
 
-  if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
-    return "images/ev-komsu-gurultu.jpg";
-  }
-
-  if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
-    return "images/ev-tadilat.jpg";
-  }
-
-  if(text.includes("taşınma") || text.includes("nakliye")){
-    return "images/ev-tasinma.jpg";
-  }
-
-  if(text.includes("emlakçı") || text.includes("ilan")){
-    return "images/ev-emlakci.jpg";
-  }
-
-  return "images/ev-genel.jpg";
+  return data.imageUrl || "";
 }
 function parseJson() {
   let text = jsonArea.value.trim();
@@ -179,10 +178,12 @@ clearBtn.onclick = () => {
 saveBtn.onclick = async () => {
   try{
     const items = parseJson();
+    
 
     if(items.length === 0){
       alert("Kaydedilecek içerik yok.");
       return;
+      
     }
 
     resultBox.textContent = "Firebase’e kaydediliyor...";
@@ -190,6 +191,7 @@ saveBtn.onclick = async () => {
     let saved = 0;
 
     for(const item of items){
+        const generatedImageUrl = await generateImageForItem(item);
       const category = item.category || categoryEl.value;
       const subcategory = item.subcategory || subcategoryEl.value.trim();
       const slug = item.slug || slugify(item.title);
@@ -208,7 +210,7 @@ saveBtn.onclick = async () => {
         regretScore:item.regretScore || 0,
         comments:item.comments || [],
         imagePrompt:item.imagePrompt || "",
-        imageUrl: item.imageUrl || item.image || item.img || getTopicImage(item),
+        imageUrl: generatedImageUrl || item.imageUrl || item.image || item.img || "",
         viewCount:item.viewCount || Math.floor(Math.random() * 900) + 100,
         likeCount:item.likeCount || Math.floor(Math.random() * 80) + 10,
         isGenerated:true,
