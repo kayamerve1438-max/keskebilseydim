@@ -32,28 +32,25 @@ function slugify(text){
     .replace(/^-+|-+$/g,"");
 }
 async function generateImageForItem(item){
-  const prompt =
-    item.imagePrompt ||
-    item.seoTitle ||
-    item.title ||
-    "Gerçekçi blog kapak görseli";
+  const text = `${item.title || ""} ${item.summary || ""} ${item.content || ""} ${item.imagePrompt || ""}`.toLowerCase();
 
-  const response = await fetch("/api/image", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ prompt })
-  });
+  let keyword = "apartment";
 
-  const data = await response.json();
-
-  if(!response.ok){
-    console.error("Görsel üretim hatası:", data.error);
-    return "";
+  if(text.includes("depozito") || text.includes("kira")){
+    keyword = "rent money apartment";
+  }else if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
+    keyword = "apartment neighbors";
+  }else if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
+    keyword = "home renovation";
+  }else if(text.includes("taşınma") || text.includes("nakliye")){
+    keyword = "moving boxes";
+  }else if(text.includes("emlakçı") || text.includes("ilan")){
+    keyword = "real estate agent";
+  }else if(text.includes("aidat") || text.includes("site")){
+    keyword = "apartment building";
   }
 
-  return data.imageUrl || "";
+  return `https://source.unsplash.com/1200x800/?${encodeURIComponent(keyword)}`;
 }
 
 function parseJson() {
