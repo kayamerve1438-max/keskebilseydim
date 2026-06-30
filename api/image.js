@@ -38,8 +38,8 @@ export default async function handler(req, res) {
     }
 
     res.status(200).json({
-      imageUrl: `data:image/png;base64,${b64}`
-    });
+  imageDataUrl: `data:image/png;base64,${b64}`
+});
 
   } catch (error) {
     res.status(500).json({ error: error.message });

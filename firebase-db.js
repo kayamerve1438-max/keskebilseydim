@@ -1,3 +1,4 @@
+import { getStorage } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
@@ -16,3 +17,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+export const storage = getStorage(app);

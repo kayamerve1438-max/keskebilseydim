@@ -1,10 +1,15 @@
-import { db } from "./firebase-db.js";
+import { db, storage } from "./firebase-db.js";
 
 import {
   collection,
   addDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import {
+  ref,
+  uploadString,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 
 const categoryEl = document.getElementById("category");
 const subcategoryEl = document.getElementById("subcategory");
@@ -53,14 +58,19 @@ async function generateImageForItem(item){
     return "";
   }
 
-  return data.imageUrl || "";
+  const fileName = `article-images/${Date.now()}-${slugify(item.title)}.png`;
+  const imageRef = ref(storage, fileName);
+
+  await uploadString(imageRef, data.imageDataUrl, "data_url");
+
+  return await getDownloadURL(imageRef);
 }
+
 function parseJson() {
   let text = jsonArea.value.trim();
 
   if (!text) return [];
 
-  // Markdown kod bloklarını tamamen temizle
   text = text.replace(/```json/g, "");
   text = text.replace(/```/g, "");
   text = text.trim();
