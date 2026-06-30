@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST allowed" });
@@ -26,13 +28,22 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: "OpenAI görsel üretmedi." });
     }
 
+    const timestamp = Math.floor(Date.now() / 1000);
+
+    const signature = crypto
+      .createHash("sha1")
+      .update(`timestamp=${timestamp}${process.env.CLOUDINARY_API_SECRET}`)
+      .digest("hex");
+
     const cloudinaryResponse = await fetch(
       `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
       {
         method: "POST",
         body: new URLSearchParams({
           file: `data:image/png;base64,${b64}`,
-          upload_preset: "ml_default"
+          api_key: process.env.CLOUDINARY_API_KEY,
+          timestamp: String(timestamp),
+          signature
         })
       }
     );
@@ -40,12 +51,16 @@ export default async function handler(req, res) {
     const cloudinaryData = await cloudinaryResponse.json();
 
     if (!cloudinaryData.secure_url) {
-      return res.status(500).json({ error: "Cloudinary yükleme başarısız." });
+      console.error("Cloudinary hata:", cloudinaryData);
+      return res.status(500).json({
+        error: cloudinaryData.error?.message || "Cloudinary yükleme başarısız."
+      });
     }
 
     return res.status(200).json({
       imageUrl: cloudinaryData.secure_url
     });
+
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
