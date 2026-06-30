@@ -250,7 +250,7 @@ const fakeTrends = [
 function loadDashboard(){
   totalContent.textContent = "1";
   todayContent.textContent = "1";
-  pendingImages.textContent = "1";
+  pendingImages.textContent = "0";
 
   trendList.innerHTML = fakeTrends.map(topic => `
     <button class="trend-item" data-topic="${topic}">
