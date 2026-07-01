@@ -42,7 +42,9 @@ Kurallar:
 
     const data = await openaiRes.json();
 
-    const text = data.choices?.[0]?.message?.content || "";
+    return res.status(200).json(data);
+
+    //const text = data.choices?.[0]?.message?.content || "";
 
     return res.status(200).json({ text });
 
