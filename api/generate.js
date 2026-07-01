@@ -42,11 +42,15 @@ Kurallar:
 
     const data = await openaiRes.json();
 
-    return res.status(200).json(data);
+if (!openaiRes.ok) {
+  return res.status(500).json({
+    error: data.error?.message || "OpenAI içerik üretemedi"
+  });
+}
 
-    //const text = data.choices?.[0]?.message?.content || "";
+const text = data.choices?.[0]?.message?.content || "";
 
-    return res.status(200).json({ text });
+return res.status(200).json({ text });
 
   } catch (err) {
     console.error("GENERATE ERROR:", err);
