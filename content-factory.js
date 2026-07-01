@@ -207,9 +207,12 @@ saveBtn.onclick = async () => {
 
     resultBox.textContent = `${saved} içerik Firebase’e kaydedildi.`;
   }catch(err){
-    console.error(err);
-    resultBox.textContent = "Hata: JSON formatını veya Firebase bağlantısını kontrol et.";
-  }
+  console.error("FIREBASE HATASI:", err);
+
+  alert(err.message);
+
+  resultBox.textContent = err.message;
+}
   
 };
 const totalContent = document.getElementById("totalContent");
