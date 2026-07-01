@@ -37,34 +37,12 @@ async function generateImageForItem(item){
   let keyword = "apartment";
 
   if(text.includes("depozito") || text.includes("kira")){
-    keyword = "money,home";
-  }else if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
-    keyword = "apartment,building";
-  }else if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
-    keyword = "renovation,home";
-  }else if(text.includes("taşınma") || text.includes("nakliye")){
-    keyword = "moving,boxes";
-  }else if(text.includes("emlakçı") || text.includes("ilan")){
-    keyword = "real,estate";
-  }else if(text.includes("aidat") || text.includes("site")){
-    keyword = "apartment,building";
-  }
+  keyword = "apartment,keys";
+}
 
   return `https://loremflickr.com/1200/800/${keyword}?random=${Date.now()}`;
 }
-function parseJson() {
-  let text = jsonArea.value.trim();
 
-  if (!text) return [];
-
-  text = text.replace(/```json/g, "");
-  text = text.replace(/```/g, "");
-  text = text.trim();
-
-  const parsed = JSON.parse(text);
-
-  return Array.isArray(parsed) ? parsed : [];
-}
 function renderPreview(items){
   previewCount.textContent = `${items.length} içerik`;
 
