@@ -34,13 +34,33 @@ function slugify(text){
 async function generateImageForItem(item){
   const text = `${item.title || ""} ${item.summary || ""} ${item.content || ""} ${item.imagePrompt || ""}`.toLowerCase();
 
-  let keyword = "apartment";
+  let query = "apartment building";
 
   if(text.includes("depozito") || text.includes("kira")){
-  keyword = "apartment,keys";
-}
+    query = "apartment keys";
+  }else if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
+    query = "apartment building";
+  }else if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
+    query = "home renovation";
+  }else if(text.includes("taşınma") || text.includes("nakliye")){
+    query = "moving boxes";
+  }else if(text.includes("emlakçı") || text.includes("ilan")){
+    query = "real estate";
+  }else if(text.includes("aidat") || text.includes("site")){
+    query = "residential building";
+  }
 
-  return `https://loremflickr.com/1200/800/${keyword}?random=${Date.now()}`;
+  const response = await fetch("/api/pexels", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ query })
+  });
+
+  const data = await response.json();
+
+  return data.image || "";
 }
 function parseJson() {
   let text = jsonArea.value.trim();
