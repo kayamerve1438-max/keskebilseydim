@@ -56,7 +56,7 @@ JSON dışında hiçbir şey yazma.
     })
   });
 
-  const data = await openaiRes.json();
+  console.log(JSON.stringify(data, null, 2));
 
   const text =
     data.output_text ||
