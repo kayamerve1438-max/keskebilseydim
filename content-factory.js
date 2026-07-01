@@ -52,7 +52,19 @@ async function generateImageForItem(item){
 
   return `https://loremflickr.com/1200/800/${keyword}?random=${Date.now()}`;
 }
+function parseJson() {
+  let text = jsonArea.value.trim();
 
+  if (!text) return [];
+
+  text = text.replace(/```json/g, "");
+  text = text.replace(/```/g, "");
+  text = text.trim();
+
+  const parsed = JSON.parse(text);
+
+  return Array.isArray(parsed) ? parsed : [];
+}
 function renderPreview(items){
   previewCount.textContent = `${items.length} içerik`;
 
