@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editör Paneli | Keşke Bilseydim</title>
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+  <main class="admin-page">
+    <section class="admin-hero">
+      <span>Editör Paneli</span>
+      <h1>Bekleyen Deneyimler</h1>
+      <p>Kullanıcıların gönderdiği deneyimler burada onay bekler.</p>
+    </section>
+
+    <section class="admin-layout">
+      <div class="admin-card">
+        <div class="admin-card-head">
+          <h2>Onay Bekleyenler</h2>
+          <strong id="pendingCount">0 içerik</strong>
+        </div>
+
+        <div id="pendingList" class="pending-list">
+          <p class="empty-text">Henüz bekleyen deneyim yok.</p>
+        </div>
+      </div>
+    </section>
+    <div id="editModal" class="edit-modal">
+  <div class="edit-modal-box">
+    <button id="closeEditModal" class="modal-close">×</button>
+
+    <h2>Deneyimi Düzenle</h2>
+
+    <input type="hidden" id="editId">
+
+    <label>Başlık</label>
+    <input id="editTitle" type="text">
+
+    <label>Kategori</label>
+    <input id="editCategory" type="text">
+
+    <label>Kısa Özet</label>
+    <textarea id="editSummary" rows="3"></textarea>
+
+    <label>Hikaye</label>
+    <textarea id="editStory" rows="6"></textarea>
+
+    <label>Keşke Bilseydim</label>
+    <textarea id="editMistake" rows="3"></textarea>
+
+    <label>Bugün Olsa</label>
+    <textarea id="editAdvice" rows="3"></textarea>
+
+    <label>Maliyet</label>
+    <input id="editCost" type="text">
+
+    <label>Puan</label>
+    <input id="editRating" type="text">
+
+    <button id="saveEditBtn" class="save-edit-btn">Değişiklikleri Kaydet</button>
+  </div>
+</div>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

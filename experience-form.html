@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Deneyimini Paylaş | Keşke Bilseydim</title>
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="stylesheet" href="responsive.css?v=30">
+  <link rel="stylesheet" href="responsive-pages.css?v=30">
+  <link rel="stylesheet" href="experience-form.css" />
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="auth-container"></div>
+
+  <main class="experience-form-page studio-page">
+    
+  <section class="studio-hero">
+    <div>
+      <span class="form-badge">Deneyim Yazma Stüdyosu 🐾</span>
+      <h1>Bir kişinin 5 dakikası, başkasının 5 yılını kurtarabilir.</h1>
+      <p>
+        Yaşadığını anlat. Keşkeni yaz. Birileri aynı hataya düşmeden önce senin deneyimini okusun.
+      </p>
+    </div>
+
+    <div class="cat-advice-box">
+      <div class="cat-face">🐱</div>
+      <strong>Bilge Kedi diyor ki:</strong>
+      <p>“İçine atma. Buraya yaz. En kötü ihtimalle birine ışık, bana da malzeme olur.”</p>
+    </div>
+  </section>
+
+  <section class="studio-layout">
+
+    <form id="experienceForm" class="studio-form">
+
+      <div class="form-progress">
+        <span>Deneyim tamamlanma oranı</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <strong id="progressText">0%</strong>
+      </div>
+      
+      <div class="form-group">
+        <label for="title">Başlık</label>
+        <input 
+          type="text" 
+          id="title" 
+          placeholder="Örn: Depozitoyu alırım sandım, alamadım"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Kategori</label>
+          <select id="category" required>
+            <option value="">Kategori seç</option>
+            <option value="EV">Ev</option>
+            <option value="İŞ">İş</option>
+            <option value="YAŞAM">Yaşam</option>
+            <option value="EĞİTİM">Eğitim</option>
+            <option value="PARA">Para</option>
+            <option value="SİNEMA">Sinema</option>
+            <option value="KİTAP">Kitap</option>
+            <option value="EĞLENCE">Eğlence</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subcategory">Alt Kategori</label>
+          <input 
+            type="text" 
+            id="subcategory" 
+            placeholder="Örn: Komşular, Kira, Mülakat"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="summary">Kısa Özet</label>
+        <textarea 
+          id="summary" 
+          rows="3" 
+          maxlength="240"
+          placeholder="Bu deneyimi 2-3 cümleyle özetle."
+          required
+        ></textarea>
+        <small><span id="summaryCount">0</span>/240 karakter</small>
+      </div>
+
+      <div class="form-group">
+        <label for="story">Asıl Hikaye</label>
+        <textarea 
+          id="story" 
+          rows="8" 
+          placeholder="Ne oldu, nerede hata yaptın, bugün olsa neyi farklı yapardın?"
+          required
+        ></textarea>
+      </div>
+
+      <div class="highlight-grid">
+        <div class="form-group">
+          <label for="mistake">Keşke Bilseydim...</label>
+          <textarea 
+            id="mistake" 
+            rows="4" 
+            placeholder="Keşke şunu önceden bilseydim..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="advice">Bugün Olsa Ne Yapardım?</label>
+          <textarea 
+            id="advice" 
+            rows="4" 
+            placeholder="Aynı durumda olanlara önerin..."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cost">Bana Maliyeti</label>
+          <input 
+            type="text" 
+            id="cost" 
+            placeholder="Örn: 15.000 TL, 3 ay zaman..."
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Tavsiye Puanı</label>
+          <select id="rating" required>
+            <option value="">Puan seç</option>
+            <option value="1">1 - Asla önermem</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 - Kararsızım</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10 - Kesinlikle öneririm</option>
+          </select>
+        </div>
+      </div>
+<!--
+      <div class="form-group">
+    <label>Fotoğraf Ekle (İsteğe Bağlı)</label>
+
+    <div class="image-upload-area">
+        <input
+            type="file"
+            id="experienceImages"
+            accept="image/*"
+            multiple
+            hidden
+        >
+
+        <button
+            type="button"
+            class="upload-image-btn"
+            id="uploadImageBtn">
+            📷 Fotoğraf Seç
+        </button>
+        <div id="imagePreview" class="image-preview-grid"></div>
+
+        <small>
+            En fazla 10 fotoğraf yükleyebilirsin.
+        </small>
+
+        <div id="imagePreview" class="image-preview-grid"></div>
+    </div>
+</div>-->
+
+      <div class="anonymous-box">
+        <label>
+          <input type="checkbox" id="anonymous" checked />
+          Anonim paylaş
+        </label>
+        <span>İstersen adın görünmeden paylaşabilirsin.</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="draft-btn">Taslak Kaydet</button>
+        <button type="submit" class="submit-btn">Deneyimimi Paylaş</button>
+      </div>
+
+    </form>
+
+    <aside class="live-preview">
+      <div class="preview-label">Canlı Önizleme</div>
+
+      <article class="preview-card">
+        <span class="preview-tag" id="previewCategory">Kategori</span>
+
+        <h2 id="previewTitle">Başlığın burada görünecek</h2>
+
+        <p id="previewSummary">
+          Kısa özet yazdığında burada gerçek deneyim kartı gibi görünecek.
+        </p>
+
+        <div class="preview-info">
+          <span>👁️ 0</span>
+          <span>💬 0</span>
+          <span>⭐ <b id="previewRating">-</b></span>
+        </div>
+
+        <div class="preview-section">
+          <strong>Keşke Bilseydim</strong>
+          <p id="previewMistake">Henüz yazılmadı.</p>
+        </div>
+
+        <div class="preview-section">
+          <strong>Bugün Olsa</strong>
+          <p id="previewAdvice">Henüz yazılmadı.</p>
+        </div>
+
+        <div class="preview-cost">
+          💸 <span id="previewCost">Maliyet bilgisi yok.</span>
+        </div>
+      </article>
+    </aside>
+
+  </section>
+
+</main>
+
+  <div id="footer-container"></div>
+
+  <div id="footer-container"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+
+    const headerScript = document.createElement("script");
+    headerScript.src = "header.js";
+    document.body.appendChild(headerScript);
+  });
+</script>
+
+<script type="module" src="experience-form.js"></script>
+
+</body>
+</html>>
+</body>
+</html>
