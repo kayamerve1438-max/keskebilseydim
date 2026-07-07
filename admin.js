@@ -1,3 +1,4 @@
+let currentEditImages = [];
 import { db } from "./firebase-db.js";
 
 import {
@@ -115,7 +116,9 @@ const editFields = {
   mistake: document.getElementById("editMistake"),
   advice: document.getElementById("editAdvice"),
   cost: document.getElementById("editCost"),
-  rating: document.getElementById("editRating")
+  rating: document.getElementById("editRating"),
+  images: document.getElementById("editImages")
+
 };
 
 async function openEditModal(id) {
@@ -138,6 +141,8 @@ async function openEditModal(id) {
   editFields.advice.value = exp.advice || "";
   editFields.cost.value = exp.cost || "";
   editFields.rating.value = exp.rating || "";
+  currentEditImages = exp.images || [];
+renderEditImages();
 
   editModal.classList.add("active");
 }
@@ -157,10 +162,42 @@ saveEditBtn.addEventListener("click", async () => {
     mistake: editFields.mistake.value.trim(),
     advice: editFields.advice.value.trim(),
     cost: editFields.cost.value.trim(),
-    rating: editFields.rating.value.trim()
+    rating: editFields.rating.value.trim(),
+    images: currentEditImages,
+    imageCount: currentEditImages.length
   });
 
   alert("Deneyim güncellendi.");
   editModal.classList.remove("active");
   loadPendingExperiences();
 });
+loadPendingExperiences();
+
+function renderEditImages() {
+  editFields.images.innerHTML = "";
+
+  if (!currentEditImages.length) {
+    editFields.images.innerHTML = `<small>Fotoğraf yok.</small>`;
+    return;
+  }
+
+  currentEditImages.forEach((url, index) => {
+    const item = document.createElement("div");
+    item.className = "edit-image-item";
+
+    item.innerHTML = `
+      <img src="${url}" alt="Deneyim fotoğrafı">
+      <button type="button" class="delete-edit-image">×</button>
+    `;
+
+    item.querySelector("button").addEventListener("click", () => {
+      const ok = confirm("Bu fotoğrafı kaldırmak istediğine emin misin?");
+      if (!ok) return;
+
+      currentEditImages.splice(index, 1);
+      renderEditImages();
+    });
+
+    editFields.images.appendChild(item);
+  });
+}

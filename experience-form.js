@@ -11,6 +11,11 @@ import {
   uploadBytes,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+const CLOUDINARY_CLOUD_NAME = "oqzvpsfw";
+const CLOUDINARY_UPLOAD_PRESET = "keskebilseydim";
+const MAX_IMAGE_COUNT = 3;
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 const form = document.getElementById("experienceForm");
 
@@ -114,10 +119,20 @@ if (uploadBtn && imageInput && previewGrid) {
     const files = Array.from(imageInput.files);
 
     files.forEach((file) => {
-      if (selectedImages.length >= 10) {
-        alert("En fazla 10 fotoğraf yükleyebilirsin.");
-        return;
-      }
+      if (selectedImages.length >= MAX_IMAGE_COUNT) {
+  alert("En fazla 3 fotoğraf yükleyebilirsin.");
+  return;
+}
+
+if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+  alert("Sadece JPG, PNG veya WEBP fotoğraf yükleyebilirsin.");
+  return;
+}
+
+if (file.size > MAX_IMAGE_SIZE) {
+  alert("Her fotoğraf en fazla 2 MB olabilir.");
+  return;
+}
 
       selectedImages.push(file);
 
@@ -151,6 +166,42 @@ form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   console.log("Form gönderme başladı");
+  const imageUrls = [];
+
+for (const image of selectedImages) {
+  if (!ALLOWED_IMAGE_TYPES.includes(image.type)) {
+    alert("Sadece JPG, PNG veya WEBP fotoğraf yükleyebilirsin.");
+    return;
+  }
+
+  if (image.size > MAX_IMAGE_SIZE) {
+    alert("Her fotoğraf en fazla 2 MB olabilir.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", image);
+  formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+  formData.append("folder", "experiences");
+
+  const response = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    console.error("Cloudinary yükleme hatası:", result);
+    alert("Fotoğraf yüklenemedi.");
+    return;
+  }
+
+  imageUrls.push(result.secure_url);
+}
 
   const experienceData = {
     title: fields.title.value.trim(),
@@ -161,7 +212,8 @@ form.addEventListener("submit", async function (e) {
     advice: fields.advice.value.trim(),
     cost: fields.cost.value.trim(),
     rating: fields.rating.value,
-    imageCount: 0,
+    imageCount: imageUrls.length,
+    images: imageUrls,
     
 
     status: "pending",
