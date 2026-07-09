@@ -35,11 +35,13 @@ body{
 
 .article-detail img{
     width:100%;
-    max-height:380px;
-    object-fit:cover;
+    max-width:650px;
+    max-height:700px;
+    display:block;
+    margin:25px auto;
+    object-fit:contain;
     border-radius:18px;
-    margin:25px 0;
-    background:#e5e7eb;
+    background:#0f172a;
 }
 
 .category{
@@ -697,8 +699,8 @@ h1,
 
 <div class="page">
 <div id="header-container"></div>
-<main class="article-detail" data-article-id="depozito-article">
-    <div class="breadcrumb">
+<main class="article-detail" id="articleDetail">
+        <div class="breadcrumb">
     <a href="index.html">Ana Sayfa</a>
     >
     <a href="ev.html">Ev</a>
@@ -711,8 +713,8 @@ h1,
 
     <div class="meta">Gerçek deneyim • 4 dk okuma • Bilge Kedi onaylı 🐾</div>
     <div class="interaction-bar">
-  <button id="likeBtn">❤️ <span id="likeCount">128</span></button>
-  <button id="commentBtn">💬 37</button>
+  <button id="likeBtn">❤️ <span id="likeCount">0</span></button>
+  <button id="commentBtn">💬 <span id="detailCommentCount">0</span></button>
   <button id="saveBtn">🔖 Kaydet</button>
 </div>
 
@@ -730,40 +732,7 @@ h1,
         bir anda küçük küçük bahaneler sıralamaya başladı.
     </p>
 
-    <div class="quote">
-        “Keşke eve girerken her köşenin fotoğrafını çekseydim.”
-    </div>
-    <div class="bilge-note">
-    <img src="images/kedi_4.png" alt="Bilge Kedi">
-    <div>
-        Bilge Kedi der ki: “Sözleşme okumak sıkıcıdır ama depozitodan daha ucuzdur.”
-    </div>
-</div>
-
-<div class="lesson-box">
-    <h3>Keşke Bilseydim</h3>
-    <p>
-        Eve girerken mutlaka fotoğraf ve video çek. Teslim tutanağı hazırla.
-        Depozitonun hangi durumlarda kesileceğini sözleşmeye açıkça yazdır.
-    </p>
-</div>
-
-    <p>
-        Önce perdelerin yıprandığını söyledi. Sonra duvarda eski bir iz olduğunu iddia etti.
-        En sonunda da “boya badana gerekir” diyerek depozitonun büyük kısmını vermek istemedi.
-        O an anladım ki sözlü güven, kiralık ev işlerinde yetmiyormuş.
-    </p>
-
-    <p>
-        Benim bu deneyimden çıkardığım ders şu oldu: Eve girerken mutlaka fotoğraf ve video çekilmeli.
-        Teslim tutanağı hazırlanmalı. Depozitonun hangi şartlarda kesileceği sözleşmeye açıkça yazılmalı.
-        Yoksa haklı olsan bile bunu kanıtlamak zorlaşıyor.
-    </p>
-
-    <p>
-        Şimdi geriye dönüp bakınca evin konumundan çok, sözleşmenin detaylarına bakmam gerektiğini
-        anlıyorum. Çünkü bazen evi değil, aslında ileride yaşayacağın tartışmayı kiralıyorsun.
-    </p>
+    <div id="dynamicExperienceContent"></div>
 <section class="comments-section">
     <h2>Yorumlar 💬 <span id="commentCountText">0 yorum</span></h2>
 
@@ -800,145 +769,7 @@ fetch("footer.html")
     document.getElementById("footer-container").innerHTML = data;
   });
 </script>
-<script type="module">
-import { db } from "./firebase-db.js";
 
-import {
-  doc,
-  getDoc,
-  setDoc,
-  deleteDoc,
-  updateDoc,
-  increment
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-import {
-  getAuth,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-const articleId = "depozito-article";
-
-const auth = getAuth();
-
-const likeCountRef = doc(db, "likes", articleId);
-
-const likeBtn = document.getElementById("likeBtn");
-const likeCount = document.getElementById("likeCount");
-
-let currentUser = null;
-let userLiked = false;
-
-function openLoginWithMessage(){
-    showAuthRequiredModal();
-}
-
-async function loadLikeCount(){
-    const snap = await getDoc(likeCountRef);
-
-    if(!snap.exists()){
-        await setDoc(likeCountRef,{ count:128 });
-        likeCount.textContent = 128;
-        return;
-    }
-
-    likeCount.textContent = snap.data().count || 0;
-}
-
-async function checkUserLike(){
-    if(!currentUser) return;
-
-    const userLikeRef = doc(db, "likes", articleId, "users", currentUser.uid);
-    const snap = await getDoc(userLikeRef);
-
-    userLiked = snap.exists();
-
-    if(userLiked){
-        likeBtn.classList.add("liked");
-    }else{
-        likeBtn.classList.remove("liked");
-    }
-}
-
-onAuthStateChanged(auth, async (user) => {
-    currentUser = user;
-
-    await loadLikeCount();
-
-    if(user){
-        const name = user.displayName || user.email;
-        localStorage.setItem("kb_user_name", name);
-        await checkUserLike();
-    }else{
-        localStorage.removeItem("kb_user_name");
-        localStorage.removeItem("kb_user");
-        userLiked = false;
-        likeBtn.classList.remove("liked");
-    }
-});
-
-likeBtn.addEventListener("click", async () => {
-
-    const freshUser = auth.currentUser;
-    const savedName = localStorage.getItem("kb_user_name");
-
-if(!savedName){
-    currentUser = null;
-    userLiked = false;
-    likeBtn.classList.remove("liked");
-
-    openLoginWithMessage("Beğeni yapmak için giriş yapmanız gerek.");
-    return;
-}
-
-    if(!freshUser){
-        currentUser = null;
-        userLiked = false;
-        likeBtn.classList.remove("liked");
-
-        openLoginWithMessage("Beğeni yapmak için giriş yapmanız gerek.");
-        return;
-    }
-
-    currentUser = freshUser;
-
-    const userLikeRef = doc(db, "likes", articleId, "users", currentUser.uid);
-
-    const userLikeSnap = await getDoc(userLikeRef);
-
-    if(userLikeSnap.exists()){
-
-        await deleteDoc(userLikeRef);
-
-        await updateDoc(likeCountRef,{
-            count: increment(-1)
-        });
-
-        userLiked = false;
-        likeBtn.classList.remove("liked");
-
-    }else{
-
-        await setDoc(userLikeRef,{
-            uid: currentUser.uid,
-            likedAt: new Date().toISOString()
-        });
-
-        await updateDoc(likeCountRef,{
-            count: increment(1)
-        });
-
-        userLiked = true;
-        likeBtn.classList.add("liked");
-    }
-
-    const snap = await getDoc(likeCountRef);
-
-    likeCount.textContent = snap.data().count;
-});
-
-
-</script>
 <div class="auth-required-modal" id="authRequiredModal">
     <div class="auth-required-box">
 
@@ -956,7 +787,15 @@ if(!savedName){
 
     </div>
 </div>
-<script type="module" src="./comments.js"></script>
+<script>
+const detailParams = new URLSearchParams(window.location.search);
+const detailExperienceId = detailParams.get("id");
+
+const detailMain = document.querySelector(".article-detail");
+if (detailMain && detailExperienceId) {
+  detailMain.dataset.articleId = detailExperienceId;
+}
+</script>
 <script type="module" src="./comments.js"></script>
 <script>
 function showAuthRequiredModal(){
@@ -1090,72 +929,71 @@ document.addEventListener("click", function(e){
     <button id="closeSuccessModal">Kapat</button>
   </div>
 </div>
-<script type="module" src="./comments.js"></script>
-<script type="module" src="./messages.js"></script>
-<script src="keyboard.js"></script>
+</script>
+
 <script type="module">
 import { db } from "./firebase-db.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const params = new URLSearchParams(window.location.search);
-const firebaseArticleId = params.get("id");
+const experienceId = params.get("id");
 
-async function loadFirebaseDetail(){
-
-  console.log("1-Fonksiyon çalıştı");
-
-  if(!firebaseArticleId){
-    console.log("2-ID bulunamadı");
-    return;
-  }
-
-  console.log("3-ID:", firebaseArticleId);
-
-  const ref = doc(db, "articles", firebaseArticleId);
-  const snap = await getDoc(ref);
-
-  console.log("4-Doküman var mı?", snap.exists());
-
-  if(!snap.exists()) return;
-
-  const yazi = snap.data();
-
-  console.log("5-FIREBASE VERİSİ:", yazi);
-
-  document.querySelector("h1").textContent =
-    yazi.title || "Başlıksız Deneyim";
-
-  const meta = document.querySelector(".detail-meta");
-  if(meta){
-    meta.innerHTML =
-      `Gerçek deneyim • 5 dk okuma • Bilge Kedi onaylı 🐾`;
-  }
-
-  const img = document.querySelector(".article-detail img");
-
-if(img){
-  img.src =
-    yazi.imageUrl ||
-    yazi.image ||
-    yazi.img ||
-    "images/kedi_1.png";
-
-  img.alt = yazi.title || "";
-
-  const content = document.querySelector(".detail-content");
-  if(content){
-    content.innerHTML = `
-      <p>${(yazi.content || "").replace(/\n/g,"</p><p>")}</p>
-
-      <div class="bilge-kedi-note">
-        <strong>🐾 Bilge Kedi Yorumu:</strong>
-        <p>${yazi.bilgeKedi || ""}</p>
-      </div>
-    `;
-  }
+function safe(text) {
+  return String(text || "").replace(/[&<>"']/g, m => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;"
+  }[m]));
 }
 
-loadFirebaseDetail();
+async function loadExperienceDetail() {
+  if (!experienceId) return;
+
+  const snap = await getDoc(doc(db, "articles", experienceId));
+  if (!snap.exists()) return;
+
+  const exp = snap.data();
+
+  document.querySelector("h1").textContent = exp.title || "";
+
+  const category = document.querySelector(".category");
+  if (category) category.textContent = exp.subcategory || exp.category || "";
+
+  const meta = document.querySelector(".meta");
+  if (meta) meta.innerHTML = `${exp.category || ""} • Gerçek deneyim • Bilge Kedi onaylı 🐾`;
+
+  const img = document.querySelector(".article-detail > img");
+
+const defaultImages = {
+  ev: "images/defaults/ev.jpg",
+  is: "images/defaults/is.jpg",
+  yasam: "images/defaults/yasam.jpg",
+  egitim: "images/defaults/egitim.jpg",
+  sinema: "images/defaults/sinema.jpg",
+  kitap: "images/defaults/kitap.jpg",
+  eglence: "images/defaults/eglence.jpg",
+  para: "images/defaults/para.jpg",
+  itiraf: "images/defaults/itiraf.jpg"
+};
+
+if (img) {
+
+  if (exp.imageUrl) {
+
+    img.src = exp.imageUrl;
+
+  } else if (exp.images?.length) {
+
+    img.src = exp.images[0];
+
+  } else {
+
+    img.src = defaultImages[(exp.category || "").toLowerCase()] || "images/defaults/ev.jpg";
+
+  }
+
+  img.alt = exp.title || "";
+}
+}
+loadExperienceDetail();
 </script>
 </body>
 </html>

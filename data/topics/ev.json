@@ -1,0 +1,42 @@
+[
+  {
+    "id": "EV-001",
+    "subcategory": "komsular",
+    "topic": "üst komşu gürültüsü"
+  },
+  {
+    "id": "EV-002",
+    "subcategory": "komsular",
+    "topic": "alt komşuyla anlaşamama"
+  },
+  {
+    "id": "EV-003",
+    "subcategory": "komsular",
+    "topic": "apartmanda çocuk sesi"
+  },
+  {
+    "id": "EV-004",
+    "subcategory": "komsular",
+    "topic": "ortak alan kavgası"
+  },
+  {
+    "id": "EV-005",
+    "subcategory": "kira",
+    "topic": "depozito alamama"
+  },
+  {
+    "id": "EV-006",
+    "subcategory": "kira",
+    "topic": "evi görmeden kapora göndermek"
+  },
+  {
+    "id": "EV-007",
+    "subcategory": "kira",
+    "topic": "kontratı okumadan imzalamak"
+  },
+  {
+    "id": "EV-008",
+    "subcategory": "kira",
+    "topic": "rutubeti sonradan fark etmek"
+  }
+]

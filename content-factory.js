@@ -10,11 +10,15 @@ const categoryEl = document.getElementById("category");
 const subcategoryEl = document.getElementById("subcategory");
 const contentCountEl = document.getElementById("contentCount");
 const jsonArea = document.getElementById("jsonArea");
+
 const generateBtn = document.getElementById("generateBtn");
+const dailyPackBtn = document.getElementById("dailyPackBtn");
+
 const fillSampleBtn = document.getElementById("fillSampleBtn");
 const previewBtn = document.getElementById("previewBtn");
 const saveBtn = document.getElementById("saveBtn");
 const clearBtn = document.getElementById("clearBtn");
+
 const previewList = document.getElementById("previewList");
 const previewCount = document.getElementById("previewCount");
 const resultBox = document.getElementById("resultBox");
@@ -31,37 +35,7 @@ function slugify(text){
     .replace(/[^a-z0-9]+/g,"-")
     .replace(/^-+|-+$/g,"");
 }
-async function generateImageForItem(item){
-  const text = `${item.title || ""} ${item.summary || ""} ${item.content || ""} ${item.imagePrompt || ""}`.toLowerCase();
 
-  let query = "apartment building";
-
-  if(text.includes("depozito") || text.includes("kira")){
-    query = "apartment keys";
-  }else if(text.includes("gürültü") || text.includes("komşu") || text.includes("apartman")){
-    query = "apartment building";
-  }else if(text.includes("tadilat") || text.includes("usta") || text.includes("matkap")){
-    query = "home renovation";
-  }else if(text.includes("taşınma") || text.includes("nakliye")){
-    query = "moving boxes";
-  }else if(text.includes("emlakçı") || text.includes("ilan")){
-    query = "real estate";
-  }else if(text.includes("aidat") || text.includes("site")){
-    query = "residential building";
-  }
-
-  const response = await fetch("/api/pexels", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ query })
-  });
-
-  const data = await response.json();
-
-  return data.image || "";
-}
 function parseJson() {
   let text = jsonArea.value.trim();
 
@@ -123,47 +97,229 @@ fillSampleBtn.onclick = () => {
   renderPreview(parseJson());
   resultBox.textContent = "Örnek JSON dolduruldu.";
 };
+const topicDatabase = {
+  ev: {
+    komsular: [
+      "üst komşu gürültüsü",
+      "alt komşuyla anlaşamama",
+      "apartman dedikodusu",
+      "komşunun sürekli kapı çalması",
+      "ortak alan kavgası",
+      "apartmanda çocuk sesi",
+      "gece yapılan tadilat",
+      "komşunun evcil hayvan sorunu"
+    ],
+    kira: [
+      "depozito alamama",
+      "ev sahibinin sürekli zam istemesi",
+      "kontratı okumadan imzalamak",
+      "evi görmeden kapora göndermek",
+      "rutubetli evi fark etmemek",
+      "aidatı sonradan öğrenmek",
+      "eski tesisat sorunu",
+      "emlakçıya fazla güvenmek"
+    ]
+  },
 
-generateBtn.onclick = async () => {
-  try {
-    const currentData = JSON.parse(jsonArea.value || "{}");
+  is: {
+    genel: [
+      "maaş pazarlığı yapmamak",
+      "fazla mesaiyi baştan konuşmamak",
+      "mobbingi geç fark etmek",
+      "iş görüşmesinde soru sormamak",
+      "yanlış ekibe girmek",
+      "sözlü vaatlere inanmak",
+      "deneme süresini hafife almak",
+      "işten ayrılmadan plan yapmamak"
+    ]
+  },
 
-    const topic = currentData.topic || subcategoryEl.value || "genel deneyim";
+  yasam: {
+    genel: [
+      "hayır diyememek",
+      "herkesi memnun etmeye çalışmak",
+      "arkadaş kazığını geç fark etmek",
+      "kendini sürekli ertelemek",
+      "aile baskısına boyun eğmek",
+      "ilişkide kırmızı bayrakları görmezden gelmek",
+      "sağlığı ihmal etmek",
+      "zamanı boşa harcamak"
+    ]
+  },
 
-    resultBox.textContent = "Yapay zekâ içerik üretiyor...";
+  egitim: {
+    genel: [
+      "yanlış bölüm seçmek",
+      "üniversite tercihinde sadece puana bakmak",
+      "stajı önemsememek",
+      "dil öğrenmeyi ertelemek",
+      "dersleri son haftaya bırakmak",
+      "hoca seçimini araştırmamak",
+      "sertifika kursuna körü körüne yazılmak",
+      "okulu sosyal çevre için seçmek"
+    ]
+  },
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        topic,
-        category: categoryEl.value,
-        subcategory: subcategoryEl.value,
-        count: Number(contentCountEl.value || 5)
-      })
-    });
+  para: {
+    genel: [
+      "kredi kartı borcunu küçümsemek",
+      "taksitleri kontrol etmemek",
+      "gereksiz alışveriş yapmak",
+      "birikim yapmayı ertelemek",
+      "yanlış yatırım tavsiyesi dinlemek",
+      "abonelikleri unutmak",
+      "acil durum parası ayırmamak",
+      "ucuz diye kalitesiz ürün almak"
+    ]
+  },
 
-    const data = await response.json();
-    console.log("AI CEVABI:", data.text);
+  itiraflar: {
+    genel: [
+      "içimde kalan söz",
+      "zamanında özür dilememek",
+      "sevdiğini söyleyememek",
+      "susarak yanlış yapmak",
+      "kendine haksızlık etmek",
+      "başkasının hayatını kıskanmak",
+      "gerçeği geç fark etmek",
+      "keşke daha cesur olsaydım"
+    ]
+  },
 
-    if (!response.ok) {
-      resultBox.textContent = "Hata: " + (data.error || "AI içerik üretilemedi.");
-      return;
-    }
+  kitap: {
+    genel: [
+      "abartılan kitabı zorla bitirmek",
+      "doğru kitabı çok geç okumak",
+      "popüler diye kitap almak",
+      "yarım bırakmaya suçluluk duymak"
+    ]
+  },
 
-    jsonArea.value = data.text;
-    renderPreview(parseJson());
+  sinema: {
+    genel: [
+      "fragmana aldanmak",
+      "abartılan filme beklentiyle gitmek",
+      "yanlış kişiyle film izlemek",
+      "puanına bakmadan film seçmek"
+    ]
+  },
 
-    resultBox.textContent = "AI içerik paketi hazır.";
-  } catch (err) {
-    console.error(err);
-    resultBox.textContent = "Hata: Önce bir trend seç veya JSON formatını kontrol et.";
+  eglence: {
+    genel: [
+      "plansız tatile çıkmak",
+      "mekanı araştırmadan rezervasyon yapmak",
+      "pahalı etkinliğe beklentiyle gitmek",
+      "kalabalık grupta plan yapmaya çalışmak"
+    ]
   }
 };
 
+const titleTemplates = [
+  "{topic} konusunda keşke daha önce uyansaydım",
+  "{topic} yüzünden aldığım dersi unutamıyorum",
+  "{topic} bana pahalıya patladı",
+  "{topic} sandığım kadar basit değilmiş",
+  "{topic} için kimse beni uyarmamıştı"
+];
 
+const bilgeKediNotes = [
+  "Bazı dersler okulda değil, hayatın pati izlerinde öğrenilir.",
+  "Keşke dememek için bazen iki kere sormak gerekir.",
+  "İçine sinmeyen şeyin üstünü örtme, sonra halının altından miyavlar.",
+  "Ucuz görünen karar bazen en pahalı pişmanlık olur.",
+  "Bir karar vermeden önce, o yolu yürüyenin sesini dinle."
+];
+
+function pickRandom(arr){
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function makeTitle(topic){
+  return pickRandom(titleTemplates).replace("{topic}", topic);
+}
+
+function createLocalContent(){
+  const category = categoryEl.value;
+  const subcategory = subcategoryEl.value.trim() || "genel";
+  const count = Number(contentCountEl.value || 5);
+  const categoryTopics = topicDatabase[category] || topicDatabase.ev;
+  const topics = categoryTopics[subcategory] || categoryTopics.genel || Object.values(categoryTopics).flat();
+
+  const items = [];
+
+  for(let i = 0; i < count; i++){
+    const topic = pickRandom(topics);
+    const title = makeTitle(topic);
+
+    items.push({
+      title,
+      category,
+      subcategory,
+      summary: `${topic} hakkında sonradan fark edilen küçük detayların nasıl büyük bir pişmanlığa dönüştüğünü anlatan gerçekçi bir deneyim taslağı.`,
+      content: `${topic} ilk başta bana çok büyük bir mesele gibi görünmemişti. Hatta karar verirken bunu fazla düşünmeye gerek olmadığını sanmıştım. Ama zaman geçtikçe küçük sandığım detayların aslında bütün süreci etkilediğini fark ettim. O an daha dikkatli olsaydım, birkaç soru daha sorsaydım ya da acele karar vermeseydim bugün bu kadar uğraşmak zorunda kalmazdım. En çok da başta içime sinmeyen şeyi görmezden geldiğim için pişman oldum.`,
+      bilgeKedi: pickRandom(bilgeKediNotes),
+      editorNote: `Editör Notu: Bu içerik ${topic} konusunda okuyucuya karar vermeden önce düşünmesi gereken noktaları hatırlatmak için hazırlanmıştır.`,
+      socialInstagram: `${title}\n\nBazen küçük sandığımız detaylar, sonradan büyük pişmanlıklara dönüşebiliyor.\n\nSen böyle bir şey yaşadın mı?`,
+      socialX: `${title} — Keşke Bilseydim`,
+      socialLinkedin: `${title}\n\nKarar vermeden önce gerçek deneyimleri okumak bazen en iyi hazırlıktır.`,
+      readerQuestion: `Sen ${topic} konusunda ne yaşadın?`,
+      tags: [category, subcategory, topic],
+      seoTitle: title,
+      seoDescription: `${topic} hakkında karar vermeden önce okunması gereken kısa ve gerçekçi bir deneyim.`,
+      regretScore: Number((Math.random() * 3 + 7).toFixed(1)),
+      comments: [],
+      imagePrompt: `${topic} konusunu anlatan sade, modern ve duygusal web görseli`,
+      imageUrl: "",
+      status: "draft"
+    });
+  }
+
+  return items;
+}
+
+const dailyCategoryPlan = {
+  ev: 2,
+  is: 2,
+  yasam: 2,
+  egitim: 2,
+  para: 2,
+  itiraflar: 2,
+  kitap: 1,
+  sinema: 1,
+  eglence: 1
+};
+
+function createDailyPack(){
+  const oldCategory = categoryEl.value;
+  const oldSubcategory = subcategoryEl.value;
+  const oldCount = contentCountEl.value;
+
+  const allItems = [];
+
+  Object.entries(dailyCategoryPlan).forEach(([category, count]) => {
+    categoryEl.value = category;
+    subcategoryEl.value = category === "ev" ? "komsular" : "genel";
+    contentCountEl.value = count;
+
+    const items = createLocalContent();
+    allItems.push(...items);
+  });
+
+  categoryEl.value = oldCategory;
+  subcategoryEl.value = oldSubcategory;
+  contentCountEl.value = oldCount;
+
+  return allItems;
+}
+
+dailyPackBtn.onclick = () => {
+  const items = createDailyPack();
+
+  jsonArea.value = JSON.stringify(items, null, 2);
+  renderPreview(items);
+
+  resultBox.textContent = `Günlük paket hazır: ${items.length} içerik taslağı oluşturuldu.`;
+};
 previewBtn.onclick = () => {
   try{
     const items = parseJson();
@@ -196,7 +352,7 @@ saveBtn.onclick = async () => {
     let saved = 0;
 
     for(const item of items){
-        const generatedImageUrl = await generateImageForItem(item);
+      
       const category = item.category || categoryEl.value;
       const subcategory = item.subcategory || subcategoryEl.value.trim();
       const slug = item.slug || slugify(item.title);
@@ -213,11 +369,12 @@ saveBtn.onclick = async () => {
         seoTitle:item.seoTitle || item.title || "",
         seoDescription:item.seoDescription || item.summary || "",
         regretScore:item.regretScore || 0,
-        comments:item.comments || [],
+        comments:[],
+        editorNote:item.editorNote || "",
         imagePrompt:item.imagePrompt || "",
-        imageUrl: generatedImageUrl,
-        viewCount:item.viewCount || Math.floor(Math.random() * 900) + 100,
-        likeCount:item.likeCount || Math.floor(Math.random() * 80) + 10,
+        imageUrl:item.imageUrl || "",
+        viewCount:0,
+        likeCount:0,
         isGenerated:true,
         status:"published",
         createdAt:serverTimestamp()
@@ -242,25 +399,15 @@ const todayContent = document.getElementById("todayContent");
 const pendingImages = document.getElementById("pendingImages");
 const trendList = document.getElementById("trendList");
 
-const fakeTrends = [
-  "komşu gürültüsü",
-  "depozito alamama",
-  "ev sahibi baskısı",
-  "aidat kavgası",
-  "üst komşu sesi",
-  "apartman yönetimi",
-  "taşınma pişmanlığı",
-  "ev arkadaşı sorunu",
-  "iş yerinde mobbing",
-  "maaş pazarlığı"
-];
-
 function loadDashboard(){
   totalContent.textContent = "1";
   todayContent.textContent = "1";
   pendingImages.textContent = "0";
 
-  trendList.innerHTML = fakeTrends.map(topic => `
+  const categoryTopicGroup = topicDatabase[categoryEl.value] || topicDatabase.ev;
+  const activeTrends = Object.values(categoryTopicGroup).flat();
+
+  trendList.innerHTML = activeTrends.map(topic => `
     <button class="trend-item" data-topic="${topic}">
       ${topic}
     </button>
@@ -268,22 +415,22 @@ function loadDashboard(){
 
   document.querySelectorAll(".trend-item").forEach(btn => {
     btn.onclick = () => {
-      subcategoryEl.value = categoryEl.value === "ev" ? "komsular" : subcategoryEl.value;
-
       const topic = btn.dataset.topic;
 
       jsonArea.value = JSON.stringify({
-        task:"Keşke Bilseydim için trend bazlı içerik üret.",
+        task: "Keşke Bilseydim için API'siz içerik üret.",
         topic,
-        category:categoryEl.value,
-        subcategory:subcategoryEl.value,
-        count:Number(contentCountEl.value || 10),
-        note:"Bu konudan gerçek insan deneyimi gibi, SEO uyumlu JSON array üret."
+        category: categoryEl.value,
+        subcategory: subcategoryEl.value,
+        count: Number(contentCountEl.value || 10),
+        note: "Bu konuya göre yerel şablonlardan içerik üretilecek."
       }, null, 2);
 
-      resultBox.textContent = `"${topic}" trend konusu için üretim paketi hazırlandı.`;
+      resultBox.textContent = `"${topic}" konusu seçildi. Şimdi Taslak Paket Oluştur butonuna basabilirsin.`;
     };
   });
 }
+
+categoryEl.addEventListener("change", loadDashboard);
 
 loadDashboard();

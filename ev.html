@@ -990,51 +990,79 @@ import {
 const params = new URLSearchParams(window.location.search);
 const secilenAltFirebase = params.get("alt");
 
-async function firebaseAltKategoriYukle(){
-  if(!secilenAltFirebase) return;
+function slugify(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replaceAll("ı","i")
+    .replaceAll("ğ","g")
+    .replaceAll("ü","u")
+    .replaceAll("ş","s")
+    .replaceAll("ö","o")
+    .replaceAll("ç","c")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+async function firebaseAltKategoriYukle() {
+  if (!secilenAltFirebase) return;
 
   const altKategoriBaslik = document.getElementById("altKategoriBaslik");
   const articleList = document.getElementById("articleList");
 
-  if(!articleList) return;
+  if (!articleList) return;
 
   const q = query(
-    collection(db, "articles"),
-    where("category", "==", "ev"),
-    where("subcategory", "==", secilenAltFirebase),
+    collection(db, "experiences"),
     where("status", "==", "published")
   );
 
   const snap = await getDocs(q);
 
-  if(snap.empty) return;
-
   const yazilar = [];
 
-  snap.forEach(doc => {
-    yazilar.push({
-      id: doc.id,
-      ...doc.data()
-    });
+  snap.forEach(docSnap => {
+    const yazi = docSnap.data();
+
+    if (
+  yazi.categorySlug === "ev" &&
+  yazi.subcategorySlug === secilenAltFirebase
+) {
+      yazilar.push({
+        id: docSnap.id,
+        ...yazi
+      });
+    }
   });
 
-  altKategoriBaslik.textContent = "Komşular Deneyimleri";
+  altKategoriBaslik.textContent =
+    secilenAltFirebase.charAt(0).toUpperCase() +
+    secilenAltFirebase.slice(1) +
+    " Deneyimleri";
+
+  if (!yazilar.length) {
+    articleList.innerHTML = "<p>Bu başlıkta henüz deneyim yok.</p>";
+    return;
+  }
 
   articleList.innerHTML = yazilar.map(yazi => `
     <a href="detay.html?id=${yazi.id}" class="article-card">
-      <img src="images/kedi_1.png" alt="${yazi.title || ""}">
+      ${yazi.images && yazi.images.length > 0 ? `
+        <img src="${yazi.images[0]}" alt="${yazi.title || ""}">
+      ` : ""}
+
       <div>
         <div class="risk-score">
           🐾 Bilge Kedi Risk Puanı 
-          <span>${Math.round(yazi.regretScore || 7)}/10</span>
+          <span>${yazi.rating || "-"}/10</span>
         </div>
+
         <h3>${yazi.title || "Başlıksız Deneyim"}</h3>
-        <p>${yazi.summary || yazi.seoDescription || ""}</p>
+        <p>${yazi.summary || ""}</p>
+
         <div class="article-meta">
-          👁️ ${yazi.viewCount || 0} görüntülenme · 
-          💬 ${(yazi.comments || []).length} yorum · 
-          ⏱️ 5 dk okuma
+          👁️ 0 görüntülenme · 💬 0 yorum · ⏱️ 5 dk okuma
         </div>
+
         <span>Deneyimi Oku →</span>
       </div>
     </a>

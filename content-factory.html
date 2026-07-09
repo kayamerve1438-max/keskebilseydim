@@ -276,13 +276,95 @@ body{
   }
 }
 }
+.studio-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+  background:#020617;
+}
+
+.studio-sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  background:#020617;
+  border-right:1px solid #1e293b;
+  padding:22px;
+  box-sizing:border-box;
+}
+
+.studio-logo{
+  color:white;
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:24px;
+}
+
+.studio-menu{
+  width:100%;
+  display:block;
+  border:0;
+  background:transparent;
+  color:#cbd5e1;
+  text-align:left;
+  padding:13px 14px;
+  border-radius:14px;
+  font-weight:800;
+  cursor:pointer;
+  margin-bottom:6px;
+}
+
+.studio-menu:hover,
+.studio-menu.active{
+  background:#2563eb;
+  color:white;
+}
+
+.studio-main{
+  padding:28px;
+}
+
+.factory-page{
+  margin:0 auto;
+}
+
+@media(max-width:900px){
+  .studio-layout{
+    grid-template-columns:1fr;
+  }
+
+  .studio-sidebar{
+    position:relative;
+    height:auto;
+  }
+
+  .studio-main{
+    padding:0;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div id="header-container"></div>
+<div class="studio-layout">
+  <aside class="studio-sidebar">
+    <div class="studio-logo">🏭 Keşke Studio</div>
 
+    <button class="studio-menu active">🏠 Dashboard</button>
+    <button class="studio-menu">📝 İçerik Üret</button>
+    <button class="studio-menu">📅 Günlük Plan</button>
+    <button class="studio-menu">📂 Taslaklar</button>
+    <button class="studio-menu">🚀 Yayınlananlar</button>
+    <button class="studio-menu">🐱 Bilge Kedi</button>
+    <button class="studio-menu">🖼 Görseller</button>
+    <button class="studio-menu">📱 Sosyal Medya</button>
+    <button class="studio-menu">📊 İstatistik</button>
+    <button class="studio-menu">⚙️ Ayarlar</button>
+  </aside>
+
+  <main class="studio-main">
 <div class="factory-page">
     <div class="cms-dashboard">
   <div class="dash-card">
@@ -311,7 +393,7 @@ body{
   <div class="factory-title">
     <div>
       <h1>İçerik Fabrikası 🏭</h1>
-      <p>SEO uyumlu deneyim paketleri oluştur, incele ve Firebase’e kaydet.</p>
+      <p>API kullanmadan günlük içerik, sosyal medya metni, Bilge Kedi notu ve yayın taslağı oluştur.</p>
     </div>
     <div class="status-pill">CMS v2 Hazır</div>
   </div>
@@ -353,6 +435,7 @@ body{
 
   <div class="actions">
     <button class="primary" id="generateBtn">🚀 Taslak Paket Oluştur</button>
+    <button class="primary" id="dailyPackBtn">📅 Günlük Tüm Kategoriler Paketi</button>
     <button class="secondary" id="fillSampleBtn">Örnek JSON Doldur</button>
     <button class="secondary" id="previewBtn">İncele</button>
     <button class="primary" id="saveBtn">Firebase’e Kaydet</button>
@@ -371,7 +454,8 @@ body{
   <div class="result-box" id="resultBox">Hazır.</div>
 
 </div>
-
+  </main>
+</div>
 <script>
 fetch("header.html")
   .then(res => res.text())
@@ -383,6 +467,7 @@ fetch("header.html")
     document.body.appendChild(script);
   });
 </script>
+
 
 <script type="module" src="./content-factory.js?v=4"></script>
 

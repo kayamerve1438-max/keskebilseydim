@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keşke Bilseydim Studio</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+
+<div class="studio">
+  <aside class="sidebar">
+    <h2>🏭 Keşke Studio</h2>
+    <button class="active">🏠 Dashboard</button>
+    <button>📝 İçerik Üret</button>
+    <button>📅 Günlük Plan</button>
+    <button>📂 Taslaklar</button>
+    <button>🚀 Yayınlananlar</button>
+    <button>🖼 Görseller</button>
+    <button>📱 Sosyal Medya</button>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <div>
+        <h1>Keşke Bilseydim Studio</h1>
+        <p>API kullanmadan günlük içerik paketi üret, kontrol et ve Firebase’e kaydet.</p>
+      </div>
+      <span>Studio v1</span>
+    </section>
+
+    <section class="cards">
+      <div class="card"><strong id="totalContent">0</strong><span>Toplam İçerik</span></div>
+      <div class="card"><strong id="todayContent">0</strong><span>Bugün Üretilen</span></div>
+      <div class="card"><strong id="dailyGoal">15</strong><span>Günlük Hedef</span></div>
+      <div class="card"><strong id="draftCount">0</strong><span>Taslak</span></div>
+    </section>
+
+    <section class="panel">
+      <h2>📝 İçerik Üret</h2>
+
+      <div class="form-grid">
+        <label>
+          Kategori
+          <select id="category">
+            <option value="ev">Ev</option>
+            <option value="is">İş</option>
+            <option value="yasam">Yaşam</option>
+            <option value="egitim">Eğitim</option>
+            <option value="para">Para</option>
+            <option value="itiraflar">İtiraflarımız</option>
+            <option value="kitap">Kitap</option>
+            <option value="sinema">Sinema</option>
+            <option value="eglence">Eğlence</option>
+          </select>
+        </label>
+
+        <label>
+          Alt Kategori
+          <input id="subcategory" value="genel">
+        </label>
+
+        <label>
+          İçerik Sayısı
+          <input id="count" type="number" value="5" min="1" max="30">
+        </label>
+      </div>
+
+      <<div class="actions">
+    <button id="generateBtn">🚀 Seçili Kategoriden Üret</button>
+
+    <button id="dailyBtn">
+        📅 Günlük Tüm Kategoriler Paketi
+    </button>
+
+    <button id="promptBtn">
+        🤖 ChatGPT Promptu Hazırla
+    </button>
+<button id="dailyPromptBtn">🧠 Günlük Paket Promptu Hazırla</button>
+    <button id="clearBtn" class="light">
+        Temizle
+    </button>
+</div>
+
+<textarea
+    id="promptArea"
+    placeholder="ChatGPT promptu burada oluşacak..."
+    style="display:none;margin-top:18px;min-height:220px;">
+</textarea>
+    </section>
+<section class="panel">
+  <h2>📥 ChatGPT JSON Yapıştır</h2>
+
+  <textarea id="jsonInput" placeholder="ChatGPT'nin verdiği JSON array çıktısını buraya yapıştır..."></textarea>
+
+  <div class="actions">
+  <button id="importJsonBtn">İçe Aktar ve İncele</button>
+  <button id="saveDraftsBtn">💾 Firebase Taslak Kaydet</button>
+</div>
+</section>
+<section class="panel">
+  <div class="section-head">
+    <h2>📂 Firebase Taslaklar</h2>
+    <button id="loadDraftsBtn">Taslakları Getir</button>
+  </div>
+
+  <div id="draftList" class="content-list"></div>
+</section>
+    <section class="panel">
+      <div class="section-head">
+        <h2>📦 Üretilen İçerikler</h2>
+        <span id="contentCount">0 içerik</span>
+      </div>
+
+      <div id="contentList" class="content-list"></div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="studio.js"></script>
+</body>
+</html>

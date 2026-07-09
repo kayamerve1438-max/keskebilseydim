@@ -1,3 +1,15 @@
+function slugify(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replaceAll("ı","i")
+    .replaceAll("ğ","g")
+    .replaceAll("ü","u")
+    .replaceAll("ş","s")
+    .replaceAll("ö","o")
+    .replaceAll("ç","c")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 import { db, storage } from "./firebase-db.js";
 
 import {
@@ -207,6 +219,8 @@ for (const image of selectedImages) {
     title: fields.title.value.trim(),
     category: fields.category.value,
     summary: fields.summary.value.trim(),
+    categorySlug: slugify(fields.category.value),
+    subcategorySlug: slugify(fields.subcategory.value),
     story: fields.story.value.trim(),
     mistake: fields.mistake.value.trim(),
     advice: fields.advice.value.trim(),
