@@ -38,7 +38,7 @@ function getPageCategory() {
 }
 
 async function loadCategoryFeed() {
-  const container = document.querySelector(".experience-list");
+  const container = document.getElementById("articleList");
 
   if (!container) return;
 
