@@ -933,27 +933,6 @@ const altKategoriIcerikleri = {
     }
 };
 
-if(secilenAlt && altKategoriIcerikleri[secilenAlt]){
-    document.body.classList.add("alt-page");
-    document.querySelector(".hero").style.display = "none";
-    document.querySelector(".article-list-section").style.display = "block";
-    document.querySelector(".main-content")?.style.setProperty("display", "none");
-
-    const veri = altKategoriIcerikleri[secilenAlt];
-    altKategoriBaslik.textContent = veri.baslik;
-    articleList.innerHTML = veri.yazilar.map(yazi => `
-        <a href="${yazi.link}" class="article-card">
-            <img src="${yazi.img}" alt="${yazi.title}">
-            <div>
-                <div class="risk-score">🐾 Bilge Kedi Risk Puanı <span>${yazi.risk}</span></div>
-                <h3>${yazi.title}</h3>
-                <p>${yazi.desc}</p>
-                <div class="article-meta">${yazi.meta}</div>
-                <span>Deneyimi Oku →</span>
-            </div>
-        </a>
-    `).join("");
-}
 </script>
 
 <div id="footer-container"></div>
