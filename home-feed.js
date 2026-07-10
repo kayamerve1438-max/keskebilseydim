@@ -23,7 +23,13 @@ async function loadPublishedExperiences() {
 );
 
   const snapshot = await getDocs(q);
-  const docs = snapshot.docs.slice(0, 3);
+ const docs = snapshot.docs
+  .sort((a, b) => {
+    const aTime = a.data().publishedAt?.seconds || 0;
+    const bTime = b.data().publishedAt?.seconds || 0;
+    return bTime - aTime;
+  })
+  .slice(0, 3);
 
   console.log("Yayınlanan içerik sayısı:", snapshot.size);
 

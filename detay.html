@@ -976,19 +976,22 @@ const defaultImages = {
 
 if (img) {
 
-  if (exp.imageUrl) {
+  const categoryImage =
+    defaultImages[(exp.category || "").toLowerCase()] ||
+    "images/defaults/ev.jpg";
 
+  if (exp.imageUrl && exp.imageUrl.trim() !== "") {
     img.src = exp.imageUrl;
-
-  } else if (exp.images?.length) {
-
+  } else if (Array.isArray(exp.images) && exp.images.length > 0 && exp.images[0]) {
     img.src = exp.images[0];
-
   } else {
-
-    img.src = defaultImages[(exp.category || "").toLowerCase()] || "images/defaults/ev.jpg";
-
+    img.src = categoryImage;
   }
+
+  // Eğer yüklenemezse otomatik kategori görseline dön
+  img.onerror = () => {
+    img.src = categoryImage;
+  };
 
   img.alt = exp.title || "";
 }
