@@ -55,6 +55,20 @@ const q = query(
 );
 
   const snapshot = await getDocs(q);
+  console.log("Sayfa kategorisi:", category);
+console.log("URL alt kategorisi:", alt);
+console.log("Firebase'den gelen kayıt:", snapshot.size);
+
+snapshot.forEach((docSnap) => {
+  const item = docSnap.data();
+
+  console.log({
+    title: item.title,
+    category: item.category,
+    subcategory: item.subcategory,
+    subcategorySlug: slugify(item.subcategory)
+  });
+});
 
   container.innerHTML = "";
 
