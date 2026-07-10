@@ -48,11 +48,11 @@ async function loadCategoryFeed() {
 
   if (!category) return;
 
-  const q = query(
-    collection(db, "experiences"),
-    where("status", "==", "published"),
-    where("category", "==", category)
-  );
+const q = query(
+  collection(db, "articles"),
+  where("status", "==", "published"),
+  where("category", "==", category)
+);
 
   const snapshot = await getDocs(q);
 
