@@ -24,15 +24,15 @@ function getPageCategory() {
   const page = window.location.pathname.split("/").pop();
 
   const map = {
-  "ev.html": "ev",
-  "is.html": "is",
-  "yasam.html": "yasam",
-  "egitim.html": "egitim",
-  "sinema.html": "sinema",
-  "kitap.html": "kitap",
-  "eglence.html": "eglence",
-  "para.html": "para"
-};
+    "ev.html": "EV",
+    "is.html": "İŞ",
+    "yasam.html": "YAŞAM",
+    "egitim.html": "EĞİTİM",
+    "sinema.html": "SİNEMA",
+    "kitap.html": "KİTAP",
+    "eglence.html": "EĞLENCE",
+    "para.html": "PARA"
+  };
 
   return map[page];
 }
@@ -95,11 +95,9 @@ snapshot.forEach((docSnap) => {
     card.className = "experience-row";
 
     card.innerHTML = `
-      ${exp.imageUrl ? `
-  <img src="${exp.imageUrl}" alt="${exp.title || "Deneyim fotoğrafı"}">
-` : exp.images && exp.images.length > 0 ? `
-  <img src="${exp.images[0]}" alt="${exp.title || "Deneyim fotoğrafı"}">
-` : ""}
+      ${exp.images && exp.images.length > 0 ? `
+        <img src="${exp.images[0]}" alt="${exp.title || "Deneyim fotoğrafı"}">
+      ` : ""}
 
       <div>
         <span class="risk-badge">🐾 Bilge Kedi Risk Puanı ${exp.rating || "-"}/10</span>
